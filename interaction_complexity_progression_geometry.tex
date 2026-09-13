@@ -1,0 +1,1035 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{slashed}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{assumption}[definition]{Assumption}
+
+\title{Interaction Complexity as a Covariant Source for Progression Geometry:\\
+Static Loading and Relational Motion in a Two-Current Model}
+\author{Scott A. Jordan\\
+Independent researcher, Fayetteville, NC, USA\\
+\texttt{scott@simplelogicsolutions.com}}
+\date{Draft, July 2026}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Mpl}{M_{\rm Pl}}
+\newcommand{\CI}{\mathcal C}
+\newcommand{\Is}{\mathcal I}
+\newcommand{\Lag}{\mathcal L}
+\newcommand{\Lie}{\mathcal L}
+\newcommand{\Rthree}{{}^{(3)}R}
+\newcommand{\qA}{q_A}
+\newcommand{\qB}{q_B}
+\newcommand{\gAB}{\gamma_{AB}}
+\newcommand{\DelAB}{\Delta_{AB}}
+\newcommand{\LamI}{\Lambda_I}
+\newcommand{\fC}{f_{\mathcal C}}
+\newcommand{\mC}{m_{\mathcal C}}
+\newcommand{\kS}{\kappa_s}
+\newcommand{\kR}{\kappa_r}
+\newcommand{\uA}{u_A}
+\newcommand{\uB}{u_B}
+\newcommand{\JA}{J_A}
+\newcommand{\JB}{J_B}
+\newcommand{\rhoA}{\rho_A}
+\newcommand{\rhoB}{\rho_B}
+\newcommand{\wA}{w_A}
+\newcommand{\wB}{w_B}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The progression program originally proposed that the local rate standard is controlled not only by mass density but by the organization of physical interaction: static binding and persistent exchange contribute even in a comoving state, while relative motion through an interacting environment opens additional channels.  Recent consistency work showed that the gravitational response cannot be carried by one scalar alone.  A complete lapse--flow--dilation--strain geometry is required, with the Einstein--Hilbert action providing the conservative benchmark.  The missing question is therefore a source question: can interaction organization be represented by a covariant state variable that contains information not captured by total stress--energy alone?
+
+We formulate a proof-of-principle two-current model.  Two conserved timelike currents $J_A^\mu=n_Au_A^\mu$ and $J_B^\mu=n_Bu_B^\mu$ define the invariant relative Lorentz factor $\gamma_{AB}=-u_A\cdot u_B$ and the comotion-subtracted scalar $\gamma_{AB}-1$.  A dimensionless interaction-order field $\mathcal C$ is sourced by
+\[
+\mathcal I=\frac{q_A(n_A)q_B(n_B)}{\Lambda_I^4}
+\left[\kappa_s+\kappa_r(\gamma_{AB}-1)\right],
+\]
+where $q_X$ is a coarse-grained interaction-loading density, required to approach the inertial-energy density for cold ordinary matter.  The static term survives at comotion, whereas the relational term vanishes either at comotion or when either environment is absent.  The complete action is covariant, preserves ordinary local special-relativistic kinematics for isolated matter, and produces one total Noether identity.  The current momenta acquire an entrainment contribution, while the complexity field and the two-current sector exchange equal and opposite four-momentum.
+
+We derive the static Yukawa response, the low-velocity relative-flow energy, a stress-tensor redundancy test, and the baseline stability conditions.  On a homogeneous comoving background, the common-flow kinetic eigenvalue is unchanged, while the relative-flow eigenvalue is shifted by $2\epsilon$, with
+\[
+\epsilon=\frac{\kappa_r\mathcal C_0q_Aq_B}{\Lambda_I^4}.
+\]
+The local no-ghost condition is $w_Aw_B+\epsilon(w_A+w_B)>0$.  Integrating out a massive complexity field produces an attractive static correlation energy; positivity of the resulting compressibility matrix supplies the first nontrivial bound on the static coupling.  We also exhibit two distinct two-stream states with the same total stress tensor but different pairwise relative invariants, showing that constituent interaction organization is not reconstructible from $T^{\mu\nu}$ alone without additional current information.  This is not yet a galaxy model or a proof of new gravity.  It is a covariant source-sector prototype with explicit failure criteria: universal loading, two-stream stability, operator nonredundancy, and observationally acceptable coupling strength must all be demonstrated before phenomenological application.
+\end{abstract}
+
+\section{Introduction}
+
+The progression framework begins from an operational question: if local clocks, matter phases, and radiation are compared through a dynamical rate standard, what physical property of a state determines that standard?  The earliest answer was phrased in terms of environmental interaction density.  Static matter was assigned a large interaction contribution because masses, binding fields, confinement, internal motion, pressure, and persistent exchange remain present even in a comoving state.  Motion through an interacting environment was expected to add a second contribution because relative motion changes the frequency, energy, and organization of available interaction channels.  Comotion was therefore not the fundamental source principle.  It was the condition under which the motion-induced part of interaction loading became small.
+
+Subsequent work clarified two structural requirements.  First, a scalar clock-rate field cannot provide the complete gravitational response.  Energy density, momentum density, isotropic stress, and shear require responses in the lapse, shift, spatial volume, and transverse-traceless strain.  The current progression-geometry framework therefore uses a complete physical metric and takes the Einstein--Hilbert action as its conservative benchmark~\cite{JordanGeometry2026}.  Second, active sourcing, passive response, inertia, and subsystem transport must descend from one total action.  A current divergence cannot be declared to be the entire static source, and weighted transport cannot replace the single Noether identity of the closed system~\cite{JordanMatter2026}.
+
+These corrections do not by themselves decide whether interaction organization is a meaningful source variable.  They change where the idea must enter.  The complete progression geometry can be retained as the macroscopic response system while the original novelty is reformulated as a source or constitutive theory,
+\begin{equation}
+\begin{aligned}
+\text{interaction organization}
+&\longrightarrow \text{progression geometry}\\
+&\longrightarrow \text{clocks, matter motion, optics, and radiation}.
+\end{aligned}
+\label{eq:hierarchy}
+\end{equation}
+The recent geometry work made the second arrow internally consistent.  The present paper begins a controlled investigation of the first.
+
+The phrase \emph{interaction complexity} is used here in a deliberately restricted sense.  It does not mean algorithmic complexity, computational cost, or an observer-dependent count of collisions.  It denotes a coarse-grained state variable sensitive to persistent interaction structure and to relational motion between physically distinguished components.  The first mathematical question is whether such a variable can be defined covariantly and conservatively.  The second is whether it contains state information not already fixed by the total stress tensor.  The third is whether its dynamics are stable and compatible with universal free fall.
+
+A two-current model is the smallest setting in which these questions can be made precise.  Relativistic multifluid theory already provides the appropriate kinematic language: conserved currents, scalar master functions, and entrainment through cross-current invariants~\cite{Brown1993,AnderssonComer2021,Gavassino2019,Ballesteros2014}.  We use that language, but the new field $\mathcal C$ is not identified with ordinary entrainment.  It records the response of a coarse-grained interaction-order source and carries its own stress tensor.
+
+The scope is intentionally narrow.  We do not fit galaxy rotation curves, propose a cosmological background, or modify the gravitational kinetic action.  We instead:
+\begin{enumerate}[label=(\roman*)]
+\item define static and relational interaction-order scalars;
+\item construct one covariant action for two currents, $\mathcal C$, and benchmark progression geometry;
+\item derive the current momenta, stress tensor, field equation, and Noether exchange;
+\item demonstrate the comoving and relative-flow limits;
+\item formulate and partially execute a redundancy test against $T^{\mu\nu}$;
+\item derive baseline homogeneous stability conditions;
+\item state the universal-loading and phenomenological failure criteria.
+\end{enumerate}
+
+\section{Progression geometry as the fixed response sector}
+
+\subsection{Complete progression variables}
+
+The physical metric is written in lapse--flow--dilation--strain form,
+\begin{equation}
+\dd s^2=-e^{2\theta}\dd t^2
++e^{2\sigma}\gamma_{ij}
+(\dd x^i+\beta^i\dd t)(\dd x^j+\beta^j\dd t),
+\qquad \det\gamma_{ij}=1.
+\label{eq:progressionmetric}
+\end{equation}
+The variables have the operational interpretation
+\begin{align}
+\theta &: \text{temporal progression or lapse},\nonumber\\
+\sigma &: \text{isotropic spatial progression standard},\nonumber\\
+\beta^i &: \text{progression flow and mass-current response},\nonumber\\
+\gamma_{ij} &: \text{spatial strain, shear, and tensor radiation}.
+\end{align}
+The benchmark gravitational action is
+\begin{equation}
+S_{\rm PG}^{(0)}=
+\frac{\Mpl^2}{2}
+\int \dd t\,\dd^3x\,N\sqrt h
+\left(\Rthree+K_{ij}K^{ij}-K^2-2\Lambda\right),
+\label{eq:EHbenchmark}
+\end{equation}
+with $N=e^\theta$ and $h_{ij}=e^{2\sigma}\gamma_{ij}$.  Equation~\eqref{eq:EHbenchmark} is the Einstein--Hilbert action in progression variables.  It is used here because it supplies the complete constraint and wave structure without introducing a second unresolved modification in the gravitational kinetic sector.
+
+The total metric equation will therefore be
+\begin{equation}
+G_{\mu\nu}+\Lambda g_{\mu\nu}
+=\Mpl^{-2}T_{\mu\nu}^{\rm total}.
+\label{eq:EinsteinTotal}
+\end{equation}
+The novelty investigated below lies in $T_{\mu\nu}^{\rm total}$ and its state dependence, not in the left-hand side of Eq.~\eqref{eq:EinsteinTotal}.
+
+\subsection{Why a source sector is still a meaningful question}
+
+Universal metric coupling guarantees that conventional matter stress-energy sources the benchmark geometry.  A new source principle is meaningful only if it introduces an additional dynamical state variable or correlation operator whose value is not reconstructible from the pre-existing total $T^{\mu\nu}$ alone.  Merely renaming energy density, pressure, or momentum density as complexity would not create a new theory.
+
+The present construction therefore introduces a field $\mathcal C$ sourced by invariants of multiple physically distinguished currents.  Once included, its own energy and the interaction stress contribute to $T_{\mu\nu}^{\rm total}$ in the ordinary way.  The question is whether the underlying current organization supplies independent constitutive data before that enlarged stress tensor is formed.
+
+\section{Two-current kinematics and interaction-order invariants}
+
+\subsection{Conserved currents}
+
+Let $A$ and $B$ denote two coarse-grained interacting components with conserved timelike currents
+\begin{equation}
+J_A^\mu=n_Au_A^\mu,
+\qquad
+J_B^\mu=n_Bu_B^\mu,
+\label{eq:currents}
+\end{equation}
+where
+\begin{equation}
+u_A^\mu u^A_\mu=u_B^\mu u^B_\mu=-1,
+\qquad
+\nabla_\mu J_A^\mu=0,
+\qquad
+\nabla_\mu J_B^\mu=0.
+\label{eq:currentconservation}
+\end{equation}
+The three algebraic current invariants are
+\begin{equation}
+n_A=\sqrt{-J_A^2},
+\qquad
+n_B=\sqrt{-J_B^2},
+\qquad
+x_{AB}=-J_A^\mu J^B_\mu.
+\label{eq:currentinvariants}
+\end{equation}
+The exact relative Lorentz factor is
+\begin{equation}
+\gamma_{AB}
+=\frac{x_{AB}}{n_An_B}
+=-u_A^\mu u^B_\mu
+\geq1.
+\label{eq:gammaAB}
+\end{equation}
+It is a scalar at the event where the currents overlap.  In the local rest frame of $B$,
+\begin{equation}
+\gamma_{AB}=\frac{1}{\sqrt{1-v_{AB}^2}},
+\label{eq:gammaVelocity}
+\end{equation}
+where $v_{AB}$ is the standard special-relativistic relative speed.
+
+\begin{definition}[Comotion-subtracted relational invariant]
+The invariant
+\begin{equation}
+\Delta_{AB}
+\equiv x_{AB}-n_An_B
+=n_An_B(\gamma_{AB}-1)
+\label{eq:DeltaAB}
+\end{equation}
+measures relative current organization above the locally comoving state.
+\end{definition}
+It satisfies
+\begin{equation}
+\Delta_{AB}=0
+\quad\text{when}\quad u_A^\mu=u_B^\mu,
+\qquad
+\Delta_{AB}=0
+\quad\text{when}\quad n_A n_B=0.
+\label{eq:Deltalimits}
+\end{equation}
+At low relative speed,
+\begin{equation}
+\Delta_{AB}
+=\frac12n_An_Bv_{AB}^2+O(v_{AB}^4).
+\label{eq:Deltalowv}
+\end{equation}
+
+\subsection{Static loading densities}
+
+A two-current overlap can possess persistent interaction structure even at comotion.  To allow for composite or field-theoretic normalization, we introduce loading densities
+\begin{equation}
+q_A=q_A(n_A),
+\qquad
+q_B=q_B(n_B),
+\label{eq:qdefs}
+\end{equation}
+with mass dimension four.  For cold ordinary matter the universal-loading target is
+\begin{equation}
+q_X(n_X)=\rho_X(n_X)+O(p_X,\text{binding corrections}),
+\label{eq:qtarget}
+\end{equation}
+where the right-hand side is the complete on-shell inertial-energy density of the coarse-grained component.  Equation~\eqref{eq:qtarget} is a matching target, not yet a theorem of the model.
+
+\begin{definition}[Minimal interaction-order source]
+The source density for the interaction-order field is
+\begin{equation}
+\boxed{
+\mathcal I(n_A,n_B,\gamma_{AB})
+=
+\frac{q_A(n_A)q_B(n_B)}{\Lambda_I^4}
+\left[\kappa_s+\kappa_r(\gamma_{AB}-1)\right].
+}
+\label{eq:Isource}
+\end{equation}
+\end{definition}
+The coefficient $\kappa_s$ weights static overlap or persistent exchange.  The coefficient $\kappa_r$ weights the additional organization associated with relative motion.  The source vanishes when either component is absent, while only the relational part vanishes at comotion.
+
+Equation~\eqref{eq:Isource} is not proposed as the unique microscopic definition of interaction complexity.  It is the smallest covariant ansatz that separates the two physical ideas being tested.  More microscopic operators, including binding-field correlators, vorticity, shear, gradients, and memory kernels, are deferred.
+
+\section{Covariant action}
+
+\subsection{Action and dimensions}
+
+The proof-of-principle theory is
+\begin{equation}
+S=S_{\rm PG}^{(0)}+S_{AB\mathcal C},
+\label{eq:Stotal}
+\end{equation}
+with
+\begin{equation}
+S_{AB\mathcal C}
+=\int \dd^4x\sqrt{-g}\,
+\left[
+\Lambda_m(J_A,J_B,\mathcal C)
+-\frac{f_{\mathcal C}^2}{2}\nabla_\mu\mathcal C\nabla^\mu\mathcal C
+-\frac{f_{\mathcal C}^2m_{\mathcal C}^2}{2}\mathcal C^2
+\right],
+\label{eq:SABC}
+\end{equation}
+where
+\begin{equation}
+\Lambda_m
+=-\rho_A(n_A)-\rho_B(n_B)+\mathcal C\,\mathcal I.
+\label{eq:masterfunction}
+\end{equation}
+The field $\mathcal C$ is dimensionless, $f_{\mathcal C}$ and $m_{\mathcal C}$ have mass dimension one, and $\mathcal I$ has mass dimension four.  Separate conservation of $J_A^\mu$ and $J_B^\mu$ may be imposed by a pull-back variational principle or by Clebsch potentials.  For compactness we use the standard convective multifluid result that variations preserving the current fluxes yield the corresponding Euler equations.
+
+The quadratic potential is chosen only to make the first stability and range tests explicit.  A more general $U(\mathcal C)$ may replace $f_{\mathcal C}^2m_{\mathcal C}^2\mathcal C^2/2$ once the source definition survives the present tests.
+
+\subsection{Complexity-field equation}
+
+Variation with respect to $\mathcal C$ gives
+\begin{equation}
+\boxed{
+f_{\mathcal C}^2(\Box-m_{\mathcal C}^2)\mathcal C=-\mathcal I.
+}
+\label{eq:Ceom}
+\end{equation}
+For a stationary source in weakly curved space,
+\begin{equation}
+(\nabla^2-m_{\mathcal C}^2)\mathcal C
+=-\frac{\mathcal I}{f_{\mathcal C}^2}.
+\label{eq:Cstatic}
+\end{equation}
+The solution is
+\begin{equation}
+\mathcal C(\mathbf x)
+=\frac{1}{4\pi f_{\mathcal C}^2}
+\int \dd^3x'\,
+\frac{e^{-m_{\mathcal C}|\mathbf x-\mathbf x'|}}
+{|\mathbf x-\mathbf x'|}
+\mathcal I(\mathbf x').
+\label{eq:Yukawa}
+\end{equation}
+Positive $\mathcal I$ therefore produces positive $\mathcal C$ with the sign conventions of Eq.~\eqref{eq:SABC}.
+
+\subsection{Current momenta and entrainment}
+
+Define the momenta conjugate to the currents by
+\begin{equation}
+\mu^A_\nu\equiv\frac{\partial\Lambda_m}{\partial J_A^\nu},
+\qquad
+\mu^B_\nu\equiv\frac{\partial\Lambda_m}{\partial J_B^\nu}.
+\label{eq:momdef}
+\end{equation}
+The useful derivatives are
+\begin{align}
+\frac{\partial n_A}{\partial J_A^\nu}&=-u^A_\nu,
+\label{eq:dnDeriv}\\
+\frac{\partial\gamma_{AB}}{\partial J_A^\nu}
+&=\frac{-u^B_\nu+\gamma_{AB}u^A_\nu}{n_A},
+\label{eq:dgDeriv}
+\end{align}
+and the corresponding expressions with $A\leftrightarrow B$.  Writing
+\begin{equation}
+H(\gamma_{AB})
+=\kappa_s+\kappa_r(\gamma_{AB}-1),
+\label{eq:Hdef}
+\end{equation}
+we obtain
+\begin{align}
+\mu^A_\nu
+={}&\mu_Au^A_\nu
+-\frac{\mathcal C q_A' q_B}{\Lambda_I^4}H\,u^A_\nu
++\frac{\mathcal C q_Aq_B\kappa_r}{\Lambda_I^4n_A}
+\left(-u^B_\nu+\gamma_{AB}u^A_\nu\right),
+\label{eq:momA}\\
+\mu^B_\nu
+={}&\mu_Bu^B_\nu
+-\frac{\mathcal C q_A q_B'}{\Lambda_I^4}H\,u^B_\nu
++\frac{\mathcal C q_Aq_B\kappa_r}{\Lambda_I^4n_B}
+\left(-u^A_\nu+\gamma_{AB}u^B_\nu\right),
+\label{eq:momB}
+\end{align}
+where
+\begin{equation}
+\mu_A=\frac{\dd\rho_A}{\dd n_A},
+\qquad
+\mu_B=\frac{\dd\rho_B}{\dd n_B}.
+\label{eq:chemPot}
+\end{equation}
+The terms proportional to the other component's four-velocity are relativistic entrainment terms.  At exact comotion they cancel from the relational response, leaving only the static shift of the chemical potentials,
+\begin{align}
+\mu^A_\nu\big|_{u_A=u_B}
+&=\left(\mu_A-\frac{\mathcal C\kappa_s q_A'q_B}{\Lambda_I^4}\right)u_\nu,
+\label{eq:momAcomoving}\\
+\mu^B_\nu\big|_{u_A=u_B}
+&=\left(\mu_B-\frac{\mathcal C\kappa_s q_Aq_B'}{\Lambda_I^4}\right)u_\nu.
+\label{eq:momBcomoving}
+\end{align}
+Thus the relativistic part does not masquerade as a static source.
+
+\subsection{Stress tensor}
+
+Let
+\begin{equation}
+\Psi=\Lambda_m-J_A^\alpha\mu^A_\alpha-J_B^\alpha\mu^B_\alpha.
+\label{eq:generalizedpressure}
+\end{equation}
+The current-sector stress tensor is
+\begin{equation}
+T^{\mu}{}_{\nu,AB}
+=\Psi\delta^\mu{}_{\nu}
++J_A^\mu\mu^A_\nu
++J_B^\mu\mu^B_\nu.
+\label{eq:Tcurrents}
+\end{equation}
+For $\mathcal C=0$ this reduces to the sum of the two perfect-fluid stress tensors.  The canonical complexity stress tensor is
+\begin{equation}
+T^{\mu\nu}_{\mathcal C}
+=f_{\mathcal C}^2\nabla^\mu\mathcal C\nabla^\nu\mathcal C
+-g^{\mu\nu}
+\left[
+\frac{f_{\mathcal C}^2}{2}(\nabla\mathcal C)^2
++\frac{f_{\mathcal C}^2m_{\mathcal C}^2}{2}\mathcal C^2
+\right].
+\label{eq:TC}
+\end{equation}
+The total source in Eq.~\eqref{eq:EinsteinTotal} is
+\begin{equation}
+T^{\mu\nu}_{\rm total}
+=T^{\mu\nu}_{AB}+T^{\mu\nu}_{\mathcal C}.
+\label{eq:Ttotal}
+\end{equation}
+Because the interaction term is already contained in $\Lambda_m$, it must not be added a second time as an independent energy density.
+
+\subsection{Noether exchange}
+
+The explicit $\mathcal C$ dependence of the current master function gives
+\begin{equation}
+\frac{\partial\Lambda_m}{\partial\mathcal C}=\mathcal I.
+\label{eq:dLdC}
+\end{equation}
+On the current equations of motion,
+\begin{equation}
+\nabla_\mu T^{\mu}{}_{\nu,AB}
+=+\mathcal I\nabla_\nu\mathcal C,
+\label{eq:exchangeAB}
+\end{equation}
+while Eq.~\eqref{eq:Ceom} gives
+\begin{equation}
+\nabla_\mu T^{\mu}{}_{\nu,\mathcal C}
+=-\mathcal I\nabla_\nu\mathcal C.
+\label{eq:exchangeC}
+\end{equation}
+Therefore
+\begin{equation}
+\boxed{
+\nabla_\mu T^{\mu}{}_{\nu,\rm total}=0.
+}
+\label{eq:totalconservation}
+\end{equation}
+The interaction-order sector does not introduce a second conservation law.  It redistributes four-momentum within one closed system.
+
+\section{Static and relational limits}
+
+\subsection{Comoving static state}
+
+For $u_A^\mu=u_B^\mu$,
+\begin{equation}
+\mathcal I_{\rm stat}
+=\frac{\kappa_s q_Aq_B}{\Lambda_I^4},
+\label{eq:Istatic}
+\end{equation}
+whereas the relative-flow term vanishes.  In a homogeneous state the field equation gives
+\begin{equation}
+\mathcal C_0
+=\frac{\kappa_s q_Aq_B}
+{f_{\mathcal C}^2m_{\mathcal C}^2\Lambda_I^4}.
+\label{eq:C0}
+\end{equation}
+This is the minimal representation of persistent interaction complexity.  It is nonzero because both interacting components are present, not because either has a bulk velocity.
+
+For a localized static overlap, Eq.~\eqref{eq:Yukawa} shows that the response range is $m_{\mathcal C}^{-1}$.  A galactic application would require either a sufficiently long range or a collective mechanism that survives coarse-graining; no such choice is made here.
+
+\subsection{Relative motion and special relativity}
+
+In a local inertial frame, expand about fixed $q_A$ and $q_B$.  Equation~\eqref{eq:Isource} gives
+\begin{equation}
+\mathcal I
+=\frac{q_Aq_B}{\Lambda_I^4}
+\left[
+\kappa_s+\frac{\kappa_r}{2}v_{AB}^2+O(v_{AB}^4)
+\right].
+\label{eq:Ilowv}
+\end{equation}
+The relative-flow contribution to the local Lagrangian is
+\begin{equation}
+\Lag_{\rm rel}^{(2)}
+=\frac{\epsilon}{2}
+(\mathbf v_A-\mathbf v_B)^2,
+\qquad
+\epsilon
+\equiv
+\frac{\kappa_r\mathcal C_0q_Aq_B}{\Lambda_I^4}.
+\label{eq:Lrel}
+\end{equation}
+This term is relational and environmental.  It vanishes when either loading density vanishes.  The free propagation of an isolated particle therefore retains the standard local dispersion relation,
+\begin{equation}
+E^2=\mathbf p^2+m^2,
+\label{eq:SRdispersion}
+\end{equation}
+provided the ordinary matter action is minimally coupled to the physical metric.
+
+At finite relative velocity the exact dependence remains $\gamma_{AB}-1$ rather than a coordinate-speed difference.  Standard Lorentz velocity addition and ordinary metric proper time are therefore not replaced.  Special relativity supplies the invariant relative kinematics; the interaction sector determines whether those kinematics alter the collective state.
+
+\begin{remark}[Foliation velocity versus environmental velocity]
+The foliation normal $n^\mu$ and material velocity $u_B^\mu$ are distinct.  A rotating environment is not generally a hypersurface-orthogonal clock congruence.  The source uses $-u_A\cdot u_B$, not velocity relative to the ADM shift.
+\end{remark}
+
+\subsection{Probe limit and reciprocal momentum}
+
+Let $A$ be a dilute probe in a background $B$.  To leading order in $q_A$,
+\begin{equation}
+\Lag_{A,\rm int}
+\simeq
+\mathcal C\,
+\frac{q_Aq_B}{\Lambda_I^4}
+\left[\kappa_s+\kappa_r(\gamma_{AB}-1)\right].
+\label{eq:probeL}
+\end{equation}
+Because $B$ is a dynamical current in the full action, variation produces equal and opposite momentum exchange.  Replacing $u_B^\mu$ by a prescribed external velocity field would destroy this guarantee and would require an additional sector carrying the reaction momentum.
+
+\section{Redundancy with stress--energy}
+
+\subsection{The operator-level question}
+
+The source proposal is trivial if $\mathcal I$ can always be removed by field redefinition, reduced to an equation-of-motion operator, or reconstructed from the original total stress tensor without constituent information.  Three levels must be distinguished:
+\begin{enumerate}[label=(\alph*)]
+\item Once the interaction is included in the action, it necessarily contributes to the enlarged stress tensor.
+\item The cross-current scalar $\gamma_{AB}$ is an independent invariant in the multifluid master function before coarse-graining.
+\item Whether it remains independently observable after coarse-graining is a model-dependent closure question.
+\end{enumerate}
+The relevant test is therefore not whether $\mathcal I$ gravitates through $T^{\mu\nu}$ after it is introduced.  It is whether the constituent organization needed to evaluate $\mathcal I$ is fixed by the pre-existing $T^{\mu\nu}$ alone.
+
+\subsection{Same total stress tensor, different current organization}
+
+A simple two-stream example shows that it is not.  Work in $1+1$ dimensional Minkowski space and take two pressureless unit-mass currents.  Their stress tensor is
+\begin{equation}
+T^{\mu\nu}
+=n_Au_A^\mu u_A^\nu+n_Bu_B^\mu u_B^\nu.
+\label{eq:dustT}
+\end{equation}
+Consider the two states in Table~\ref{tab:degenerateStates}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+State & $n_A$ & $v_A$ & $n_B$ & $v_B$ & $\gamma_{AB}$ & $n_An_B(\gamma_{AB}-1)$\\
+\midrule
+I & $1.000000$ & $0.300000$ & $2.000000$ & $-0.200000$ & $1.134095$ & $0.268191$\\
+II & $0.111248$ & $-0.782500$ & $2.888752$ & $0.047505$ & $1.667621$ & $0.214552$\\
+\bottomrule
+\end{tabular}
+\caption{Two distinct constituent states with the same total dust stress tensor but different pairwise relative invariants.}
+\label{tab:degenerateStates}
+\end{table}
+Both give, to the displayed precision,
+\begin{equation}
+T^{00}=3.182234,
+\qquad
+T^{01}=-0.086996,
+\qquad
+T^{11}=0.182234,
+\label{eq:sameT}
+\end{equation}
+with vanishing transverse stresses when embedded in $3+1$ dimensions.  Yet their relative Lorentz factors and $\Delta_{AB}$ differ.
+
+\begin{proposition}[Stress-tensor nonuniqueness]
+The total stress tensor of an unresolved two-stream state does not uniquely determine the constituent relative invariant $\gamma_{AB}$.
+\end{proposition}
+
+\noindent
+The proposition establishes a necessary condition for novelty: pairwise organization can contain information absent from $T^{\mu\nu}$ alone.  It is not sufficient.  A physical theory must specify why the currents are objectively distinguished, how they are coarse-grained, and why $\mathcal I$ remains relevant at the scales of interest.
+
+\subsection{Potential failure of the redundancy test}
+
+The proposal would lose independent content in any regime where the matter state is fully described by one perfect-fluid four-velocity and equation of state.  Then $u_A=u_B$ by closure, the relational term vanishes, and the static term may be absorbed into an ordinary equation of state.  Distinctive behavior therefore requires persistent multi-component structure, nontrivial correlations, or an additional slow variable that is not equilibrated away.
+
+This limitation is a feature of the test program.  It identifies the systems in which interaction complexity could matter and the systems in which it must reduce to conventional fluid physics.
+
+\section{Baseline stability}
+
+\subsection{Homogeneous comoving background}
+
+Take a local Minkowski patch with homogeneous densities, constant $\mathcal C_0$, and
+\begin{equation}
+u_A^\mu=u_B^\mu=(1,\mathbf 0).
+\label{eq:comovingbackground}
+\end{equation}
+Let
+\begin{equation}
+w_A=\rho_A+p_A=n_A\mu_A,
+\qquad
+w_B=\rho_B+p_B=n_B\mu_B
+\label{eq:enthalpies}
+\end{equation}
+be the inertial densities of the two fluids.  For small velocities, the quadratic kinetic Lagrangian is
+\begin{equation}
+\Lag_{\rm kin}^{(2)}
+=\frac12w_A\mathbf v_A^2
++\frac12w_B\mathbf v_B^2
++\frac12\epsilon(\mathbf v_A-\mathbf v_B)^2,
+\label{eq:kineticL}
+\end{equation}
+with $\epsilon$ defined in Eq.~\eqref{eq:Lrel}.  The velocity kinetic matrix is
+\begin{equation}
+K_v=
+\begin{pmatrix}
+w_A+\epsilon & -\epsilon\\
+-\epsilon & w_B+\epsilon
+\end{pmatrix}.
+\label{eq:Kv}
+\end{equation}
+
+\begin{proposition}[Local no-ghost condition]
+The current kinetic sector is positive definite if and only if
+\begin{equation}
+w_A+\epsilon>0,
+\qquad
+w_Aw_B+\epsilon(w_A+w_B)>0.
+\label{eq:kineticConditions}
+\end{equation}
+For $w_A,w_B>0$, every $\epsilon\geq0$ is locally ghost-free.
+\end{proposition}
+
+For a symmetric background $w_A=w_B=w$, the common-flow and relative-flow eigenvalues are
+\begin{equation}
+K_+=w,
+\qquad
+K_-=w+2\epsilon.
+\label{eq:kineticEigenvalues}
+\end{equation}
+The common boost of both components is unchanged.  Only the relative mode acquires additional inertia.  This is precisely the separation intended by the source hypothesis.
+
+The complexity field has a healthy canonical principal part when
+\begin{equation}
+f_{\mathcal C}^2>0,
+\qquad
+m_{\mathcal C}^2>0.
+\label{eq:Cstability}
+\end{equation}
+Its high-frequency propagation speed is unity in the physical metric.
+
+\subsection{Static compressibility after integrating out \texorpdfstring{$\mathcal C$}{C}}
+
+For frequencies and wavenumbers small compared with $m_{\mathcal C}$, the field is approximately auxiliary,
+\begin{equation}
+\mathcal C\simeq\frac{\mathcal I}{f_{\mathcal C}^2m_{\mathcal C}^2}.
+\label{eq:Caux}
+\end{equation}
+Substitution into the homogeneous energy density gives
+\begin{equation}
+\mathcal E_{\rm eff}
+=\rho_A(n_A)+\rho_B(n_B)
+-\frac{\mathcal I^2}{2f_{\mathcal C}^2m_{\mathcal C}^2}.
+\label{eq:EeffGeneral}
+\end{equation}
+The interaction is attractive in the static channel.  Local thermodynamic stability requires the Hessian
+\begin{equation}
+\mathsf H_{XY}
+=\frac{\partial^2\mathcal E_{\rm eff}}
+{\partial n_X\partial n_Y},
+\qquad X,Y\in\{A,B\},
+\label{eq:Hessian}
+\end{equation}
+to be positive definite.
+
+For an explicit symmetric example, take
+\begin{equation}
+q_A=m n_A,
+\qquad
+q_B=m n_B,
+\qquad
+\rho_A=mn_A+\frac{K}{2}n_A^2,
+\qquad
+\rho_B=mn_B+\frac{K}{2}n_B^2,
+\label{eq:symmetricEOS}
+\end{equation}
+with $n_A=n_B=n$.  Define
+\begin{equation}
+G_{\mathcal C}
+\equiv
+\frac{\kappa_s^2m^4}
+{f_{\mathcal C}^2m_{\mathcal C}^2\Lambda_I^8}.
+\label{eq:GCdef}
+\end{equation}
+Then
+\begin{equation}
+\mathcal E_{\rm eff}
+=\rho_A+\rho_B
+-\frac{G_{\mathcal C}}{2}n_A^2n_B^2,
+\label{eq:EeffSym}
+\end{equation}
+and the density Hessian at the symmetric point has eigenvalues
+\begin{equation}
+H_+=K-3G_{\mathcal C}n^2,
+\qquad
+H_-=K+G_{\mathcal C}n^2.
+\label{eq:HessianEigen}
+\end{equation}
+Therefore
+\begin{equation}
+\boxed{K>3G_{\mathcal C}n^2}
+\label{eq:compressibilityBound}
+\end{equation}
+is the low-energy local stability condition.  The in-phase density mode is softened by the attractive complexity response, while the out-of-phase mode is stiffened.
+
+For pressureless matter $K=0$, the homogeneous static system has the expected long-wavelength clustering tendency.  This is not by itself a microscopic ghost, but it means that any application to cold matter must include finite range, gradients, velocity dispersion, background geometry, or nonlinear equilibrium rather than assuming a stable uniform dust medium.
+
+\subsection{Coupled longitudinal modes}
+
+Let $\pi_A$ and $\pi_B$ denote longitudinal fluid displacements, so that
+\begin{equation}
+\delta n_X=-n_X\nabla\cdot\bm\pi_X.
+\label{eq:densityDisplacement}
+\end{equation}
+The quadratic scalar sector has the schematic Fourier-space form
+\begin{align}
+\Lag_{\rm scalar}^{(2)}
+={}&\frac12\dot{\bm\pi}^{\,T}K_v\dot{\bm\pi}
+-\frac12k^2\bm\pi^{T}G_n\bm\pi
++\frac{f_{\mathcal C}^2}{2}
+\left(|\dot{\delta\mathcal C}|^2-(k^2+m_{\mathcal C}^2)|\delta\mathcal C|^2\right)
+\nonumber\\
+&-ik\,\delta\mathcal C\,\mathbf b^T\bm\pi,
+\label{eq:scalarQuadratic}
+\end{align}
+where $\bm\pi=(\pi_A,\pi_B)^T$, $G_n$ is the density-gradient or compressibility matrix, and
+\begin{equation}
+b_X=n_X\left.\frac{\partial\mathcal I}{\partial n_X}\right|_0.
+\label{eq:bvector}
+\end{equation}
+The exact linear dispersion relation is determined by
+\begin{equation}
+\det\left[
+\omega^2K_v-k^2G_n
++\frac{k^2\mathbf b\mathbf b^T}
+{f_{\mathcal C}^2(k^2+m_{\mathcal C}^2-\omega^2)}
+\right]=0.
+\label{eq:dispersiondet}
+\end{equation}
+Equation~\eqref{eq:dispersiondet} makes clear that the static Hessian test is only the low-frequency limit of a coupled three-mode problem.  A complete model must verify that every root has positive residue, real frequency, and subluminal or otherwise causally acceptable group velocity throughout its domain of validity.
+
+\subsection{Relative-flow backgrounds and two-stream instability}
+
+The conditions above apply only to a comoving background.  Relativistic multifluids can develop a two-stream instability when the background currents have nonzero relative velocity~\cite{Samuelsson2009,Hawke2013}.  The interaction-order term is specifically designed to respond to such relative flow, so this is not a secondary issue.  The full test requires linearization about $\gamma_{AB}>1$ and evaluation of the frame-independent characteristic polynomial.
+
+We therefore impose the following decision rule:
+\begin{equation}
+\text{no galaxy or cosmological application before the full two-stream stability map is known.}
+\label{eq:twostreamrule}
+\end{equation}
+A positive comoving kinetic matrix is necessary but not sufficient.
+
+\section{Universal loading and equivalence-principle target}
+
+\subsection{Why covariance is not enough}
+
+The action is covariant and conserves total stress-energy, but neither property guarantees universal free fall.  In the dilute-probe limit, the static interaction energy per unit probe energy depends on
+\begin{equation}
+\frac{q_A}{\rho_A}.
+\label{eq:qOverRho}
+\end{equation}
+Different values for different compositions would produce a composition-dependent environmental force.  The required low-energy matching condition is therefore
+\begin{equation}
+\boxed{
+\frac{q_A}{\rho_A}
+=\frac{q_B}{\rho_B}
+=1
+}
+\label{eq:universalq}
+\end{equation}
+for complete relaxed ordinary matter systems in the chosen normalization, up to controlled finite-size and high-energy corrections.
+
+Equation~\eqref{eq:universalq} is the source-sector analogue of collective progression loading in the companion matter analysis.  It must be evaluated on shell, including matter, binding fields, pressure, internal kinetic energy, and boundaries.  Assigning $q_X=\rho_X$ by definition at the fluid level does not prove that a microscopic composite satisfies the condition.
+
+\subsection{Motion-induced universality}
+
+The relational contribution produces an additional requirement.  For two probe species with the same four-velocity in the same environment, the acceleration induced by gradients of $\mathcal C$ and $q_B$ must be independent of composition.  In the cold dilute limit this again requires a universal $q_A/\rho_A$ and a universal $\kappa_r$ after the internal degrees of freedom have been integrated out.
+
+A failure of this matching would generate preferred-environment or equivalence-principle violations even though the gravitational metric itself remains Einsteinian.  These effects must be bounded before the coupling can be large enough to influence galaxies.
+
+\section{Microscopic interpretation and limitations}
+
+\subsection{A field-theory prototype for static complexity}
+
+The static term in Eq.~\eqref{eq:Isource} is an effective overlap operator.  A microscopic prototype is supplied by two complex fields, in the spirit of field-theoretic derivations of relativistic two-fluid models~\cite{Alford2013},
+\begin{align}
+\Lag_{\phi\chi}
+={}&-|\nabla\phi|^2-m_\phi^2|\phi|^2
+-|\nabla\chi|^2-m_\chi^2|\chi|^2
+-g|\phi|^2|\chi|^2,
+\label{eq:complexScalarModel}
+\end{align}
+with conserved $U(1)$ currents in the absence of reactions.  The local operator
+\begin{equation}
+\mathcal O_{\rm stat}=g|\phi|^2|\chi|^2
+\label{eq:Ostat}
+\end{equation}
+remains nonzero for stationary overlapping condensates and may contribute to $\mathcal I$.  The current invariant $\gamma_{AB}-1$ can be used only where both currents are timelike and nonzero.  Near nodes or in relativistic quantum states without a fluid limit, the microscopic effective action rather than Eq.~\eqref{eq:Isource} must define the source.
+
+\subsection{Interaction complexity is a susceptibility}
+
+A more fundamental definition would use the renormalized effective action of the interacting state,
+\begin{equation}
+\mathcal C_\Pi(x)
+\equiv
+-\frac{1}{\sqrt{-g}}
+\frac{\delta\Gamma_{\rm int}}
+{\delta\theta(x)},
+\label{eq:susceptibilityDefinition}
+\end{equation}
+where $\theta$ is the local temporal progression variable.  The second variation,
+\begin{equation}
+\chi_\Pi(x,y)
+=\frac{\delta^2\Gamma_{\rm int}}
+{\delta\theta(x)\delta\theta(y)},
+\label{eq:responseKernel}
+\end{equation}
+would encode response, nonlocality, relaxation, and memory.  Equations~\eqref{eq:Isource}--\eqref{eq:SABC} should be viewed as a local truncation of such a susceptibility theory, not as its microscopic derivation.
+
+If Eq.~\eqref{eq:susceptibilityDefinition} reduces identically to a conventional stress contraction under universal metric coupling, then no independent source remains.  Genuine novelty requires an additional collective state variable, a nonlocal response kernel, or correlation data not captured by the original one-fluid stress tensor.
+
+\subsection{Relation to standard multifluid entrainment}
+
+Dependence of a master function on $x_{AB}=-J_A\cdot J_B$ is standard relativistic entrainment~\cite{AnderssonComer2021,Gavassino2019}.  The new claim is not that cross-current invariants have never been used.  It is that a separate slow field $\mathcal C$ may encode how persistent interaction organization and relative flow load progression geometry.  The theory will be non-novel if integrating out $\mathcal C$ merely reproduces an ordinary multifluid equation of state with no independently measurable state dependence.
+
+This is why the redundancy and timescale tests are central.  For $\mathcal C$ to be a meaningful additional variable, its relaxation time or range must prevent it from being algebraically eliminated in every relevant regime.
+
+\section{Connection to observable gravity}
+
+\subsection{How the source enters progression geometry}
+
+Project the total stress tensor with respect to the progression foliation normal $n^\mu$,
+\begin{equation}
+E=T_{\mu\nu}n^\mu n^\nu,
+\qquad
+J_i=-h_i{}^\mu T_{\mu\nu}n^\nu,
+\qquad
+S_{ij}=h_i{}^\mu h_j{}^\nu T_{\mu\nu}.
+\label{eq:ADMprojections}
+\end{equation}
+The interaction-order sector contributes to all four parts of the progression response hierarchy:
+\begin{equation}
+E\rightarrow\theta,
+\qquad
+J_i\rightarrow\beta^i,
+\qquad
+S\rightarrow\sigma,
+\qquad
+S_{ij}^{\rm TF}\rightarrow\gamma_{ij}.
+\label{eq:responseHierarchy}
+\end{equation}
+It is therefore not a return to scalar-only gravity.  The new field changes the source while the complete geometry carries the response.
+
+\subsection{What is and is not predicted}
+
+At the stage of this paper:
+\begin{itemize}
+\item the gravitational kinetic equations remain those of GR;
+\item isolated matter follows the physical metric and retains ordinary local special relativity;
+\item the complexity sector can add energy, stress, and environment-dependent exchange;
+\item no dark-matter-like galaxy profile has been derived;
+\item no self-accelerating cosmology has been derived;
+\item no equivalence-principle-safe microscopic matching has been proved.
+\end{itemize}
+The model is therefore a source-sector prototype, not yet a completed modified-gravity or dark-sector theory.
+
+\subsection{Potential discriminants}
+
+If the source survives the consistency tests, it should be tested first where interaction organization changes while conventional baryonic mass changes little.  Candidate comparisons include
+\begin{enumerate}[label=(\roman*)]
+\item co-rotating versus counter-rotating stellar or gas components;
+\item gas--star velocity offsets within the same gravitational potential;
+\item merging systems with large inter-component relative velocities;
+\item ordered rotational support versus pressure-supported systems at comparable baryonic density;
+\item transient relaxation following a change in the overlap or flow state.
+\end{enumerate}
+A credible theory must predict these differences from one covariant source and one parameter set.  They should not be fitted by separate environment-dependent functions.
+
+\section{Failure criteria and research program}
+
+The proof-of-principle model should be rejected or substantially revised if any of the following occurs:
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{Operator redundancy:} the proposed source is removable or always reducible to the original one-fluid stress tensor and equations of motion.
+\item \textbf{No persistent state variable:} $\mathcal C$ relaxes algebraically in every regime, leaving only an ordinary multifluid equation of state.
+\item \textbf{Nonuniversal loading:} $q_X/\rho_X$ differs among ordinary composites at an observable level.
+\item \textbf{Kinetic or compressibility instability:} Eqs.~\eqref{eq:kineticConditions} or the positive-Hessian condition fail in the required parameter region.
+\item \textbf{Two-stream instability:} the relative-flow backgrounds needed for phenomenology are unstable on timescales shorter than the system age.
+\item \textbf{Causality failure:} the coupled characteristic cones become pathological or incompatible with the physical metric.
+\item \textbf{Local-test conflict:} coefficients large enough to affect galaxies modify laboratory inertia, clocks, binary motion, or equivalence-principle observables beyond bounds.
+\item \textbf{No predictive closure:} galaxy-scale results require system-by-system redefinition of the loading densities or couplings.
+\end{enumerate}
+
+The recommended calculation sequence is
+\begin{equation}
+\begin{aligned}
+\text{microscopic matching}
+&\longrightarrow \text{full two-stream dispersion}\\
+&\longrightarrow \text{composite loading}\\
+&\longrightarrow \text{weak-field and binary constraints}\\
+&\longrightarrow \text{resolved galaxy calculation}.
+\end{aligned}
+\label{eq:program}
+\end{equation}
+The first two steps should precede any return to population-level galaxy fitting.
+
+\section{Discussion}
+
+The current progression-geometry theory solved a response problem but left the source principle conservative: ordinary stress-energy curves the physical metric.  The original interaction-density intuition can be recovered only by formulating an additional state variable without undoing the consistency gains of complete geometry, universal metric propagation, and one total Noether identity.
+
+The two-current construction provides a disciplined starting point.  Static complexity is represented by an overlap term that survives at comotion.  Motion-induced complexity is represented by the exact scalar $\gamma_{AB}-1$, not by coordinate speed.  The relative term vanishes in vacuum and changes only the relative-flow kinetic mode on a comoving background.  Equal and opposite momentum exchange follows from the shared action.  These properties capture the intended integration of static interaction structure with special-relativistic relational motion.
+
+The construction also exposes the main difficulties.  Cross-current dependence is already familiar in relativistic multifluid theory.  Novelty requires the $\mathcal C$ field to be an independently relevant slow variable rather than an elaborate rewriting of entrainment.  Static attraction can destabilize homogeneous matter.  Relative-flow backgrounds can develop two-stream instabilities.  Universal loading is not automatic.  Most importantly, the existence of current information beyond $T^{\mu\nu}$ does not guarantee that the information survives physical coarse-graining or produces a useful gravitational signal.
+
+These are productive failure modes.  They make the original hypothesis calculable.  The next paper should derive $q_X$ and the effective source from a concrete microscopic interacting model, then compute the complete characteristic polynomial on non-comoving backgrounds.  A positive result would identify a genuinely new source sector for progression geometry.  A negative result would show that interaction complexity reduces to ordinary multifluid stress and that progression remains primarily an interpretation of complete gravitational geometry.
+
+\section{Conclusion}
+
+We have formulated a covariant proof-of-principle model in which interaction organization sources a dimensionless field $\mathcal C$ while the gravitational response remains the complete benchmark progression geometry.  Two conserved currents supply a static overlap source and a comotion-subtracted relative-motion source.  The action preserves standard local special relativity for isolated matter, generates relativistic entrainment in an environment, and enforces reciprocal four-momentum exchange.
+
+The model passes a first structural test: pairwise current organization is not uniquely reconstructible from the unresolved total stress tensor.  It also yields explicit baseline stability conditions.  Positive enthalpies and nonnegative relative coupling give a healthy comoving kinetic matrix, while the static coupling is bounded by the compressibility matrix.  These results are necessary but not sufficient.  Universal composite loading, full two-stream stability, causal propagation, and a microscopic nonredundancy proof remain open.
+
+The central claim is therefore limited but concrete.  Interaction complexity can be represented as a covariant source-sector hypothesis without returning to scalar-only gravity or modifying free-particle special relativity.  Whether that source is physically independent and phenomenologically useful is now a sequence of calculations rather than a verbal assumption.
+
+\appendix
+
+\section{Variations of the current invariants}
+
+For
+\begin{equation}
+n_A=(-J_A^\mu J^A_\mu)^{1/2},
+\end{equation}
+one finds
+\begin{equation}
+\delta n_A=-u^A_\mu\delta J_A^\mu.
+\end{equation}
+With
+\begin{equation}
+\gamma_{AB}=\frac{-J_A\cdot J_B}{n_An_B},
+\end{equation}
+variation at fixed $J_B^\mu$ gives
+\begin{align}
+\delta\gamma_{AB}
+&=-\frac{J^B_\mu}{n_An_B}\delta J_A^\mu
++\frac{-J_A\cdot J_B}{n_A^2n_B}u^A_\mu\delta J_A^\mu\nonumber\\
+&=\frac{-u^B_\mu+\gamma_{AB}u^A_\mu}{n_A}\delta J_A^\mu.
+\end{align}
+This proves Eq.~\eqref{eq:dgDeriv}.  The derivative vanishes at exact comotion because $u_A^\mu=u_B^\mu$ and $\gamma_{AB}=1$.
+
+\section{Construction of the stress-degenerate example}
+
+For two dust currents moving along one spatial axis, define
+\begin{equation}
+E=T^{00},
+\qquad
+P=T^{01},
+\qquad
+S=T^{11}.
+\end{equation}
+Let
+\begin{equation}
+A=n_A\gamma_A^2,
+\qquad
+B=n_B\gamma_B^2.
+\end{equation}
+Then
+\begin{equation}
+A+B=E,
+\qquad
+Av_A+Bv_B=P,
+\qquad
+Av_A^2+Bv_B^2=S.
+\end{equation}
+For any admissible choice of $v_A$, a second velocity with the same total stress tensor is
+\begin{equation}
+v_B=\frac{S-Pv_A}{P-Ev_A}.
+\label{eq:vBfamily}
+\end{equation}
+The corresponding coefficients are
+\begin{equation}
+A=\frac{P-Ev_B}{v_A-v_B},
+\qquad
+B=E-A,
+\end{equation}
+and the proper densities are
+\begin{equation}
+n_A=\frac{A}{\gamma_A^2},
+\qquad
+n_B=\frac{B}{\gamma_B^2}.
+\end{equation}
+Positivity of $A$ and $B$ selects the allowed interval of $v_A$.  Equation~\eqref{eq:vBfamily} generates the continuous degeneracy used in Table~\ref{tab:degenerateStates}.
+
+\section{Reference formulas for a barotropic current}
+
+For a barotropic component with master function $-\rho(n)$,
+\begin{equation}
+\mu=\frac{\dd\rho}{\dd n},
+\qquad
+p=n\mu-\rho,
+\qquad
+w=\rho+p=n\mu.
+\end{equation}
+The adiabatic sound speed is
+\begin{equation}
+c_s^2=\frac{\dd p}{\dd\rho}
+=\frac{n\rho''(n)}{\rho'(n)}.
+\end{equation}
+A complete causal model requires $0\leq c_s^2\leq1$ for the uncoupled components and the corresponding eigenvalue condition for the coupled modes.
+
+\begin{thebibliography}{99}
+
+\bibitem{JordanGeometry2026}
+S.~A.~Jordan,
+``Progression Geometry as a Complete Gravitational Field: Benchmark Structure, Stability, Strong Coupling, Post-Newtonian Limit, and FLRW Cosmology,''
+unpublished manuscript (2026).
+
+\bibitem{JordanMatter2026}
+S.~A.~Jordan,
+``Collective Phase Loading and Progression Exchange in Progression-Weighted Matter Dynamics,''
+unpublished manuscript (2026).
+
+\bibitem{Brown1993}
+J.~D.~Brown,
+``Action functionals for relativistic perfect fluids,''
+Class. Quantum Grav. \textbf{10}, 1579 (1993),
+\href{https://arxiv.org/abs/gr-qc/9304026}{arXiv:gr-qc/9304026}.
+
+\bibitem{AnderssonComer2021}
+N.~Andersson and G.~L.~Comer,
+``Relativistic fluid dynamics: physics for many different scales,''
+Living Rev. Relativ. \textbf{24}, 3 (2021),
+\href{https://arxiv.org/abs/2008.12069}{arXiv:2008.12069}.
+
+\bibitem{Gavassino2019}
+L.~Gavassino and M.~Antonelli,
+``Thermodynamics of uncharged relativistic multifluids,''
+Class. Quantum Grav. \textbf{37}, 025014 (2020),
+\href{https://arxiv.org/abs/1906.03140}{arXiv:1906.03140}.
+
+\bibitem{Samuelsson2009}
+L.~Samuelsson, C.~S.~Lopez-Monsalvo, N.~Andersson, and G.~L.~Comer,
+``Relativistic two-stream instability,''
+Gen. Relativ. Gravit. \textbf{42}, 413 (2010),
+\href{https://arxiv.org/abs/0906.4002}{arXiv:0906.4002}.
+
+\bibitem{Hawke2013}
+I.~Hawke, G.~L.~Comer, and N.~Andersson,
+``The nonlinear development of the relativistic two-stream instability,''
+Class. Quantum Grav. \textbf{30}, 145007 (2013),
+\href{https://arxiv.org/abs/1303.4070}{arXiv:1303.4070}.
+
+\bibitem{Ballesteros2014}
+G.~Ballesteros, B.~Bellazzini, and L.~Mercolli,
+``The effective field theory of multi-component fluids,''
+JCAP \textbf{05}, 007 (2014),
+\href{https://arxiv.org/abs/1312.2957}{arXiv:1312.2957}.
+
+\bibitem{Alford2013}
+M.~G.~Alford, S.~Kumar Mallavarapu, A.~Schmitt, and S.~Stetina,
+``From a complex scalar field to the two-fluid picture of superfluidity,''
+Phys. Rev. D \textbf{87}, 065001 (2013),
+\href{https://arxiv.org/abs/1212.0670}{arXiv:1212.0670}.
+
+\end{thebibliography}
+
+\end{document}
