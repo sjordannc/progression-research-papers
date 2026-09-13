@@ -1,0 +1,1106 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\title{Progression Geometry as a Complete Gravitational Field:\\
+Benchmark Structure, Stability, Strong Coupling, Post-Newtonian Limit, and FLRW Cosmology}
+\author{Scott A. Jordan\\
+Independent researcher, Fayetteville, NC, USA\\
+\texttt{scott@simplelogicsolutions.com}}
+\date{July 2026}
+
+\newcommand{\Mpl}{M_{\rm Pl}}
+\newcommand{\Ms}{M_*}
+\newcommand{\GN}{G_{\rm N}}
+\newcommand{\Gc}{G_{\rm cos}}
+\newcommand{\Gb}{G_{\rm bare}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Del}{\Delta}
+\newcommand{\cs}{c_s}
+\newcommand{\Pc}{\mathcal P}
+\newcommand{\Lie}{\mathcal L}
+\newcommand{\Rthree}{{}^{(3)}R}
+\newcommand{\Rthreeij}{{}^{(3)}R_{ij}}
+\newcommand{\aone}{\alpha_1^{\rm PPN}}
+\newcommand{\atwo}{\alpha_2^{\rm PPN}}
+\newcommand{\bppn}{\beta_{\rm PPN}}
+\newcommand{\gppn}{\gamma_{\rm PPN}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The progression program begins from the operational idea that clocks, matter, and radiation should be compared through one local progression structure rather than through independently normalized sectors.  A scalar progression field can encode a static clock-rate potential, but it cannot by itself supply the mass-current and transverse-traceless responses required by preferred-frame tests and gravitational radiation.  We therefore formulate progression as a complete foliation-adapted geometry with temporal progression $\theta$, isotropic spatial dilation $\sigma$, progression flow $\beta^i$, and unimodular spatial strain $\gamma_{ij}$.  The Einstein--Hilbert action written in these variables is the benchmark theory: it gives the reciprocal weak-field branch $\sigma=-\theta$, the optical relation $n_{\rm eff}=e^{-2\theta}$, universal composite loading, gravitomagnetism, and tensor waves, but is dynamically general relativity.
+
+We then study one definite non-Einstein infrared deformation,
+\[
+S=\frac{\Mpl^2}{2}\int \dd t\,\dd^3x\,N\sqrt h
+\left(K_{ij}K^{ij}-\lambda_P K^2+\Rthree+\eta a_i a^i\right)+S_m[g_{\mu\nu},\Psi],
+\qquad a_i=D_i\ln N,
+\]
+which is exactly the $\beta_K=0$ slice of infrared khronometric gravity.  About Minkowski space it propagates two luminal tensor modes and one scalar.  The near-GR scalar is ghost-free and gradient-stable for $\lambda_P>1$ and $0<\eta<2$, with
+\[
+\cs^2=\frac{\lambda_P-1}{3\lambda_P-1}\frac{2-\eta}{\eta}.
+\]
+The lapse and shift constraints are eliminated through second perturbative order, the cubic scalar action is canonically normalized, and distinct momentum and frequency strong-coupling scales are obtained.  The post-Newtonian solution through $O(v^4)$ gives
+\[
+\begin{aligned}
+\GN&=\frac{\Gb}{1-\eta/2}, &
+\gppn&=\bppn=1, &
+\aone&=-4\eta,\\
+\atwo&=\frac{\eta[\eta(1+2d)-d]}{(2-\eta)d}, &
+d&\equiv\lambda_P-1.
+\end{aligned}
+\]
+The line $d=\eta/(1-2\eta)$ simultaneously sets $\atwo=0$ and $\cs=1$, while $\aone$ remains nonzero.  On FLRW backgrounds the deformation only rescales the Friedmann coupling, $\Gc=2\Gb/(3\lambda_P-1)$, and does not self-accelerate.  The tensor sector remains luminal, the scalar principal stability conditions coincide with the Minkowski wedge, and an exact de Sitter reduction is stable at every nonzero wavenumber in that region.  The resulting theory is therefore a calculable infrared effective field theory with a nonempty perturbative region, but it is forced close to the GR benchmark and still requires a jointly healthy higher-spatial-derivative completion, specified matter perturbations, and strong-field solutions.  This manuscript consolidates the current progression-geometry theory and sharply separates established results from open claims about dark-sector phenomenology.
+\end{abstract}
+
+\section{Introduction}
+
+The original progression framework asked whether gravity could be understood primarily as variation in a local temporal rate standard.  That question led first to a scalar progression variable, weighted transport laws, and direct weak-field comparisons among clocks, matter motion, delay, and light deflection.  The scalar formulation produced useful consistency conditions, especially the requirement that one weak-field profile reproduce all sectors with no independent optical normalization.  It also exposed several structural failures.
+
+A static source must be obtained by varying a common action rather than by identifying a current divergence with the entire gravitational source.  A composite body must respond through the total on-shell energy of matter, binding fields, kinetic energy, and stresses.  A scalar clock-rate field cannot generate the complete $O(v^3)$ mass-current response.  Nor can it provide independent transverse-traceless degrees of freedom.  These facts change the gravitational variable needed to represent progression.
+
+The present framework therefore uses a complete lapse--flow--dilation--strain geometry.  The benchmark is deliberately conservative: it is the Einstein--Hilbert action expressed in progression-adapted variables.  This establishes that the progression interpretation can coexist with the constraint structure, equivalence principle, optical propagation, gravitomagnetism, and tensor waves required by observation.  Distinctive dynamics must then be introduced by controlled foliation operators and tested in a fixed order: quadratic stability, cubic power counting, post-Newtonian behavior, radiation, cosmology, and strong fields.
+
+This paper consolidates the benchmark geometry and the completed quadratic, cubic, and first-post-Newtonian analyses of a specific two-derivative deformation.  Its principal conclusions are:
+\begin{enumerate}[label=(\roman*)]
+\item progression can be a complete gravitational variable system, but the benchmark dynamics are exactly GR;
+\item the minimal deformation has a nonempty Minkowski stability wedge and one extra scalar mode;
+\item the two-derivative theory has finite momentum and frequency cutoffs and is only an infrared EFT;
+\item the deformation preserves $\gppn=\bppn=1$ but generically produces preferred-frame parameters $\aone$ and $\atwo$;
+\item the most favorable line $\atwo=0$ is also the luminal-scalar line, yet $\aone=-4\eta$ remains;
+\item on FLRW the action only rescales the cosmological gravitational coupling, does not self-accelerate, and retains the same scalar stability wedge;
+\item the earlier galaxy and phenomenological dark-energy closures have not yet been derived from the present action and are not predictions of the current theory.
+\end{enumerate}
+
+\section{Complete progression geometry}
+
+\subsection{Metric variables}
+
+A general ADM metric has one lapse, three shift components, and six spatial-metric components.  A complete progression description therefore requires more than one scalar.  We define
+\begin{equation}
+N=e^{\theta},\qquad h_{ij}=e^{2\sigma}\gamma_{ij},\qquad \det\gamma_{ij}=1,
+\label{eq:progvars}
+\end{equation}
+and the physical metric universally seen by nongravitational matter as
+\begin{equation}
+\dd s^2=-e^{2\theta}\dd t^2+e^{2\sigma}\gamma_{ij}
+(\dd x^i+\beta^i\dd t)(\dd x^j+\beta^j\dd t).
+\label{eq:metric}
+\end{equation}
+The determinant is
+\begin{equation}
+\sqrt{-g}=N\sqrt h=e^{\theta+3\sigma}
+\label{eq:det}
+\end{equation}
+when $\det\gamma=1$ in the chosen coordinates.
+
+The operational interpretation is
+\begin{align}
+\theta &: \text{temporal progression or lapse},\nonumber\\
+\sigma &: \text{isotropic spatial progression standard},\nonumber\\
+\beta^i &: \text{progression flow, frame dragging, and mass-current response},\nonumber\\
+\gamma_{ij} &: \text{spatial shear, tidal strain, and tensor radiation}.
+\end{align}
+The earlier scalar truncation freezes $\beta^i$ and $\gamma_{ij}$ and imposes $\sigma=-\theta$ kinematically.  In the complete theory that reciprocal relation is instead a solution branch.
+
+\subsection{Extrinsic-curvature convention and corrected trace}
+
+We use
+\begin{equation}
+K_{ij}=\frac{1}{2N}\left(\dot h_{ij}-\Lie_{\beta}h_{ij}\right),
+\qquad a_i=D_i\ln N.
+\label{eq:Kdef}
+\end{equation}
+For Eq.~\eqref{eq:progvars},
+\begin{equation}
+K=\frac{1}{N}\left[3(\partial_t-\beta^k\partial_k)\sigma-\mathcal D_i\beta^i\right],
+\label{eq:Ktrace}
+\end{equation}
+where $\mathcal D_i$ is compatible with $\gamma_{ij}$.  This sign is fixed by Eq.~\eqref{eq:Kdef}: for vanishing shift $K=3\dot\sigma/N$, while for a stationary weak vector perturbation $K=-\partial_i\beta^i$.  Equation~\eqref{eq:Ktrace} supersedes the opposite sign that appeared in the earlier geometry draft.
+
+\subsection{Ontology and dynamics}
+
+There are two distinct claims.  In the first, Eq.~\eqref{eq:metric} is a progression-based interpretation of an ordinary physical metric and the dynamics may be Einsteinian.  In the second, the foliation is physical and the variables obey non-Einstein equations.  We keep them separate:
+\begin{equation}
+S=S_{\rm benchmark}+S_{\rm def}.
+\label{eq:split}
+\end{equation}
+The benchmark establishes the complete constraint and wave structure.  The deformation sector is the only source of new predictions.
+
+\section{Einstein benchmark in progression variables}
+
+\subsection{Action and field equations}
+
+The benchmark action is
+\begin{equation}
+S_{\rm benchmark}=\frac{\Mpl^2}{2}\int \dd t\,\dd^3x\,N\sqrt h
+\left(\Rthree+K_{ij}K^{ij}-K^2-2\Lambda\right)
++S_m[\Psi,g_{\mu\nu}],
+\label{eq:EHADM}
+\end{equation}
+with $\Mpl^{-2}=8\pi\Gb$.  It is the Einstein--Hilbert action in ADM form and is not a new dynamical theory.
+
+Let
+\begin{equation}
+E=T_{\mu\nu}n^\mu n^\nu,\qquad
+J_i=-h_i{}^\mu T_{\mu\nu}n^\nu,\qquad
+S_{ij}=h_i{}^\mu h_j{}^\nu T_{\mu\nu}.
+\end{equation}
+Variation with respect to $N$, $\beta^i$, and $h_{ij}$ gives
+\begin{align}
+\Rthree+K^2-K_{ij}K^{ij}&=\frac{2}{\Mpl^2}E,
+\label{eq:Hconstraint}\\
+D_j(K^{ij}-h^{ij}K)&=\frac{1}{\Mpl^2}J^i,
+\label{eq:Mconstraint}\\
+(\partial_t-\Lie_\beta)K_{ij}&=-D_iD_jN+N\left(\Rthreeij+KK_{ij}-2K_{ik}K^k{}_j\right)
+\nonumber\\
+&\quad-\frac{N}{\Mpl^2}\left[S_{ij}-\frac12h_{ij}(S-E)\right]-N\Lambda h_{ij}.
+\label{eq:evolution}
+\end{align}
+The scalar-only model retained an analogue of Eq.~\eqref{eq:Hconstraint} but lacked the independent shift equation~\eqref{eq:Mconstraint} and the tensor part of Eq.~\eqref{eq:evolution}.
+
+\subsection{One conservation hierarchy}
+
+Universal matter coupling and diffeomorphism invariance give
+\begin{equation}
+\nabla_\mu T^{\mu\nu}=0
+\label{eq:conservation}
+\end{equation}
+for matter on a gravitational solution, together with the gravitational constraints and boundary charges.  A progression-weighted current is not an independent conservation of total energy.  If a number or phase current satisfies $\nabla_\mu j^\mu=0$, then
+\begin{equation}
+\partial_\mu\left(e^{\theta+3\sigma}j^\mu\right)=0.
+\label{eq:weightedgeneral}
+\end{equation}
+On the reciprocal branch $\sigma=-\theta$,
+\begin{equation}
+\partial_\mu\left(e^{-2\theta}j^\mu\right)=0.
+\label{eq:weightedrecip}
+\end{equation}
+Thus the familiar weight is the coordinate representation of conventional conservation in the physical metric.
+
+\subsection{Universal composite loading}
+
+At a static reference background,
+\begin{equation}
+\delta g_{00}=-2\delta\theta,\qquad \delta g_{ij}=2\delta\sigma\,\delta_{ij}.
+\end{equation}
+For a stationary on-shell system, variation along $\delta\sigma=-\delta\theta$ gives
+\begin{equation}
+\frac{\dd E}{\dd\theta}=\int \dd^3x\left(T^{00}+\sum_iT^{ii}\right).
+\label{eq:loading}
+\end{equation}
+A localized mechanically closed system satisfies the integrated Laue condition
+\begin{equation}
+\int \dd^3x\,T^{ij}=0,
+\label{eq:Laue}
+\end{equation}
+so
+\begin{equation}
+\frac{\dd E}{\dd\theta}=E.
+\label{eq:unitloading}
+\end{equation}
+This includes electromagnetic fields, wall stresses, QCD binding, internal kinetic energy, and other components, provided every sector couples to the same physical metric.  The result replaces the earlier need to assign separate progression charges to each internal contribution.
+
+\subsection{Weak field, gravitomagnetism, and tensor waves}
+
+Expand
+\begin{equation}
+\theta,\sigma=O(v^2),\qquad \beta^i=O(v^3),\qquad
+\gamma_{ij}=\delta_{ij}+\chi_{ij},\qquad \chi^i{}_i=0.
+\end{equation}
+For a quasi-static nonrelativistic source, the benchmark equations give
+\begin{equation}
+\theta=\Phi,\qquad \sigma=-\Phi=-\theta,
+\qquad \nabla^2\Phi=4\pi\Gb\rho.
+\label{eq:benchmarkrecip}
+\end{equation}
+The metric is
+\begin{equation}
+\dd s^2=-(1+2\Phi)\dd t^2+(1-2\Phi)\delta_{ij}\dd x^i\dd x^j+O(v^3),
+\end{equation}
+so $\gppn=1$.  At $O(v^3)$ the momentum constraint supplies the mass-current response.  In transverse gauge,
+\begin{equation}
+\nabla^2\beta_i^T=-16\pi\Gb J_i^T.
+\end{equation}
+In standard PPN gauge the GR benchmark has
+\begin{equation}
+g_{0i}=-\frac72V_i-\frac12W_i+O(v^5).
+\end{equation}
+The transverse-traceless strain obeys
+\begin{equation}
+(\partial_t^2-\nabla^2)\chi_{ij}^{TT}=\frac{2}{\Mpl^2}S_{ij}^{TT},
+\end{equation}
+with two luminal tensor polarizations.
+
+\subsection{Optical meaning of the reciprocal branch}
+
+For a static isotropic metric, radial null propagation gives
+\begin{equation}
+n_{\rm eff}=e^{\sigma-\theta}.
+\label{eq:neff}
+\end{equation}
+If $\sigma=-\gppn\theta$ at weak field, then
+\begin{equation}
+n_{\rm eff}=e^{-(1+\gppn)\theta}+\cdots.
+\end{equation}
+Hence the previously selected optical exponent $p=2$ is equivalent to $\gppn=1$ on the reciprocal branch.  Standard Maxwell theory on the same physical metric gives
+\begin{equation}
+\epsilon_r=e^{\sigma-\theta},\qquad \mu_r^{-1}=e^{\theta-\sigma},\qquad n_{\rm eff}=e^{\sigma-\theta},
+\end{equation}
+and therefore
+\begin{equation}
+\epsilon_r=e^{-2\theta},\qquad \mu_r^{-1}=e^{2\theta},\qquad n_{\rm eff}=e^{-2\theta}
+\end{equation}
+when $\sigma=-\theta$.  The constitutive closure is geometric rather than an independent optical postulate.
+
+\section{Minimal non-Einstein current theory}
+
+\subsection{Infrared action}
+
+The current calculational model fixes the spatial-curvature and tensor-kinetic coefficients to their Einstein values and deforms only the trace kinetic term and the lapse-gradient term:
+\begin{equation}
+S_{\rm IR}=\frac{\Mpl^2}{2}\int \dd t\,\dd^3x\,N\sqrt h
+\left(K_{ij}K^{ij}-\lambda_P K^2+\Rthree+\eta a_i a^i\right)
++S_m[g_{\mu\nu},\Psi].
+\label{eq:IRaction}
+\end{equation}
+Define
+\begin{equation}
+d\equiv\lambda_P-1.
+\label{eq:ddef}
+\end{equation}
+The GR point is $d=\eta=0$.
+
+A more general infrared foliation action would contain a coefficient $\xi_R$ multiplying $\Rthree$.  We reserve $\xi_R$ for that action coefficient so it cannot be confused with the PPN parameter $\xi_{\rm PPN}$.  In Eq.~\eqref{eq:IRaction}, $\xi_R=1$.
+
+\subsection{Relation to khronometric gravity}
+
+The conventional infrared khronometric action may be written
+\begin{equation}
+S_K=\frac{1}{16\pi G_K}\int \dd t\,\dd^3x\,N\sqrt h
+\left[(1-\beta_K)K_{ij}K^{ij}-(1+\lambda_K)K^2+\Rthree+\alpha_Ka_i a^i\right]+S_m.
+\end{equation}
+Equation~\eqref{eq:IRaction} is exactly the slice
+\begin{equation}
+\boxed{\alpha_K=\eta,\qquad \beta_K=0,\qquad \lambda_K=d,
+\qquad G_K=\Gb.}
+\label{eq:map}
+\end{equation}
+This identification is central to the status of the theory.  The progression variables and their operational interpretation are specific to this framework, but the minimal two-derivative dynamics belong to a known Lorentz-violating gravitational EFT.  Any novelty beyond this slice must enter through a progression-motivated higher-gradient sector or through a distinct ultraviolet completion.
+
+\subsection{Candidate higher-gradient operators}
+
+A general progression-compatible spatial derivative expansion includes
+\begin{align}
+S_{\rm high}=\frac{\Mpl^2}{2}\int \dd t\,\dd^3x\,N\sqrt h\Bigg[&
+\frac{d_1}{\Ms^2}(\Rthree)^2+
+\frac{d_2}{\Ms^2}\Rthreeij\Rthree^{ij}+
+\frac{d_3}{\Ms^2}(D_i a^i)^2
+\nonumber\\
+&+\frac{d_4}{\Ms^2}a_i a^i\Rthree+
+\frac{d_5}{\Ms}K^3+
+\frac{d_6}{\Ms}KK_{ij}K^{ij}+
+\frac{d_7}{\Ms}K_i{}^jK_j{}^kK_k{}^i+\cdots\Bigg].
+\label{eq:high}
+\end{align}
+The isolated $d_3$ operator is assessed below.  It is not included in the minimal PPN and cubic calculations.
+
+\section{Quadratic perturbations and Minkowski stability}
+
+\subsection{Perturbation decomposition}
+
+Around Minkowski space, take
+\begin{align}
+N&=1+n,\nonumber\\
+\beta_i&=\partial_iB+B_i^T,\qquad \partial_iB_i^T=0,\nonumber\\
+h_{ij}&=e^{2\zeta}(e^{\chi^{TT}})_{ij},\qquad
+\partial_i\chi_{ij}^{TT}=0,\qquad \chi_{ii}^{TT}=0.
+\label{eq:decomp}
+\end{align}
+Spatial gauge freedom removes the scalar shear and the transverse vector perturbation of $h_{ij}$.  At linear order, $n=\delta\theta$ and $\zeta=\delta\sigma$.
+
+\subsection{Tensor and vector sectors}
+
+The tensor quadratic action is
+\begin{equation}
+S_T^{(2)}=\frac{\Mpl^2}{8}\int \dd t\,\dd^3x
+\left[(\dot\chi_{ij}^{TT})^2-(\partial_k\chi_{ij}^{TT})^2\right].
+\label{eq:tensorquad}
+\end{equation}
+Thus
+\begin{equation}
+\omega_T^2=k^2,
+\qquad c_T^2=1.
+\end{equation}
+The transverse shift remains nondynamical, so no propagating vector mode is introduced.
+
+\subsection{Scalar action and constraints}
+
+For the optional operator $d_3(D_i a^i)^2/\Ms^2$, the complete scalar quadratic action is
+\begin{align}
+S_S^{(2)}=\frac{\Mpl^2}{2}\int \dd t\,\dd^3x\Big\{&
+-3(3\lambda_P-1)\dot\zeta^2
++2(3\lambda_P-1)\dot\zeta\,\partial^2B
++(1-\lambda_P)(\partial^2B)^2
+\nonumber\\
+&+2(\partial_i\zeta)^2-4n\partial^2\zeta
++\eta(\partial_i n)^2+
+\frac{d_3}{\Ms^2}(\partial^2n)^2\Big\}.
+\label{eq:scalarquadraw}
+\end{align}
+The shift and lapse equations are
+\begin{equation}
+\partial^2B=\frac{3\lambda_P-1}{\lambda_P-1}\dot\zeta,
+\label{eq:Blin}
+\end{equation}
+\begin{equation}
+\left(\eta-\frac{d_3}{\Ms^2}\partial^2\right)n=-2\zeta.
+\label{eq:nlin}
+\end{equation}
+For a Fourier mode define
+\begin{equation}
+A(k)=\eta+d_3\frac{k^2}{\Ms^2}.
+\end{equation}
+Eliminating both constraints gives
+\begin{equation}
+S_S^{(2)}=\frac{\Mpl^2}{2}\int \dd t\,\frac{\dd^3k}{(2\pi)^3}
+\left[
+\frac{2(3\lambda_P-1)}{\lambda_P-1}|\dot\zeta_{\bm k}|^2
++k^2\left(2-\frac{4}{A(k)}\right)|\zeta_{\bm k}|^2
+\right],
+\label{eq:scalarquadred}
+\end{equation}
+with dispersion relation
+\begin{equation}
+\omega_s^2(k)=\frac{\lambda_P-1}{3\lambda_P-1}
+\frac{2-A(k)}{A(k)}k^2.
+\label{eq:dispersion}
+\end{equation}
+
+\subsection{Two-derivative stability wedge}
+
+Set $d_3=0$.  Positive kinetic energy requires
+\begin{equation}
+\frac{3\lambda_P-1}{\lambda_P-1}>0,
+\end{equation}
+so either $\lambda_P>1$ or $\lambda_P<1/3$.  Only the first branch is continuously adjacent to GR.  Gradient stability requires $0<\eta<2$.  Therefore
+\begin{equation}
+\boxed{\lambda_P>1,\qquad 0<\eta<2.}
+\label{eq:wedge}
+\end{equation}
+The scalar speed is
+\begin{equation}
+\boxed{\cs^2=\frac{\lambda_P-1}{3\lambda_P-1}\frac{2-\eta}{\eta}
+=\frac{d}{2+3d}\frac{2-\eta}{\eta}.}
+\label{eq:cs}
+\end{equation}
+The GR point is a singular boundary of the reduced scalar description because the extra scalar disappears when full spacetime diffeomorphism invariance is restored.
+
+\subsection{Static branch and measured Newton constant}
+
+For static scalar perturbations with negligible anisotropic stress,
+\begin{equation}
+\partial^2(n+\zeta)=0.
+\end{equation}
+Asymptotic flatness gives
+\begin{equation}
+\zeta=-n,
+\label{eq:recipdef}
+\end{equation}
+so the reciprocal branch survives the deformation at linear order.  Including a nonrelativistic source,
+\begin{equation}
+\Mpl^2(2-\eta)\nabla^2n=\rho.
+\label{eq:PoissonDef}
+\end{equation}
+Hence
+\begin{equation}
+\boxed{\GN=\frac{1}{4\pi\Mpl^2(2-\eta)}
+=\frac{\Gb}{1-\eta/2}.}
+\label{eq:GN}
+\end{equation}
+The spatial slip still vanishes at Newtonian order, but preferred-frame parameters require the moving-source calculation in Sec.~\ref{sec:PPN}.
+
+\subsection{Why the isolated $d_3$ operator is insufficient}
+
+At low momentum,
+\begin{equation}
+\omega_s^2=\cs^2k^2-
+\frac{2d_3(\lambda_P-1)}{\eta^2(3\lambda_P-1)}\frac{k^4}{\Ms^2}
++O(k^6/\Ms^4).
+\label{eq:k4}
+\end{equation}
+On the stable near-GR branch, a positive $k^4$ coefficient requires $d_3<0$, but then $A(k)$ vanishes at finite momentum and the lapse constraint develops a pole.  For $d_3>0$ the pole is avoided initially, but the leading $k^4$ correction has the wrong sign.  Therefore $(D_i a^i)^2$ alone is not a uniformly healthy high-gradient completion.  A jointly stable set of curvature and lapse-gradient operators is required.
+
+\section{Cubic scalar dynamics and strong coupling}
+
+\subsection{Logarithmic lapse and first-order constraints}
+
+For the cubic expansion use
+\begin{equation}
+N=e^n,\qquad N_i=\partial_iB,\qquad h_{ij}=e^{2\zeta}\delta_{ij}.
+\label{eq:cubicgauge}
+\end{equation}
+Define
+\begin{equation}
+q\equiv3\lambda_P-1,\qquad d\equiv\lambda_P-1,
+\qquad s^2\equiv\frac{d}{q}>0,
+\label{eq:sdefs}
+\end{equation}
+\begin{equation}
+\Pc_{ij}\equiv\frac{\partial_i\partial_j}{\Del},
+\qquad \chi\equiv\Del^{-1}\dot\zeta.
+\end{equation}
+The quadratic action is
+\begin{equation}
+S^{(2)}=\Mpl^2\int \dd t\,\dd^3x
+\left[\frac{1}{s^2}\dot\zeta^2-
+\frac{2-\eta}{\eta}(\partial_i\zeta)^2\right],
+\label{eq:S2cubicnotation}
+\end{equation}
+with first-order constraints
+\begin{equation}
+\Del B_1=\frac{1}{s^2}\dot\zeta,
+\qquad n_1=-\frac{2}{\eta}\zeta.
+\label{eq:firstconstraints}
+\end{equation}
+
+\subsection{Complete cubic action before reduction}
+
+Writing $S^{(3)}=\Mpl^2\int \dd t\,\dd^3x\,\mathcal L_3$, direct expansion gives
+\begin{align}
+\mathcal L_3={}&
+-\frac{9q}{2}\zeta\dot\zeta^2
+-\zeta(\partial\zeta)^2-\zeta^2\Del\zeta
++q\zeta\dot\zeta\Del B
++q\dot\zeta\,\partial_k\zeta\,\partial_kB
+-d\Del B\,\partial_k\zeta\,\partial_kB
+\nonumber\\
+&-\frac12\zeta(\partial_i\partial_jB)^2
+-2\partial_i\partial_jB\,\partial_iB\,\partial_j\zeta
++\frac{\lambda_P}{2}\zeta(\Del B)^2
++\frac{3q}{2}n\dot\zeta^2-qn\dot\zeta\Del B
+\nonumber\\
+&-\frac12n(\partial_i\partial_jB)^2
++\frac{\lambda_P}{2}n(\Del B)^2
+-n(\partial\zeta)^2-2n\zeta\Del\zeta-n^2\Del\zeta
++\frac{\eta}{2}\zeta(\partial n)^2+\frac{\eta}{2}n(\partial n)^2.
+\label{eq:L3}
+\end{align}
+
+\subsection{Second-order lapse and shift}
+
+Expand
+\begin{equation}
+n=n_1+n_2+O(\zeta^3),\qquad B=B_1+B_2+O(\zeta^3).
+\end{equation}
+The second-order lapse equation is
+\begin{equation}
+\eta\Del n_2=\mathcal S_n,
+\label{eq:n2eq}
+\end{equation}
+where
+\begin{align}
+\mathcal S_n={}&\frac{1}{2s^4}
+\left[(1-2s^2)\dot\zeta^2-(\Pc_{ij}\dot\zeta)(\Pc_{ij}\dot\zeta)\right]
++\left(1-\frac{2}{\eta}\right)(\partial_i\zeta)^2,
+\label{eq:Sn}
+\end{align}
+so
+\begin{equation}
+n_2=\frac{1}{\eta}\Del^{-1}\mathcal S_n.
+\label{eq:n2sol}
+\end{equation}
+The second-order shift equation is
+\begin{equation}
+d\Del^2B_2=\mathcal S_B,
+\label{eq:B2eq}
+\end{equation}
+with
+\begin{align}
+\mathcal S_B={}&q\Del\left(2\zeta\dot\zeta-\partial_i\zeta\,\partial_i\chi\right)
+-\frac{q}{d}\left(1-\frac{2}{\eta}\right)
+\left[\partial_i\partial_j\zeta\,\partial_i\partial_j\chi-(\Del\zeta)\dot\zeta\right]
+\nonumber\\
+&-\frac{2q}{d}\partial_i\left[(\partial_i\chi)\Del\zeta\right],
+\label{eq:SB}
+\end{align}
+so
+\begin{equation}
+B_2=\frac{1}{d}\Del^{-2}\mathcal S_B.
+\label{eq:B2sol}
+\end{equation}
+These inverse Laplacians arise from integrating out elliptic ADM constraints and do not represent new propagating nonlocal modes.
+
+The second-order solutions are required for metric reconstruction and for the quartic reduced action.  They do not contribute to the cubic reduced action because their terms multiply the linear constraint equations.
+
+\subsection{Reduced cubic action}
+
+Substituting only $n_1$ and $B_1$ into Eq.~\eqref{eq:L3}, then integrating by parts, gives
+\begin{align}
+S^{(3)}=\Mpl^2\int \dd t\,\dd^3x\Bigg\{&
+A_\eta\zeta(\partial_i\zeta)^2
+-\frac{2}{s^4}\dot\zeta\,\partial_i\zeta\,
+\frac{\partial_i}{\Del}\dot\zeta
+\nonumber\\
+&+C_\eta\left[
+\frac{1}{s^4}\zeta(\Pc_{ij}\dot\zeta)(\Pc_{ij}\dot\zeta)
+-\frac{1-2s^2}{s^4}\zeta\dot\zeta^2\right]\Bigg\},
+\label{eq:S3red}
+\end{align}
+where
+\begin{equation}
+A_\eta=1-\frac{4(1-\eta)}{\eta^2},
+\qquad C_\eta=\frac32+\frac1\eta.
+\label{eq:AetaCeta}
+\end{equation}
+The time-derivative vertices are enhanced by $s^{-4}$ and become singular at the GR boundary.
+
+\subsection{Canonical normalization}
+
+Define
+\begin{equation}
+\zeta_c=\frac{\sqrt2\Mpl}{s}\zeta.
+\label{eq:canonical}
+\end{equation}
+Then
+\begin{equation}
+S^{(2)}=\frac12\int \dd t\,\dd^3x
+\left[\dot\zeta_c^2-\cs^2(\partial_i\zeta_c)^2\right],
+\end{equation}
+and
+\begin{align}
+S^{(3)}=\int \dd t\,\dd^3x\Bigg\{&
+\frac{A_\eta s^3}{2\sqrt2\Mpl}\zeta_c(\partial_i\zeta_c)^2
+-\frac{1}{\sqrt2\Mpl s}\dot\zeta_c\,\partial_i\zeta_c\,
+\frac{\partial_i}{\Del}\dot\zeta_c
+\nonumber\\
+&+\frac{C_\eta}{2\sqrt2\Mpl s}\zeta_c
+\left[(\Pc_{ij}\dot\zeta_c)(\Pc_{ij}\dot\zeta_c)
+-(1-2s^2)\dot\zeta_c^2\right]\Bigg\}.
+\label{eq:S3canonical}
+\end{align}
+
+\subsection{Momentum and frequency cutoffs}
+
+When $\cs\neq1$, a single Lorentz-invariant cutoff is not appropriate.  In the near-GR regime define
+\begin{equation}
+M_\lambda^2=d\Mpl^2,\qquad M_\eta^2=\eta\Mpl^2.
+\end{equation}
+The parametric momentum and frequency cutoffs are
+\begin{align}
+\Lambda_p&=\min\left(M_\eta^{-1/2}M_\lambda^{3/2},
+M_\eta^{3/2}M_\lambda^{-1/2}\right),
+\label{eq:LpM}\\
+\Lambda_\omega&=\min\left(M_\eta^{1/2}M_\lambda^{1/2},
+M_\eta^{-3/2}M_\lambda^{5/2}\right).
+\label{eq:LwM}
+\end{align}
+Equivalently, up to order-one coefficients,
+\begin{align}
+\boxed{\Lambda_p\sim\Mpl\min\left(d^{3/4}\eta^{-1/4},
+\eta^{3/4}d^{-1/4}\right),}
+\label{eq:Lp}\\
+\boxed{\Lambda_\omega\sim\Mpl\min\left((d\eta)^{1/4},
+d^{5/4}\eta^{-3/4}\right).}
+\label{eq:Lw}
+\end{align}
+For comparable deviations $d\sim\eta\equiv\epsilon$,
+\begin{equation}
+\Lambda_p\sim\Lambda_\omega\sim\Mpl\sqrt\epsilon.
+\label{eq:comparablecutoff}
+\end{equation}
+Thus the two-derivative model is an infrared EFT.  A complete higher-spatial-derivative sector must enter at a scale satisfying parametrically
+\begin{equation}
+\Ms<\min(\Lambda_p,\Lambda_\omega)
+\label{eq:UVcondition}
+\end{equation}
+before the low-energy expansion becomes strongly coupled.
+
+\section{Post-Newtonian solution through $O(v^4)$}
+\label{sec:PPN}
+
+\subsection{Bookkeeping and Newtonian order}
+
+Choose the preferred foliation as the time coordinate and use
+\begin{equation}
+U\sim v^2,\qquad \partial_t\sim v\partial_i.
+\end{equation}
+The metric ansatz is
+\begin{align}
+g_{00}&=-1-\frac{2\phi}{c^2}-\frac{2\phi^{(2)}}{c^4}+O(v^6),\nonumber\\
+g_{0i}&=\frac{w_i+\partial_i\omega}{c^3}+O(v^5),\nonumber\\
+g_{ij}&=\left(1-\frac{2\psi}{c^2}\right)\delta_{ij}+O(v^4).
+\label{eq:PPNansatz}
+\end{align}
+At $O(v^2)$,
+\begin{equation}
+\phi=\psi=\phi_N,
+\end{equation}
+where $U=-\phi_N>0$ and Eq.~\eqref{eq:GN} sets the measured coupling.  Therefore
+\begin{equation}
+\boxed{\gppn=1.}
+\end{equation}
+
+\subsection{Shift and preferred-frame parameters}
+
+After using the map~\eqref{eq:map}, the $O(v^3)$ momentum constraint yields the standard PPN-gauge form
+\begin{equation}
+g_{0i}=-\frac12(7+\aone-\atwo)\frac{V_i}{c^3}
+-\frac12(1+\atwo)\frac{W_i}{c^3}+O(v^5),
+\label{eq:g0iPPN}
+\end{equation}
+with
+\begin{equation}
+\boxed{\aone=-4\eta,}
+\label{eq:a1}
+\end{equation}
+\begin{equation}
+\boxed{\atwo=\frac{\eta[\eta(1+2d)-d]}{(2-\eta)d}
+=\frac{\eta[\eta(2\lambda_P-1)-(\lambda_P-1)]}
+{(2-\eta)(\lambda_P-1)}.}
+\label{eq:a2}
+\end{equation}
+These are the only non-GR weak-field PPN parameters of the minimal two-derivative model.
+
+\subsection{Nonlinear lapse and $\beta_{\rm PPN}$}
+
+The $O(v^4)$ lapse solution contains a gauge-dependent $\partial_t^2X$ term.  The same time redefinition that puts Eq.~\eqref{eq:g0iPPN} in standard PPN gauge removes it.  The final temporal metric is
+\begin{equation}
+g_{00}=-1+\frac{2U}{c^2}-\frac{2U^2}{c^4}
++\frac{4\Phi_1+4\Phi_2+2\Phi_3+6\Phi_4}{c^4}+O(v^6),
+\label{eq:g00PPN}
+\end{equation}
+so
+\begin{equation}
+\boxed{\bppn=1.}
+\end{equation}
+Universal metric matter coupling also leaves the nonconservative PPN parameters and $\alpha_3$ at their GR values.
+
+\subsection{Extracted weak-field parameters}
+
+\begin{center}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.35\textwidth}p{0.52\textwidth}@{}}
+\toprule
+Quantity & Current-theory result \\
+\midrule
+Measured Newton constant & $\displaystyle \GN=\Gb/(1-\eta/2)$ \\
+$\gamma_{\rm PPN}$ & $1$ \\
+$\beta_{\rm PPN}$ & $1$ \\
+$\alpha_1^{\rm PPN}$ & $-4\eta$ \\
+$\alpha_2^{\rm PPN}$ & $\displaystyle \eta[\eta(1+2d)-d]/[(2-\eta)d]$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The $\alpha_2=0$ and luminal-scalar trajectory}
+
+The second preferred-frame parameter vanishes for
+\begin{equation}
+\boxed{d=\frac{\eta}{1-2\eta},\qquad
+\lambda_P=\frac{1-\eta}{1-2\eta}.}
+\label{eq:a2line}
+\end{equation}
+Substitution into Eq.~\eqref{eq:cs} gives
+\begin{equation}
+\boxed{\atwo=0\quad\Longleftrightarrow\quad \cs^2=1}
+\label{eq:luminalidentity}
+\end{equation}
+within the two-parameter slice.  Along this line,
+\begin{equation}
+\aone=-4\eta
+\end{equation}
+remains.  Near GR, $d\simeq\eta$ and the strong-coupling scales satisfy
+\begin{equation}
+\Lambda_p\sim\Lambda_\omega\sim\Mpl\sqrt\eta.
+\end{equation}
+The PPN-favored trajectory therefore remains an infrared EFT and does not remove the need for a high-gradient completion.
+
+\section{FLRW background and cosmological perturbation stability}
+\label{sec:FLRW}
+
+\subsection{Homogeneous equations}
+
+For
+\begin{equation}
+N=N(t),\qquad N^i=0,\qquad h_{ij}=a^2(t)\bar\gamma_{ij},
+\qquad {}^{(3)}\bar R=6\mathcal K,
+\end{equation}
+one has
+\begin{equation}
+a_i=0,\qquad K_{ij}=H_Nh_{ij},\qquad K=3H_N,
+\qquad H_N=\frac{\dot a}{aN}.
+\end{equation}
+Thus the $\eta a_i a^i$ operator vanishes on the homogeneous background and the minisuperspace action is
+\begin{equation}
+S_g=\frac{\Mpl^2}{2}V_0\int\dd t
+\left[-\frac{3q\,a\dot a^2}{N}+6\mathcal KNa\right],
+\qquad q\equiv3\lambda_P-1=2+3d.
+\end{equation}
+Variation with respect to $N$ and $a$, followed by $N=1$, gives
+\begin{equation}
+\boxed{\frac{3q}{2}H^2+3\frac{\mathcal K}{a^2}=\frac{\rho}{\Mpl^2},}
+\label{eq:cosFriedmann}
+\end{equation}
+\begin{equation}
+\boxed{-\frac{q}{2}(3H^2+2\dot H)-\frac{\mathcal K}{a^2}
+=\frac{p}{\Mpl^2},}
+\label{eq:cosAcceleration}
+\end{equation}
+and
+\begin{equation}
+q\dot H-2\frac{\mathcal K}{a^2}=-\frac{\rho+p}{\Mpl^2},
+\qquad
+\dot\rho+3H(\rho+p)=0.
+\label{eq:cosRayContinuity}
+\end{equation}
+For spatially flat FLRW,
+\begin{equation}
+H^2=\frac{2\rho}{3q\Mpl^2},
+\qquad
+\frac{\ddot a}{a}=-\frac{\rho+3p}{3q\Mpl^2}.
+\label{eq:cosNoSelfAcceleration}
+\end{equation}
+The deformation therefore rescales the expansion rate but does not change the acceleration criterion.  The minimal two-derivative action does not self-accelerate in the presence of ordinary matter.
+
+The cosmological gravitational coupling is
+\begin{equation}
+\boxed{\Gc=\frac{2\Gb}{q},
+\qquad
+\frac{\Gc}{\GN}=\frac{2-\eta}{q}.}
+\label{eq:GcosRatio}
+\end{equation}
+On the $\atwo=0$, $\cs=1$ trajectory of Eq.~\eqref{eq:a2line},
+\begin{equation}
+\boxed{\frac{\Gc}{\GN}=1-2\eta.}
+\label{eq:GcosTrajectory}
+\end{equation}
+This mismatch supplies a cosmological constraint independent of the local preferred-frame parameters.
+
+\subsection{Tensor and vector perturbations}
+
+On a spatially flat background use
+\begin{equation}
+N=1+n,\qquad N_i=\partial_iB+B_i^T,
+\qquad h_{ij}=a^2e^{2\zeta}(e^\gamma)_{ij},
+\end{equation}
+with $\partial_iB_i^T=0$, $\partial_i\gamma_{ij}=0$, and $\gamma_{ii}=0$.  The tensor action is
+\begin{equation}
+\boxed{
+S_T^{(2)}=\frac{\Mpl^2}{8}\int\dd t\,\dd^3x\,a^3
+\left[\dot\gamma_{ij}^2-\frac{(\partial_k\gamma_{ij})^2}{a^2}\right].}
+\label{eq:cosTensor}
+\end{equation}
+Thus $Q_T=\Mpl^2>0$ and $c_T^2=1$ on every FLRW background.  The transverse shift has no kinetic term and there is no propagating gravitational vector.
+
+\subsection{Scalar principal action on a general FLRW background}
+
+At physical wavenumber $p=k/a$ large compared with $H$ and the matter evolution scales, eliminating the lapse and scalar shift gives
+\begin{equation}
+\boxed{
+S_{s,\rm UV}^{(2)}=\frac{\Mpl^2}{2}\int\dd t\,\dd^3x\,a^3
+\left[
+\frac{2q}{d}\dot\zeta^2
+-\frac{2(2-\eta)}{\eta}\frac{(\partial_i\zeta)^2}{a^2}
+\right].}
+\label{eq:cosScalarUV}
+\end{equation}
+The no-ghost and gradient conditions are therefore
+\begin{equation}
+\boxed{\frac{q}{d}>0,\qquad 0<\eta<2,}
+\label{eq:cosStability}
+\end{equation}
+with
+\begin{equation}
+\cs^2=\frac{d}{q}\frac{2-\eta}{\eta}.
+\end{equation}
+On the branch adjacent to GR, Eq.~\eqref{eq:cosStability} is exactly the Minkowski wedge $d>0$, $0<\eta<2$.  In conformal time the ultraviolet canonical variable is
+\begin{equation}
+v_s=a\Mpl\sqrt{\frac{2q}{d}}\,\zeta.
+\end{equation}
+Background curvature contributes only pump and mixing terms of order $H^2$ and does not alter the short-wavelength ghost or gradient criteria.
+
+\subsection{Exact all-wavelength vacuum de Sitter reduction}
+
+For spatially flat de Sitter space with constant $H$ and unperturbed vacuum energy, define for each Fourier mode
+\begin{equation}
+p=\frac{k}{a},\qquad b=\frac{\partial^2B}{a^2},
+\qquad X=\dot\zeta-Hn,
+\qquad A=\frac{2q}{d}.
+\end{equation}
+After using the background equation, the scalar action is
+\begin{equation}
+S_{s,\rm dS}^{(2)}=\frac{\Mpl^2}{2}\int\dd t\,\frac{\dd^3k}{(2\pi)^3}a^3
+\left[-3qX^2+2qXb-db^2+p^2(2\zeta^2+4n\zeta+\eta n^2)\right].
+\label{eq:cosRawDS}
+\end{equation}
+The shift and lapse solutions are
+\begin{equation}
+b=\frac{q}{d}X,
+\qquad
+n=\frac{AH\dot\zeta-2p^2\zeta}{AH^2+\eta p^2}.
+\label{eq:cosConstraintsDS}
+\end{equation}
+After eliminating both constraints and integrating the mixed $\zeta\dot\zeta$ term by parts,
+\begin{equation}
+\boxed{
+S_{s,\rm dS}^{(2)}=\frac{\Mpl^2}{2}\int\dd t\,\frac{\dd^3k}{(2\pi)^3}a^3
+\left[K(p)\dot\zeta^2-G(p)\zeta^2\right],}
+\label{eq:cosReducedDS}
+\end{equation}
+where
+\begin{equation}
+K(p)=\frac{A\eta p^2}{AH^2+\eta p^2},
+\label{eq:cosKDS}
+\end{equation}
+\begin{equation}
+G(p)=\frac{2p^4\left[AH^2(2+\eta)+\eta(2-\eta)p^2\right]}
+{(AH^2+\eta p^2)^2}.
+\label{eq:cosGDS}
+\end{equation}
+For every nonzero $p$, both coefficients are positive whenever Eq.~\eqref{eq:cosStability} holds.  Hence vacuum de Sitter does not further shrink the healthy Minkowski region.  The ratio is
+\begin{equation}
+\frac{G}{K}=\frac{2p^2\left[AH^2(2+\eta)+\eta(2-\eta)p^2\right]}
+{A\eta(AH^2+\eta p^2)}.
+\label{eq:cosDispDS}
+\end{equation}
+It approaches $\cs^2p^2$ for $p\gg H$ and
+\begin{equation}
+\frac{G}{K}\longrightarrow
+\frac{d}{q}\frac{2+\eta}{\eta}p^2
+\end{equation}
+for $p\ll H$.  Along the near-GR $\atwo=0$ trajectory, $0<\eta<1/2$, the high-frequency scalar is luminal and the long-wavelength coefficient is
+\begin{equation}
+\frac{2+\eta}{2-\eta}>1.
+\end{equation}
+The kinetic coefficient behaves as $K\sim\eta p^2/H^2$ as $p\to0$, so the exactly homogeneous scalar remains a constraint mode.  This is not a linear ghost, but nonlinear superhorizon power counting cannot be inferred solely from the Minkowski cutoff.
+
+\subsection{Scope of the cosmological stability result}
+
+For a general background supported by radiation, dust, a scalar field, or another material component, the gravitational scalar mixes with the matter scalar.  Without specifying the matter action there is no unique fully reduced two-field kinetic matrix.  The results above nevertheless establish the background equations, tensor stability, absence of a vector graviton, the scalar principal stability conditions on arbitrary FLRW, and exact all-scale vacuum de Sitter stability.  A complete CMB and growth calculation must add a specified matter perturbation action and evolve the coupled gauge-invariant system through radiation and matter domination \cite{KobayashiCosmo,AudrenCosmo}.
+
+
+\section{Current status, scope, and falsification criteria}
+
+\subsection{What has been established}
+
+The consolidated theory establishes the following results.
+\begin{enumerate}[label=(\arabic*)]
+\item The complete progression variables parametrize the full gravitational metric and restore the momentum and tensor sectors absent from the scalar model.
+\item The Einstein benchmark gives ordinary GR, including universal loading, the reciprocal weak-field branch, optical propagation, gravitomagnetism, and tensor waves.
+\item The minimal deformation is a well-defined infrared khronometric EFT with one additional scalar.
+\item A nonempty Minkowski stability wedge exists: $\lambda_P>1$ and $0<\eta<2$.
+\item The lapse and shift can be eliminated consistently through second order, and the cubic theory has finite calculable cutoffs.
+\item The weak-field metric satisfies $\gppn=\bppn=1$ but generically has nonzero preferred-frame parameters.
+\item The FLRW background, cosmological gravitational coupling, tensor action, scalar principal symbol, and exact vacuum de Sitter scalar action have been derived from the same infrared action.
+\end{enumerate}
+
+\subsection{What has not been established}
+
+The present manuscript does not yet provide:
+\begin{enumerate}[label=(\arabic*)]
+\item a complete higher-spatial-derivative action with a healthy principal symbol;
+\item the fully reduced coupled scalar system for a specified radiation, matter, or dark-energy action across the complete cosmological history;
+\item stability on compact-object and merger backgrounds;
+\item a nonlinear well-posedness or collapse analysis;
+\item neutron-star sensitivities and binary-pulsar bounds derived within this manuscript;
+\item galaxy rotation curves or lensing derived from Eq.~\eqref{eq:IRaction};
+\item self-acceleration or an accelerating cosmology generated by Eq.~\eqref{eq:IRaction} without an additional negative-pressure sector;
+\item a ultraviolet completion or radiative-protection mechanism.
+\end{enumerate}
+The earlier current-divergence, weak-gradient, galaxy, and cosmological closures therefore remain historical or phenomenological proposals rather than predictions of the current geometric action.
+
+\subsection{Relation to the earlier progression framework}
+
+\begin{center}
+\begin{tabular}{@{}p{0.30\textwidth}p{0.39\textwidth}p{0.20\textwidth}@{}}
+\toprule
+Earlier ingredient & Current geometric formulation & Status \\
+\midrule
+Scalar progression rate & Lapse $N=e^\theta$ & retained \\
+Weighted conservation & Physical-metric conservation written using $\sqrt{-g}$ & derived \\
+Optical reciprocal weights & Maxwell theory on Eq.~\eqref{eq:metric} & geometric \\
+Static attractive source & Hamiltonian constraint & completed \\
+Matter-current response & Momentum constraint for $\beta^i$ & newly supplied \\
+Tensor waves & $\gamma_{ij}^{TT}$ evolution & newly supplied \\
+Composite equivalence & Universal metric plus Laue stress balance & derived \\
+Derivative-current gravity source & Not required by the core metric theory & superseded \\
+Galaxy/dark-energy closures & Not generated by the minimal current action & provisional \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Decision sequence}
+
+The next calculations should be performed on a definite higher-gradient extension rather than on an indefinitely general action:
+\begin{enumerate}[label=(\arabic*)]
+\item choose an explicit matter content and derive the complete coupled scalar kinetic and gradient matrices through radiation and matter domination;
+\item construct a minimal jointly stable high-gradient operator set satisfying Eq.~\eqref{eq:UVcondition};
+\item calculate compact-body sensitivities and binary radiation on the PPN-allowed trajectory;
+\item solve static spherical and rotating backgrounds, including horizon regularity;
+\item confront the fixed ratio $\Gc/\GN$ and the coupled perturbation equations with background, CMB, growth, and lensing data before introducing any additional dark-sector closure.
+\end{enumerate}
+
+The model fails in its intended form if the reciprocal branch is not dynamically selected for ordinary matter, if the higher-gradient sector introduces a ghost or low-scale instability, if preferred-frame or binary-radiation limits force every distinctive coefficient below the regime of relevance, or if no perturbative window exists between the infrared cutoff and the onset of the ultraviolet operators.
+
+\section{Conclusion}
+
+A single progression scalar is not a complete relativistic gravitational state space.  The appropriate completion is a geometry containing temporal progression, spatial dilation, progression flow, and spatial strain.  At the Einstein benchmark this formulation is fully consistent but dynamically equivalent to GR.  Its value is to identify the minimum complete progression structure and to give a geometric origin to the reciprocal optical relation, weighted currents, universal composite loading, gravitomagnetism, and tensor waves.
+
+The minimal non-Einstein model studied here is technically calculable.  It possesses a stable Minkowski wedge, a single scalar mode, a consistent cubic reduction, finite strong-coupling scales, a complete first-post-Newtonian solution, and a stable gravitational perturbation sector on FLRW and vacuum de Sitter backgrounds.  It is not, however, a generic new gravity theory: it is the $\beta_K=0$ slice of infrared khronometric gravity.  Preferred-frame effects force it near the GR point, and the approach to that point lowers the infrared cutoff unless higher-spatial-derivative dynamics enters first.
+
+The cosmological derivation also gives a negative result of direct importance: the minimal action does not self-accelerate.  It changes the Friedmann normalization through $\Gc/\GN=(2-\eta)/(3\lambda_P-1)$ but does not supply a new homogeneous negative-pressure component.  The strongest defensible present claim is therefore narrow but substantive: progression geometry supplies a coherent gravitational ontology and a constrained infrared modified-gravity EFT.  It has not yet produced a current-action derivation of dark matter or dark energy.  The next decisive steps are a specified coupled matter-perturbation analysis and a high-gradient completion that remains healthy before the cutoffs identified here.
+
+\appendix
+
+\section{Linearized benchmark constraints}
+
+For the static scalar sector let
+\begin{equation}
+N=1+\theta,\qquad h_{ij}=(1+2\sigma)\delta_{ij}.
+\end{equation}
+To first order,
+\begin{equation}
+\Rthree=-4\nabla^2\sigma.
+\end{equation}
+The Hamiltonian constraint gives
+\begin{equation}
+-4\nabla^2\sigma=16\pi\Gb\rho.
+\end{equation}
+The trace-free spatial equation gives
+\begin{equation}
+\left[\partial_i\partial_j(\theta+\sigma)\right]^{TF}=8\pi\Gb S_{ij}^{TF}.
+\end{equation}
+For negligible anisotropic stress and asymptotic flatness, $\theta+\sigma=0$.
+
+For a stationary vector perturbation,
+\begin{equation}
+K_{ij}=-\frac12(\partial_i\beta_j+\partial_j\beta_i),
+\qquad K=-\partial_i\beta^i.
+\end{equation}
+Substitution into the momentum constraint gives
+\begin{equation}
+-\frac12\nabla^2\beta_i+\frac12\partial_i\partial_j\beta_j=8\pi\Gb J_i.
+\end{equation}
+
+\section{Optical constitutive coefficients}
+
+For a static isotropic metric
+\begin{equation}
+\dd s^2=-N^2\dd t^2+A^2\delta_{ij}\dd x^i\dd x^j,
+\end{equation}
+standard Maxwell theory has the coordinate-frame action
+\begin{equation}
+S_{\rm EM}=\frac12\int \dd t\,\dd^3x
+\left[\epsilon_0\frac{A}{N}E^2-\mu_0^{-1}\frac{N}{A}B^2\right].
+\end{equation}
+Therefore
+\begin{equation}
+\epsilon_r=\frac{A}{N},\qquad \mu_r^{-1}=\frac{N}{A},
+\qquad n_{\rm eff}=\sqrt{\frac{\epsilon_r}{\mu_r^{-1}}}=\frac{A}{N}.
+\end{equation}
+With $N=e^\theta$ and $A=e^\sigma$, this gives Eq.~\eqref{eq:neff}.
+
+\section{Post-Newtonian intermediate relations}
+
+The standard potentials used in Sec.~\ref{sec:PPN} satisfy
+\begin{align}
+\nabla^2X&=-2\phi_N,&
+\nabla^2V_i&=-4\pi\GN\rho v_i,\nonumber\\
+\nabla^2\Phi_1&=-4\pi\GN\rho v^2,&
+\nabla^2\Phi_2&=4\pi\GN\rho\phi_N,\nonumber\\
+\nabla^2\Phi_4&=-4\pi\GN p,&
+\partial_t\partial_iX&=W_i-V_i.
+\end{align}
+Before the final PPN time redefinition, the longitudinal shift is
+\begin{equation}
+\omega=\frac{\eta+3d}{2d}\partial_tX,
+\end{equation}
+and
+\begin{equation}
+g_{0i}=\frac{\eta(1+2d)-d}{2d}\frac{W_i}{c^3}
+-\frac{\eta+d(7-2\eta)}{2d}\frac{V_i}{c^3}+O(v^5).
+\end{equation}
+The nonlinear lapse solution is
+\begin{equation}
+\phi^{(2)}=\phi_N^2-2\Phi_1-2\Phi_2-3\Phi_4
+-\frac{\eta(2+3d)}{2(2-\eta)d}\partial_t^2X.
+\end{equation}
+The standard time redefinition removes the $\partial_t^2X$ term and yields Eqs.~\eqref{eq:g0iPPN} and \eqref{eq:g00PPN}.
+
+\begin{thebibliography}{99}
+
+\bibitem{ADM}
+R.~Arnowitt, S.~Deser, and C.~W.~Misner,
+``The dynamics of general relativity,'' in \emph{Gravitation: An Introduction to Current Research}, edited by L.~Witten (Wiley, New York, 1962), pp.~227--265; arXiv:gr-qc/0405109.
+
+\bibitem{Gourgoulhon}
+E.~Gourgoulhon,
+``3+1 formalism and bases of numerical relativity,'' arXiv:gr-qc/0703035; expanded as \emph{3+1 Formalism in General Relativity} (Springer, 2012).
+
+\bibitem{Will}
+C.~M.~Will,
+``The confrontation between general relativity and experiment,''
+Living Rev. Relativity \textbf{17}, 4 (2014), arXiv:1403.7377.
+
+\bibitem{FosterJacobson}
+B.~Z.~Foster and T.~Jacobson,
+``Post-Newtonian parameters and constraints on Einstein-aether theory,''
+Phys. Rev. D \textbf{73}, 064015 (2006), arXiv:gr-qc/0509083.
+
+\bibitem{JacobsonReview}
+T.~Jacobson,
+``Einstein-aether gravity: a status report,''
+PoS QG-PH, 020 (2007), arXiv:0801.1547.
+
+\bibitem{Horava}
+P.~Ho\v rava,
+``Quantum gravity at a Lifshitz point,''
+Phys. Rev. D \textbf{79}, 084008 (2009), arXiv:0901.3775.
+
+\bibitem{BPSPRL}
+D.~Blas, O.~Pujol\`as, and S.~Sibiryakov,
+``Consistent extension of Ho\v rava gravity,''
+Phys. Rev. Lett. \textbf{104}, 181302 (2010), arXiv:0909.3525.
+
+\bibitem{PapazoglouSotiriou}
+A.~Papazoglou and T.~P.~Sotiriou,
+``Strong coupling in extended Ho\v rava--Lifshitz gravity,''
+Phys. Lett. B \textbf{685}, 197 (2010), arXiv:0911.1299.
+
+\bibitem{BPSModels}
+D.~Blas, O.~Pujol\`as, and S.~Sibiryakov,
+``Models of non-relativistic quantum gravity: the good, the bad and the healthy,''
+JHEP \textbf{04}, 018 (2011), arXiv:1007.3503.
+
+\bibitem{BPSComment}
+D.~Blas, O.~Pujol\`as, and S.~Sibiryakov,
+``Comment on `Strong coupling in extended Ho\v rava--Lifshitz gravity',''
+Phys. Lett. B \textbf{688}, 350 (2010), arXiv:0912.0550.
+
+\bibitem{BonettiBarausse}
+M.~Bonetti and E.~Barausse,
+``Post-Newtonian constraints on Lorentz-violating gravity theories with a MOND phenomenology,''
+Phys. Rev. D \textbf{91}, 084053 (2015), arXiv:1502.05554.
+
+
+\bibitem{KobayashiCosmo}
+T.~Kobayashi, Y.~Urakawa, and M.~Yamaguchi,
+``Cosmological perturbations in a healthy extension of Ho\v rava gravity,''
+JCAP \textbf{04}, 025 (2010), arXiv:1002.3101.
+
+\bibitem{AudrenCosmo}
+B.~Audren, D.~Blas, M.~M.~Ivanov, J.~Lesgourgues, and S.~Sibiryakov,
+``Cosmological constraints on deviations from Lorentz invariance in gravity and dark matter,''
+JCAP \textbf{03}, 016 (2015), arXiv:1410.6514.
+
+\end{thebibliography}
+
+\end{document}
