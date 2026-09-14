@@ -1,0 +1,1092 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{natbib}
+\usepackage{tcolorbox}
+\usepackage{xspace}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{amsthm}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}[lemma]{Corollary}
+\geometry{margin=1in}
+
+
+
+\usepackage{xcolor}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+
+% ---- Auxiliary-metric terminology helpers ----
+\newcommand{\auxmetric}{auxiliary metric\xspace}
+\newcommand{\auxline}{auxiliary line element\xspace}
+\newcommand{\Auxline}{Auxiliary line element\xspace}
+% Scalar progression field (use phi per latest preference)
+\newcommand{\prog}{\Pi}
+
+
+\title{Collective Phase Loading and Progression Exchange in Progression-Weighted Matter Dynamics}
+\author{Scott A. Jordan\\
+Independent researcher, Fayetteville, NC, USA\\
+\texttt{scott@simplelogicsolutions.com}\\
+ORCID: \href{https://orcid.org/0009-0005-7444-3386}{0009-0005-7444-3386}}
+\date{July 10, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We develop a mediator-free collective-coupling formulation of progression-weighted matter dynamics.  The local progression field is \(\PiF=e^{\thetaP}\).  We distinguish a sign-normalized active loading density \(\rho_\Pi^{\rm act}\), a passive collective charge \(Q_{\Pi,A}^{\rm pass}\), and the total inertial mass \(M_A^{\rm in}=E_A^{\rm on\mbox{-}shell}/c_0^2\).  The sign convention makes ordinary cold matter positive but is not a positivity theorem for every binding or interaction contribution.  Internal rest-mass, confinement, binding, kinetic, and field-energy contributions enter inertia and environmental loading, but are not assigned separate force laws.  After internal degrees of freedom are integrated out, the leading body action is required to be \(S_A^{\rm eff}=-M_{A0}^{\rm in}c_0^2\int e^{\thetaP(X_A)}\,\dd\tau_0\).  The weak-equivalence-principle target is therefore \(Q_{\Pi,A}^{\rm pass}/M_A^{\rm in}=1\), up to controlled corrections.
+
+The closed theory has one fundamental conservation statement, the on-shell Noether identity \(\nabla_\mu T_{\rm total}^{\mu\nu}=0\).  A relation of the form \(\nabla_\mu(\PiF^q J^\mu)=0\) is instead treated as a progression-covariant transport law for a specified subsystem current, derived from the same action or an internal current symmetry; it is not a second conservation of total energy.  Coordinate time remains a parametrization of the covariant dynamics, while the clock field defines the operational local standard used to compare rates.  Within a first-derivative \(P(\thetaP,X)\) truncation, the progression field has a well-defined Hilbert tensor and an exact Noether exchange identity: loaded matter and fields receive four-force from the progression gradient, while the progression field receives the equal and opposite four-momentum transfer.  In a static spherical solution this identity is interpreted as inward matter acceleration paired with positive radial progression stress and transverse tension.  Canonical Newtonian matching gives \(f_\Pi^2=c_0^4/(4\pi G)\).  The clock sector selects a physical progression-adapted timelike direction, so the construction is covariant but not frame-free.  The framework is an effective-field-theory closure target rather than a proof of ultraviolet completion.
+\end{abstract}
+\section{Introduction}
+
+The progression framework represents the local rate standard by a scalar field \(\PiF(x)\).  The phrase ``progression-weighted conservation'' does not mean that ordinary stress-energy conservation is replaced by a second, independently imposed conservation of energy.  The closed system obeys one on-shell Noether identity, \(\nabla_\mu T_{\rm total}^{\mu\nu}=0\).  Weighted currents describe how selected number, phase, or transport quantities are compared across a nonuniform progression background and must be derived from the same total action or from an internal symmetry of one of its sectors.  Structurally, this places the construction near scalar-field and preferred-frame effective gravitation frameworks, while its optical constitutive sector prevents identification with a single conformal metric theory \cite{BransDicke1961,Bekenstein2004,JacobsonMattingly2001}.  The matter-sector problem is most transparent when active sourcing, passive response, inertia, and subsystem transport are separated.  A static environment produces a progression profile through its total variational interaction density.  A localized test body responds through one collective center-of-energy coupling.  Its resistance to acceleration is fixed by its complete on-shell inertial energy.  The internal mechanisms that contribute to that energy---Higgs/Yukawa masses, QCD confinement, nuclear and electromagnetic binding, internal kinetic energy, and field energy---need not each be assigned an independent progression force.
+
+In the locally normalized variable
+\begin{equation}
+    \thetaP=\ln\PiF,
+\end{equation}
+define the non-progression sectors collectively by \(S_{\rm load}\), and set
+\begin{equation}
+    \rho_\Pi^{\rm act}\equiv
+    -\frac{1}{\sqrt{-g}}\frac{\delta S_{\rm load}}{\delta\thetaP},
+    \qquad
+    Q_{\Pi,A}^{\rm pass}\equiv
+    \frac{1}{c_0^2}\frac{\dd E_A^{\rm on\mbox{-}shell}}{\dd\thetaP},
+    \qquad
+    M_A^{\rm in}\equiv\frac{E_A^{\rm on\mbox{-}shell}}{c_0^2}.
+    \label{eq:intro-three-roles}
+\end{equation}
+The weak-equivalence-principle target is not a term-by-term identity for the microscopic constituents.  It is the collective low-energy relation
+\begin{equation}
+    \frac{Q_{\Pi,A}^{\rm pass}}{M_A^{\rm in}}=1
+    \label{eq:intro-collective-WEP}
+\end{equation}
+for every relaxed localized ordinary matter system \(A\).  This says that the single coefficient producing center-of-energy motion is normalized by the same total energy that appears in the inertial term \cite{Will2014,Schiff1960}.
+
+The local Euler--Lagrange response is
+\begin{equation}
+    \mathcal S_\Pi
+    =
+    \frac{\partial\Lmat}{\partial\thetaP}
+    -\nabla_\mu\left(
+    \frac{\partial\Lmat}{\partial(\nabla_\mu\thetaP)}
+    \right),
+    \qquad
+    \rho_\Pi^{\rm act}=-\mathcal S_\Pi .
+    \label{eq:intro-active-source}
+\end{equation}
+The minus sign is chosen so that positive cold matter has \(\rho_\Pi^{\rm act}\simeq\rho c_0^2>0\) and produces the attractive Poisson solution below.  Derivative response currents describe subsystem transport and exchange; when a weighted current law exists, it is a progression-covariant rewriting of that transport and is not the generic static source or an additional conservation of total energy.  Environmental rest energy, binding energy, field energy, pressure, and relative phase-flow structure may all contribute to \(\rho_\Pi^{\rm act}\), provided the result is expressed covariantly rather than as a frame-dependent \(T^{00}\) alone.
+
+Around a reference background \(\theta_0\), define \(\dtheta=\thetaP-\theta_0\) and \(\MbarA=M_A^{\rm in}(\theta_0)\).  The collective potential experienced by a narrow packet is
+\begin{equation}
+    \PhiPi=c_0^2(e^{\dtheta}-1)\simeq c_0^2\dtheta,
+\end{equation}
+so its leading Hamiltonian is
+\begin{equation}
+    H_A=\MbarA c_0^2+\frac{\bm p^2}{2\MbarA}+\MbarA\PhiPi .
+\end{equation}
+Ehrenfest and WKB reductions then give \(\ddot{\bm X}=-\nabla\PhiPi\), independent of composition, while finite support produces tidal corrections.  The mass cancellation follows from the collective worldline coefficient, not from a separate force acting on every microscopic contribution.
+
+This paper develops the closure conditions behind that statement.  We first define the progression variable and variational source, then derive the packet-level equivalence-principle limit.  We next formulate a renormalized composite matching condition in which the complete relaxed body, rather than each internal energy term separately, acquires the universal worldline loading.  Finally, we give a mediator-free total action, derive the progression stress tensor within the first-derivative truncation, and prove the covariant exchange identity between loaded matter and the progression field.  The same total action must determine source and response; otherwise an active--passive mismatch could violate momentum conservation.  The companion optical paper takes the resulting background \(\PiF=e^{\thetaP}\) as input and realizes the constitutive closure \(n_{\rm eff}=\PiF^{-2}\) \cite{JordanOpticsCompanion}.
+\section{Progression variable and variational matter source}
+
+It is useful to define the logarithmic progression variable
+\begin{equation}
+    \thetaP(x) \equiv \ln \PiF(x).
+    \label{eq:theta-def}
+\end{equation}
+Throughout this paper \(\thetaP\) denotes the locally normalized collective-loading variable.  After the internal degrees of freedom of a relaxed localized body have been integrated out, its effective inertial coefficient is assumed to load as
+\begin{equation}
+    M_A^{\rm in}(\thetaP)=M_{A0}^{\rm in}e^{\thetaP},
+    \qquad
+    Q_{\Pi,A}^{\rm pass}\equiv \frac{\dd M_A^{\rm in}}{\dd\thetaP}=M_A^{\rm in} .
+    \label{eq:local-normalized-mass}
+\end{equation}
+If a deeper microscopic variable has the form \(m\propto e^{a_{\rm micro}\theta_{\rm micro}}\), the exponent is absorbed into the local field definition,
+\begin{equation}
+    \thetaP=a_{\rm micro}\theta_{\rm micro}.
+    \label{eq:micro-to-local-theta}
+\end{equation}
+Thus the environmental source, collective packet response, and optical interface can all be written with one \(\thetaP\), without assigning separate passive force charges to the internal mass-generating sectors.  For global formulas it is convenient to choose the local reference \(\theta_0=0\), giving
+\begin{equation}
+    \PhiPi=c_0^2(e^{\thetaP}-1)
+    =c_0^2(\PiF-1)
+    \simeq c_0^2\thetaP .
+    \label{eq:normalized-Phi}
+\end{equation}
+For packet mechanics, however, the expansion should be made about the local background sampled by the packet.  Define
+\begin{equation}
+    \theta_0\equiv\thetaP(\bm X),
+    \qquad
+    \dtheta(\bm x)=\thetaP(\bm x)-\theta_0,
+    \qquad
+    \MbarA\equiv M_A^{\rm in}(\theta_0).
+    \label{eq:local-background-mass}
+\end{equation}
+The local weak-field potential is then
+\begin{equation}
+    \PhiPi(\bm x)=c_0^2(e^{\dtheta(\bm x)}-1)
+    \simeq c_0^2\dtheta(\bm x),
+    \label{eq:local-dtheta-potential}
+\end{equation}
+and the inertial mass appearing in the kinetic term is the locally measured reference mass \(\MbarA\).  This avoids double counting the same progression factor in both \(M_A^{\rm in}(\thetaP)\) and the potential energy.
+For quantum-field-theoretic work one may introduce a canonically normalized field \(\phi\) by
+\begin{equation}
+    \PiF(x)=e^{\phi(x)/f_\Pi},
+    \qquad
+    \thetaP(x)=\frac{\phi(x)}{f_\Pi},
+    \label{eq:canonical-field}
+\end{equation}
+where \(f_\Pi\) is the progression-field normalization scale.
+
+The most general local matter action may depend on both \(\thetaP\) and its gradient,
+\begin{equation}
+    S_m=S_m[\Psi,\thetaP,\partial_\mu\thetaP],
+    \label{eq:general-matter-theta-action}
+\end{equation}
+where \(\Psi\) denotes the matter, Higgs, gauge, and composite effective fields.  The active progression source is the Euler--Lagrange response
+\begin{equation}
+    \mathcal S_\Pi(x)
+    \equiv
+    \frac{\partial \Lmat}{\partial\thetaP}
+    -\partial_\mu\left(
+    \frac{\partial \Lmat}{\partial(\partial_\mu\thetaP)}
+    \right).
+    \label{eq:full-EL-source}
+\end{equation}
+For the remainder of the paper we use the sign-normalized loading convention
+\begin{equation}
+    \rho_\Pi^{\rm act}\equiv-\mathcal S_\Pi
+    =-\frac{1}{\sqrt{-g}}\frac{\delta S_{\rm load}}{\delta\thetaP}.
+    \label{eq:positive-active-loading}
+\end{equation}
+This is the microscopic object that appears on the positive side of the progression field equation.  A direct dependence on \(\thetaP\) supplies static phase loading, while dependence on \(\partial_\mu\thetaP\) defines a transport or exchange current.
+
+The derivative matter coupling may still be written schematically as
+\begin{equation}
+    \Lint = -g_\Pi \JPi^\mu \partial_\mu \thetaP,
+    \label{eq:derivative-coupling-theta}
+\end{equation}
+where \(g_\Pi\) contains the normalization inherited from \(\alpha_P/\Lambda_P\) and \(f_\Pi\). Integrating by parts gives
+\begin{equation}
+    -g_\Pi \JPi^\mu \partial_\mu\thetaP
+    = g_\Pi \thetaP\,\partial_\mu \JPi^\mu
+    \label{eq:integrate-parts}
+\end{equation}
+up to a boundary term. This term couples \(\thetaP\) to a nonconservation, loading, or exchange channel of the matter current. It should not be identified as the whole static matter source unless an additional microscopic identity proves that \(\partial_\mu\JPi^\mu\) reproduces the active phase-energy density.
+
+The central issue is therefore the interpretation of both \(\mathcal S_\Pi\) and \(\JPi^\mu\). If the response is an arbitrary species-dependent scalar charge, it generically mediates a fifth force. If it is associated with universal local phase loading, then the leading motion can remain composition independent. The following definition encodes the derivative part of that response.
+\begin{definition}[Progression phase-loading current]
+Let the microscopic matter Lagrangian depend on the progression background through the local one-form
+\begin{equation}
+    B_\mu \equiv \partial_\mu \thetaP.
+    \label{eq:Bmu}
+\end{equation}
+The progression phase-loading current is defined by the response
+\begin{equation}
+    \JPi^\mu \equiv -\frac{1}{g_\Pi}\frac{\delta \Lmat}{\delta B_\mu}.
+    \label{eq:response-current}
+\end{equation}
+\end{definition}
+
+Equation~\eqref{eq:response-current} is the analogue of defining an electromagnetic current by varying the matter action with respect to the gauge potential. The current is not guessed from particle species. It is the matter-sector response to local progression loading.
+\section{Collective phase-loading principle}
+
+The equivalence principle requires more than a scalar coupling, but it does not require a distinct force law for each microscopic contribution to mass.  Let \(M_A^{\rm in}\) be the total inertial mass of a relaxed composite and let \(Q_{\Pi,A}^{\rm pass}\) be the coefficient of its leading center-of-energy coupling.  The locally normalized weak-equivalence-principle condition is
+\begin{equation}
+    Q_{\Pi,A}^{\rm pass}=M_A^{\rm in}.
+    \label{eq:normalized-universal-charge}
+\end{equation}
+The internal contributions to \(M_A^{\rm in}\) determine the body's inertia and may contribute to the environmental active source, but they are not interpreted as separately accelerated constituents in the low-energy description.
+
+\begin{assumption}[Universal collective progression loading]
+After all internal degrees of freedom that remain in local equilibrium have been integrated out, the leading progression-dependent action of a localized body or wavepacket \(A\) has the form
+\begin{equation}
+    S_A^{\rm eff}=-M_{A0}^{\rm in}c_0^2\int e^{\thetaP(x_A)}\,\dd\tau_0,
+    \label{eq:normalized-point-action}
+\end{equation}
+where the same function of \(\thetaP\) multiplies the complete on-shell inertial coefficient for all ordinary composites.
+\end{assumption}
+
+This assumption is weaker and more physical than assigning an independent progression charge to each binding or field-energy term.  It is an infrared matching statement: once the internal configuration has relaxed at fixed \(\thetaP\), the resulting center-of-energy worldline contains one collective coefficient.  Expanding Eq.~\eqref{eq:normalized-point-action} about a local background \(\theta_0\) gives
+\begin{equation}
+    S_A^{\rm eff}\simeq \int\dd t\left[\frac12 \MbarA v^2-\MbarA\PhiPi(\bm x_A)\right]
+    +\text{constant}
+    +O(v^2\dtheta,c_0^2\dtheta^2),
+    \label{eq:normalized-nonrel-action}
+\end{equation}
+with
+\begin{equation}
+    \PhiPi=c_0^2(e^{\dtheta}-1),
+    \qquad
+    \dtheta=\thetaP-\theta_0 .
+    \label{eq:normalized-Phi-universal}
+\end{equation}
+The progression-induced potential energy is therefore
+\begin{equation}
+    U_{\Pi,A}=Q_{\Pi,A}^{\rm pass}\PhiPi
+    =\MbarA\PhiPi
+    \label{eq:normalized-potential-energy}
+\end{equation}
+at leading order.  A violation of the equivalence principle appears as a failure of the emergent ratio \(Q_{\Pi,A}^{\rm pass}/M_A^{\rm in}\), not necessarily as a failure of every microscopic contribution to possess the same off-shell variation.
+
+\section{Integrated collective charge of a localized packet}
+
+For a relaxed localized packet, define the passive progression charge by the total on-shell energy response
+\begin{equation}
+    Q_{\Pi,A}^{\rm pass}\equiv
+    \frac{1}{c_0^2}
+    \frac{\dd E_A^{\rm on\mbox{-}shell}(\thetaP)}{\dd\thetaP} .
+    \label{eq:Qpi-def-normalized}
+\end{equation}
+The derivative is total: the matter fields, gauge fields, binding configuration, and boundary variables are allowed to readjust consistently with their equations of motion.  The collective loading condition gives
+\begin{equation}
+    Q_{\Pi,A}^{\rm pass}=M_A^{\rm in},
+    \qquad
+    \frac{Q_{\Pi,A}^{\rm pass}}{M_A^{\rm in}}=1,
+    \label{eq:Qpi-universal-normalized}
+\end{equation}
+up to finite-size, gradient, nonequilibrium, and high-energy corrections.
+
+For a composite body,
+\begin{equation}
+    M_A^{\rm in}c_0^2
+    =\sum_i m_ic_0^2+E_{\rm bind}+E_{\rm kin,int}+E_{\rm field}+\cdots .
+    \label{eq:composite-mass-normalized}
+\end{equation}
+These terms contribute to the total inertial normalization.  When the same system belongs to the environment, they also contribute to the active interaction density through the complete stress-energy and variational source.  They need not each supply a separate passive force term.  What must be universal is the coefficient of the composite center-of-energy action after the internal system has been solved.
+
+The derivative response current, when useful, is a transport current associated with phase and energy flow.  In a mostly-plus signature a convenient orientation is
+\begin{equation}
+    \JPi^\mu\propto -T_m^{\mu\nu}u_\nu.
+    \label{eq:stress-current-normalized}
+\end{equation}
+For cold matter it is proportional to \(\rho u^\mu\).  This current is not the complete static source, and it should not be confused with the integrated passive charge of a composite worldline.
+\section{Ehrenfest derivation of composition-independent acceleration}
+
+Consider a narrow wavepacket of species or body type \(A\), expanded about a local background \(\theta_0\).  Its effective Hamiltonian is
+\begin{equation}
+    H_A = \MbarA c_0^2 + \frac{\bm p^2}{2\MbarA}+\MbarA\PhiPi(\bm x),
+    \qquad
+    \PhiPi=c_0^2(e^{\dtheta}-1).
+    \label{eq:Hamiltonian}
+\end{equation}
+Let the packet center be
+\begin{equation}
+    \bm X(t)=\langle \bm x\rangle.
+    \label{eq:packet-center}
+\end{equation}
+Ehrenfest's theorem gives
+\begin{equation}
+    \frac{\dd \bm X}{\dd t}=\frac{\langle \bm p\rangle}{\MbarA},
+    \label{eq:ehrenfest-velocity}
+\end{equation}
+and
+\begin{equation}
+    \frac{\dd\langle \bm p\rangle}{\dd t}
+    =-\left\langle \nabla\left(\MbarA\PhiPi\right)\right\rangle.
+    \label{eq:ehrenfest-force}
+\end{equation}
+For a narrow packet whose width \(\sigma_x\) is small compared with the variation scale of \(\PhiPi\),
+\begin{equation}
+    \left\langle \nabla\PhiPi\right\rangle
+    =\nabla\PhiPi(\bm X)+O\!\left(\sigma_x^2\nabla^3\PhiPi\right).
+    \label{eq:narrow-packet}
+\end{equation}
+Therefore,
+\begin{equation}
+    \MbarA\frac{\dd^2\bm X}{\dd t^2}
+    =-\MbarA\nabla\PhiPi(\bm X)+O\!\left(\MbarA\sigma_x^2\nabla^3\PhiPi\right),
+    \label{eq:mass-cancels-1}
+\end{equation}
+and the leading acceleration is
+\begin{equation}
+    \boxed{
+    \frac{\dd^2\bm X}{\dd t^2}=-\nabla\PhiPi(\bm X)
+    +O\!\left(\sigma_x^2\nabla^3\PhiPi\right).
+    }
+    \label{eq:universal-acceleration}
+\end{equation}
+
+The rest mass and internal composition do not appear in the leading term. This is the weak-equivalence-principle limit of universal progression loading. The correction term is tidal: it depends on the finite support of the wavepacket and on higher spatial derivatives of the progression potential.
+\section{WKB derivation}
+
+The same result follows from a phase-space or WKB reduction. Let
+\begin{equation}
+    \Psi_A(x)=a_A(x)e^{iS_A(x)/\hbar}.
+    \label{eq:WKB-ansatz}
+\end{equation}
+At leading order, the nonrelativistic Hamilton-Jacobi equation is
+\begin{equation}
+    \partial_t S_A + \frac{(\nabla S_A)^2}{2\MbarA}+\MbarA\PhiPi=0.
+    \label{eq:HJ}
+\end{equation}
+The associated classical Hamiltonian is
+\begin{equation}
+    H_A(\bm x,\bm p)=\frac{\bm p^2}{2\MbarA}+\MbarA\PhiPi(\bm x).
+    \label{eq:classical-H}
+\end{equation}
+Hamilton's equations give
+\begin{equation}
+    \dot{\bm x}=\frac{\partial H_A}{\partial \bm p}=\frac{\bm p}{\MbarA},
+    \label{eq:hamilton-x}
+\end{equation}
+\begin{equation}
+    \dot{\bm p}=-\frac{\partial H_A}{\partial \bm x}=-\MbarA\nabla\PhiPi.
+    \label{eq:hamilton-p}
+\end{equation}
+Combining these equations gives
+\begin{equation}
+    \ddot{\bm x}=-\nabla\PhiPi.
+    \label{eq:WKB-accel}
+\end{equation}
+The WKB derivation emphasizes that the equivalence-principle result arises from phase loading. The same progression-dependent factor that changes the local matter phase appears in both the potential term and the inertial normalization.
+\section{Wavefunction support across a progression gradient}
+
+The preceding derivation also clarifies how an extended wavefunction samples a gradient of \(\PiF\). Expand the potential about the packet center:
+\begin{equation}
+    \PhiPi(\bm x)=\PhiPi(\bm X)
+    +(x-X)^i\partial_i\PhiPi(\bm X)
+    +\frac{1}{2}(x-X)^i(x-X)^j\partial_i\partial_j\PhiPi(\bm X)+\cdots.
+    \label{eq:potential-expansion}
+\end{equation}
+The constant term changes the overall phase. The linear term gives the force on the packet center,
+\begin{equation}
+    \ddot X^i=-\partial_i\PhiPi.
+    \label{eq:linear-force}
+\end{equation}
+The quadratic term produces tidal distortion, spreading, or shear:
+\begin{equation}
+    \Delta a^i\simeq -\partial_i\partial_j\PhiPi\,\Delta x^j.
+    \label{eq:tidal-accel}
+\end{equation}
+Thus the proposed mechanism is directly analogous to ordinary gravitational free fall: leading acceleration is universal, while extended objects can experience tidal structure.
+\section{Conservation hierarchy and progression-covariant transport}
+\label{sec:conservation-hierarchy}
+
+The framework contains one fundamental closed-system conservation statement.  For the complete dynamical action, diffeomorphism invariance gives
+\begin{equation}
+    \boxed{\nabla_\mu T_{\rm total}^{\mu}{}_{\nu}=0}
+    \label{eq:fundamental-total-conservation}
+\end{equation}
+after all field equations are imposed.  Its temporal projection is the total energy balance relative to a chosen foliation, and its spatial projections are total momentum balance.  Equation~\eqref{eq:fundamental-total-conservation} is not tied to a preferred coordinate time; coordinate time remains a parametrization, while the dynamical clock field specifies the operational local standard used to compare physical rates.
+
+A weighted current law has a different status.  For a specified current \(J^\mu\) of progression weight \(q\), define the progression-covariant divergence
+\begin{equation}
+    D_\mu^{(q)}J^\mu
+    \equiv
+    \nabla_\mu J^\mu
+    +qJ^\mu\nabla_\mu\thetaP
+    =\PiF^{-q}\nabla_\mu\left(\PiF^qJ^\mu\right).
+    \label{eq:progression-covariant-divergence}
+\end{equation}
+The weighted transport equation is
+\begin{equation}
+    \boxed{D_\mu^{(q)}J^\mu=0}
+    \qquad\Longleftrightarrow\qquad
+    \nabla_\mu\left(\PiF^qJ^\mu\right)=0.
+    \label{eq:weighted-Jpi-normalized}
+\end{equation}
+When the boundary flux vanishes, it defines the hypersurface charge
+\begin{equation}
+    Q_{\rm w}[\Sigma]
+    =\int_\Sigma \dd\Sigma_\mu\,\PiF^qJ^\mu .
+    \label{eq:weighted-hypersurface-charge}
+\end{equation}
+This charge may represent particle number, phase flow, wave action, or another explicitly identified transport quantity.  It should not be called a separately conserved total energy unless its relation to the Noether stress tensor and the clock-defined Hamiltonian has been derived.
+
+For the derivative response current \(\JPi^\mu\), Eq.~\eqref{eq:weighted-Jpi-normalized} is equivalently
+\begin{equation}
+    \nabla_\mu\JPi^\mu
+    =-q\JPi^\mu\nabla_\mu\thetaP.
+    \label{eq:div-Jpi-normalized}
+\end{equation}
+The unweighted current therefore exchanges the transported quantity with the progression background.  In a closed theory that exchange must be represented by the progression, clock, or other loaded sectors so that Eq.~\eqref{eq:fundamental-total-conservation} continues to hold.
+
+\begin{proposition}[No independent double conservation]
+Suppose the same nonzero current is required to satisfy both \(\nabla_\mu J^\mu=0\) and \(\nabla_\mu(\PiF^qJ^\mu)=0\) in a region with nonuniform \(\thetaP\).  Then
+\begin{equation}
+    qJ^\mu\nabla_\mu\thetaP=0.
+    \label{eq:double-conservation-constraint}
+\end{equation}
+Consequently the two laws are compatible only when \(q=0\), the progression field is constant along the flow, or the current is tangent to constant-\(\thetaP\) hypersurfaces.  They must not be imposed as independent generic conservation laws for the same physical quantity.
+\end{proposition}
+
+The full static source remains the Euler--Lagrange response
+\begin{equation}
+    \mathcal S_\Pi
+    =\frac{\partial\Lmat}{\partial\thetaP}
+    -\nabla_\mu\left(
+      \frac{\partial\Lmat}{\partial(\nabla_\mu\thetaP)}
+    \right),
+    \qquad
+    \rho_\Pi^{\rm act}=-\mathcal S_\Pi .
+    \label{eq:weighted-full-source-repeat}
+\end{equation}
+Only in a special derivative-only model, with no direct \(\thetaP\) loading, does the source reduce to a term proportional to \(\nabla_\mu\JPi^\mu\).  Ordinary static matter in the present closure may source \(\PiF\) through direct phase loading even when the transport current has approximately vanishing divergence.
+
+The logical hierarchy is therefore
+\begin{equation}
+\begin{aligned}
+    &\text{one total action}
+    \longrightarrow \nabla_\mu T_{\rm total}^{\mu\nu}=0,\\
+    &\text{sector symmetry or transport equation}
+    \longrightarrow D_\mu^{(q)}J^\mu=0,\\
+    &\text{variational phase loading}
+    \longrightarrow \rho_\Pi^{\rm act}
+    \longrightarrow \thetaP
+    \longrightarrow \ddot{\bm X}=-\nabla\PhiPi .
+\end{aligned}
+\label{eq:logic-chain-normalized}
+\end{equation}
+Thus weighted conservation is subordinate to and compatible with the total Noether balance.  It does not by itself determine the static source, the on-shell composite charge, or the scaling of a bound-state Hamiltonian with \(\thetaP\).
+\section{Microscopic constituents and emergent collective loading}
+\label{sec:higgs-shared-loading}
+
+The body-level condition \(Q_{\Pi,A}^{\rm pass}=M_A^{\rm in}\) is an infrared statement about a complete relaxed composite.  It does not require the low-energy force to be represented as the sum of separately accelerated Higgs, QCD, electromagnetic, binding, and kinetic components.  Those sectors determine the on-shell energy and therefore the inertial normalization, while the center-of-energy coordinate carries one collective coupling.
+
+The Higgs/Yukawa sector remains a useful elementary example.  In the broken phase,
+\begin{equation}
+    m_f=\frac{y_fv}{\sqrt2},
+    \label{eq:fermion-mass-normalized}
+\end{equation}
+and one possible microscopic realization has
+\begin{equation}
+    v(\thetaP)=v_0e^{\thetaP},
+    \qquad
+    m_f(\thetaP)=m_{f0}e^{\thetaP}.
+    \label{eq:normalized-higgs-loading}
+\end{equation}
+This example shows how an elementary phase scale can inherit the progression standard.  It is not by itself the equivalence-principle proof, because ordinary composite masses are dominated by dynamically generated and binding contributions.
+
+The required matching condition is instead
+\begin{equation}
+    \boxed{
+    \frac{1}{c_0^2}
+    \frac{\dd E_A^{\rm on\mbox{-}shell}}{\dd\thetaP}
+    =M_A^{\rm in}}
+    \qquad\Longleftrightarrow\qquad
+    Q_{\Pi,A}^{\rm pass}=M_A^{\rm in}.
+    \label{eq:normalized-full-inertial-loading}
+\end{equation}
+The total derivative includes the response of the equilibrium binding configuration.  Consequently an isolated partial derivative of one sector's Lagrangian at fixed fields need not equal that sector's share of the composite passive charge.  The observable equivalence-principle quantity is the response of the complete on-shell body.
+
+For environmental sourcing, the local variational density may reduce in a progression-adapted frame to an invariant energy-density contraction,
+\begin{equation}
+    \rho_\Pi^{\rm act}\sim T_{\rm env}^{\mu\nu}u_\mu u_\nu
+    +\text{pressure, field, and interaction terms},
+    \label{eq:normalized-theta-response-energy-density}
+\end{equation}
+while the derivative response current, when present, is a transport object of the form
+\begin{equation}
+    \JPi^\mu\sim -T_{\rm env}^{\mu\nu}u_\nu .
+    \label{eq:normalized-stress-current-sign}
+\end{equation}
+The active source and passive collective response may have different intermediate decompositions, but they must descend from the same total variational action.  This common origin is required for reciprocal exchange, momentum conservation, and the absence of self-acceleration.
+\section{Collective progression matching condition}
+\label{sec:matching-condition}
+
+The present EFT does not specify a microscopic local transformation law for all matter, clock, electromagnetic, and renormalization-scale variables.  We therefore do not claim an established Ward identity.  The necessary low-energy target is instead a renormalized on-shell matching condition for the complete one-particle-irreducible functional.  Denote by \(\Psi_A^\star(\thetaP)\) the set of internal matter, gauge, binding, and boundary fields satisfying their equations of motion in a slowly varying background.  The composite effective action is
+\begin{equation}
+    \Gamma_A^{\rm coll}[X_A;\thetaP]
+    \equiv
+    \Gamma[\Psi_A^\star(\thetaP),X_A;\thetaP].
+    \label{eq:collective-effective-action}
+\end{equation}
+The renormalized matching target is
+\begin{equation}
+    \Gamma_A^{\rm coll}
+    =-M_{A0}^{\rm in}c_0^2\int e^{\thetaP(X_A)}\,\dd\tau_0
+    +O(\partial\thetaP,\Lambda_\Pi^{-1}),
+    \label{eq:normalized-master-matching}
+\end{equation}
+which implies
+\begin{equation}
+    Q_{\Pi,A}^{{\rm pass},\,\rm ren}
+    =M_A^{{\rm in},\,\rm ren},
+    \qquad
+    \frac{Q_{\Pi,A}^{{\rm pass},\,\rm ren}}
+    {M_A^{{\rm in},\,\rm ren}}=1,
+    \label{eq:normalized-matching-EP-protected}
+\end{equation}
+up to finite-size, gradient, nonlocal, nonequilibrium, and symmetry-breaking corrections,
+\begin{equation}
+    \frac{Q_{\Pi,A}^{{\rm pass},\,\rm ren}}
+    {M_A^{{\rm in},\,\rm ren}}
+    =1
+    +O\!\left(\frac{R_A^2}{L_\Pi^2}\right)
+    +O\!\left(\frac{E^2}{\Lambda_\Pi^2}\right)
+    +\Delta_{\rm nonuniv}.
+    \label{eq:normalized-renormalized-ratio-condition}
+\end{equation}
+A nonuniversal correction is one that changes the emergent worldline coefficient differently for bodies with different internal composition.  An eventual microscopic symmetry could protect this matching condition, but its transformation law and anomaly structure must be supplied before the term ``Ward identity'' is justified.
+
+The matching condition must also be compatible with active and passive variations of the same total action.  With the clock, matter, and electromagnetic sectors included in \(S_{\rm load}\), diffeomorphism invariance requires
+\begin{equation}
+    \nabla_\mu
+    \left(T_{\rm load}^{\mu\nu}+T_\Pi^{\mu\nu}\right)=0,
+    \qquad
+    T_{\rm load}^{\mu\nu}
+    =T_{\rm matter}^{\mu\nu}+T_{\rm EM}^{\mu\nu}+T_{\rm clock}^{\mu\nu}+\cdots .
+    \label{eq:total-momentum-conservation}
+\end{equation}
+The sectors exchange equal and opposite four-force density through the progression gradient.  A model in which environmental components source \(\thetaP\) but the collective body responds through an unrelated phenomenological force would not satisfy this requirement.
+
+The same language separates active progression sources from an assumed inert homogeneous vacuum offset.  A stationary offset may be required to satisfy
+\begin{equation}
+    \frac{\delta\Gamma_{\rm vac}^{\rm offset}}{\delta\thetaP}=0,
+    \label{eq:normalized-vacuum-neutrality-matching}
+\end{equation}
+whereas evolving condensates or transitions may enter the active source.  This is a source-sector matching assumption, not a solution of the cosmological-constant problem.
+\section{Mediator-free closure and progression exchange}
+\label{sec:microscopic-closure}
+
+The closure problem has two related parts.  A relaxed test body must acquire one universal collective center-of-energy coupling, and an environment must generate the same progression background through the variation of a common action.  No additional mediator is required for the leading source: direct variation of the collective worldline action is already linear in the complete body energy.  Environmental density, pressure, co-motion, and finite-gradient effects are organized as terms in the effective response of the loaded sectors rather than as a second source mechanism.
+
+\subsection{Shared total action}
+
+Introduce an auxiliary background metric \(g_{\mu\nu}\) to define Hilbert stress tensors, setting it to the fixed laboratory background after variation.  The mediator-free action is
+\begin{equation}
+    S_{\rm tot}
+    =S_\Pi[\thetaP,g]
+    +S_{\rm clock}[\mathcal T_\Pi,\thetaP,g]
+    +S_{\rm env}[\Psi,A_\mu,\thetaP,\mathcal T_\Pi,g],
+    \label{eq:mediator-free-total-action}
+\end{equation}
+where \(S_{\rm env}\) denotes the loaded description at a chosen EFT resolution.  At microscopic resolution it contains ordinary matter, binding fields, and electromagnetism; after those degrees of freedom are integrated out, it is replaced by matched collective worldline actions.  The microscopic and collective descriptions are alternative resolutions for the same body and must not be added simultaneously.  The clock field defines a physical progression-adapted timelike direction when such a direction is needed, but it does not mediate the leading force.
+
+Write the first-derivative progression action as
+\begin{equation}
+    S_\Pi=\int\dd^4x\sqrt{-g}\,P_\Pi(\thetaP,X),
+    \qquad
+    X=-\frac12\nabla_\mu\thetaP\nabla^\mu\thetaP .
+    \label{eq:general-progression-action}
+\end{equation}
+The first-derivative low-energy truncation is
+\begin{equation}
+    P_\Pi(\thetaP,X)=f_\Pi^2X-U(\thetaP)
+    +c_4\frac{f_\Pi^4}{\Lambda_\Pi^4}X^2+\cdots .
+    \label{eq:canonical-progression-P}
+\end{equation}
+Here \(\thetaP\) is dimensionless and \(X\) has mass dimension two in natural units, so the displayed coefficient gives every term Lagrangian-density dimension four.  Higher-derivative operators, for example \(c_{\Box}f_\Pi^2(\Box\thetaP)^2/\Lambda_\Pi^2\), may be included separately, but they are not part of the first-derivative stress-tensor derivation below.
+The sign-normalized active loading density of all non-progression sectors is
+\begin{equation}
+    \rho_\Pi^{\rm act}
+    \equiv
+    -\frac{1}{\sqrt{-g}}
+    \frac{\delta(S_{\rm clock}+S_{\rm env})}{\delta\thetaP}.
+    \label{eq:rho-active-total}
+\end{equation}
+The progression equation is therefore
+\begin{equation}
+    \nabla_\mu\!\left(P_{\Pi,X}\nabla^\mu\thetaP\right)
+    +P_{\Pi,\theta}
+    =\rho_\Pi^{\rm act}.
+    \label{eq:general-progression-eom}
+\end{equation}
+For the canonical truncation,
+\begin{equation}
+    f_\Pi^2\Box\thetaP-U'(\thetaP)=\rho_\Pi^{\rm act}.
+    \label{eq:canonical-progression-eom}
+\end{equation}
+
+\subsection{Representative dynamical clock sector}
+
+A covariant scalar can define the progression-adapted direction without making the construction frame-free.  A representative clock action is
+\begin{equation}
+    S_{\rm clock}
+    =\int\dd^4x\sqrt{-g}\,M_{\mathcal T}^4
+      F_{\mathcal T}(Y,\thetaP),
+    \qquad
+    Y=-\frac{\nabla_\mu\mathcal T_\Pi\nabla^\mu\mathcal T_\Pi}
+            {M_{\mathcal T}^4},
+    \label{eq:representative-clock-action}
+\end{equation}
+where the normalization of \(\mathcal T_\Pi\) may be changed together with \(M_{\mathcal T}\).  A timelike background has \(Y=Y_0>0\) and defines
+\begin{equation}
+    u_\mu=-\frac{\nabla_\mu\mathcal T_\Pi}
+    {\sqrt{-\nabla_\alpha\mathcal T_\Pi\nabla^\alpha\mathcal T_\Pi}}.
+\end{equation}
+The clock stress tensor and active loading are
+\begin{equation}
+    T_{\rm clock}^{\mu\nu}
+    =2F_{\mathcal T,Y}\nabla^\mu\mathcal T_\Pi
+      \nabla^\nu\mathcal T_\Pi
+      +M_{\mathcal T}^4F_{\mathcal T}g^{\mu\nu},
+    \qquad
+    \rho_{\Pi,{\rm clock}}^{\rm act}
+    =-M_{\mathcal T}^4F_{\mathcal T,\theta}.
+    \label{eq:clock-stress-source}
+\end{equation}
+For a standard first-derivative clock background, absence of a ghost and of a gradient instability requires
+\begin{equation}
+    F_{\mathcal T,Y}>0,
+    \qquad
+    F_{\mathcal T,Y}+2YF_{\mathcal T,YY}>0,
+    \qquad
+    c_{\mathcal T}^2=
+    \frac{F_{\mathcal T,Y}}
+    {F_{\mathcal T,Y}+2YF_{\mathcal T,YY}}>0.
+    \label{eq:clock-stability}
+\end{equation}
+This representative action is not unique.  It makes explicit that the theory is generally covariant while containing a physical preferred timelike direction whose perturbations and preferred-frame effects must be constrained \cite{JacobsonMattingly2001,ArmendarizPicon2001}.
+
+\subsection{Collective worldline source and passive response}
+
+For a relaxed localized body,
+\begin{equation}
+    S_A^{\rm eff}
+    =-M_{A0}^{\rm in}c_0^2
+    \int e^{\thetaP(X_A)}\,\dd\tau_0 .
+    \label{eq:normalized-classical-target-action}
+\end{equation}
+Its contribution to the sign-normalized active loading density is
+\begin{equation}
+    \rho_{\Pi,A}^{\rm act}(x)
+    =M_{A0}^{\rm in}c_0^2
+    \int e^{\thetaP(X_A)}
+    \frac{\delta^{(4)}(x-X_A)}{\sqrt{-g}}\,\dd\tau_0,
+    \label{eq:worldline-active-source}
+\end{equation}
+while its passive collective charge is
+\begin{equation}
+    Q_{\Pi,A}^{\rm pass}
+    =\frac{1}{c_0^2}
+    \frac{\dd E_A^{\rm on\mbox{-}shell}}{\dd\thetaP}
+    =M_A^{\rm in}
+    \label{eq:normalized-classical-target-charge}
+\end{equation}
+when the collective matching condition holds.  The derivative is taken at fixed conserved particle numbers, total charge, entropy, angular momentum, and asymptotic boundary conditions, after all internal fields, dimensions, and stresses have relaxed to their \(\thetaP\)-dependent stationary values.  The active and passive roles are thus two reductions of one action, not independently fitted couplings.
+
+\subsection{Covariant environmental reduction}
+
+Let the progression clock define
+\begin{equation}
+    \tau_\mu=\nabla_\mu\mathcal T_\Pi,
+    \qquad
+    X_\Pi=-\tau_\mu\tau^\mu,
+    \qquad
+    u_\mu=-\frac{\tau_\mu}{\sqrt{X_\Pi}},
+    \qquad
+    h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu .
+    \label{eq:progression-clock-frame}
+\end{equation}
+For a loaded stress tensor \(T_{\rm load}^{\mu\nu}\), define
+\begin{equation}
+    \varepsilon=T_{\rm load}^{\mu\nu}u_\mu u_\nu,
+    \qquad
+    3p=T_{\rm load}^{\mu\nu}h_{\mu\nu}.
+    \label{eq:environment-energy-pressure}
+\end{equation}
+At a chosen EFT resolution, a local low-energy matching of the total variational source may be organized as
+\begin{equation}
+\begin{aligned}
+    \rho_\Pi^{\rm act}
+    ={}&A(\thetaP)\,\varepsilon
+       +3B(\thetaP)\,p
+       +\frac{c_1}{\Lambda_I^4}T_{\mu\nu}T^{\mu\nu}
+       +\frac{c_2}{\Lambda_I^4}\varepsilon^2 \\
+      &+\frac{d_1}{\Lambda_\nabla^2}\Box\varepsilon
+       +\rho_{\rm field}^{\rm nonminimal}
+       +\cdots .
+    \label{eq:source-response-expansion}
+\end{aligned}
+\end{equation}
+This equation is a derivative and density expansion of the single variation in Eq.~\eqref{eq:rho-active-total}; it is not an additional source to be added on top of the microscopic action.  The cold weak-field normalization is
+\begin{equation}
+    A(0)=1,
+    \qquad
+    |p|\ll\varepsilon,
+    \qquad
+    \rho_\Pi^{\rm act}=\rho_m c_0^2+\text{controlled corrections}.
+    \label{eq:cold-source-normalization}
+\end{equation}
+Pressure, relative-flow, overlap, and finite-gradient terms may then be constrained independently.  For an electromagnetic field at the reference background, tracelessness gives \(3p=T^{\mu\nu}h_{\mu\nu}=\varepsilon\), so the minimal optical response \(\rho_{\Pi,{\rm EM}}^{\rm act}=2u_{\rm EM}\) can be written as \(\varepsilon+3p\), corresponding locally to \(A_{\rm EM}(0)=B_{\rm EM}(0)=1\).  Mechanical boundary stresses must be included before applying this statement to a complete cavity or bound composite.  This formulation avoids double counting: each matter or field sector contributes through its actual \(\thetaP\)-dependence in \(S_{\rm env}\) exactly once.
+
+\subsection{Progression stress tensor}
+
+Within the first-derivative \(P_\Pi(\thetaP,X)\) truncation of Eq.~\eqref{eq:general-progression-action}, the complete Hilbert stress tensor is
+\begin{equation}
+    \boxed{
+    T_\Pi^{\mu\nu}
+    =P_{\Pi,X}\nabla^\mu\thetaP\nabla^\nu\thetaP
+    +P_\Pi g^{\mu\nu}}
+    \label{eq:full-progression-stress}
+\end{equation}
+and obeys the off-shell identity
+\begin{equation}
+    \nabla_\mu T_\Pi^{\mu}{}_{\nu}
+    =\left[
+      \nabla_\mu(P_{\Pi,X}\nabla^\mu\thetaP)
+      +P_{\Pi,\theta}
+      \right]\nabla_\nu\thetaP .
+    \label{eq:progression-stress-divergence-offshell}
+\end{equation}
+Using Eq.~\eqref{eq:general-progression-eom},
+\begin{equation}
+    \boxed{
+    \nabla_\mu T_\Pi^{\mu}{}_{\nu}
+    =+\rho_\Pi^{\rm act}\nabla_\nu\thetaP .}
+    \label{eq:progression-stress-divergence}
+\end{equation}
+Diffeomorphism invariance of the loaded sectors gives, after their equations of motion are imposed,
+\begin{equation}
+    \boxed{
+    \nabla_\mu T_{\rm load}^{\mu}{}_{\nu}
+    =-\rho_\Pi^{\rm act}\nabla_\nu\thetaP .}
+    \label{eq:loaded-stress-divergence}
+\end{equation}
+Consequently,
+\begin{equation}
+    \boxed{
+    \nabla_\mu\left(T_\Pi^{\mu}{}_{\nu}
+    +T_{\rm load}^{\mu}{}_{\nu}\right)=0 .}
+    \label{eq:exact-total-conservation}
+\end{equation}
+Equation~\eqref{eq:exact-total-conservation} is the fundamental closed-system conservation law within this EFT resolution.  Any weighted current equation used elsewhere in the paper must be derivable from the same action or from an internal sector symmetry and must not be interpreted as an independently conserved total energy.  We call the equal-and-opposite relation in Eqs.~\eqref{eq:progression-stress-divergence} and \eqref{eq:loaded-stress-divergence} the \emph{progression exchange identity}.  It is a Noether balance consequence of the shared diffeomorphism-invariant action, not a new discrete symmetry.  The words ``inward'' and ``outward'' apply only to the static approximately spherical realization; the covariant identity itself also covers time-dependent and nonspherical exchange.
+
+\begin{theorem}[Progression exchange identity]
+For the mediator-free action \eqref{eq:mediator-free-total-action}, assume that the progression, clock, matter, and field equations are satisfied and that the active loading density is defined by Eq.~\eqref{eq:rho-active-total}.  The four-force density on the loaded sectors is
+\begin{equation}
+    f_{{\rm load},\nu}
+    =-\rho_\Pi^{\rm act}\nabla_\nu\thetaP,
+    \label{eq:loaded-force-density}
+\end{equation}
+and the progression field carries the equal and opposite exchange,
+\begin{equation}
+    f_{\Pi,\nu}
+    =+\rho_\Pi^{\rm act}\nabla_\nu\thetaP.
+    \label{eq:progression-force-density}
+\end{equation}
+In a static spherical configuration, inward acceleration of matter is paired with outward progression-field stress or momentum flow.  More generally, the equations express equal-and-opposite covariant four-momentum exchange.  The pairing is a consequence of total conservation and does not represent a second repulsive force acting on the same test body.
+\end{theorem}
+
+\subsection{Static weak-field stress and Newtonian matching}
+
+For the canonical action and a static profile,
+\begin{equation}
+    T_\Pi^{ij}
+    =f_\Pi^2\left(
+      \partial^i\thetaP\partial^j\thetaP
+      -\frac12\delta^{ij}|\nabla\thetaP|^2
+      \right)-\delta^{ij}U(\thetaP),
+    \label{eq:static-progression-stress}
+\end{equation}
+while
+\begin{equation}
+    \partial_jT_\Pi^{ji}
+    =\rho_\Pi^{\rm act}\,\partial^i\thetaP
+    =-f_{\rm load}^i .
+    \label{eq:static-stress-balance}
+\end{equation}
+For cold matter and a negligible local potential derivative,
+\begin{equation}
+    f_\Pi^2\nabla^2\thetaP=\rho_m c_0^2.
+    \label{eq:matter-scalar-poisson-match}
+\end{equation}
+The Newtonian target
+\begin{equation}
+    \thetaP\simeq-\frac{GM}{rc_0^2},
+    \qquad
+    \nabla^2\thetaP=\frac{4\pi G}{c_0^2}\rho_m
+    \label{eq:matter-theta-poisson-target}
+\end{equation}
+therefore fixes
+\begin{equation}
+    \boxed{f_\Pi^2=\frac{c_0^4}{4\pi G}}.
+    \label{eq:matter-newtonian-matching-condition}
+\end{equation}
+The loaded matter force density is
+\begin{equation}
+    \bm f_{\rm load}
+    =-\rho_m c_0^2\nabla\thetaP
+    =-\rho_m\nabla\PhiPi,
+    \label{eq:newtonian-loaded-force}
+\end{equation}
+which points inward for the spherical solution.  In an orthonormal spherical basis outside the source, with \(U\simeq0\),
+\begin{equation}
+    T_\Pi^{\hat r\hat r}
+    =+\frac{f_\Pi^2}{2}\left(\frac{\dd\thetaP}{\dd r}\right)^2,
+    \qquad
+    T_\Pi^{\hat\vartheta\hat\vartheta}
+    =T_\Pi^{\hat\varphi\hat\varphi}
+    =-\frac{f_\Pi^2}{2}\left(\frac{\dd\thetaP}{\dd r}\right)^2.
+    \label{eq:radial-transverse-stress}
+\end{equation}
+The field therefore has positive radial stress and transverse tension.  Its divergence vanishes in the source-free exterior and supplies the compensating outward exchange where loaded matter is present.  This local stress balance should not be identified by itself with homogeneous cosmological expansion.
+
+\subsection{Optical interface}
+
+The companion optical paper takes the same matter-normalized \(\thetaP\) as input and realizes
+\begin{equation}
+    n_{\rm eff}=e^{-2\thetaP}=\PiF^{-2} .
+    \label{eq:matter-optical-interface}
+\end{equation}
+When the electromagnetic background is made dynamical rather than prescribed, its progression response is included once in \(\rho_\Pi^{\rm act}\), and its stress exchange participates in Eq.~\eqref{eq:exact-total-conservation}.
+\section{Composition-dependence diagnostics}
+
+The preceding result depends on universal collective loading.  To parameterize possible violations, write the passive charge of a body as
+\begin{equation}
+    Q_{\Pi,A}^{\rm pass}=M_A^{\rm in}+\delta Q_{\Pi,A}^{\rm pass} .
+    \label{eq:Qpi-nonuniv-normalized}
+\end{equation}
+Then the leading acceleration becomes
+\begin{equation}
+    \ddot{\bm X}_A
+    =-\left[1+\frac{\delta Q_{\Pi,A}^{\rm pass}}{M_A^{\rm in}}\right]\nabla\PhiPi
+    +\text{finite-size and gradient corrections}.
+    \label{eq:nonuniv-accel-normalized}
+\end{equation}
+For two test bodies \(A\) and \(B\), the Eotvos-like fractional differential acceleration is
+\begin{equation}
+    \eta_{AB}\simeq
+    \left|
+    \frac{\delta Q_{\Pi,A}^{\rm pass}}{M_A^{\rm in}}
+    -
+    \frac{\delta Q_{\Pi,B}^{\rm pass}}{M_B^{\rm in}}
+    \right| .
+    \label{eq:eotvos-normalized}
+\end{equation}
+Equivalence-principle experiments therefore constrain departures from universal progression loading \cite{Will2014,Schiff1960}, including composition-dependent shifts of the relaxed worldline coefficient, nonuniversal environmental response coefficients, and radiative violations of the matching condition.
+\section{Quantum effective action and radiative stability}
+
+A quantum treatment should not simply postulate \(\JPi^\mu\). It should derive it by integrating over microscopic matter fields in the presence of \(\thetaP\). Schematically,
+\begin{equation}
+    e^{i\Gamma_{\rm eff}[\thetaP]}
+    =\int \mathcal{D}\psi\,\mathcal{D}H\,
+    \exp\left\{iS_{\rm m}[\psi,H;\thetaP]\right\}.
+    \label{eq:effective-action}
+\end{equation}
+Introduce the canonically normalized field \(\phi=f_\Pi\thetaP\).  A dimensionally consistent schematic effective action has the form
+\begin{equation}
+\begin{aligned}
+    \Gamma_{\rm eff}[\phi]
+    =\int \dd^4x\,\bigg[&
+    -\frac{1}{2}Z_\phi\,\partial_\mu\phi\partial^\mu\phi
+    -V_{\rm eff}(\phi)
+    -\frac{g_\Pi}{\Lambda_\Pi}\JPi^\mu\partial_\mu\phi \\
+    &+\frac{c_{\phi\psi}}{\Lambda_\Pi^3}
+       (\partial\phi)^2\bar\psi\psi
+    +\frac{c_{4}}{\Lambda_\Pi^4}(\partial\phi)^4
+    +\cdots\bigg].
+\end{aligned}
+\label{eq:Gamma-eff-expansion}
+\end{equation}
+
+The central quantum question is whether loop corrections preserve the universal collective worldline structure. The renormalized matching targets of Sec.~\ref{sec:matching-condition} make this precise: the renormalized effective action must preserve the ratio
+\begin{equation}
+    \frac{Q_{\Pi,A}^{{\rm pass},\,\rm ren}}{M_A^{{\rm in},\,\rm ren}}=1
+    \label{eq:matching-universal}
+\end{equation}
+for all ordinary matter sectors, up to finite-size and high-energy corrections. Without such a protection mechanism, radiative corrections will generally generate nonuniversal operators and higher-derivative terms. The theory would then remain a controlled effective field theory below the cutoff \(\Lambda_P\), but not a strict UV-complete matter-sector quantum theory.
+
+This distinction is constructive. The immediate goal is not to prove full UV renormalizability. It is to show that the active source and collective worldline response are both well defined, that their universal low-energy relation is radiatively stable, and that nonuniversal residuals are organized in a controlled operator expansion.
+\section{Minimal microscopic target}
+
+A viable completion should establish the following statements.
+
+First, the total microscopic action should contain a progression variable \(\thetaP=\ln\PiF\) and a well-defined active source,
+\begin{equation}
+    \rho_\Pi^{\rm act}
+    =-
+    \left[
+    \frac{\partial\Lmat}{\partial\thetaP}
+    -\nabla_\mu\left(\frac{\partial\Lmat}{\partial(\nabla_\mu\thetaP)}\right)
+    \right],
+    \label{eq:minimal-active-source}
+\end{equation}
+whose derivative part defines a transport current.
+
+Second, the environmental source should be expressible through covariant energy-density and interaction-density variables.  In a progression-adapted frame these may include \(T^{\mu\nu}u_\mu u_\nu\), pressure and field terms, and higher-order co-motion invariants such as
+\begin{equation}
+    \mathcal I=\sum_{A,B}c_{AB}\frac{T_A^{\mu\nu}T^B_{\mu\nu}}{\Lambda_I^8}.
+    \label{eq:minimal-comotion-source}
+\end{equation}
+The leading weak-field source must reduce linearly to ordinary environmental mass-energy density; overlap invariants may supply controlled corrections.
+
+Third, after internal degrees of freedom are integrated out, every relaxed localized body should have
+\begin{equation}
+    \Gamma_A^{\rm coll}
+    =-M_{A0}^{\rm in}c_0^2\int e^{\thetaP(X_A)}\,\dd\tau_0+\cdots,
+    \qquad
+    Q_{\Pi,A}^{\rm pass}=M_A^{\rm in}.
+    \label{eq:minimal-charge}
+\end{equation}
+No separate passive force law is assigned to each constituent contribution.
+
+Fourth, packet dynamics should reduce to
+\begin{equation}
+    \ddot{\bm X}=-\nabla\PhiPi
+    +O\!\left(\sigma_x^2\nabla^3\PhiPi\right)
+    +O(\epsilon_{\rm nonuniv}),
+    \label{eq:minimal-motion}
+\end{equation}
+where \(\epsilon_{\rm nonuniv}\) denotes composition-dependent corrections to the collective coefficient.
+
+Fifth, any weighted current law should be derived as a progression-covariant subsystem transport identity,
+\begin{equation}
+    D_\mu^{(q)}\JPi^\mu
+    =\PiF^{-q}\nabla_\mu\left(\PiF^q\JPi^\mu\right)=0,
+    \label{eq:minimal-weighted}
+\end{equation}
+while static sourcing is supplied by the full active response.  The transported charge must be identified explicitly and must not be counted as a second conserved total energy.
+
+Sixth, the active source and passive collective response must follow from one diffeomorphism-invariant total action.  Its on-shell Noether identity is the unique closed-system conservation law, so the inward force density on loaded matter is exactly balanced by outward progression-field stress or momentum flow.
+
+Seventh, a microscopic symmetry or matching mechanism should protect the renormalized on-shell ratio,
+\begin{equation}
+    \frac{Q_{\Pi,A}^{{\rm pass},\,\rm ren}}
+    {M_A^{{\rm in},\,\rm ren}}=1+\text{controlled corrections}.
+    \label{eq:minimal-matching}
+\end{equation}
+
+These statements define the microscopic burden without requiring an artificial decomposition of the body-level force into separate Higgs, QCD, binding, kinetic, and electromagnetic forces.
+\section{Discussion}
+
+The collective-coupling formulation gives a more economical interpretation of the equivalence principle.  A body does not accelerate because every internal contribution to its mass is assigned a separate progression force.  Rather, the environment establishes a progression gradient through its complete interaction density, while the test body responds through one effective center-of-energy coupling.  The internal sectors determine the body's total on-shell energy and therefore its inertia; after they are integrated out, the same total energy must normalize the collective worldline coefficient.
+
+This distinction preserves the mass cancellation in the packet equations while avoiding an unnecessarily literal sector-by-sector force picture.  Across the support of a wavepacket, the constant part of \(\thetaP\) changes the overall phase, the linear part redirects the packet center, and higher derivatives produce tidal distortion.  The direction of motion is therefore encoded in the gradient of the collective potential \(\PhiPi\), not in independent constituent forces.
+
+The environmental source is now defined directly by the total variational response.  In a static progression-adapted frame it may reduce approximately to mass-energy density, while pressure, field terms, co-motion invariants, and gradients appear as controlled corrections in the response expansion.  No auxiliary mediator or nonzero tensor background is required.  This removes a potential source of double counting and leaves the leading Newtonian coefficient fixed by the collective action itself.
+
+The conservation hierarchy is equally important.  The framework does not postulate one energy conserved with respect to coordinate time and a second energy conserved with respect to progression time.  Coordinate time parametrizes the covariant equations; the clock field defines the local operational standard.  Total stress-energy conservation follows from the common action, while \(\nabla_\mu(\PiF^qJ^\mu)=0\) is permitted only for an identified subsystem transport current.  Weighted transport therefore does not establish universal composite loading and cannot repair an inconsistent \(\thetaP\)-dependence of a bound-state energy.
+
+The main open problem is now sharply stated.  A microscopic calculation must integrate out the internal fields of representative composites and show that the complete on-shell action has the universal coefficient in Eq.~\eqref{eq:normalized-point-action}.  This calculation must include the readjustment of binding fields and boundaries, not merely partial derivatives of isolated sector Lagrangians.  At the same time, the same total action must generate the environmental source and conserve total momentum.  The framework presently targets leading test-body WEP only; the physical clock direction and the distinct optical principal cone mean that local Lorentz invariance, local position invariance, a universal causal geometry, and the strong equivalence principle have not been established.  Post-Newtonian closure also requires self-sourcing by progression-field energy, preferred-frame parameters, perihelion and higher-order delay calculations, radiation, and self-gravitating-body sensitivities.  If the matching and conservation properties hold, the framework has a plausible route to WEP-compatible matter dynamics.  If they fail, composition-dependent free fall or active--passive mismatches will constrain the model.
+
+\section{Conclusion}
+
+We have reformulated progression-loaded matter dynamics in terms of a single collective coupling.  Environmental rest energy, binding energy, kinetic energy, pressure, and field energy contribute to the active interaction density.  They also contribute to the total inertial mass of a localized body.  They are not, however, assigned separate low-energy progression force laws.  Once the internal degrees of freedom are integrated out, the body is described by one center-of-energy action,
+\begin{equation}
+    S_A^{\rm eff}=-M_{A0}^{\rm in}c_0^2\int e^{\thetaP(X_A)}\,\dd\tau_0+\cdots .
+\end{equation}
+The weak-equivalence-principle condition is therefore the emergent relation \(Q_{\Pi,A}^{\rm pass}=M_A^{\rm in}\).  Ehrenfest and WKB reductions then give
+\begin{equation}
+    \ddot{\bm X}=-\nabla\PhiPi
+\end{equation}
+independently of composition at leading order.
+
+The framework now has an explicit conservation hierarchy.  The unique closed-system law is \(\nabla_\mu T_{\rm total}^{\mu\nu}=0\).  Weighted conservation, when present, is the progression-covariant transport equation \(D_\mu^{(q)}J^\mu=0\) for a specified subsystem current and is not an alternative conservation of total energy.  This prevents the coordinate-time and progression-clock descriptions from overconstraining the same dynamics.
+
+This formulation shifts the microscopic burden from proving identical off-shell loading for every mass component to proving a universal on-shell composite worldline coefficient.  It also requires the active environmental source and passive body response to descend from one total action.  The next decisive calculations are therefore composite matching problems: evaluate \(\dd E_A^{\rm on\mbox{-}shell}/\dd\thetaP\) for QCD-dominated matter, nuclear binding, electromagnetic binding, and cavity systems, and verify the progression stress exchange among matter, electromagnetic, clock, and progression sectors.  Only then can the collective progression matching condition be regarded as a genuine protection principle.
+\appendix
+
+\section{Scalar proxy for the WKB reduction}
+
+As a simple proxy, consider a scalar matter field \(\chi\) whose local mass-phase term is progression-loaded through the normalized factor \(e^{\thetaP}\):
+\begin{equation}
+    \mathcal{L}_\chi
+    =-\frac{1}{2}\partial_\mu\chi\partial^\mu\chi
+    -\frac{1}{2}m^2e^{2\thetaP}\chi^2.
+    \label{eq:scalar-proxy}
+\end{equation}
+The wave equation is
+\begin{equation}
+    \left[\Box-m^2e^{2\thetaP}\right]\chi=0.
+    \label{eq:scalar-wave}
+\end{equation}
+Using the WKB ansatz \(\chi=a e^{iS/\hbar}\), the leading Hamilton-Jacobi relation is
+\begin{equation}
+    \partial_\mu S\partial^\mu S + m^2c_0^2 e^{2\thetaP}=0.
+    \label{eq:relativistic-HJ}
+\end{equation}
+In the nonrelativistic limit, write
+\begin{equation}
+    S=-mc_0^2 t+s(t,\bm x).
+    \label{eq:S-nonrel}
+\end{equation}
+Keeping leading terms gives
+\begin{equation}
+    \partial_t s+\frac{(\nabla s)^2}{2m}+\frac{mc_0^2}{2}\left[e^{2\thetaP}-1\right]=0.
+    \label{eq:scalar-nonrel-HJ}
+\end{equation}
+At linear order in the local weak field, \(\tfrac12c_0^2(e^{2\dtheta}-1)=c_0^2\dtheta+O(\dtheta^2)=\PhiPi+O(\dtheta^2)\), so this becomes
+\begin{equation}
+    \partial_t s+\frac{(\nabla s)^2}{2m}+m\PhiPi=0,
+    \label{eq:scalar-HJ-Phi}
+\end{equation}
+which is the Hamilton-Jacobi equation used in the main text. The mass cancels from the corresponding acceleration.
+
+\section{Finite-size correction}
+
+Let \(\rho_A(\bm x)\) be the normalized probability density of a packet centered at \(\bm X\). The mean force is
+\begin{equation}
+    \bm F_A=-\MbarA\int \dd^3x\,\rho_A(\bm x)\nabla\PhiPi(\bm x).
+    \label{eq:mean-force}
+\end{equation}
+Expanding about \(\bm X\),
+\begin{equation}
+    F_A^i=-\MbarA\left[\partial_i\PhiPi(\bm X)
+    +\frac{1}{2}\vev{\Delta x^j\Delta x^k}\partial_i\partial_j\partial_k\PhiPi(\bm X)+\cdots\right].
+    \label{eq:finite-force}
+\end{equation}
+For a symmetric packet, \(\vev{\Delta x^j}=0\), so the first finite-size correction enters through the third derivative of \(\PhiPi\) weighted by the packet's quadrupole moment. This gives the correction scale used in Eq.~\eqref{eq:universal-acceleration}.
+
+\begin{thebibliography}{99}
+
+\bibitem{Will2014}
+C.~M. Will,
+\emph{The Confrontation between General Relativity and Experiment},
+Living Reviews in Relativity \textbf{17}, 4 (2014).
+
+\bibitem{Schiff1960}
+L.~I. Schiff,
+\emph{On Experimental Tests of the General Theory of Relativity},
+American Journal of Physics \textbf{28}, 340 (1960).
+
+\bibitem{PoundRebka1959}
+R.~V. Pound and G.~A. Rebka Jr.,
+\emph{Gravitational Red-Shift in Nuclear Resonance},
+Physical Review Letters \textbf{3}, 439 (1959).
+
+\bibitem{KasevichChu1991}
+M.~Kasevich and S.~Chu,
+\emph{Atomic Interferometry Using Stimulated Raman Transitions},
+Physical Review Letters \textbf{67}, 181 (1991).
+
+\bibitem{Dimopoulos2007}
+S.~Dimopoulos, P.~W. Graham, J.~M. Hogan, and M.~A. Kasevich,
+\emph{Testing General Relativity with Atom Interferometry},
+Physical Review Letters \textbf{98}, 111102 (2007).
+
+\bibitem{BransDicke1961}
+C.~Brans and R.~H. Dicke,
+\emph{Mach's Principle and a Relativistic Theory of Gravitation},
+Physical Review \textbf{124}, 925--935 (1961).
+
+\bibitem{JacobsonMattingly2001}
+T.~Jacobson and D.~Mattingly,
+\emph{Gravity with a Dynamical Preferred Frame},
+Physical Review D \textbf{64}, 024028 (2001).
+
+\bibitem{ArmendarizPicon2001}
+C.~Armendariz-Picon, V.~Mukhanov, and P.~J. Steinhardt,
+\emph{Essentials of k-Essence},
+Physical Review D \textbf{63}, 103510 (2001).
+
+\bibitem{Bekenstein2004}
+J.~D. Bekenstein,
+\emph{Relativistic Gravitation Theory for the Modified Newtonian Dynamics Paradigm},
+Physical Review D \textbf{70}, 083509 (2004).
+
+\bibitem{JordanOpticsCompanion}
+S.~Jordan,
+\emph{Progression Optics from a Gauge-Invariant Constitutive Completion},
+companion manuscript (2026).
+
+\end{thebibliography}
+
+\end{document}
