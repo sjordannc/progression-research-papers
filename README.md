@@ -4,6 +4,7 @@ This repository collects research manuscripts. They are shared as drafts for rea
 
 | Manuscript | Files | Scope |
 | --- | --- | --- |
+| **Relational Clock Transport Across Interaction Change: A Connected Jacobi Model** (submission package, September 2026) | [PDF](relational-clock-transport/manuscript.pdf) · [Source, figures, and code](relational-clock-transport/README.md) | A connected relational Jacobi model of clock transport, with reproducible figures and numerical checks; prepared for submission to Foundations of Physics. |
 | **Progression Geometry as a Complete Gravitational Field** (July 2026) | [PDF](progression_geometry.pdf) · [LaTeX source](progression_geometry.tex) | Main progression-geometry theory, including the Einstein benchmark, infrared deformation, stability, post-Newtonian limit, and FLRW cosmology. This is the latest version in this collection. |
 | **From Relational Progression to the Hypersurface-Deformation Algebra** (August 2026) | [PDF](progression_weighted_conservation.pdf) · [LaTeX source](progression_weighted_conservation.tex) | A conditional route from relational clock progression to Einstein geometrodynamics and shared matter characteristic cones. |
 | **Collective Phase Loading and Progression Exchange in Progression-Weighted Matter Dynamics** (July 2026) | [PDF](collective_phase_loading.pdf) · [LaTeX source](collective_phase_loading.tex) | Matter-sector companion referenced by the interaction-complexity paper; develops collective loading, progression exchange, and conservation identities. |

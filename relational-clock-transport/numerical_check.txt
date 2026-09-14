@@ -1,0 +1,12 @@
+Verification run: 14 September 2026
+Python 3.12; NumPy 1.26.4; SciPy 1.13.1; Matplotlib 3.9.0
+
+Conserved charges (p_z, pi_1, pi_2):
+  1.5177135196, 2.2376786428, 1.6581368953
+Endpoint transport ratio Xi_+-: 1.1111111111
+Fixed-endpoint finite-difference derivative: 0.3538851790
+Direct sensitivity integral: 0.3538851789
+Absolute sensitivity discrepancy: 1.838e-10
+
+Both figures regenerated as PDF and EPS. See README.md for the
+verification environment's temporary-directory workaround.
