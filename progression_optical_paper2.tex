@@ -1,0 +1,856 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{natbib}
+\usepackage{tcolorbox}
+\usepackage{xspace}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{amsthm}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}[lemma]{Corollary}
+\geometry{margin=1in}
+
+
+
+\usepackage{xcolor}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+
+% ---- Auxiliary-metric terminology helpers ----
+\newcommand{\auxmetric}{auxiliary metric\xspace}
+\newcommand{\auxline}{auxiliary line element\xspace}
+\newcommand{\Auxline}{Auxiliary line element\xspace}
+% Scalar progression field (use phi per latest preference)
+\newcommand{\prog}{\Pi}
+
+
+\title{Progression Optics from a Gauge-Invariant Constitutive Completion}
+\author{Scott A. Jordan\\
+Independent researcher, Fayetteville, NC, USA\\
+\texttt{scott@simplelogicsolutions.com}\\
+ORCID: \href{https://orcid.org/0009-0005-7444-3386}{0009-0005-7444-3386}}
+\date{July 10, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We develop a fixed-background electromagnetic completion of the progression-optics sector used in progression-weighted conservation.  The scalar progression field is written as \(\Pi=e^{\theta}\), where \(\theta\) is fixed by the companion mediator-free matter paper through the sign-normalized active loading density \(\rho_\Pi^{\rm act}=-(1/\sqrt{-g})\,\delta S_{\rm load}/\delta\theta\) and a universal collective center-of-energy response.  Internal matter and field-energy components contribute to inertia and active environmental loading, but the weak-equivalence-principle coupling of a localized composite is represented by one emergent worldline coefficient rather than by separate constituent force laws.  In the local weak-field regime the same progression profile that gives \(\Phi_\Pi=c_0^2(e^\theta-1)\simeq c_0^2\theta\) for nonrelativistic matter must reproduce propagation delay and light deflection, selecting the optical target \(n_{\rm eff}=\Pi^{-2}\).
+
+We show that this ray-level rule follows from a local \(U(1)\)-gauge-invariant electromagnetic action with progression-dependent constitutive weights.  The isotropic principal symbol fixes \(\varepsilon_r/\mu_r^{-1}=\Pi^{-4}\); the minimal impedance-preserving representative is \(\varepsilon_r=\Pi^{-2}\), \(\mu_r^{-1}=\Pi^2\).  The complete theory has one fundamental closed-system conservation law, \(\nabla_\mu T_{\rm total}^{\mu\nu}=0\).  Weighted number, phase, or wave-action currents are subsystem transport laws derived within that same theory, not independent conservation laws for total energy.  In a complete dynamical theory, the electromagnetic progression response contributes once to \(\rho_\Pi^{\rm act}\).  Its stress-energy exchange with the progression and clock sectors obeys the same Noether exchange identity derived in the matter paper: loaded fields acquire force from the progression gradient while the progression field carries the equal and opposite stress or momentum flow.  In static spherical settings this is interpreted as inward loaded-sector force paired with outward progression stress.  We distinguish this fixed-background optical phase response from the passive charge of an electromagnetically bound composite, which is a total on-shell derivative including charged matter, binding fields, stresses, and boundaries.  Quantizing \(\Pi\) gives a scalar-photon effective field theory requiring radiative protection of the matching conditions or a deeper ultraviolet completion; no claim of full UV renormalizability is made.
+\end{abstract}
+\noindent\textbf{Keywords:} modified gravity, electromagnetic constitutive theory, geometric optics, weak-field gravity, gravitational lensing, effective field theory
+
+\section{Introduction}
+\label{sec:introduction}
+
+The progression framework introduces a scalar field $\Pi(x)$ as an effective representation of the local rate standard.  In the local weak-field sector, $\Pi$ is not introduced as a metric component.  It is the field relative to which local clock rates, quasi-static matter dynamics, and optical propagation are compared.  This comparison does not introduce a second total-energy conservation law.  The complete dynamical system obeys the single Noether identity $\nabla_\mu T_{\rm total}^{\mu\nu}=0$; progression-weighted currents, when present, describe selected subsystem transport quantities such as phase, particle number, or wave action.  Coordinate time remains a parametrization, while the clock field defines the operational local standard.  On the matter side, the source of the progression field is the full variational response of the matter action to the progression variable; derivative response currents describe transport and exchange contributions, but need not be the sole static source.
+
+The notation used below fixes an important normalization convention.  The field $\theta=\ln\Pi$ is the locally normalized progression-loading variable selected by clocks and nonrelativistic matter dynamics.  If a deeper microscopic variable $\theta_{\rm micro}$ carries a loading exponent $a_{\rm micro}$, that exponent is absorbed into the local variable, $\theta=a_{\rm micro}\theta_{\rm micro}$.  In this convention a relaxed localized body has an effective collective worldline coefficient $M_A^{\rm in}(\theta)=M_{A0}^{\rm in}e^{\theta}$ in the weak-field matter sector.  Internal QCD, binding, kinetic, and field-energy contributions enter the total inertia and environmental source, but are not assigned separate passive force laws.  The corresponding matter potential is $\Phi_\Pi=c_0^2(e^{\theta}-1)\simeq c_0^2\theta$, and the same normalized $\theta$ is used in the optical closure $n_{\rm eff}=e^{-2\theta}$.
+
+The strongest local constraint on the framework comes from requiring a single weak-field progression profile to serve all local observables.  Clocks and nonrelativistic matter dynamics first fix the local normalization of the spherical profile.  Signal delay and angular deflection must then follow from the same profile, without a separate optical normalization.  In the minimal spherical benchmark, this logic selects
+\begin{equation}
+\kappa_{\rm loc}=1,\qquad p\kappa_{\rm loc}=2,
+\label{eq:local_selection}
+\end{equation}
+so that
+\begin{equation}
+ p=2,\qquad n_{\rm eff}(\Pi)=\Pi^{-2}.
+\label{eq:target_closure}
+\end{equation}
+This is a selection result in the local weak-field theory.  It is not, by itself, a microscopic derivation of electromagnetic propagation.  The purpose of the present paper is to make Eq.~\eqref{eq:target_closure} the target of a local, gauge-invariant, fixed-background optical completion.
+
+This distinction is important.  A ray law should not be quantized directly.  The quantity $n_{\rm eff}$ is a geometric-optics observable: it should arise as the eikonal limit of a local field theory for electromagnetic waves.  The appropriate chain of reasoning is therefore
+\begin{equation}
+\begin{aligned}
+&\text{local gauge-invariant electromagnetic action}\\
+&\Longrightarrow\text{principal symbol}\\
+&\Longrightarrow n_{\rm eff}=\Pi^{-2}\\
+&\Longrightarrow\text{delay, deflection, and lensing}.
+\end{aligned}
+\label{eq:logic_chain}
+\end{equation}
+The optical sector is complete at leading order only when the first arrow has been supplied.
+
+The approach taken here is conservative.  We do not claim a completed ultraviolet theory of progression-weighted gravity.  Instead, we construct the minimal electromagnetic sector that is needed for the local optical benchmark.  The result is a fixed-background constitutive theory for photons in a prescribed $\Pi$ background.  Its principal symbol yields the selected scalar closure $n_{\rm eff}=\Pi^{-2}$ in the isotropic weak-field limit.  The next WKB orders outline the transport structure for polarization, amplitude, and lensing observables without altering the leading eikonal exponent; a complete order-by-order transport derivation remains to be supplied.
+
+The fixed-background treatment is not a closed momentum-conserving system by itself, because the prescribed \(\theta\) and progression-adapted clock direction may absorb stress-energy.  The use of a normalized clock vector is covariant but introduces a physical preferred timelike direction rather than eliminating frame structure \cite{JacobsonMattingly2001}.  In the complete mediator-free action, their dynamics restore the exact exchange identity.  Matter and electromagnetic fields receive force from the progression gradient, while the progression sector carries the equal and opposite stress or momentum flow.  We refer to this equal-and-opposite relation as the progression exchange identity.  It is a Noether balance consequence of the shared action, not an additional outward force on a photon or material test body and not a postulated transformation \(\theta\to-\theta\).
+
+The matter-source question is treated in detail in the companion matter paper \cite{JordanMatterCompanion}.  Here we need only its interface result: environmental interaction density produces the same locally normalized \(\theta\) that enters the collective body action and gives \(\Phi_\Pi=c_0^2(e^\theta-1)\).  In the cold weak-field regime the leading source is matched to a linear component proportional to ordinary matter energy density,
+\begin{equation}
+    f_\Pi^2\nabla^2\theta\simeq \rho_m c_0^2,
+    \qquad
+    f_\Pi^2=\frac{c_0^4}{4\pi G} .
+\label{eq:intro_matter_source_input}
+\end{equation}
+Co-motion and environmental terms enter as higher-order corrections in the source sector.  The optical result derived below does not depend on the details of that source derivation; it requires only the resulting background \(\Pi=e^\theta\) and the shared progression standard.
+
+The paper is organized as follows.  Section~\ref{sec:benchmark} reviews the local progression benchmark and states the optical target.  Section~\ref{sec:requirements} lists the requirements that a microscopic optical completion must satisfy.  Section~\ref{sec:loading} states the matter-source input supplied by the companion paper and fixes the optical background notation.  Section~\ref{sec:constitutive} constructs the minimal gauge-invariant constitutive action.  Section~\ref{sec:eikonal} derives the principal symbol and the $p=2$ optical closure.  Section~\ref{sec:transport} outlines the WKB transport structure and its leading scalar-optical limit.  Section~\ref{sec:quantum} discusses photon quantization, the canonical progression variable, radiative matching, and renormalization status.  Section~\ref{sec:tests} summarizes observational consequences and failure modes.
+
+\section{Local weak-field target}
+\label{sec:benchmark}
+
+The local weak-field sector begins with a progression profile close to a homogeneous reference value.  We write
+\begin{equation}
+ \Pi(x)=1+\varpi(x),\qquad |\varpi|\ll 1.
+\label{eq:Pi_weak}
+\end{equation}
+For a static spherical source of mass $M$, the exterior solution in the local weak-field regime may be written as
+\begin{equation}
+ \varpi(r)=-\kappa_{\rm loc}U(r),\qquad U(r)=\frac{GM}{r c_0^2}.
+\label{eq:spherical_profile}
+\end{equation}
+Clock comparisons determine the leading local progression normalization through
+\begin{equation}
+ z_{AB}^{(\Pi)}\simeq \varpi_B-\varpi_A
+      =\kappa_{\rm loc}(U_A-U_B),
+\label{eq:clock_shift}
+\end{equation}
+so agreement with the standard leading redshift fixes
+\begin{equation}
+ \kappa_{\rm loc}=1.
+\label{eq:kappa_one}
+\end{equation}
+The same normalization also reproduces the Newtonian weak-field force law if the matter-sector potential is defined by
+\begin{equation}
+ \Phi_\Pi=c_0^2(\Pi-1),\qquad \mathbf a=-\nabla\Phi_\Pi.
+\label{eq:matter_potential}
+\end{equation}
+With Eq.~\eqref{eq:spherical_profile} and \(\kappa_{\rm loc}=1\), this gives \(\Phi_\Pi\simeq-GM/r\), so \(\mathbf a=-\nabla\Phi_\Pi\) points inward.  This sign convention is used throughout the optical benchmark.
+
+The optical sector is parameterized by the isotropic eikonal form
+\begin{equation}
+ n_{\rm eff}(x)=\Pi^{-p}(x).
+\label{eq:p_param}
+\end{equation}
+To first order in $U$,
+\begin{equation}
+ n_{\rm eff}-1\simeq p\kappa_{\rm loc}U.
+\label{eq:index_weak}
+\end{equation}
+The corresponding propagation delay and bending angle for an unperturbed straight path are
+\begin{equation}
+ \Delta t^{(\Pi)}\simeq p\kappa_{\rm loc}\frac{GM}{c_0^3}
+ \ln\left(\frac{r_1+r_2+D}{r_1+r_2-D}\right),
+\label{eq:delay_benchmark}
+\end{equation}
+\begin{equation}
+ |\boldsymbol\alpha^{(\Pi)}|\simeq 2p\kappa_{\rm loc}\frac{GM}{b c_0^2}.
+\label{eq:deflection_benchmark}
+\end{equation}
+The standard leading coefficients require
+\begin{equation}
+ p\kappa_{\rm loc}=2.
+\label{eq:optical_condition}
+\end{equation}
+Combining Eqs.~\eqref{eq:kappa_one} and \eqref{eq:optical_condition} gives Eq.~\eqref{eq:target_closure}.  This is the local target that the electromagnetic completion must reproduce.
+
+\begin{remark}
+The benchmark does not by itself explain why the optical sector has two progression factors.  It identifies the result that any microscopic optical theory must reproduce once the matter and clock normalization has already been fixed.
+\end{remark}
+
+\section{Requirements on an optical completion}
+\label{sec:requirements}
+
+The optical completion is required to be a field theory for electromagnetic waves, not merely a postulated ray law.  We impose the following assumptions.
+
+\begin{assumption}[Fixed-background locality]
+The electromagnetic action is local on a fixed background manifold.  The progression field $\Pi(x)$ enters through local constitutive coefficients and their possible gradient corrections, not through a fundamental curved metric.
+\end{assumption}
+
+\begin{assumption}[$U(1)$ gauge invariance]
+The electromagnetic field enters through
+\begin{equation}
+ F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+\label{eq:F_def}
+\end{equation}
+and the action is invariant under $A_\mu\rightarrow A_\mu+\partial_\mu\lambda$.
+\end{assumption}
+
+
+\begin{assumption}[Principal-order reciprocity]
+The leading constitutive tensor is reciprocal at principal order,
+\begin{equation}
+ \chi^{\mu\nu\rho\sigma}=\chi^{\rho\sigma\mu\nu},
+\label{eq:principal_reciprocity}
+\end{equation}
+so that the principal optical response follows from a local quadratic action and contains no leading nonreciprocal electromagnetic response.
+\end{assumption}
+
+\begin{assumption}[Principal-order non-birefringence]
+In the local isotropic weak-field limit, both transverse photon polarizations obey the same principal-symbol dispersion relation.  Polarization-dependent phase splitting is therefore absent at leading order.
+\end{assumption}
+
+\begin{assumption}[Shared progression standard]
+The electromagnetic temporal response and spatial phase stiffness inherit the same local progression standard that fixes the matter and clock sectors.  There is no independent sector-specific normalization in the isotropic weak-field limit.
+\end{assumption}
+
+\begin{assumption}[Impedance-preserving minimality]
+The leading isotropic optical completion contains no independent scalar impedance factor.  Equivalently, the shared progression standard fixes the electric/magnetic principal-symbol ratio, while any common factor multiplying both constitutive weights is set to unity in the minimal closure.  Because \(\theta\) is dynamical in the complete theory, this is also a source and backreaction assumption: a nonconstant common factor changes \(-\delta S_{\rm EM}/\delta\theta\) even though it leaves the eikonal index unchanged.  This assumption selects the representative \(F(\Pi)=1\) in the family
+\begin{equation}
+ \varepsilon_r(\Pi)=F(\Pi)\Pi^{-2},\qquad
+ \mu_r^{-1}(\Pi)=F(\Pi)\Pi^2 .
+\label{eq:impedance_family_assumption}
+\end{equation}
+\end{assumption}
+
+\begin{assumption}[Compatibility with collective progression loading]
+The optical constitutive response is governed by the same scalar progression field that is generated by the environmental source and appears in the collective matter worldline.  The electromagnetic sector may respond to $\Pi$ through constitutive weights, but it may not introduce a second optical progression field.  The fixed-background optical phase response is not assumed to equal the passive charge of an isolated mass component; composite passive charge is defined only after the complete matter-plus-field system is placed on shell.
+\end{assumption}
+
+\begin{assumption}[Positive optical energy]
+The leading electric and magnetic constitutive weights are positive for physical backgrounds,
+\begin{equation}
+ \varepsilon(\Pi)>0,
+ \qquad
+ \mu^{-1}(\Pi)>0,
+\label{eq:positivity}
+\end{equation}
+so that the photon Hamiltonian has no ghostlike sign at principal order.
+\end{assumption}
+
+These assumptions are intentionally limited.  They do not classify every possible anisotropic or higher-derivative completion.  They define the minimal electromagnetic sector required to make the local $p=2$ optical law arise from a principal symbol.
+
+
+
+\section{Matter-source input and optical background}
+\label{sec:loading}
+
+The optical completion treats \(\Pi(x)=e^{\theta(x)}\) as a prescribed slowly varying background.  The companion matter paper separates the active environmental source from the passive collective response of a test body.  In its local normalization, a relaxed composite has
+\begin{equation}
+    S_A^{\rm eff}=-M_{A0}^{\rm in}c_0^2\int e^{\theta(X_A)}\,\dd\tau_0,
+    \qquad
+    \frac{Q_{\Pi,A}^{\rm pass}}{M_A^{\rm in}}=1,
+    \label{eq:source-input-collective-action}
+\end{equation}
+while the environment sources the same \(\theta\) through the complete variational interaction density.  In the cold weak-field limit,
+\begin{equation}
+    \Phi_\Pi=c_0^2(e^\theta-1)\simeq c_0^2\theta,
+    \label{eq:source_input_phi}
+\end{equation}
+and
+\begin{equation}
+    \theta\simeq -\frac{GM}{rc_0^2},
+    \qquad
+    \nabla^2\theta\simeq\frac{4\pi G}{c_0^2}\rho_{\rm int},
+    \label{eq:source_input_poisson}
+\end{equation}
+where \(\rho_{\rm int}\) reduces to ordinary mass-energy density for a static cold environment but may contain pressure, field, and controlled interaction corrections more generally.  Equivalently,
+\begin{equation}
+    f_\Pi^2\nabla^2\theta\simeq\rho_\Pi^{\rm act}
+    \simeq\rho_{\rm int}c_0^2,
+    \qquad
+    f_\Pi^2=\frac{c_0^4}{4\pi G}.
+    \label{eq:source_input_scalar}
+\end{equation}
+The optical paper does not rederive this source.  It assumes only that one matter-normalized background \(\theta=\ln\Pi\), fixed by clocks, environmental sourcing, and collective matter dynamics, is available to the electromagnetic sector.  Its task is to realize
+\begin{equation}
+    n_{\rm eff}=e^{-2\theta}=\Pi^{-2}
+    \label{eq:source_input_optical_target}
+\end{equation}
+without introducing a second optical scalar or an independent weak-field normalization.
+\section{Gauge-invariant constitutive action}
+\label{sec:constitutive}
+
+On fixed background space, the most direct electromagnetic completion is a constitutive theory.  The present section treats the background $\Pi=e^\theta$ as given and derives the photon principal symbol using standard electromagnetic constitutive language \cite{Jackson1999,BornWolf1999}.  In $3+1$ form, the minimal isotropic action is
+\begin{equation}
+ S_{\rm EM,\Pi}
+ =\frac12\int dt\,d^3x
+ \left[
+   \varepsilon(\Pi)\,\mathbf E^2
+  -\mu^{-1}(\Pi)\,\mathbf B^2
+ \right],
+\label{eq:medium_action}
+\end{equation}
+where
+\begin{equation}
+ \mathbf E=-\nabla A_0-\partial_t\mathbf A,
+ \qquad
+ \mathbf B=\nabla\times\mathbf A.
+\label{eq:EB_def}
+\end{equation}
+Equation~\eqref{eq:medium_action} is gauge invariant because it depends only on $F_{\mu\nu}$.  Equivalently, it may be written as
+\begin{equation}
+ S_{\rm EM,\Pi}=-\frac14\int d^4x\,
+ \chi^{\mu\nu\rho\sigma}(\Pi,\partial\Pi,\ldots)
+ F_{\mu\nu}F_{\rho\sigma},
+\label{eq:chi_action}
+\end{equation}
+where $\chi^{\mu\nu\rho\sigma}$ is the electromagnetic constitutive tensor \cite{HehlObukhov2003,Rubilar2002}.  The isotropic action \eqref{eq:medium_action} is the leading scalar reduction of \eqref{eq:chi_action}.
+
+The local progression benchmark requires the principal-symbol index
+\begin{equation}
+ n_{\rm eff}^2(\Pi)=\Pi^{-4}.
+\label{eq:n_squared_target}
+\end{equation}
+For the action \eqref{eq:medium_action}, the principal dispersion relation is controlled by the ratio of the electric and magnetic constitutive weights.  Consequently the benchmark fixes only
+\begin{equation}
+ \frac{\varepsilon_r(\Pi)}{\mu_r^{-1}(\Pi)}=\Pi^{-4},
+\label{eq:ratio_fixed_only}
+\end{equation}
+not the two weights separately.  The family
+\begin{equation}
+ \varepsilon_r(\Pi)=F(\Pi)\Pi^{-2},
+ \qquad
+ \mu_r^{-1}(\Pi)=F(\Pi)\Pi^2
+\label{eq:F_family}
+\end{equation}
+has the same eikonal index for any positive common factor $F(\Pi)$.  It does not have the same active source.  Writing \(F_{,\theta}=\dd F/\dd\theta\), the fixed-field source response is
+\begin{equation}
+\begin{aligned}
+ \rho_{\Pi,{\rm EM}}^{\rm act}[F]
+ ={}&\frac{\varepsilon_0}{2}
+   \left(2F-F_{,\theta}\right)e^{-2\theta}\mathbf E^2\\
+ &+\frac{\mu_0^{-1}}{2}
+   \left(2F+F_{,\theta}\right)e^{2\theta}\mathbf B^2 .
+ \label{eq:general-F-source}
+\end{aligned}
+\end{equation}
+Thus \(F\) affects impedance, transport normalization, active sourcing, and backreaction.  The minimal closure used here imposes the impedance-preserving and source-minimal condition \(F(\Pi)=1\), so that
+\begin{equation}
+ \varepsilon(\Pi)=\varepsilon_0\Pi^{-2},
+ \qquad
+ \mu^{-1}(\Pi)=\mu_0^{-1}\Pi^2,
+\label{eq:minimal_weights}
+\end{equation}
+with $\varepsilon_0\mu_0=c_0^{-2}$.  The relative weights are therefore
+\begin{equation}
+ \varepsilon_r(\Pi)=\Pi^{-2},
+ \qquad
+ \mu_r^{-1}(\Pi)=\Pi^2.
+\label{eq:relative_weights}
+\end{equation}
+This choice is the electromagnetic analogue of the scalar-proxy principal structure in which the temporal and spatial parts of the wave operator carry reciprocal progression weights, with no extra scalar impedance loading at leading order.
+
+\begin{remark}
+The weights in Eq.~\eqref{eq:minimal_weights} should not be interpreted as a material medium inserted into space.  They are fixed-background constitutive coefficients encoding how the electromagnetic phase standard responds to the local progression field.  The background spatial manifold remains fixed.
+\end{remark}
+
+\subsection{Optical phase response versus composite passive charge}
+\label{sec:optical-vs-passive-charge}
+
+The constitutive coefficients determine photon propagation on a prescribed background.  Their fixed-field variation must not be identified automatically with the passive progression charge of a massive composite.  For the minimal Lagrangian,
+\begin{equation}
+    \mathcal L_{\rm EM,\Pi}
+    =\frac12\varepsilon_0e^{-2\theta}\mathbf E^2
+    -\frac12\mu_0^{-1}e^{2\theta}\mathbf B^2,
+\end{equation}
+the partial derivative at fixed \(\mathbf E\), \(\mathbf B\), and fixed boundaries is
+\begin{equation}
+    \left.\frac{\partial\mathcal L_{\rm EM,\Pi}}{\partial\theta}\right|_{F,\,\rm fixed}
+    =-\varepsilon_0e^{-2\theta}\mathbf E^2
+     -\mu_0^{-1}e^{2\theta}\mathbf B^2.
+    \label{eq:fixed-background-em-response}
+\end{equation}
+At \(\theta=0\) its magnitude is twice the standard electromagnetic energy density.  This quantity is the local source response of the isolated constitutive sector under a particular off-shell variation.  It is not, by itself, the observable passive charge of an electromagnetically bound body.
+
+For a complete composite \(A\), the relevant quantity is instead
+\begin{equation}
+    Q_{\Pi,A}^{\rm pass}
+    =\frac{1}{c_0^2}
+      \frac{\dd E_A^{\rm on\mbox{-}shell}(\theta)}{\dd\theta},
+    \label{eq:composite-passive-charge-optics}
+\end{equation}
+where charged matter, electromagnetic fields, equilibrium dimensions, stresses, and boundary conditions are varied together and then placed on shell.  The derivative is taken at fixed conserved particle numbers, total charge, entropy, angular momentum, and asymptotic boundary conditions.  Compatibility with the collective weak-equivalence-principle condition requires
+\begin{equation}
+    \frac{\dd E_A^{\rm on\mbox{-}shell}}{\dd\theta}
+    =E_A^{\rm on\mbox{-}shell}
+    \label{eq:collective-em-matching-condition}
+\end{equation}
+for ordinary relaxed composites, up to controlled corrections.  Equation~\eqref{eq:collective-em-matching-condition} is a matching condition to be demonstrated, for example in electrostatic binding and cavity calculations.  The optical \(p=2\) phase response and the matter \(Q^{\rm pass}/M^{\rm in}=1\) condition therefore constrain different reductions of the same total theory and must be shown to coexist.
+
+\subsection{Progression response and stress-energy exchange}
+
+The isolated constitutive action has the fixed-background response
+\begin{equation}
+    \rho_{\Pi,{\rm EM}}^{\rm act}
+    \equiv
+    -\frac{1}{\sqrt{-g}}\frac{\delta S_{\rm EM,\Pi}}{\delta\theta}.
+    \label{eq:em-positive-active-response}
+\end{equation}
+In the local isotropic frame and for the minimal weights,
+\begin{equation}
+    \rho_{\Pi,{\rm EM}}^{\rm act}
+    =\varepsilon_0e^{-2\theta}\mathbf E^2
+     +\mu_0^{-1}e^{2\theta}\mathbf B^2,
+    \label{eq:em-active-response-local}
+\end{equation}
+which is twice the usual electromagnetic energy density at \(\theta=0\).  This factor has a stress interpretation.  For the Maxwell stress tensor, \(T^\mu{}_{\mu}=0\), and with \(\varepsilon=T^{\mu\nu}u_\mu u_\nu\) and \(3p=T^{\mu\nu}h_{\mu\nu}\), one has \(3p=\varepsilon=u_{\rm EM}\) and therefore \(\rho_{\Pi,{\rm EM}}^{\rm act}=\varepsilon+3p=2u_{\rm EM}\).  Mechanical stresses and boundaries must be included for a complete cavity or bound system.  As emphasized above, the isolated expression is an off-shell fixed-field source response, not the passive progression charge of a complete composite.
+
+Because the constitutive action also refers to the progression-adapted timelike direction \(u^\mu\), its stress tensor in a prescribed background obeys a balance law of the form
+\begin{equation}
+    \nabla_\mu T_{\rm EM}^{\mu}{}_{\nu}
+    =-\rho_{\Pi,{\rm EM}}^{\rm act}\nabla_\nu\theta
+     +\mathcal F^{(u)}_\nu,
+    \label{eq:em-background-balance}
+\end{equation}
+where \(\mathcal F^{(u)}_\nu\) is the exchange with the externally specified clock direction.  In the complete mediator-free theory, \(u^\mu\) is generated by a dynamical clock field.  Its stress balance contains \(-\mathcal F^{(u)}_\nu\), while the progression tensor contains the opposite total \(\theta\)-exchange.  Hence
+\begin{equation}
+    \nabla_\mu\left(
+      T_\Pi^{\mu}{}_{\nu}
+      +T_{\rm clock}^{\mu}{}_{\nu}
+      +T_{\rm matter}^{\mu}{}_{\nu}
+      +T_{\rm EM}^{\mu}{}_{\nu}
+      \right)=0
+    \label{eq:optical-total-conservation}
+\end{equation}
+when all equations of motion are imposed.  This is the optical participation in the progression exchange identity: the loaded electromagnetic sector exchanges momentum with the progression background, and the dynamical progression-plus-clock system carries the compensating stress.  The identity is covariant; the inward--outward language applies only to static approximately spherical profiles.  The fixed-background optical calculations below determine propagation on a given profile; they do not by themselves constitute a closed stress-energy system.
+
+\subsection{Conservation hierarchy and optical transport}
+\label{sec:optical-conservation-hierarchy}
+
+Equation~\eqref{eq:optical-total-conservation} is the fundamental conservation law for the closed optical-plus-clock-plus-progression system.  A weighted optical current is permitted only as a derived subsystem statement.  For a current \(J_{\rm opt}^\mu\) with progression weight \(q_{\rm opt}\), define
+\begin{equation}
+    D_\mu^{(q_{\rm opt})}J_{\rm opt}^\mu
+    =\nabla_\mu J_{\rm opt}^\mu
+    +q_{\rm opt}J_{\rm opt}^\mu\nabla_\mu\theta
+    =\Pi^{-q_{\rm opt}}
+      \nabla_\mu\left(\Pi^{q_{\rm opt}}J_{\rm opt}^\mu\right).
+    \label{eq:optical-progression-covariant-current}
+\end{equation}
+A relation
+\begin{equation}
+    D_\mu^{(q_{\rm opt})}J_{\rm opt}^\mu=0
+    \label{eq:optical-weighted-current}
+\end{equation}
+may represent photon number in an appropriate approximation, phase flow, or constitutively normalized wave action.  It is not a second conservation of electromagnetic plus gravitational energy.  In particular, one must not impose both \(\nabla_\mu J_{\rm opt}^\mu=0\) and Eq.~\eqref{eq:optical-weighted-current} for the same generic current in a nonuniform \(\theta\) background unless \(q_{\rm opt}J_{\rm opt}^\mu\nabla_\mu\theta=0\).
+
+For the WKB sector below, the stationary lossless wave-action equation is therefore interpreted as a subsystem transport law derived from Maxwell's equations in the constitutive background.  Energy and momentum exchanged with \(\theta\) and the clock field remain governed by Eq.~\eqref{eq:optical-total-conservation}.  Weighted transport does not determine the active source \(-\delta S_{\rm EM}/\delta\theta\), nor does it guarantee the on-shell collective matching condition \eqref{eq:collective-em-matching-condition}.
+
+\section{Principal symbol and the \texorpdfstring{$p=2$}{p=2} closure}
+\label{sec:eikonal}
+
+Varying Eq.~\eqref{eq:medium_action} gives the source-free Maxwell system
+\begin{equation}
+ \nabla\cdot\mathbf D=0,
+ \qquad
+ \nabla\times\mathbf H-\partial_t\mathbf D=0,
+\label{eq:maxwell_inhomogeneous}
+\end{equation}
+with
+\begin{equation}
+ \mathbf D=\varepsilon(\Pi)\mathbf E,
+ \qquad
+ \mathbf H=\mu^{-1}(\Pi)\mathbf B,
+\label{eq:DH_def}
+\end{equation}
+and the homogeneous equations
+\begin{equation}
+ \nabla\cdot\mathbf B=0,
+ \qquad
+ \nabla\times\mathbf E+\partial_t\mathbf B=0.
+\label{eq:maxwell_homogeneous}
+\end{equation}
+
+To extract the principal symbol, take a local WKB ansatz
+\begin{equation}
+ A_\mu(x)=\Re\left\{a_\mu(x)\exp\left[\frac{i}{\epsilon}\Theta(x)\right]\right\},
+\qquad
+ k_\mu=\partial_\mu\Theta,
+\label{eq:WKB_ansatz}
+\end{equation}
+with $\epsilon\ll1$.  At order $\epsilon^{-2}$, gradients of $\varepsilon$ and $\mu^{-1}$ are lower order, and the local dispersion relation for transverse modes is
+\begin{equation}
+ \varepsilon(\Pi)\omega^2
+ -\mu^{-1}(\Pi)|\mathbf k|^2=0,
+\label{eq:dispersion}
+\end{equation}
+where $\omega=-\partial_t\Theta$.
+
+Writing the dispersion relation as
+\begin{equation}
+ \omega^2=\frac{c_0^2}{n_{\rm eff}^2(\Pi)}|\mathbf k|^2,
+\label{eq:index_def}
+\end{equation}
+one obtains
+\begin{equation}
+ n_{\rm eff}^2(\Pi)
+ =\frac{\varepsilon_r(\Pi)}{\mu_r^{-1}(\Pi)}.
+\label{eq:index_ratio}
+\end{equation}
+Using Eq.~\eqref{eq:relative_weights},
+\begin{equation}
+ n_{\rm eff}^2(\Pi)=\frac{\Pi^{-2}}{\Pi^2}=\Pi^{-4},
+ \qquad
+ n_{\rm eff}(\Pi)=\Pi^{-2}.
+\label{eq:p2_result}
+\end{equation}
+Thus the locally selected optical exponent $p=2$ arises from the electromagnetic principal symbol.
+
+\begin{proposition}[Minimal isotropic progression-optical closure]
+Given the matter-normalized weak-field benchmark \(n_{\rm eff}^2=\Pi^{-4}\), a local, reciprocal, non-birefringent, gauge-invariant isotropic constitutive action realizes the benchmark whenever
+\begin{equation}
+    \frac{\varepsilon_r(\Pi)}{\mu_r^{-1}(\Pi)}=\Pi^{-4} .
+\end{equation}
+The impedance-preserving representative \(F(\Pi)=1\) gives the minimal weights \eqref{eq:minimal_weights} and therefore
+\begin{equation}
+ n_{\rm eff}(\Pi)=\Pi^{-2}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Gauge invariance follows from dependence on $F_{\mu\nu}$ alone.  In the local isotropic principal limit, both transverse polarizations obey Eq.~\eqref{eq:dispersion}.  The effective index is therefore given by Eq.~\eqref{eq:index_ratio}.  The benchmark fixes the ratio \eqref{eq:ratio_fixed_only}.  Impedance-preserving minimality then selects the representative \eqref{eq:relative_weights}, and substitution gives Eq.~\eqref{eq:p2_result}.  Since the dispersion relation is scalar on the transverse polarization subspace, the two polarizations are degenerate at principal order.
+\end{proof}
+
+Once Eq.~\eqref{eq:p2_result} is obtained, the ray law follows from Fermat's principle,
+\begin{equation}
+ \delta\int n_{\rm eff}\,ds=0.
+\label{eq:fermat}
+\end{equation}
+The corresponding ray equation is
+\begin{equation}
+ \frac{d\hat{\mathbf k}}{dl}
+ =\nabla_\perp\ln n_{\rm eff}
+ =-2\nabla_\perp\ln\Pi.
+\label{eq:ray_eq}
+\end{equation}
+The propagation delay \cite{Shapiro1964,Will2014} is
+\begin{equation}
+ \Delta t=\frac{1}{c_0}\int_\gamma\left(\Pi^{-2}-1\right)dl,
+\label{eq:delay}
+\end{equation}
+and the deflection angle is
+\begin{equation}
+ \boldsymbol\alpha=-2\int_\gamma\nabla_\perp\ln\Pi\,dl.
+\label{eq:deflection}
+\end{equation}
+These are not independent postulates; they are the geometric-optics limit of Eq.~\eqref{eq:medium_action}.
+
+\section{WKB transport structure: amplitude, polarization, and lensing}
+\label{sec:transport}
+
+The principal symbol fixes the eikonal phase and therefore the leading ray coefficient.  The next orders in the WKB expansion determine how intensity, polarization, and ray bundles evolve along those rays.  This section records the expected lossless transport structure and leading scalar-optical limit; it does not claim a complete derivation of every order-\(\epsilon^{-1}\) constitutive term.
+
+Write the electromagnetic potential as
+\begin{equation}
+ A_\mu=\Re\left\{
+ \left(a_\mu^{(0)}+\epsilon a_\mu^{(1)}+\cdots\right)
+ \exp\left[\frac{i}{\epsilon}\Theta\right]
+ \right\}.
+\label{eq:transport_ansatz}
+\end{equation}
+At order $\epsilon^{-2}$ one obtains Eq.~\eqref{eq:dispersion}.  At order $\epsilon^{-1}$, one obtains a transport equation for the leading amplitude and polarization.  In the isotropic non-birefringent sector, the leading polarization vector remains transverse,
+\begin{equation}
+ \mathbf e\cdot\mathbf k=0,
+\label{eq:transverse_polarization}
+\end{equation}
+and the two-dimensional transverse polarization subspace is degenerate.  Consequently, there is no leading polarization-dependent phase splitting.
+
+For a stationary lossless constitutive background, the properly normalized wave-action flux has the schematic conservation form
+\begin{equation}
+ \nabla\cdot\mathbf J_{\rm wa}=0,
+ \qquad
+ \mathbf J_{\rm wa}=\mathcal N\,\mathbf v_g,
+\label{eq:intensity_transport}
+\end{equation}
+where \(\mathcal N\) is a constitutively normalized wave-action density and \(\mathbf v_g=\partial\omega/\partial\mathbf k\).  Equation~\eqref{eq:intensity_transport} is a subsystem transport equation of the type described in Sec.~\ref{sec:optical-conservation-hierarchy}; it is not an independent conservation of the total electromagnetic-plus-progression energy.  Gradients of the electric, magnetic, and common impedance weights enter the definition and transport of \(\mathcal N\); an explicit order-\(\epsilon^{-1}\) Maxwell calculation is required before converting Eq.~\eqref{eq:intensity_transport} into a unique observable intensity law.
+
+The leading deflection and delay follow from the principal symbol.  By contrast, magnification, shear, and amplitude transport require the next-order WKB transport equations and can receive corrections from gradients of the constitutive weights, including any allowed impedance-sector factor.  The following lensing expressions should therefore be understood as leading scalar-optical limits, not as a completed transport theorem.
+
+For lensing applications \cite{SchneiderEhlersFalco1992,BartelmannSchneider2001,Perlick2004}, it is useful to describe neighboring rays by a transverse separation vector $\xi^A$, $A=1,2$.  The ray-bundle equation has the schematic form
+\begin{equation}
+ \frac{d^2\xi^A}{dl^2}
+ =\mathcal T^A{}_{B}\xi^B,
+\label{eq:jacobi}
+\end{equation}
+where, in the leading scalar optical limit,
+\begin{equation}
+ \mathcal T_{AB}\simeq +\partial_A\partial_B\ln n_{\rm eff}
+ =-2\partial_A\partial_B\ln\Pi.
+\label{eq:optical_tidal}
+\end{equation}
+Thus shear and convergence are transport effects built on the same eikonal cone that fixed delay and deflection.
+
+In a flat-background thin-lens approximation, let \(D\) be Euclidean or affine distance along the unperturbed ray and \(D_s\) the source distance.  A formal projected potential is
+\begin{equation}
+ \psi(\hat{\mathbf n})
+ =-2\int_0^{D_s}\dd D\,
+ \frac{D_s-D}{D_sD}
+ \ln\Pi(D\hat{\mathbf n}),
+\label{eq:lensing_potential}
+\end{equation}
+with
+\begin{equation}
+ \kappa=\frac12\nabla_\perp^2\psi,
+ \qquad
+ \gamma_1=\frac12(\partial_1^2-\partial_2^2)\psi,
+ \qquad
+ \gamma_2=\partial_1\partial_2\psi.
+\label{eq:kappa_gamma}
+\end{equation}
+Equations~\eqref{eq:lensing_potential}--\eqref{eq:kappa_gamma} provide the leading flat-background scalar-optical analogy.  They are not a cosmological distance-redshift prediction; that requires a separate cosmological background and transport derivation.
+
+\begin{remark}
+The transport equations may contain subleading polarization rotation or anisotropic distortion if gradient-dependent terms in $\chi^{\mu\nu\rho\sigma}$ are retained.  Such terms must be treated as higher-order corrections and are not allowed to renormalize the leading isotropic coefficient $p=2$.
+\end{remark}
+
+\section{Quantum interpretation and renormalization status}
+\label{sec:quantum}
+
+The construction above supplies a quantum-ready optical sector in a limited but important sense: photons can be quantized on a prescribed classical $\Pi$ background.  The action is local, gauge invariant, and quadratic in $A_\mu$ at fixed $\Pi$.  After gauge fixing, the physical photon modes are the two transverse polarizations.  Positivity of the constitutive weights ensures that the leading photon Hamiltonian is positive:
+\begin{equation}
+ \mathcal H_{\rm EM,\Pi}
+ =\frac12\left[
+   \varepsilon(\Pi)\mathbf E^2
+  +\mu^{-1}(\Pi)\mathbf B^2
+ \right]>0
+\label{eq:H_positive}
+\end{equation}
+for $\Pi>0$.
+
+A stricter quantum completion requires quantizing $\Pi$ as well.  For this purpose, $\Pi$ should be replaced by a canonically normalized field.  A natural variable is
+\begin{equation}
+ \Pi=e^{\phi/f_\Pi},
+ \qquad
+ \phi=f_\Pi\ln\Pi,
+\label{eq:canonical_phi}
+\end{equation}
+where $f_\Pi$ is the progression-field stiffness scale.  The constitutive weights become
+\begin{equation}
+ \varepsilon_r(\phi)=e^{-2\phi/f_\Pi},
+ \qquad
+ \mu_r^{-1}(\phi)=e^{2\phi/f_\Pi}.
+\label{eq:exp_weights}
+\end{equation}
+The electromagnetic Lagrangian then contains an infinite tower of scalar-photon interactions,
+\begin{equation}
+ \mathcal L_{\rm EM,\phi}
+ =\frac12 e^{-2\phi/f_\Pi}\mathbf E^2
+ -\frac12 e^{2\phi/f_\Pi}\mathbf B^2.
+\label{eq:phi_photon_lagrangian}
+\end{equation}
+Expanding around $\phi=0$ gives
+\begin{align}
+ \mathcal L_{\rm EM,\phi}
+ & =\frac12(\mathbf E^2-\mathbf B^2)
+ -\frac{\phi}{f_\Pi}(\mathbf E^2+\mathbf B^2)
+ +\frac{\phi^2}{f_\Pi^2}(\mathbf E^2-\mathbf B^2)+\cdots .
+\label{eq:tower}
+\end{align}
+This tower is acceptable in an effective field theory below the scale $f_\Pi$ \cite{BirrellDavies1982,Weinberg1995,Burgess2004}, but it is not by itself a proof of perturbative renormalizability with a finite number of counterterms.
+
+The progression-loading interpretation supplies a sharper radiative-stability target.  Because no explicit microscopic transformation law is specified here, the appropriate statement is a renormalized ratio matching condition rather than an established Ward identity:
+\begin{equation}
+ \ln\varepsilon_r(\theta)-\ln\mu_r^{-1}(\theta)+4\theta
+ =\Delta_{\rm opt}(\theta),
+ \qquad
+ \Delta_{\rm opt}=0
+ \ \text{in the minimal closure}.
+\label{eq:optical-ratio-matching}
+\end{equation}
+Quantum corrections may renormalize the individual electric and magnetic weights, but they must not generate an uncontrolled sector-specific function that changes
+\begin{equation}
+ \frac{\varepsilon_r(\theta)}{\mu_r^{-1}(\theta)}=e^{-4\theta}
+\label{eq:radiative_ratio}
+\end{equation}
+without appearing as a controlled nonzero \(\Delta_{\rm opt}\).  A common factor $F(\Pi)$ leaves the eikonal index unchanged but alters impedance, wave-action normalization, active sourcing, and backreaction through Eq.~\eqref{eq:general-F-source}.  In the minimal theory this factor is absent by assumption.  An eventual microscopic symmetry could protect both the collective on-shell matter ratio $Q_{\Pi,A}^{\rm pass}/M_A^{\rm in}$ and the photon principal-symbol ratio, but its transformation law and anomaly structure remain to be supplied.
+
+The source discussion of Section~\ref{sec:loading} also clarifies the meaning of a prescribed optical background.  Photon propagation is not assumed to occur in an ordinary material medium.  The electromagnetic field responds to the scalar progression background generated by the environmental interaction density.  Additional environment-dependent optical effects may enter through higher-order corrections to $\chi^{\mu\nu\rho\sigma}$, but the local isotropic principal ratio in Eq.~\eqref{eq:radiative_ratio} must remain fixed in the weak-field benchmark.
+
+The same matching logic must be compatible with the collective matter condition of the companion paper.  The optical sector does not require Eq.~\eqref{eq:fixed-background-em-response} to equal a constituent share of passive mass.  It requires the complete on-shell composite relation in Eq.~\eqref{eq:collective-em-matching-condition} and the photon principal-symbol ratio to follow consistently from one total action.
+
+There are two possible ways to improve the status of the construction.
+
+First, the exponential structure may be protected by an exact progression-scaling symmetry.  In that case, loop corrections would have to respect the functional dependence in Eq.~\eqref{eq:exp_weights}, and the infinite tower would be organized by symmetry rather than by arbitrary coefficients.
+
+Second, Eq.~\eqref{eq:phi_photon_lagrangian} may arise after integrating out a deeper renormalizable matter sector.  In that case the constitutive coefficients are Wilsonian effective functions, and the theory should be interpreted as predictive below its cutoff rather than fundamental at all scales.
+
+The present paper establishes neither option fully.  Its conclusion is therefore deliberately limited: the optical sector can be completed as a gauge-invariant quantum effective field theory whose eikonal limit reproduces $p=2$.  Demonstrating ultraviolet renormalizability requires a separate proof that the progression-dependent operator basis is closed under radiative corrections.
+
+\section{Observational consistency and failure modes}
+\label{sec:tests}
+
+The constitutive completion has several immediate observational consequences.
+
+First, the leading local optical coefficient is no longer independently adjustable.  Once clocks and matter dynamics fix $\kappa_{\rm loc}=1$, the electromagnetic principal symbol fixes the ratio of constitutive weights and therefore
+\begin{equation}
+ n_{\rm eff}=\Pi^{-2},
+\label{eq:fixed_coeff}
+\end{equation}
+so delay and deflection are tied to the same progression profile.
+
+Second, the leading isotropic theory is non-birefringent.  A detection of polarization-dependent weak-field propagation at the leading order predicted here would not be a success of the minimal theory; it would indicate that the assumed constitutive tensor is incomplete or wrong.
+
+Third, amplitude, magnification, and shear are transport effects.  They should be computed from the WKB transport structure and ray-bundle equation, not inserted as independent lensing prescriptions.
+
+Fourth, anisotropic corrections are possible only as controlled extensions of the constitutive tensor:
+\begin{equation}
+ \chi^{\mu\nu\rho\sigma}
+ =\chi^{\mu\nu\rho\sigma}_{(0)}(\Pi)
+ +\Delta\chi^{\mu\nu\rho\sigma}(\Pi,\partial\Pi,\partial\partial\Pi,\ldots).
+\label{eq:delta_chi}
+\end{equation}
+The correction $\Delta\chi$ may affect polarization transport, higher-order image distortion, or environment-dependent lensing residuals, but it must remain subleading in the local isotropic benchmark.
+
+The minimal optical completion is therefore falsifiable in the following ways.  It fails if precision delay and deflection require $p\ne2$ once the matter-side normalization is fixed.  It fails if leading birefringence is required by the same data it aims to explain.  It fails if the WKB transport sector predicts magnification or shear inconsistent with progression-derived lensing.  Finally, it fails as a quantum completion if loop corrections cannot be organized without uncontrolled sector-specific counterterms, if the matter-side interaction-density source and the optical constitutive ratio require different progression fields, or if a complete electromagnetic binding calculation violates the collective condition in Eq.~\eqref{eq:collective-em-matching-condition}.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The main achievement of the constitutive construction is to move progression optics from a ray-level prescription to a field-theoretic statement.  The local weak-field benchmark selects the scalar closure $n_{\rm eff}=\Pi^{-2}$ by fixing the principal-symbol ratio $\varepsilon_r/\mu_r^{-1}=\Pi^{-4}$.  The electromagnetic action \eqref{eq:medium_action}, together with impedance-preserving minimality, supplies a gauge-invariant representative whose isotropic reduction gives precisely that closure.  The leading optical law is therefore not introduced as an independent fitting rule, although the absence of an additional impedance function remains an explicit minimality assumption.
+
+At the same time, the construction clarifies what has not yet been proven.  The tensor $\chi^{\mu\nu\rho\sigma}$ has been specified only in its minimal isotropic principal part.  A complete optical theory would classify all allowed anisotropic and gradient-dependent terms consistent with gauge invariance, reciprocity, leading non-birefringence, and local weak-field constraints.  It would also derive the complete order-by-order transport system beyond the scalar ray-bundle approximation.
+
+The matter-source discussion adds a second limitation.  The optical action explains how photons propagate once $\Pi$ is supplied; it does not prove the full microscopic origin of $\Pi$.  The companion paper now supplies a mediator-free source and an exact progression exchange identity.  It also fixes the conservation hierarchy: total stress-energy conservation is fundamental, whereas any progression-weighted optical current is a derived transport statement.  This distinction avoids overconstraining the theory but does not determine the passive charge of an electromagnetic composite.  The fixed-background derivative of the isolated electromagnetic action still does not determine that charge.  The remaining cross-sector task is to derive the complete on-shell response of representative bound systems and show that the collective ratio $Q_{\Pi,A}^{\rm pass}/M_A^{\rm in}=1$ coexists with the optical ratio $\varepsilon_r/\mu_r^{-1}=\Pi^{-4}$.
+
+At point-particle level, the matter action is equivalent to motion in the conformal effective metric \(g_{\mu\nu}^{(m)}=e^{2\theta}\eta_{\mu\nu}\), whose conformal factor does not alter the Maxwell null cone in four dimensions.  The constitutive optical action deliberately supplies a different photon principal cone.  The present pair therefore targets leading test-body WEP and selected weak-field observables, not the full Einstein equivalence principle, local Lorentz invariance, local position invariance, or a universal causal geometry.  Preferred-frame and post-Newtonian tests remain separate requirements.
+
+The quantum status is similarly limited but improved.  At fixed $\Pi$, the photon sector is an ordinary quadratic gauge theory with position-dependent constitutive coefficients.  This is sufficient for photon quantization on a classical progression background.  Once $\Pi$ is quantized, however, the exponential constitutive weights generate an infinite tower of scalar-photon operators.  That tower is natural in an effective theory and may be symmetry-protected, but the present paper does not prove full ultraviolet renormalizability.
+
+This is still a useful outcome.  It identifies the correct microscopic target for progression optics: a local, gauge-invariant, non-birefringent constitutive principal symbol with
+\begin{equation}
+ \frac{\varepsilon_r(\Pi)}{\mu_r^{-1}(\Pi)}=\Pi^{-4}.
+\label{eq:ratio_target}
+\end{equation}
+Any future electromagnetic or matter-wave completion of the framework should reduce to this relation in the local isotropic weak-field limit.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have constructed a minimal gauge-invariant constitutive completion of the progression-optics sector.  The starting point was the local weak-field benchmark of the progression framework: clocks and matter dynamics fix the spherical progression profile, and the optical sector must then reproduce delay and deflection without independent retuning.  That benchmark selects $n_{\rm eff}=\Pi^{-2}$.
+
+The electromagnetic completion proposed here realizes this closure at the level of the principal symbol.  The benchmark fixes the ratio \(\varepsilon_r/\mu_r^{-1}=\Pi^{-4}\).  With the additional impedance-preserving minimality condition, one may choose
+\begin{equation}
+ \varepsilon_r(\Pi)=\Pi^{-2},
+ \qquad
+ \mu_r^{-1}(\Pi)=\Pi^{2},
+\end{equation}
+and the local dispersion relation gives
+\begin{equation}
+ n_{\rm eff}^2=\frac{\varepsilon_r}{\mu_r^{-1}}=\Pi^{-4},
+ \qquad
+ n_{\rm eff}=\Pi^{-2}.
+\end{equation}
+The resulting eikonal theory gives the progression-based ray equation, delay, deflection, and a flat-background projected-lensing analogy.  The next WKB orders are expected to govern polarization and amplitude transport without changing the leading $p=2$ coefficient, but their complete constitutive derivation remains open.
+
+The result should be interpreted carefully.  It is a quantum-ready optical effective field theory, not a complete ultraviolet quantum gravity.  It shows how the local optical benchmark can arise from a gauge-invariant electromagnetic action on fixed background space.  In the dynamical completion there is one closed-system conservation law, Eq.~\eqref{eq:optical-total-conservation}; weighted phase or wave-action currents are derived subsystem transport relations and must not be interpreted as independently conserved total energies.  A full completion still requires a microscopic derivation of the mediator-free environmental response coefficients, a derivation of the progression-dependent constitutive functions, a stable dynamical clock sector and preferred-frame bounds, a classification of allowed anisotropic corrections, and explicit matter-plus-field matching calculations showing that the fixed-background optical response is compatible with a universal collective on-shell body charge.  When the background is dynamical, the electromagnetic, clock, matter, and progression stresses must also satisfy Eq.~\eqref{eq:optical-total-conservation}.
+
+\begin{appendices}
+
+\section{Covariant form of the isotropic constitutive tensor}
+\label{app:covariant}
+
+In this appendix we use units $c_0=1$ and take the local progression-adapted time direction to be normalized as $u^\mu u_\mu=-1$.  The spatial projector on the fixed background is
+\begin{equation}
+ h_{\mu\nu}=\eta_{\mu\nu}+u_\mu u_\nu .
+\end{equation}
+With dimensionful four-velocity normalized by $u^\mu u_\mu=-c_0^2$, the corresponding expression is $h_{\mu\nu}=\eta_{\mu\nu}+u_\mu u_\nu/c_0^2$.  The electric and magnetic fields measured relative to $u^\mu$ are
+\begin{equation}
+ E_\mu=F_{\mu\nu}u^\nu,
+ \qquad
+ B_\mu=\frac12\epsilon_{\mu\nu\rho\sigma}u^\nu F^{\rho\sigma}.
+\end{equation}
+The minimal isotropic constitutive Lagrangian can be written as
+\begin{equation}
+ \mathcal L_{\rm EM,\Pi}
+ =\frac12\varepsilon(\Pi)E_\mu E^\mu
+ -\frac12\mu^{-1}(\Pi)B_\mu B^\mu.
+\end{equation}
+This expression is equivalent to Eq.~\eqref{eq:medium_action} in the local frame of $u^\mu$.  The constitutive tensor $\chi^{\mu\nu\rho\sigma}$ has the standard antisymmetries
+\begin{equation}
+ \chi^{\mu\nu\rho\sigma}
+ =-\chi^{\nu\mu\rho\sigma}
+ =-\chi^{\mu\nu\sigma\rho}
+ =\chi^{\rho\sigma\mu\nu},
+\end{equation}
+and its isotropic scalar reduction is fully characterized by $\varepsilon(\Pi)$ and $\mu^{-1}(\Pi)$.
+
+\section{Hamiltonian positivity}
+\label{app:hamiltonian}
+
+The canonical momentum conjugate to the spatial vector potential is
+\begin{equation}
+ \boldsymbol\Pi_A=\frac{\partial\mathcal L}{\partial(\partial_t\mathbf A)}=-\mathbf D.
+\end{equation}
+After imposing the Gauss constraint and choosing a gauge, the physical Hamiltonian density is
+\begin{equation}
+ \mathcal H=\frac12\left(\mathbf E\cdot\mathbf D+\mathbf B\cdot\mathbf H\right)
+ =\frac12\left[\varepsilon(\Pi)\mathbf E^2+\mu^{-1}(\Pi)\mathbf B^2\right].
+\end{equation}
+Thus the leading photon sector is ghost-free whenever $\varepsilon(\Pi)>0$ and $\mu^{-1}(\Pi)>0$.  For the minimal weights \eqref{eq:minimal_weights}, this holds for $\Pi>0$.
+
+\section{Relation to the scalar-proxy wave operator}
+\label{app:scalar_proxy}
+
+A scalar optical proxy has the action
+\begin{equation}
+ S_{\rm opt}=\frac12\int dt\,d^3x
+ \left[A(\Pi)(\partial_t\Phi)^2-c_0^2 B(\Pi)(\nabla\Phi)^2\right].
+\end{equation}
+The WKB ansatz $\Phi=a\exp(i\Theta/\epsilon)$ gives
+\begin{equation}
+ A(\Pi)\omega^2-c_0^2B(\Pi)|\mathbf k|^2=0,
+\end{equation}
+and therefore
+\begin{equation}
+ n_{\rm eff}^2=\frac{A(\Pi)}{B(\Pi)}.
+\end{equation}
+The electromagnetic construction identifies $A$ with the electric response and $B$ with the magnetic stiffness:
+\begin{equation}
+ A(\Pi)\leftrightarrow\varepsilon_r(\Pi)=\Pi^{-2},
+ \qquad
+ B(\Pi)\leftrightarrow\mu_r^{-1}(\Pi)=\Pi^2.
+\end{equation}
+The scalar proxy and the gauge-invariant electromagnetic action therefore have the same isotropic principal-symbol ratio.
+
+\end{appendices}
+
+\begin{thebibliography}{99}
+
+\bibitem{Jackson1999}
+J. D. Jackson, \textit{Classical Electrodynamics}, 3rd ed. (Wiley, 1999).
+
+\bibitem{BornWolf1999}
+M. Born and E. Wolf, \textit{Principles of Optics}, 7th ed. (Cambridge University Press, 1999).
+
+\bibitem{HehlObukhov2003}
+F. W. Hehl and Y. N. Obukhov, \textit{Foundations of Classical Electrodynamics: Charge, Flux, and Metric} (Birkhauser, 2003).
+
+\bibitem{Rubilar2002}
+G. F. Rubilar, Linear pre-metric electrodynamics and deduction of the light cone, \textit{Annalen Phys.} \textbf{11}, 717--782 (2002).
+
+\bibitem{Perlick2004}
+V. Perlick, Gravitational lensing from a spacetime perspective, \textit{Living Rev. Relativ.} \textbf{7}, 9 (2004).
+
+\bibitem{SchneiderEhlersFalco1992}
+P. Schneider, J. Ehlers, and E. E. Falco, \textit{Gravitational Lenses} (Springer, 1992).
+
+\bibitem{BartelmannSchneider2001}
+M. Bartelmann and P. Schneider, Weak gravitational lensing, \textit{Phys. Rep.} \textbf{340}, 291--472 (2001).
+
+\bibitem{Shapiro1964}
+I. I. Shapiro, Fourth test of general relativity, \textit{Phys. Rev. Lett.} \textbf{13}, 789--791 (1964).
+
+\bibitem{Will2014}
+C. M. Will, The confrontation between general relativity and experiment, \textit{Living Rev. Relativ.} \textbf{17}, 4 (2014).
+
+\bibitem{BirrellDavies1982}
+N. D. Birrell and P. C. W. Davies, \textit{Quantum Fields in Curved Space} (Cambridge University Press, 1982).
+
+\bibitem{Weinberg1995}
+S. Weinberg, \textit{The Quantum Theory of Fields, Volume I} (Cambridge University Press, 1995).
+
+\bibitem{Burgess2004}
+C. P. Burgess, Quantum gravity in everyday life: General relativity as an effective field theory, \textit{Living Rev. Relativ.} \textbf{7}, 5 (2004).
+
+\bibitem{JacobsonMattingly2001}
+T. Jacobson and D. Mattingly, Gravity with a dynamical preferred frame, \textit{Phys. Rev. D} \textbf{64}, 024028 (2001).
+
+\bibitem{JordanMatterCompanion}
+S. Jordan, \textit{Collective Phase Loading and Progression Exchange in Progression-Weighted Matter Dynamics}, companion manuscript (2026).
+
+\end{thebibliography}
+
+\end{document}
