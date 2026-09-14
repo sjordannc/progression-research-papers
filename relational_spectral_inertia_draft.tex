@@ -1,0 +1,561 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,bm,mathtools}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{physics}
+\usepackage{xcolor}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black
+}
+
+\newcommand{\MT}{\mathcal{M}_{T}}
+\newcommand{\UT}{\mathcal{U}_{T}}
+\newcommand{\Arel}{\mathfrak{A}}
+\newcommand{\Xop}{\mathbb{X}}
+\newcommand{\vT}{\bm{v}_{T}}
+\newcommand{\kphys}{k_{\rm phys}}
+\newcommand{\avg}[1]{\left\langle #1\right\rangle}
+
+\title{\textbf{Relational Spectral Inertia from Cosmological Frame Dragging}\\
+\large A Phase-Normalized Nonlocal Matter-Kinetic Framework}
+\author{Scott A. Jordan}
+\date{Draft -- \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop a speculative modified-inertia framework in which the large-scale gravitational environment does not introduce a new force field or a new dimensional acceleration constant. Instead, general relativity (GR) supplies a relational inertial frame through its transverse momentum-constraint operator, while a nonlocal matter kinetic functional modifies the phase cost of acceleration relative to that frame. The only cosmological dimensional input is the infrared part of the GR transverse operator, denoted $\UT$, whose flat-FLRW limit is $\UT=-4\dot H/c^2$. This operator defines a natural acceleration $c^2\sqrt{\UT}$ without assuming an FLRW background at the fundamental level. A dimensionless spectral acceleration variable is constructed from whole-trajectory acceleration and $\UT$, and the matter action is written as a universal nonlocal form factor multiplying the ordinary kinetic phase. For circular motion, variation of the action yields an inertial response $g_N=\mu_I(x)g$, where $x=g/(c^2\sqrt{u})$ for an eigenvalue $u$ of $\UT$. Deep spacetime scale invariance forces $\mu_I(x)\propto x$, implying $g^2\propto g_N$ and the baryonic Tully--Fisher scaling $v_f^4\propto M_b$. Quantum phase normalization fixes the overall factor $m/\hbar$ and the Newtonian kinetic normalization but does not fix the dimensionless slope or crossover location of the universal form factor. We therefore identify a precise residual problem: the dimensionless form factor must be derived from a microscopic relational influence functional rather than fitted as an acceleration constant. The construction is explicitly separated from its FLRW specialization and yields distinctive open predictions concerning orbit dependence, environmental response, cosmological evolution, and the de Sitter limit. We emphasize that the proposal is presently an effective framework rather than a complete relativistic theory.
+\end{abstract}
+
+\section{Introduction}
+
+Galaxy dynamics exhibit a tight empirical relation between the observed centripetal acceleration and the acceleration inferred from the baryonic mass distribution \cite{McGaugh2016RAR}. In the low-acceleration regime, the phenomenology is approximately described by
+\begin{equation}
+    g_{\rm obs}^2 \sim a_0 g_{\rm bar},
+\end{equation}
+which also implies the baryonic Tully--Fisher relation $v_f^4\propto M_b$. Modified-inertia formulations provide one possible interpretation: the gravitational field may remain conventional while the kinetic response of matter becomes non-Newtonian for sufficiently weak, slowly varying motion. Milgrom showed that Galilean-invariant modified-inertia theories are naturally nonlocal in time and suggested that such nonlocality could arise after eliminating degrees of freedom associated with the universe at large \cite{Milgrom1994}.
+
+A separate line of work in cosmological GR provides a concrete Machian ingredient. For vector perturbations of Friedmann--Robertson--Walker (FRW) backgrounds, the gravitomagnetic momentum constraint determines local inertial-frame dragging from cosmological energy currents. Schmid showed that the gyroscope frame follows a normalized weighted average of these currents, with a Yukawa cutoff set by the $\dot H$ scale \cite{Schmid2008a,Schmid2008b}. At quadratic order, the vector sector of the matter--gravity action similarly contains a kinetic weight of the schematic form $k^2/(k^2+\mu^2)$, with the same infrared scale \cite{DeFeliceProc}.
+
+These observations motivate a division of labor. GR is used to define the relational inertial frame and its infrared coherence scale; new physics is placed only in the nonlocal kinetic functional of matter measured relative to that frame. The present paper asks whether this minimal construction can produce the deep-galaxy scaling without inserting a new acceleration constant by hand.
+
+The central conclusions are deliberately limited. First, the GR momentum constraint supplies a unique infrared inverse length and therefore a natural acceleration operator. Second, deep spacetime scale invariance fixes the \emph{power law} of the low-acceleration kinetic response and yields $g^2\propto g_N$. Third, neither classical scale invariance nor ordinary quantum phase normalization fixes the remaining dimensionless shape and normalization of the crossover function. The framework therefore reduces, but does not eliminate, the unresolved phenomenology.
+
+\section{Scope and organizing principles}
+
+We impose six requirements.
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{No new static fifth force.} The gravitational field equations are not replaced by a new long-range vector interaction in the present construction.
+    \item \textbf{Relational inertia.} Motion is evaluated relative to the inertial frame selected by the large-scale matter distribution through the GR momentum constraint.
+    \item \textbf{Time nonlocality.} The kinetic action may depend on the full trajectory or its spectrum, consistent with the general structure of modified-inertia theories \cite{Milgrom1994}.
+    \item \textbf{Newtonian correspondence.} At high acceleration or short coherence time, the ordinary kinetic action must be recovered with unit normalization.
+    \item \textbf{Deep scale invariance.} The asymptotic low-acceleration equations are required to be invariant under $(t,\bm{x})\mapsto(\lambda t,\lambda\bm{x})$.
+    \item \textbf{No fundamental FLRW assumption.} FLRW is used only to evaluate the general GR operator in a homogeneous background; quantities such as $H$ and $q$ are not fundamental inputs to the action.
+\end{enumerate}
+
+The framework is therefore closer in spirit to an effective nonlocal matter theory on a GR-defined relational background than to a modified-gravity model.
+
+\section{The GR-defined relational inertial frame}
+
+\subsection{Transverse momentum constraint}
+
+Consider a matter-defined spatial foliation with unit timelike congruence $n^\mu$ and spatial projector
+\begin{equation}
+    h_{\mu\nu}=g_{\mu\nu}+n_\mu n_\nu.
+\end{equation}
+Let $D_i$ denote the spatial covariant derivative and let the transverse subspace satisfy $D_i V_T^i=0$. We write the GR vector momentum constraint abstractly as
+\begin{equation}
+    \MT \bm{A}_g = \bm{J}_{T},
+    \label{eq:MTabstract}
+\end{equation}
+where $\bm{A}_g$ is the gravitomagnetic shift/frame variable, $\bm{J}_T$ is the transverse energy current, and $\MT$ is a positive spatial operator on the physical vector sector after the relevant boundary conditions are specified.
+
+In a spatially flat FRW background, Schmid's cosmological gravitomagnetic equation can be expressed schematically as
+\begin{equation}
+    \left(-D_T^2+\mu^2\right)\bm{A}_g
+    = \text{(normalized source)},
+\end{equation}
+with
+\begin{equation}
+    \mu^2=-\frac{4\dot H}{c^2}.
+    \label{eq:muHdot}
+\end{equation}
+The associated Green function is Yukawa-like, and the corresponding H-dot radius is
+\begin{equation}
+    R_{\dot H}=\frac{2}{\mu}=\frac{c}{\sqrt{-\dot H}}.
+\end{equation}
+The exact numerical source normalization depends on conventions for $\bm A_g$ and the energy current; the invariant point required here is the infrared operator scale in Eq.~\eqref{eq:muHdot} and the normalized frame-dragging result \cite{Schmid2008a,Schmid2008b}.
+
+\subsection{Infrared operator}
+
+We decompose the transverse constraint operator schematically into derivative and infrared pieces,
+\begin{equation}
+    \MT = -D_T^2 + \UT + \cdots,
+    \label{eq:operatorSplit}
+\end{equation}
+where $\UT$ denotes the zeroth-spatial-derivative part of the operator in an adiabatic/infrared expansion. In exact flat FLRW,
+\begin{equation}
+    \boxed{\UT=-\frac{4\dot H}{c^2}\,\mathbf{1}_T.}
+    \label{eq:Uflrw}
+\end{equation}
+The fundamental theory below is written in terms of $\UT$, not $H$ or $\dot H$. Equation~\eqref{eq:Uflrw} is only a specialization.
+
+Since $[\UT]=L^{-2}$, the operator defines a natural acceleration
+\begin{equation}
+    \boxed{\mathcal A_{\rm GR}=c^2\UT^{1/2}.}
+    \label{eq:Agr}
+\end{equation}
+For a flat-FLRW eigenmode,
+\begin{equation}
+    \mathcal A_{\rm GR}=2c\sqrt{-\dot H}.
+    \label{eq:AgrFLRW}
+\end{equation}
+No empirical galaxy acceleration has been inserted into this definition.
+
+\subsection{What GR already does, and what it does not do}
+
+Eliminating the vector metric auxiliary field in the quadratic GR-plus-perfect-fluid action yields an effective spectral kinetic coefficient of the form \cite{DeFeliceProc}
+\begin{equation}
+    Q_V(k,t)=\frac{a^2k^2(\rho+p)}{k^2+16\pi G a^2(\rho+p)}.
+\end{equation}
+Using the flat-FLRW relation $16\pi G(\rho+p)=-4\dot H$ in units $c=1$, the corresponding dimensionless inertial weight can be written
+\begin{equation}
+    \mathcal I_{\rm GR}(k)=\frac{k_{\rm phys}^2}{k_{\rm phys}^2+\mu^2}.
+    \label{eq:IGR}
+\end{equation}
+Thus GR already makes extremely long-wavelength coherent vector motion increasingly inexpensive relative to the inertial frame that the cosmic matter itself defines. However, Eq.~\eqref{eq:IGR} depends on wavelength, not on acceleration amplitude. It does not by itself generate a MOND-like relation $g^2\propto g_N$ for galaxy rotation curves. The new ingredient below is therefore confined to the matter kinetic functional.
+
+\section{Phase-normalized nonlocal matter kinetics}
+
+\subsection{Relational velocity}
+
+Let $\vT$ denote the transverse peculiar velocity of baryonic matter relative to the inertial frame determined by Eq.~\eqref{eq:MTabstract}. We assume the ordinary baryonic kinetic inner product
+\begin{equation}
+    \avg{\bm X,\bm Y}_M
+    =\int_{\Sigma_t}\dd^3x\,\sqrt{\gamma}\,\rho_B\,X_i^*Y^i.
+\end{equation}
+In the high-acceleration limit the transverse and longitudinal pieces must recombine to give the ordinary Newtonian kinetic energy. This fixes the local normalization of the physical transverse velocity; there is no independent rescaling $\vT\to \zeta\vT$ once Newtonian correspondence is imposed.
+
+\subsection{Spectral acceleration functional}
+
+A local acceleration magnitude is insufficient for a general modified-inertia theory because internal high-frequency accelerations should not necessarily determine the response of a low-frequency galactic center-of-mass mode. We therefore introduce a positive, frequency-resolved whole-trajectory functional $\Arel_\omega[\vT]$. For a monochromatic circular orbit of radius $R$ and angular frequency $\Omega$,
+\begin{equation}
+    \boxed{\Arel_\Omega=\Omega^2R=g.}
+    \label{eq:Acirc}
+\end{equation}
+A more complete theory would define $\Arel_\omega$ by a causal or in-in spectral kernel. At this stage only positivity, time-translation covariance in a stationary background, and Eq.~\eqref{eq:Acirc} are required.
+
+\subsection{Dimensionless operator variable}
+
+The smallest dimensionless combination of $\Arel_\omega$ and the GR infrared operator is
+\begin{equation}
+    \boxed{
+    \Xop_\omega
+    =\frac{1}{c^2}\,
+    \UT^{-1/4}\,\Arel_\omega\,\UT^{-1/4}.
+    }
+    \label{eq:Xoperator}
+\end{equation}
+When $\Arel_\omega$ and $\UT$ commute on a single eigenmode with $\UT\psi=u\psi$, this reduces to
+\begin{equation}
+    x=\frac{\Arel}{c^2\sqrt{u}}.
+    \label{eq:xscalar}
+\end{equation}
+For circular motion, $x=g/(c^2\sqrt{u})$.
+
+\subsection{Kinetic action and quantum phase}
+
+We propose the effective kinetic action
+\begin{equation}
+    \boxed{
+    S_K=S_{K,L}^{\rm N}
+    +\frac12\int\frac{\dd\omega}{2\pi}\,
+    \avg{
+    \bm v_{T,\omega},
+    f(\Xop_\omega)\bm v_{T,\omega}
+    }_M,
+    }
+    \label{eq:SK}
+\end{equation}
+where $S_{K,L}^{\rm N}$ denotes the ordinary longitudinal/compressive kinetic sector and $f$ is a universal dimensionless operator function. The Newtonian limit requires
+\begin{equation}
+    f(x)\to 1\qquad (x\gg 1).
+    \label{eq:fNewton}
+\end{equation}
+
+At the quantum level, the path amplitude contains $\exp(iS_K/\hbar)$. Therefore the overall phase normalization is fixed by the same $m/\hbar$ factor that normalizes ordinary matter kinetics. For a single particle,
+\begin{equation}
+    \Phi_K=\frac{S_K}{\hbar}
+    \longrightarrow
+    \frac{m}{2\hbar}\int v^2\dd t
+\end{equation}
+in the Newtonian limit. Quantum phase normalization therefore fixes the overall kinetic coefficient but, as shown below, not the dimensionless shape of $f$.
+
+\section{Circular orbits and the inertial response function}
+
+For a circular single mode, Eq.~\eqref{eq:SK} reduces to
+\begin{equation}
+    L_K=\frac12 m v^2 f(x),
+    \qquad
+    x=\frac{g}{\mathcal A_{\rm GR}},
+    \label{eq:Lcirc}
+\end{equation}
+where $\mathcal A_{\rm GR}=c^2\sqrt u$ for that mode. Since $v=\Omega R$ and $g=\Omega^2R$, variation with respect to $R$ at fixed $\Omega$ gives
+\begin{equation}
+    \frac{\partial L_K}{\partial R}
+    =mg\left[f(x)+\frac{x}{2}f'(x)\right].
+\end{equation}
+It is therefore the combination
+\begin{equation}
+    \boxed{
+    \mu_I(x)=f(x)+\frac{x}{2}f'(x)
+    }
+    \label{eq:muI}
+\end{equation}
+that multiplies the inertial acceleration. For ordinary baryonic gravity,
+\begin{equation}
+    \boxed{g_N=\mu_I(x)g.}
+    \label{eq:circeom}
+\end{equation}
+
+Conversely, given a desired response $\mu_I(x)$, the regular action primitive is
+\begin{equation}
+    f(x)=\frac{2}{x^2}\int_0^x y\,\mu_I(y)\,\dd y.
+    \label{eq:primitive}
+\end{equation}
+This distinction is essential: inserting $\mu_I$ directly as the coefficient of a quadratic kinetic action would miss the variation of the response function itself.
+
+\section{Deep scale invariance}
+
+Under the deep spacetime scaling
+\begin{equation}
+    t\mapsto\lambda t,
+    \qquad
+    \bm x\mapsto\lambda\bm x,
+\end{equation}
+velocities are invariant while accelerations transform as $g\mapsto g/\lambda$. For an isolated baryonic source, $g_N\propto r^{-2}$ transforms as $\lambda^{-2}$.
+
+Assume the deep response is a power law,
+\begin{equation}
+    \mu_I(x)\simeq \kappa x^n,
+    \qquad x\ll1,
+\end{equation}
+where $\kappa$ is dimensionless. Equation~\eqref{eq:circeom} then has an inertial side proportional to $g^{n+1}$. Scale covariance with $g_N\propto\lambda^{-2}$ requires
+\begin{equation}
+    n+1=2,
+\end{equation}
+so
+\begin{equation}
+    \boxed{\mu_I(x)\simeq\kappa x.}
+    \label{eq:deepmu}
+\end{equation}
+The corresponding action primitive is
+\begin{equation}
+    \boxed{f(x)\simeq\frac{2\kappa}{3}x.}
+    \label{eq:deepf}
+\end{equation}
+Indeed, the deep circular kinetic action scales as
+\begin{equation}
+    L_K^{\rm deep}\propto \frac{m}{\mathcal A_{\rm GR}}v^2g,
+\end{equation}
+so $\dd t\,L_K^{\rm deep}$ is invariant under the deep scaling.
+
+Substituting Eq.~\eqref{eq:deepmu} into Eq.~\eqref{eq:circeom} gives
+\begin{equation}
+    \boxed{
+    g^2=\frac{\mathcal A_{\rm GR}}{\kappa}\,g_N.
+    }
+    \label{eq:sqrtlaw}
+\end{equation}
+For $g_N=GM_b/R^2$ and $g=v_f^2/R$,
+\begin{equation}
+    \boxed{
+    v_f^4=G M_b\,\frac{\mathcal A_{\rm GR}}{\kappa}.
+    }
+    \label{eq:BTFR}
+\end{equation}
+Thus the square-root acceleration law and baryonic Tully--Fisher scaling follow from the nonlocal kinetic structure plus deep scale invariance. The dimensional acceleration is inherited from the GR infrared operator rather than introduced as an independent constant.
+
+\section{Why quantum phase normalization does not fix the crossover}
+
+The quantum phase of a particle is $S/\hbar$. This fixes the absolute coefficient of the matter action, but it does not select the argument scale of an otherwise unknown dimensionless form factor. If $f(x)$ is admissible, then
+\begin{equation}
+    f_\alpha(x)=f(x/\alpha)
+\end{equation}
+has the same Newtonian limit for every constant $\alpha>0$. Equivalently, the deep slope $\kappa$ in Eq.~\eqref{eq:deepmu} is not determined by the condition $f(\infty)=1$.
+
+A tempting alternative is to define the transition by an absolute phase difference of order unity. This fails universality. For approximately uniform acceleration $a$ over a time $T$, with $v(t)=at\ll c$, the proper-time deficit is
+\begin{equation}
+    \Delta\tau\simeq-\frac{1}{2c^2}\int_0^T a^2t^2\dd t
+    =-\frac{a^2T^3}{6c^2}.
+\end{equation}
+The associated rest-mass phase difference is
+\begin{equation}
+    |\Delta\Phi|=\frac{mc^2}{\hbar}|\Delta\tau|
+    =\frac{ma^2T^3}{6\hbar}.
+\end{equation}
+Setting $|\Delta\Phi|\sim1$ would imply
+\begin{equation}
+    a\sim\sqrt{\frac{6\hbar}{mT^3}},
+\end{equation}
+which is explicitly mass dependent and therefore cannot define a universal galactic acceleration threshold.
+
+A phase \emph{ratio} eliminates $m/\hbar$. Dividing by the accumulated Compton phase $mc^2T/\hbar$ yields
+\begin{equation}
+    \frac{|\Delta\Phi|}{\Phi_C}
+    =\frac{a^2T^2}{6c^2}.
+\end{equation}
+If the environmental coherence time is $T\sim1/(c\sqrt u)$, this ratio depends on
+\begin{equation}
+    \Xi=\frac{a^2}{c^4u}=x^2.
+\end{equation}
+Quantum phase therefore motivates the same dimensionless variable as Eq.~\eqref{eq:xscalar}, but it still does not select a particular value of $x$ at which the form factor turns over.
+
+The residual unknown is consequently not a new dimensional constant but the universal dimensionless function $f$, or equivalently the slope and crossover structure of $\mu_I$.
+
+\section{FLRW as a consistency limit, not a foundation}
+
+The formalism has been written in terms of $\MT$ and $\UT$. In a flat FLRW background,
+\begin{equation}
+    \UT=-\frac{4\dot H}{c^2}\mathbf{1}_T,
+\end{equation}
+so
+\begin{equation}
+    \mathcal A_{\rm GR}=2c\sqrt{-\dot H}
+    =2cH\sqrt{1+q}.
+    \label{eq:Aq}
+\end{equation}
+This is an evaluated background quantity, not a fundamental appearance of $H$ or $q$ in the action.
+
+As a numerical benchmark, for a flat late-time cosmology with $H_0\simeq67.4\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ and $\Omega_{m0}\simeq0.315$ \cite{Planck2018}, one has $-\dot H_0\simeq(3/2)\Omega_{m0}H_0^2$ and therefore
+\begin{equation}
+    \mathcal A_{\rm GR,0}\sim9\times10^{-10}\,\mathrm{m\,s^{-2}}.
+\end{equation}
+The empirical RAR transition scale is of order $1.2\times10^{-10}\,\mathrm{m\,s^{-2}}$ \cite{McGaugh2016RAR}. Thus the GR infrared acceleration has the correct broad cosmological order of magnitude but does not reproduce the observed normalization without a nontrivial dimensionless deep-response slope $\kappa$.
+
+This mismatch is useful: it prevents the framework from hiding the phenomenological normalization inside an arbitrary definition of a horizon radius, a factor of $2\pi$, or transverse polarization counting. A microscopic theory must calculate $f$.
+
+The construction also makes a sharp asymptotic prediction if $\UT$ is the only environmental operator. In exact de Sitter spacetime, $\dot H=0$ and therefore
+\begin{equation}
+    \UT\to0,
+    \qquad
+    \mathcal A_{\rm GR}\to0.
+\end{equation}
+Whether this is physically acceptable is an important test. If a nonzero de Sitter acceleration is required, the relevant environmental operator must contain additional curvature information beyond the vector momentum-constraint infrared term.
+
+\section{General-spacetime interpretation}
+
+A complete theory should define $\UT$ without a preferred exact cosmological solution. Let $u^\mu$ be the coarse-grained matter congruence and decompose
+\begin{equation}
+    \nabla_\mu u_\nu
+    =\frac13\Theta h_{\mu\nu}
+    +\sigma_{\mu\nu}
+    +\omega_{\mu\nu}
+    -u_\mu a_\nu.
+\end{equation}
+The GR momentum constraint on the spatial slices orthogonal to the chosen congruence defines a transverse elliptic operator $\MT[g,T,u]$. The proposed environmental quantity is the infrared, zero-spatial-derivative part of that operator,
+\begin{equation}
+    \UT(x)=\operatorname{IR}[\MT[g,T,u]](x),
+    \label{eq:Ugeneral}
+\end{equation}
+with the understanding that Eq.~\eqref{eq:Ugeneral} is an operator definition requiring a specified coarse graining and boundary prescription.
+
+This is one of the principal unfinished parts of the framework. In a strongly inhomogeneous spacetime, the separation of $\MT$ into $-D_T^2+\UT+\cdots$ need not be unique. A physically satisfactory definition should be causal in the effective theory, insensitive to arbitrary coordinate choices, and reduce to Eq.~\eqref{eq:Uflrw} in the homogeneous limit.
+
+\section{Phenomenological consequences}
+
+\subsection{Circular disk galaxies}
+
+For a coherent circular mode, Eq.~\eqref{eq:Acirc} gives $x=g/\mathcal A_{\rm GR}$. In the deep regime, Eq.~\eqref{eq:sqrtlaw} gives
+\begin{equation}
+    g\simeq\sqrt{a_{\rm eff}g_N},
+    \qquad
+    a_{\rm eff}=\frac{\mathcal A_{\rm GR}}{\kappa}.
+\end{equation}
+The framework therefore predicts a RAR-like asymptote and the baryonic Tully--Fisher slope, but the observed normalization tests the microscopic value of $\kappa$ rather than defining an independent $a_0$.
+
+\subsection{Orbit and frequency dependence}
+
+Because $\Arel_\omega$ is spectral and trajectory dependent, the theory need not reduce to a universal algebraic relation $\bm a=\bm a(\bm g_N)$ for arbitrary motion. Circular orbits are a special eigenmotion for which the reduction is simple. Radial, eccentric, oscillatory, and multi-frequency trajectories can exhibit different effective inertial responses even at the same instantaneous acceleration. This is a characteristic distinction between modified inertia and local modified gravity.
+
+\subsection{Environmental dependence}
+
+If $\UT$ is evaluated from the actual large-scale gravitational environment rather than a universal FLRW background, then $a_{\rm eff}$ can acquire weak environmental dependence. The observed tightness of the RAR strongly constrains such variation, but a small predicted dependence on void, group, or cluster environment would provide a discriminating test.
+
+\subsection{Cosmological evolution}
+
+In an FLRW limit, $\UT\propto-\dot H$, so the characteristic environmental acceleration evolves with cosmic time. The framework therefore predicts redshift evolution of the effective low-acceleration scale unless the dimensionless form factor compensates for it. This is a direct observational target rather than a freely adjustable assumption.
+
+\section{Consistency requirements and unresolved issues}
+
+The present proposal is incomplete in several important respects.
+
+\paragraph{Microscopic derivation of the form factor.}
+The central unresolved problem is to derive $f(\Xop)$ from a microscopic influence functional. Quantum phase normalization alone does not determine its dimensionless shape. A viable derivation likely requires infrared collective physics rather than ordinary Planck-suppressed perturbative quantum-gravity corrections.
+
+\paragraph{Causality and nonlocality.}
+Equation~\eqref{eq:SK} is written spectrally. A causal real-time formulation should be derived using an in-in/Schwinger--Keldysh influence functional or an equivalent auxiliary-field representation. A purely retarded kernel cannot simply be inserted into an ordinary single-branch action without care.
+
+\paragraph{Energy and momentum conservation.}
+Time-translation invariance in stationary backgrounds suggests a generalized conserved Noether energy for the complete nonlocal matter-plus-environment system, but this must be derived explicitly for the final kernel. In general spacetimes the construction should fit into a diffeomorphism-covariant conservation law.
+
+\paragraph{Relativistic completion and lensing.}
+A matter-only modified-inertia theory does not automatically reproduce the gravitational lensing normally attributed to dark matter. Photons following the baryon-sourced GR metric would generally lens differently from what is inferred in galaxies and clusters unless the phase functional extends consistently to relativistic/null fields or the metric sector acquires an effective stress-energy contribution. This is a major phenomenological requirement, not a secondary detail.
+
+\paragraph{Composite systems and equivalence principle.}
+The response must depend on center-of-mass trajectory coherence rather than microscopic atomic accelerations. The spectral construction is intended to separate these scales, but a proof of composition independence and weak-equivalence-principle compatibility is required.
+
+\paragraph{Definition of $\UT$ in inhomogeneous geometry.}
+The infrared extraction in Eq.~\eqref{eq:Ugeneral} must be made mathematically precise. The theory should not depend on an arbitrary global FLRW fit or coordinate-dependent background split.
+
+\paragraph{Stability.}
+The universal function $f$ and its operator extension must preserve positivity of the physical kinetic sector, avoid ghostlike modes, and possess a well-posed causal evolution.
+
+\section{Relation to modified-inertia MOND}
+
+The circular phenomenology overlaps with the deep modified-inertia limit discussed by Milgrom \cite{Milgrom1994}. The conceptual difference is the status of the acceleration scale. Standard phenomenological formulations introduce a fixed $a_0$ and seek kinetic actions that approach the Newtonian and deep-MOND limits. Here the dimensional scale is instead obtained from the infrared GR momentum-constraint operator,
+\begin{equation}
+    a_0\quad\longrightarrow\quad c^2\sqrt{\UT},
+\end{equation}
+while the dimensionless universal function remains to be derived.
+
+The proposal therefore does not claim to derive all MOND phenomenology. Rather, it identifies a concrete GR-based environmental operator that can enter a nonlocal modified-inertia action without adding a new dimensional constant, and shows that deep scale invariance then forces the square-root circular-orbit law.
+
+\section{Discussion}
+
+The framework suggests a separation between the \emph{definition of an inertial frame} and the \emph{magnitude of inertial response}. Cosmological GR already contains a Machian vector-sector mechanism by which large-scale energy currents determine local inertial axes. Integrating out that sector generates a wavelength-dependent reduction of vector kinetic weight, but not the acceleration-dependent law required by disk-galaxy phenomenology. A genuinely new matter kinetic functional is therefore still required.
+
+The smallest such functional can be built from the baryonic trajectory spectrum and the GR infrared operator. No independent dimensionful acceleration is necessary: the variable $x=\Arel/(c^2\sqrt u)$ is dimensionless and phase ratios naturally recover the same combination. Deep scale invariance fixes the low-$x$ power to be linear and consequently gives $g^2\propto g_N$. This part of the construction is robust within the stated assumptions.
+
+The outstanding normalization is equally clear. Neither the standard quantum phase $S/\hbar$, the Newtonian correspondence limit, nor scale invariance selects the dimensionless slope $\kappa$ or the full crossover function. Consequently, numerical coincidences involving horizon temperatures, factors of $2\pi$, or polarization counting should not be elevated to derivations. The appropriate target is a microscopic relational influence functional whose derived form factor can be confronted with the RAR without retuning.
+
+\section{Conclusion}
+
+We have proposed an effective relational modified-inertia framework with three derived structural elements:
+\begin{equation}
+    \text{GR momentum constraint}
+    \;\Rightarrow\;
+    \UT,
+\end{equation}
+\begin{equation}
+    \UT
+    \;\Rightarrow\;
+    \mathcal A_{\rm GR}=c^2\sqrt{\UT},
+\end{equation}
+\begin{equation}
+    \text{deep scale invariance}
+    \;\Rightarrow\;
+    \mu_I(x)\propto x
+    \;\Rightarrow\;
+    g^2\propto g_N.
+\end{equation}
+Quantum phase fixes the overall normalization of the matter action and motivates the dimensionless trajectory variable, but it does not determine the remaining universal form factor. The empirical galaxy acceleration scale therefore becomes a test of the microscopic function rather than an independently inserted dimensional constant.
+
+The next decisive calculation is to derive $f(\Xop)$ from a causal influence functional obtained by integrating over relational gravitational or collective degrees of freedom while preserving the GR-defined inertial frame. Success would require the resulting function to reproduce the observed RAR normalization, remain composition independent, possess a stable relativistic completion, and address lensing and cosmological structure without system-by-system retuning.
+
+\appendix
+
+\section{Quadratic GR vector response}
+
+A useful schematic derivation of Eq.~\eqref{eq:IGR} begins with a transverse matter velocity $\vT$ and auxiliary gravitomagnetic field $\bm A_g$,
+\begin{equation}
+    S_V=\int\dd t\left[
+    \frac12(\rho+p)|\vT|^2
+    +\bm A_g\cdot\bm J_T
+    +\frac{1}{32\pi G}\bm A_g\cdot(-D_T^2+\mu^2)\bm A_g
+    \right],
+\end{equation}
+with $\bm J_T\propto(\rho+p)\vT$. Eliminating $\bm A_g$ gives a nonlocal current-current term. In Fourier space, the background Einstein relation identifies the source coefficient with $\mu^2$, leaving a net kinetic weight proportional to
+\begin{equation}
+    \frac{k^2}{k^2+\mu^2}.
+\end{equation}
+This derivation is schematic because conventions for $\bm A_g$ and factors of $a$ vary across gauges and orthonormal-frame formulations; the exact quadratic result is represented by the $Q_V$ expression quoted in the main text \cite{DeFeliceProc}.
+
+\section{Action primitive for circular motion}
+
+For
+\begin{equation}
+    L_K=\frac12m\Omega^2R^2f(x),
+    \qquad
+    x=\frac{\Omega^2R}{\mathcal A},
+\end{equation}
+we have
+\begin{align}
+    \frac{1}{m}\frac{\partial L_K}{\partial R}
+    &=\Omega^2R f(x)
+    +\frac12\Omega^2R^2 f'(x)\frac{\Omega^2}{\mathcal A}\\
+    &=g\left[f(x)+\frac{x}{2}f'(x)\right].
+\end{align}
+Thus $\mu_I=f+(x/2)f'$. Multiplying by $x$ gives
+\begin{equation}
+    \frac{\dd}{\dd x}\left[x^2 f(x)\right]
+    =2x\mu_I(x),
+\end{equation}
+which integrates to Eq.~\eqref{eq:primitive} for the regular solution at $x=0$.
+
+\section{Scale-invariance argument}
+
+For an isolated mass in the deep regime,
+\begin{equation}
+    g_N\sim R^{-2}.
+\end{equation}
+Under $R\to\lambda R$, $t\to\lambda t$, circular speed is invariant and $g\to\lambda^{-1}g$. If $g_N\sim g^{n+1}$, matching the scaling exponents requires
+\begin{equation}
+    \lambda^{-2}=\lambda^{-(n+1)},
+\end{equation}
+so $n=1$. Hence the deep response must be linear in the dimensionless acceleration argument irrespective of the detailed interpolation at larger $x$.
+
+\begin{thebibliography}{99}
+
+\bibitem{Milgrom1994}
+M. Milgrom,
+``Dynamics with a nonstandard inertia-acceleration relation: An alternative to dark matter in galactic systems,''
+\textit{Annals of Physics} \textbf{229}, 384--415 (1994),
+\href{https://doi.org/10.1006/aphy.1994.1012}{doi:10.1006/aphy.1994.1012};
+\href{https://arxiv.org/abs/astro-ph/9303012}{arXiv:astro-ph/9303012}.
+
+\bibitem{Schmid2008a}
+C. Schmid,
+``Mach's principle: Exact frame-dragging via gravitomagnetism in perturbed Friedmann--Robertson--Walker universes with $K=(\pm1,0)$,''
+\href{https://arxiv.org/abs/0801.2907}{arXiv:0801.2907} (2008).
+
+\bibitem{Schmid2008b}
+C. Schmid,
+``Mach's Principle: Exact Frame-Dragging by Energy Currents in the Universe,''
+\href{https://arxiv.org/abs/0806.2085}{arXiv:0806.2085} (2008).
+
+\bibitem{DeFeliceProc}
+A. De Felice, J.-M. Gerard, and T. Suyama,
+``Cosmological perturbations of a perfect fluid and noncommutative variables,''
+\textit{Phys. Rev. D} \textbf{81}, 063527 (2010),
+\href{https://doi.org/10.1103/PhysRevD.81.063527}{doi:10.1103/PhysRevD.81.063527};
+\href{https://arxiv.org/abs/0908.3439}{arXiv:0908.3439}.
+
+
+\bibitem{Planck2018}
+Planck Collaboration, N. Aghanim et al.,
+``Planck 2018 results. VI. Cosmological parameters,''
+\textit{Astron. Astrophys.} \textbf{641}, A6 (2020),
+\href{https://doi.org/10.1051/0004-6361/201833910}{doi:10.1051/0004-6361/201833910};
+\href{https://arxiv.org/abs/1807.06209}{arXiv:1807.06209}.
+
+\bibitem{McGaugh2016RAR}
+S. S. McGaugh, F. Lelli, and J. M. Schombert,
+``Radial Acceleration Relation in Rotationally Supported Galaxies,''
+\textit{Phys. Rev. Lett.} \textbf{117}, 201101 (2016),
+\href{https://doi.org/10.1103/PhysRevLett.117.201101}{doi:10.1103/PhysRevLett.117.201101};
+\href{https://arxiv.org/abs/1609.05917}{arXiv:1609.05917}.
+
+\end{thebibliography}
+
+\end{document}
