@@ -1,0 +1,75 @@
+\begin{thebibliography}{10}
+
+\bibitem{BarbourBertotti}
+Julian~B. Barbour and Bruno Bertotti.
+\newblock Mach's principle and the structure of dynamical theories.
+\newblock {\em Proceedings of the Royal Society of London A}, 382:295--306,
+  1982.
+
+\bibitem{Rovelli}
+Carlo Rovelli.
+\newblock Partial observables.
+\newblock {\em Physical Review D}, 65:124013, 2002.
+
+\bibitem{Dittrich2006}
+Bianca Dittrich.
+\newblock Partial and complete observables for canonical general relativity.
+\newblock {\em Classical and Quantum Gravity}, 23:6155--6184, 2006.
+
+\bibitem{Dittrich2007}
+Bianca Dittrich.
+\newblock Partial and complete observables for {Hamiltonian} constrained
+  systems.
+\newblock {\em General Relativity and Gravitation}, 39:1891--1927, 2007.
+
+\bibitem{AndersonBook}
+Edward Anderson.
+\newblock {\em The Problem of Time: Quantum Mechanics Versus General
+  Relativity}, volume 190 of {\em Fundamental Theories of Physics}.
+\newblock Springer, Cham, 2017.
+
+\bibitem{HohnVanrietvelde}
+Philipp~A. H{\"o}hn and Augustin Vanrietvelde.
+\newblock How to switch between relational quantum clocks.
+\newblock {\em New Journal of Physics}, 22:123048, 2020.
+
+\bibitem{HohnTrinity}
+Philipp~A. H{\"o}hn, Alexander R.~H. Smith, and Maximilian P.~E. Lock.
+\newblock The trinity of relational quantum dynamics.
+\newblock {\em Physical Review D}, 104:066001, 2021.
+
+\bibitem{GrossBlasius}
+Thilo Gross and Bernd Blasius.
+\newblock Adaptive coevolutionary networks: a review.
+\newblock {\em Journal of the Royal Society Interface}, 5:259--271, 2008.
+
+\bibitem{Arnold}
+Vladimir~I. Arnold.
+\newblock {\em Mathematical Methods of Classical Mechanics}, volume~60 of {\em
+  Graduate Texts in Mathematics}.
+\newblock Springer, New York, 2 edition, 1989.
+
+\bibitem{AndersonRPM}
+Edward Anderson.
+\newblock Relational particle models. {I}. reconciliation with standard
+  classical and quantum theory.
+\newblock {\em Classical and Quantum Gravity}, 23:2469--2490, 2006.
+
+\bibitem{Chung}
+Fan R.~K. Chung.
+\newblock {\em Spectral Graph Theory}, volume~92 of {\em CBMS Regional
+  Conference Series in Mathematics}.
+\newblock American Mathematical Society, Providence, 1997.
+
+\bibitem{OlfatiSaber}
+Reza Olfati-Saber, J.~Alex Fax, and Richard~M. Murray.
+\newblock Consensus and cooperation in networked multi-agent systems.
+\newblock {\em Proceedings of the IEEE}, 95:215--233, 2007.
+
+\bibitem{Chataignier}
+Leonardo Chataignier, Philipp~A. H{\"o}hn, Maximilian P.~E. Lock, and
+  Francesco~M. Mele.
+\newblock Relational dynamics with periodic clocks.
+\newblock {\em New Journal of Physics}, 28:034504, 2026.
+
+\end{thebibliography}

@@ -1,38 +1,34 @@
-# Relational Clock Transport Across Interaction Change
+# Relational Clock Transport in Connected Jacobi Systems
 
-**A Connected Jacobi Model — Scott A. Jordan**  
+**Complete Observables and Clock-Fiber Geometry — Scott A. Jordan**  
 ORCID: [0009-0005-7444-3386](https://orcid.org/0009-0005-7444-3386)
 
-Manuscript and supporting materials prepared for submission to *Foundations of Physics*, from the author's submission package dated 14 September 2026. This is an author manuscript, not a journal acceptance or published version of record.
+Author manuscript from the Reports on Mathematical Physics submission package supplied on 27 September 2026. This description identifies the package, not journal acceptance or publication.
 
-- [Read the manuscript](manuscript.pdf)
-- [LaTeX source](manuscript.tex) and [BibTeX references](references.bib)
+- [Manuscript PDF](manuscript.pdf)
+- [LaTeX source](manuscript.tex), [BibTeX references](references.bib), and [compiled bibliography](manuscript.bbl)
 - [Online Resource 1: reproducibility code](Online_Resource_1.py)
 - Figures: [Fig. 1 PDF](Fig1.pdf), [Fig. 1 EPS](Fig1.eps), [Fig. 2 PDF](Fig2.pdf), [Fig. 2 EPS](Fig2.eps)
-- [Verified numerical output](numerical_check.txt)
+- [Dependencies](requirements.txt) and [numerical verification record supplied with the package](numerical_check.txt)
 
-## Reproduce the figures and numerical results
+The manuscript studies compact phase-clock transport in connected Jacobi systems, including the independent transport factors for multiple clocks, clock-fiber geometry, stationary-action sensitivity, and induced clock inertias from a stable fast-mode model.
 
-From this directory, using Python 3.12:
+## Reproduce the numerical example
+
+With Python 3.12, run from this directory:
 
 ```sh
 python -m pip install -r requirements.txt
 python Online_Resource_1.py
 ```
 
-The script regenerates `Fig1.pdf`, `Fig1.eps`, `Fig2.pdf`, and `Fig2.eps` in its own directory, overwriting those figure files, and prints the conserved charges, endpoint transport ratio, and fixed-endpoint sensitivity check. All model inputs are in the script and manuscript; no external dataset is required. Poppler's `pdfinfo` is optional.
+The script overwrites both PDF and EPS figures in this directory and prints the conserved charges, endpoint transport ratio, and sensitivity comparison. Its calculations reproduce the illustrative two-clock numerical example; they do not numerically verify every analytical result in the revised paper. All inputs are provided in the script and manuscript, with no external dataset needed.
 
-The GitHub script differs from the submission-package script only in its optional executable lookup: it uses Python's `shutil.which` so the check works on Windows as well as Unix-like systems. The numerical model and calculations are unchanged. Use this GitHub copy if you also want that portability fix in the journal's Online Resource 1 upload.
-
-## Numerical verification
-
-Tested with Python 3.12, NumPy 1.26.4, SciPy 1.13.1, and Matplotlib 3.9.0. The script regenerated both PDF and EPS figures and reproduced the manuscript's conserved charges and endpoint ratio. The finite-difference sensitivity was `0.3538851790` and the direct integral was `0.3538851789`, differing by about `1.84e-10`. These agree with the manuscript at its quoted approximate precision; last digits may vary with numerical libraries.
-
-The verification environment required a test-only temporary-directory workaround for Windows sandbox permissions during EPS font export. This workaround is not part of the distributed script. The figure files committed here are the originals supplied in the submission package.
+The requirements file pins NumPy 1.26.4, SciPy 1.13.1, and Matplotlib 3.9.0. The supplied numerical verification record describes a separate run with newer versions. Both files are preserved as supplied. The script is unchanged in content from the previously tested GitHub supplement, apart from line endings, and includes the portable optional `pdfinfo` lookup.
 
 ## Compile the manuscript
 
-Use a LaTeX installation with pdfLaTeX and BibTeX. Obtain `sn-jnl.cls` and `sn-mathphys-num.bst` from the [official Springer Nature journal template](https://www.springernature.com/gp/authors/campaigns/latex-author-support), and place them beside `manuscript.tex`. The submission package uses the December 2024 template. These publisher template dependencies are not redistributed here.
+This revision uses the standard LaTeX `article` class and the packages listed in its preamble. Keep the bibliography and PDF figures beside the source. With pdfLaTeX and BibTeX installed:
 
 ```sh
 pdflatex manuscript.tex
@@ -41,6 +37,10 @@ pdflatex manuscript.tex
 pdflatex manuscript.tex
 ```
 
-Keep `references.bib` and both PDF figures in the same directory. The supplied manuscript PDF is the author's compiled submission copy; it was not rebuilt for this repository update.
+Alternatively, run `latexmk -pdf manuscript.tex`. The earlier Springer template files are not required. The uploaded PDF is the separately supplied `Jordan_Relational_Clock_Transport_ROMP.pdf`; its extracted text matches the package PDF on all 20 pages. The PDF was not rebuilt during this upload.
 
-The editorial cover letter remains in the author's private submission package. See the [main collection](../README.md) for other manuscripts and repository rights information.
+## Version history
+
+This revision replaces the earlier manuscript titled *Relational Clock Transport Across Interaction Change: A Connected Jacobi Model* in the main collection. The [14 September 2026 version and supporting files](https://github.com/sjordannc/progression-research-papers/tree/7c2759b316db6e0314e22edb13082dc4d31c83a0/relational-clock-transport) remain available at their permanent link.
+
+The editorial cover letter is not part of the public collection. See the [main collection](../README.md) for related papers and repository rights information.
