@@ -56,6 +56,7 @@ The dates and package descriptions below identify the manuscripts in this collec
 
 | Manuscript | Files |
 | --- | --- |
+| Relational Progression as an Operational Foundation for General Relativity — November 2026 consolidated draft with companion notes | [PDF](relational-progression-foundation/relational_progression_foundation.pdf) · [Notes, code, and results](relational-progression-foundation/README.md) |
 | Relational Clock Transport in Connected Jacobi Systems: Complete Observables and Clock-Fiber Geometry — September 2026 submission package | [PDF](relational-clock-transport/manuscript.pdf) · [Source, figures, code, and version history](relational-clock-transport/README.md) |
 | From Relational Progression to the Hypersurface-Deformation Algebra — August 2026 | [PDF](progression_weighted_conservation.pdf) · [LaTeX source](progression_weighted_conservation.tex) |
 | Progression Geometry as a Complete Gravitational Field — July 2026 | [PDF](progression_geometry.pdf) · [LaTeX source](progression_geometry.tex) |

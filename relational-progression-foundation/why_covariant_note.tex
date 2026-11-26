@@ -1,0 +1,57 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}\usepackage{amsmath,booktabs}
+\title{Why the Model Expects Fixed-Spacing Cutoffs to Fail and Covariant Ones to Pass\\[4pt]\large Companion note 9 (analysis, no new runs)}
+\author{}\date{24 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Notes 7 and 8 found that the cutoff-scale part of the induced gravitational coefficient fails entanglement equilibrium for every fixed-spacing lattice cutoff tried, while the covariant Pauli--Villars regulator passes. This note asks whether the relational-progression postulates lead one to expect this. They do, in a specific and limited sense. (i) A fixed-spacing lattice carries a preferred foliation and preferred spatial directions. That is structure the postulates exclude (P1, P2, and integrability A3 derived from P1). The model therefore does not admit such a lattice as its microscopic realisation, and its failure is not evidence against the model. (ii) A regulator that respects the postulates makes the induced action a functional of the geometry alone. Then the Hojman--Kucha\v{r}--Teitelboim (HKT) closure fixes its two-derivative part to be Einstein's, and the conical (Susskind--Uglum) argument ties its coefficient to the entanglement area coefficient. So the pass is required for consistency. (iii) A preferred frame allows extra two-derivative terms built from the frame. In the planar geometry of notes 7--8 they respond to $\sigma'^2$ exactly as the curvature term does. The quantity measured there is therefore a mixture, not $1/G$ alone. This corrects the reading of notes 7--8: they show that fixed-spacing cutoffs fail, but not that the Einstein coefficient itself has the wrong sign. What the model does \emph{not} predict is the sign or size of the failure, nor that a covariant regulator passes for every field (it does not for a nonminimal scalar or for gauge fields).
+\end{abstract}
+
+\section{What a fixed-spacing lattice adds to the geometry}
+A lattice with fixed physical spacing on a curved space is not a function of the metric alone. It carries a time slicing (continuous or discrete time steps), and in our planar set-up it also distinguishes the lattice axis $x$, with unit normal $n=\partial_x$, from the transverse plane, where the cutoff acts only on transverse momentum. Integrating out the field then gives an effective action that depends on the metric \emph{and} on this frame:
+\[
+E_0=\int\!\sqrt h\,\Big[\Lambda+C_R\,R+c_1(\nabla_i n^i)^2+c_2\,\nabla_i n^j\nabla_j n^i+\dots\Big].
+\]
+For $d\ell^2=dx^2+e^{2\sigma}(dy^2+dz^2)$ to second order,
+\[
+\int\!\sqrt h R=2\!\int\!\sigma'^2,\qquad \int\!\sqrt h(\nabla\!\cdot n)^2=4\!\int\!\sigma'^2,\qquad \int\!\sqrt h\,\nabla_i n^j\nabla_j n^i=2\!\int\!\sigma'^2 ,
+\]
+(using $\nabla\!\cdot n=2\sigma'$ and $\nabla_i n_j=\sigma' h^\perp_{ij}$). The coefficient fitted in notes 7--8 is therefore
+\[
+C_{\rm planar}=C_R+2c_1+c_2 .
+\]
+For a covariant regulator $c_1=c_2=0$ and $C_{\rm planar}=C_R$, which is why the Pauli--Villars check is clean. For a fixed lattice the frame terms are generically of the same order as $C_R$, since both are set by the cutoff. The planar geometry cannot separate them, because a planar profile is always aligned with the lattice axis. This is the same phenomenon as in Einstein--aether theory, where a preferred frame makes the effective Newton constant depend on which geometry is probed~\cite{CarrollLim}.
+
+The strong dependence of the planar ratio on details supports this reading. The ratio was $-7.4$ to $-9.5$ with continuous time and $-2.4$ to $-3.7$ with a symmetric time lattice, and it changed with the transverse cutoff shape. With a covariant regulator the ratio is fixed at 1 whatever the regulator details. Here it moves with them, which is the signature of frame dependence.
+
+\section{What the postulates require of the cutoff}
+\begin{enumerate}
+\item \textbf{No preferred slicing (P1, A3).} The draft derives integrability (path independence of local evolution) from P1 and notes that violating it means a preferred foliation. Both a continuous-time and a discrete-time fixed lattice choose a foliation. Discretisations of this kind are known to break the hypersurface-deformation algebra~\cite{GambiniPullin,Dittrich}, so they fall outside the HDA route of Section~7 of the draft.
+\item \textbf{Local Lorentz invariance (P2).} P2 says local physics is special-relativistic in every local laboratory. Applied down to the cutoff, this excludes a frame-dependent regulator. It is also what Jacobson's equilibrium argument uses: the CHM modular Hamiltonian is the boost generator of a maximally symmetric small ball, and the vacuum must be boost-invariant there~\cite{Jacobson2016}. Note 6 confirmed the CHM form for the fermion. The cutoff-scale part of $\eta$ is exactly the part that probes boost invariance at the cutoff.
+\item \textbf{Operational completeness (P7).} The only gravitational variables are $h_{ij}$ (and the lapse as a multiplier). A lattice frame $n^i$ would be an extra gravitational structure that no clock or ruler comparison determines. P7 states that such hidden structure is absent.
+\end{enumerate}
+\emph{Consequence.} A regulator admissible in the model makes the induced action a functional of $(N,h_{ij})$ alone. HKT closure then fixes its two-derivative part to $\Lambda+C_R R$, with no $c_1,c_2$. The conical argument, $S=(1-n\partial_n)\ln Z_n|_{n=1}$, is valid when $\ln Z$ depends only on the geometry, and it gives $\eta=-4\pi C_R$, the equilibrium condition. Pauli--Villars is the simplest regulator with this property, and it passed (note 7: ratio $1.04$).
+
+\section{What the model does not explain}
+\begin{itemize}
+\item \textbf{The sign and size of the failure.} The postulates exclude fixed lattices; they do not say how such a lattice will fail. The wrong sign of $C_{\rm planar}$ is a regulator fact, not a model prediction.
+\item \textbf{That covariance is sufficient.} Even with a covariant regulator, the conical argument has known exceptions: contact terms for a nonminimally coupled scalar (the $\xi$ problem of note 5) and for gauge fields~\cite{Kabat}. Covariance is necessary for the pass but is not a guarantee for every field. Notes 5--7 match this: the fermion passes, the minimally coupled scalar fails at $\xi=0$, and $\xi=1/6$ removes the mass-dependent part of the strength.
+\item \textbf{Discreteness.} The model wants a microscopic origin (P6) but also no preferred frame at the cutoff. A regular lattice cannot provide both. The known way to have discreteness without a preferred frame is random (Poisson) sprinkling, as in causal sets~\cite{BHS}. That is consistent with the model, but the model does not predict it.
+\end{itemize}
+
+\section{Consequences for the draft and a sharper test}
+\begin{itemize}
+\item The note-7/8 tags should say that fixed-spacing lattices fail as regulators. The planar coefficient mixes the curvature term with frame terms, so it does not show that the cutoff-scale Einstein coefficient itself has the wrong sign.
+\item The claim ``fixed-spacing cutoffs are excluded by P1, P2 and P7, and covariant ones are required for consistency'' is \textbf{Derived (argument)}. That the frame terms account for the whole planar mismatch is \textbf{Conjectured}.
+\item \textbf{Sharper test.} Measure $C_R$, $c_1$, $c_2$ separately with a fully three-dimensional lattice and curvature profiles at different orientations relative to the lattice axes (for example a profile varying along a diagonal, and a spherical one). The prediction is that $c_1,c_2\neq0$ for fixed lattices and that the mismatch in $-4\pi C_R/\eta$ is smaller than in $C_{\rm planar}$. If $-4\pi C_R/\eta$ is still far from 1, the reading of this note is wrong for fixed lattices, though the admissibility argument stands.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{CarrollLim} S.~M.~Carroll and E.~A.~Lim, ``Lorentz-violating vector fields slow the universe down,'' Phys.\ Rev.\ D 70, 123525 (2004).
+\bibitem{GambiniPullin} R.~Gambini and J.~Pullin, ``Consistent discretization and loop quantum geometry,'' Phys.\ Rev.\ Lett.\ 94, 101302 (2005).
+\bibitem{Dittrich} B.~Dittrich, ``Diffeomorphism symmetry in quantum gravity models,'' Adv.\ Sci.\ Lett.\ 2, 151 (2009).
+\bibitem{Jacobson2016} T.~Jacobson, ``Entanglement equilibrium and the Einstein equation,'' Phys.\ Rev.\ Lett.\ 116, 201101 (2016).
+\bibitem{Kabat} D.~Kabat, ``Black hole entropy and entropy of entanglement,'' Nucl.\ Phys.\ B 453, 281 (1995).
+\bibitem{BHS} L.~Bombelli, J.~Henson and R.~D.~Sorkin, ``Discreteness without symmetry breaking: a theorem,'' Mod.\ Phys.\ Lett.\ A 24, 2579 (2009).
+\end{thebibliography}
+\end{document}

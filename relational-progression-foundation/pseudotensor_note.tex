@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}\usepackage{amsmath}
+\title{Can the Gravitational Pseudotensor Close the Determination of $G$?\\[4pt]\large Companion note 11 (analysis, no new runs)}
+\author{}\date{25 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+No. The gravitational energy pseudotensor (Einstein, Landau--Lifshitz, or similar) cannot fix the value or the sign of $G$ in this programme, for three separate reasons. First, $G$ is fixed at linear order in the perturbation, where the pseudotensor, being quadratic, does not appear. Second, the pseudotensor is built from the Einstein--Hilbert action, so its normalisation is $1/G$ itself, which makes any closure through it circular. Third, in induced gravity the gravitational field energy is not missing: the second-order vacuum energy that notes 5--10 measured \emph{is} that field energy, in the ADM form whose quadratic part the pseudotensor represents. Adding a pseudotensor would count it twice. The wrong sign found on fixed lattices is a wrong-sign field energy, not a missing one. The pseudotensor's gauge-invariant relative, the Hollands--Wald canonical energy, does have a real role at second order. Positivity of relative entropy requires it to be positive, and hence $G>0$. That is a consistency condition, not a value: it is the reason wrong-sign regulators cannot satisfy equilibrium, and it rules them out independently. No new run is recommended for $G$ on this route.
+\end{abstract}
+
+\section{Where gravitational energy could enter}
+\textbf{Entanglement equilibrium.} Jacobson's condition compares, for a small ball at first order around the vacuum,
+$\delta S_{\rm ent}=\eta\,\delta A+2\pi\,\delta\langle K\rangle$, with $K=\int w\,T_{00}$. Both $\delta A$ and $T_{00}$ are first order. The pseudotensor $t^{\mu\nu}\sim\frac{1}{G}(\partial h)^2$ is second order. It therefore cannot appear in the condition that fixes $G$ (equivalently, $\eta=1/(4G)$). This holds for every pseudotensor, since they all differ only at second order or by superpotentials.
+
+\textbf{Induced gravity.} The draft writes $E_0[N,h]=\Lambda\int N\sqrt h+C\int N\sqrt h\,{}^3R+\dots$ with $C=-1/(16\pi G_{\rm ind})$. For static configurations ($\pi^{ij}=0$), the ADM Hamiltonian of gravity is $H_{\rm grav}=-\frac{1}{16\pi G}\int N\sqrt h\,{}^3R$ plus boundary terms. So $C\int N\sqrt h R$ \emph{is} the gravitational field energy of the induced theory. Its quadratic part, with the boundary (ADM) term, is the energy that the Landau--Lifshitz or Einstein pseudotensor describes in a suitable gauge. In the Newtonian limit it reduces to $-\int(\nabla\Phi)^2/(8\pi G)$.
+
+Consequences:
+\begin{itemize}
+\item The field energy is already in the balance. The environment's vacuum energy, computed exactly on the lattice, contains it. Adding $t^{00}$ to the matter side would double count.
+\item The sign problem of notes 7, 8 and 10 is a sign problem of this field energy. A fixed lattice gives $E_2>0$ for static curvature, i.e.\ positive (repulsive) field energy, where attraction needs negative field energy. A pseudotensor cannot correct the sign of the quantity it is built from.
+\item Its normalisation is $1/G$. Any equation that uses $t^{\mu\nu}$ to determine $G$ takes $G$ as input.
+\end{itemize}
+
+\section{Known problems in this setting}
+\begin{itemize}
+\item \textbf{Coordinate dependence.} Pseudotensors are not tensors. Only their integrals over asymptotically flat regions (ADM or Bondi energy) are invariant, and the local energy density can be set to zero at any point by a coordinate choice. A local balance law for $G$ cannot rest on such a density. This also conflicts with P5 (one balance law, $\nabla_\mu T^{\mu\nu}_{\rm total}=0$). Gravitational energy enters GR only through the Einstein equation, not as a separately conserved local current.
+\item \textbf{Frame dependence, and the echo of the lattice frame.} A fixed lattice supplies a preferred frame. In that frame a pseudotensor-like density becomes well defined: in teleparallel gravity, the triad gives a gravitational energy--momentum density that is a tensor under coordinate changes, though not under local frame rotations~\cite{AGP}. Note 10 found exactly this kind of structure: the cubic lattice's induced action is a frame (torsion) action. But this does not help $G$. The lattice's frame terms come with ratios other than those of teleparallel-equivalent GR, so different geometries see different effective $G$ (as in note 10), and the overall sign is still wrong. The frame makes field energy definable locally; it does not make it attractive.
+\end{itemize}
+
+\section{The real role: second order and positivity}
+At second order, entanglement equilibrium involves the Hollands--Wald canonical energy $\mathcal E$ of the metric perturbation~\cite{HW}. This is the gauge-invariant object that pseudotensors approximate. Relative entropy is non-negative, and its second variation (the quantum Fisher information) equals $\mathcal E$~\cite{LVR,FHHPRV}. For Einstein gravity, $\mathcal E\propto 1/G$ times a positive quadratic form, so positivity requires $G>0$.
+
+For this programme, this gives:
+\begin{itemize}
+\item A \textbf{selection rule}, not a value. Any environment-plus-regulator for which the induced $C$ has the wrong sign cannot satisfy second-order equilibrium, because the lattice's own relative entropy is positive. This is an independent reason, beyond notes 7--10's first-order mismatch, why fixed-spacing regulators fail, and why a valid closure must yield $C<0$.
+\item It does not fix the magnitude of $G$. That still comes from first order, $1/(4G)=\eta$ with $\eta$ including the cutoff part.
+\end{itemize}
+
+\section{Is a test worth running?}
+For closing $G$: no. No pseudotensor test can change the outcome, for the reasons in Sections 1--2. A second-order check, comparing the lattice's relative entropy with the canonical energy computed with $G=1/(4\eta)$ for the Pauli--Villars fermion, would test the \emph{nonlinear} consistency of the induced theory. That is worth doing only after $G$ itself is settled. The open step for $G$ stays as before: frame-free discreteness (for example random sprinkling) or a species sum rule.
+
+\begin{thebibliography}{9}
+\bibitem{HW} S.~Hollands and R.~M.~Wald, ``Stability of black holes and black branes,'' Commun.\ Math.\ Phys.\ 321, 629 (2013).
+\bibitem{LVR} N.~Lashkari and M.~Van Raamsdonk, ``Canonical energy is quantum Fisher information,'' JHEP 04 (2016) 153.
+\bibitem{FHHPRV} T.~Faulkner, F.~M.~Haehl, E.~Hijano, O.~Parrikar, C.~Rabideau and M.~Van Raamsdonk, ``Nonlinear gravity from entanglement in conformal field theories,'' JHEP 08 (2017) 057.
+\bibitem{AGP} V.~C.~de Andrade, L.~C.~T.~Guillen and J.~G.~Pereira, ``Gravitational energy-momentum density in teleparallel gravity,'' Phys.\ Rev.\ Lett.\ 84, 4533 (2000).
+\end{thebibliography}
+\end{document}

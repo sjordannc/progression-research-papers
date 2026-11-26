@@ -1,0 +1,80 @@
+% Companion note 7 to "Relational Progression as an Operational Foundation for GR".
+% Prepared with Claude (Anthropic) at the author's request.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+\title{The Cutoff-Scale Part of the Induced Gravitational Strength:\\ a Lattice Test with a Physical Cutoff\\[4pt]
+\large Companion note 7 to the consolidated draft}
+\author{Scott A. Jordan}
+\date{Draft, 24 November 2026}
+\begin{document}
+\sloppy
+\maketitle
+\begin{abstract}
+Notes~5 and~6 showed that, for a fermion environment, the regulator-independent (mass-dependent) part of the induced $1/G$ equals $4\eta$ with $\eta$ the entanglement coefficient. Here we test the rest, the cutoff-scale part ($\propto a^{-2}$), by treating the lattice spacing as a physical cutoff and using the same regulator on both sides. A regulator that stays physical while the geometry bends needs a geometry in which mode counting can follow the local proper area. We use planar geometry, $\dd\ell^2=\dd x^2+e^{2\sigma(x)}(\dd y^2+\dd z^2)$, with a staggered (doubler-free) Dirac lattice of physical spacing $1$ along $x$ and a cutoff on the \emph{physical} transverse momentum $q=k\,e^{-\sigma(x)}$. The code reproduces the known Pauli--Villars results ($C$ to $1\%$, $\eta$ to $4\%$). The results are as follows.
+(1) A sharp physical cutoff does not induce Einstein gravity at all: its cutoff surface contributes a non-analytic $\int|\nabla\sigma|$ term.
+(2) A smooth physical cutoff induces a clean Einstein term, stable in width, box size and cutoff details, but with the \emph{wrong sign}. The induced gravity is repulsive, with $-4\pi C/\eta=-7.4$ to $-9.5$ depending on the cutoff shape and scale.
+The pre-registered test therefore \textbf{fails}: with a lattice regulator whose time direction is continuous, the cutoff-scale part of $1/G$ does not equal $4\eta$, and there is no real lattice spacing that reproduces Newton's constant through induced gravity. Read through the entanglement coefficient alone, $1/(4G)=N\eta/a^2$ gives $a\approx(0.5$--$0.7)\sqrt N\,\ell_P$. That is a consistency statement trading $G$ for $a$, not a prediction, and the induced dynamics of this lattice does not support it.
+\end{abstract}
+
+\section{What is being computed, and why it is hard}
+In induced gravity $1/(16\pi G_{\rm ind})=-C$, where $E_0\supset C\int\sqrt h\,{}^3\!R$ is the curvature response of the environment's vacuum energy (note~5). Split $C=C_{\rm cut}+C_{\rm PV}$. $C_{\rm PV}$, the mass-dependent part, is regulator-independent and was computed in notes~5--6. $C_{\rm cut}\propto a^{-2}$ depends on the regulator. The Susskind--Uglum/Jacobson argument says $-4\pi C=\eta$ for any \emph{covariant} regulator. The question is whether a physical lattice cutoff behaves the same way.
+
+\textbf{Regulator consistency.} Both sides must use the same cutoff, and the cutoff must be physical: the number of modes per unit proper volume must not change when the geometry bends. On the radial lattice of notes~5--6 the angular directions are a continuum, so $C_{\rm cut}$ is not even finite there. On a fixed cubic graph with metric-dependent couplings the cutoff is a \emph{coordinate} cutoff and moves with the metric, so the vacuum energy is not proportional to proper volume. A genuinely physical lattice must add or remove modes where space expands or contracts.
+
+\textbf{Construction.} In $\dd\ell^2=\dd x^2+e^{2\sigma(x)}(\dd y^2+\dd z^2)$, transverse translations are isometries, so the coordinate transverse momentum $k$ is conserved and the local physical transverse momentum is $q=k\,e^{-\sigma(x)}$. With $\psi=e^{-\sigma}\chi$, the Dirac field reduces exactly to 1D Dirac chains along $x$ with position-dependent mass $q(x)$: two 2-component chains per $k$, or equivalently $H=H_{\rm chain}\otimes\tau_z+M\,\mathbb 1\otimes\tau_x$ when a mass is present, so that $H^2=H_{\rm chain}^2+M^2$. Along $x$ we use a staggered lattice of physical spacing $1$ (no doublers; note~6). Across, we cut on $q$:
+\begin{itemize}
+\item \textbf{sharp:} a site at $x$ exists for momentum $k$ only if $q(x)<\Lambda_\perp$;
+\item \textbf{smooth:} transverse dispersion $\mu(q)=q\,e^{(q/\Lambda_\perp)^p}$ ($p=2$ or $4$), with sites removed only where $\mu>\mu_{\rm cut}\sim10^{6}$. Removal there is suppressed by $\sim1/\mu_{\rm cut}$, which we checked.
+\end{itemize}
+The $k$-integral is done piecewise between the moving breakpoints, so that $E(\epsilon)$ is smooth. The purely diagonal part of the vacuum energy is an exact lattice volume term; it is subtracted analytically for precision. For uniform $\sigma$, $E\propto e^{2\sigma}$ to $10^{-10}$, which confirms that the cutoff is physical. We extract
+\begin{equation}
+E=\Lambda\!\int\! e^{2\sigma}\dd x+C\!\int\!\sqrt h\,{}^3\!R+\dots,\qquad \int\!\sqrt h\,{}^3\!R=2\!\int\!\sigma'^2+O(\sigma^3),
+\end{equation}
+from Gaussian bumps $\sigma=\epsilon g(x)$ of width $w=6$--$24$, with $\epsilon\le0.09$ and a degree-6 fit in $\epsilon$. The coefficient $\eta$ comes from the entanglement entropy per unit area of a plane cut in the flat chain, with the same cutoff.
+
+\section{Pre-registration}
+Written before any run (\texttt{PREREG\_note7.md}): pass if $\rho\equiv-4\pi C/\eta$ lies within $10\%$ of $1$ for all of $\Lambda_\perp\in\{2,\pi,2\sqrt\pi\}$; partial if for some; fail if for none. After the sharp-cutoff run an amendment, written before any smooth-cutoff run, added the smooth regulator with $\Lambda_\perp\in\{1,1.5,2\}$ and the same criteria.
+
+\section{Validation}
+The same planar code with the Pauli--Villars combination of note~5 (masses $M^2=(0,1,2,3)m^2$) must reproduce the covariant values. It gives $C_{\rm PV}/C_{\rm pred}=0.998,\,0.988$ ($m=0.2$, $w=16,24$), $0.94,\,0.93$ ($m=0.3$), and $\eta_{\rm PV}/\eta_{\rm pred}=0.958$ ($m=0.2$). The deviations are the expected $(m/\Lambda_\perp)^2$ regulator effects. Two bugs were found on the way and fixed. (i) Adding a mass as $\sqrt{q^2+M^2}$ is wrong when $q$ varies with $x$, because the two terms anticommute; the $\tau_x$ construction is exact. (ii) A precision problem from very heavy modes was removed by lowering $\mu_{\rm cut}$ for the PV runs. So $-4\pi C_{\rm PV}/\eta_{\rm PV}=1.04$ here too, consistent with note~6.
+
+\section{Results}
+\paragraph{Sharp physical cutoff.} The extracted $C$ grows linearly with bump width ($35\to140$ for $w=6\to24$ at $\Lambda_\perp=2$). The second-order energy has a width-independent piece: each place where the mode count changes costs energy. Summed over $k$, this gives $\propto\int|\nabla\sigma|$, a one-derivative, non-analytic term that dominates the Einstein term at long wavelength. \emph{A sharp physical cutoff does not induce GR.} This is the lattice analogue of the defect (disclination) energy of a graph that adds sites as space expands. \textbf{The Einstein form fails for this regulator.}
+
+\paragraph{Smooth physical cutoff.}
+\begin{center}\small\begin{tabular}{lcccc}\toprule
+regulator & $C$ ($w=6$--$16$) & $\eta$ & $\rho=-4\pi C/\eta$ & $a/\ell_P$ from $\eta$\\\midrule
+$p=2$, $\Lambda_\perp=1$ & $+0.03458$ to $+0.03468$ & 0.05886 & $-7.40$ & $0.49\sqrt N$\\
+$p=2$, $\Lambda_\perp=1.5$ & $+0.05729$ to $+0.05752$ & 0.09599 & $-7.52$ & $0.62\sqrt N$\\
+$p=2$, $\Lambda_\perp=2$ & $+0.08080$ to $+0.08179$ & 0.13295 & $-7.67$ & $0.73\sqrt N$\\
+$p=4$, $\Lambda_\perp=1.5$ & $+0.0742$ to $+0.0782$ & 0.10105 & $-9.5\pm0.3$ & $0.64\sqrt N$\\\bottomrule\end{tabular}\end{center}
+Checks for $p=2$, $\Lambda_\perp=1.5$: box length $L=300$ versus $600$ changes $C$ by under $1\%$ and $\eta$ by $10^{-6}$. Raising the removal threshold from $q_{\rm cut}=3.0\Lambda_\perp$ (where the width-growing edge term is still visible) to $3.4$ and $3.7\Lambda_\perp$ converges $C$ to $+0.0574$, with residual edge contamination estimated below $0.5\%$. Results agree between degree-4 and degree-6 fits in $\epsilon$ to within $1\%$ (to $3\%$ for $p=4$).
+
+The curvature coefficient is clean and width-independent, so the induced action \emph{is} Einstein-like, but with $C>0$, i.e.\ $G_{\rm ind}<0$. The ratio to the entanglement value is about $-7.5$, and it moves by $25\%$ when the cutoff shape changes ($p=2\to4$). \textbf{Fail}, and not marginally: the sign is opposite. Because $|C_{\rm cut}|\sim0.06\,a^{-2}$ while $|C_{\rm PV}|\sim10^{-3}m^2$ with $m\lesssim a^{-1}$, the cutoff-scale part dominates. The total induced gravity of this lattice environment is repulsive.
+
+\section{What it means}
+\begin{enumerate}
+\item \textbf{The cutoff-scale part of $1/G$ is regulator-dependent, and for a lattice with continuous time it violates $1/(4G)=\eta$, even in sign.} The Susskind--Uglum equality relies on the Euclidean (boost) symmetry of the regulator in the plane normal to the entangling surface: the conical argument rotates Euclidean time into the normal direction. Our regulator has continuous time and a discrete normal direction, so that symmetry is absent. The regulator-independent part (notes~5--6) is insensitive to this; the cutoff part is not. This failure concerns this regulator, not entanglement equilibrium in general.
+\item \textbf{Trading $G$ for $a$.} Read through the entanglement side only, $1/(4G)=N\eta/a^2$ gives $a=\sqrt{4N\eta}\,\ell_P\approx(0.5$--$0.7)\sqrt N\,\ell_P$ for these regulators (the radial-lattice scalar of note~2 gave $0.31\sqrt N$). This is a consistency statement that fixes the lattice spacing given $G$; it does not predict $G$. With this lattice, the induced-gravity side gives no real $a$, because the induced $G$ is negative.
+\item \textbf{For the program.} If $G$ is to come from the environment's entanglement, the environment's microscopic cutoff must respect local Lorentz (boost) symmetry at the cutoff scale, or a heavy sector must supply $1/G$ by a covariant (Pauli--Villars-like) mechanism, as in Sakharov-type finite theories with species sum rules. This is a concrete requirement on the microscopic model, and it fits the program's postulate of local Lorentz invariance (P2): that postulate is not optional at the cutoff scale.
+\end{enumerate}
+
+\paragraph{Status.} Cutoff-scale $1/G=4\eta$ with a continuous-time lattice regulator: \st{Fails (this regulator)}. Entanglement equilibrium: derived for the regulator-independent part (notes~5--6), but violated by the cutoff-scale part of this regulator. $G$ from the environment: \st{Open}. The route now requires a boost-symmetric microscopic cutoff (for example a Euclidean-symmetric or causal-set-like regulator) or a finite species-sum-rule theory.
+
+\paragraph{Limits.} Planar geometry only (one curvature structure, $\int\sigma'^2$); static; classical geometry; free Dirac field; anisotropic regulator (lattice in $x$, smooth cutoff transverse, continuous time); finite $\mu_{\rm cut}$; precision limited by heavy-mode rounding, about $1\%$ on $C$ for $p=2$ and $3\%$ for $p=4$.
+
+\section*{Code}
+\texttt{smooth\_common.py} (planar staggered Dirac chains with a physical transverse cutoff; regulator shape via \texttt{REG\_POW}), \texttt{smooth\_G.py}, \texttt{smooth\_eta.py}, \texttt{smooth\_PV.py} (validation), \texttt{cutoff\_common.py}, \texttt{cutoff\_G.py}, \texttt{cutoff\_eta.py} (sharp cutoff), \texttt{PREREG\_note7.md}; raw results in \texttt{note7\_results/}.
+
+\begin{thebibliography}{9}
+\bibitem{SU} L.~Susskind and J.~Uglum, \emph{Phys.\ Rev.\ D} \textbf{50}, 2700 (1994).
+\bibitem{J94} T.~Jacobson, ``Black hole entropy and induced gravity,'' arXiv:gr-qc/9404039 (1994).
+\bibitem{Sak} A.~D.~Sakharov, \emph{Sov.\ Phys.\ Dokl.} \textbf{12}, 1040 (1968).
+\end{thebibliography}
+\end{document}

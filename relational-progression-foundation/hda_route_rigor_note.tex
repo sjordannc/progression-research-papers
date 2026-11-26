@@ -1,0 +1,241 @@
+% Companion note 2 to "Relational Progression as an Operational Foundation for GR".
+% Prepared with Claude (Anthropic) at the author's request.
+% Status markers: [Derived] in this note; [Standard]; [Assumed] = stated input; [Open].
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[shortlabels]{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+\newcommand{\Pg}{\Pi}
+\newcommand{\thP}{\theta}
+\newcommand{\sgP}{\sigma}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{postulate}{Postulate}
+\renewcommand{\thepostulate}{P\arabic{postulate}}
+\setcounter{postulate}{6}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\title{Making the Hypersurface-Deformation Route Rigorous\\[4pt]
+\large Companion note 2 to the consolidated draft}
+\author{Scott A. Jordan}
+\date{Draft, 23 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The consolidated draft obtains Einstein dynamics, and with it the full light deflection, from integrability of local relational evolution via the hypersurface-deformation algebra (HDA), under seven assumptions A1--A7. Four steps were identified to make this route rigorous. We take each as far as it goes. (3) \emph{Sources with pressure:} at linear order, for any static source in mechanical equilibrium, the exterior satisfies $\sgP=-\thP$ exactly, and von Laue's theorem appears as the consistency condition; the linearized equations were checked symbolically. This step is closed. (2) \emph{No extra scalar:} the progression rate cannot itself be a dynamical scalar, because it is the multiplier of the constraint. Excluding an \emph{additional} scalar requires one new postulate, operational completeness, which we state; with it the HKT uniqueness theorem gives $\gamma_{\rm PPN}=\beta_{\rm PPN}=1$. (1) \emph{Upstream assumptions:} A3, A4 and A6 follow from relational time and radar calibration of distance; A5 is the leading order of a derivative expansion; A1, A2 and A7 remain inputs, A7 via operational completeness. (4) \emph{Hamiltonian constraint from clocks plus environment:} the local form $\mathcal H(x)\approx0$ and the identification of $\Pg$ with its multiplier are derived; its gravitational part, and the value of $G$, are not. The best partial result is the thermodynamic route, for which we reproduce numerically the area law of entanglement entropy of a lattice field, $S=0.295\,(R/a)^2$, which would fix $G$ in terms of the lattice scale. Closing this step remains open research.
+\end{abstract}
+
+\tableofcontents
+
+\section{Summary}
+
+\begin{longtable}{@{}p{0.30\textwidth}p{0.16\textwidth}p{0.46\textwidth}@{}}
+\toprule
+Step & Status & Result \\
+\midrule
+3. Sources with pressure & \st{Derived} & Exterior $\sgP=-\thP$ holds for any static source in equilibrium at linear order; the active mass equals $\int\rho$ by von Laue's theorem (Section~\ref{sec:pressure}). \\
+2. No extra scalar & \st{Derived + one postulate} & $\Pg$ is a multiplier and cannot be a field. An additional scalar is excluded by operational completeness (P7). Then $\gamma=\beta=1$ (Section~\ref{sec:scalar}). \\
+1. Upstream assumptions & \st{Reduced} & A3, A4, A6 derived from P1 and radar calibration; A5 is an effective-field-theory truncation; A1, A2, A7 remain inputs (Section~\ref{sec:upstream}). \\
+4. Constraint from clocks plus environment & \st{Partial; Open} & Local constraint form derived. Gravitational part and $G$ open; thermodynamic route with a numerically verified area law is the best partial result (Section~\ref{sec:constraint}). \\
+\bottomrule
+\end{longtable}
+
+Notation as in the draft: $\Pg=e^{\thP}$ is the clock rate (lapse), $e^{2\sgP}$ the isotropic spatial scale. The HDA paper writes $A=\thP$ and $B=\sgP$, and $S=A+B$.
+
+%=====================================================================
+\section{Step 3: sources with pressure}
+\label{sec:pressure}
+%=====================================================================
+
+The HDA paper's static reduction showed $\nabla^2 S_1=0$ and hence $\sgP=-\thP$ for pressureless matter. Here we include arbitrary static stresses.
+
+\subsection{Linearized static equations}
+
+Take $\dd s^2=-(1+2\thP)c^2\dd t^2+(1+2\sgP)\dd\mathbf x^2$ with $\thP,\sgP$ small and time-independent, and a static source with energy density $\rho c^2$ and stresses $T_{ij}$. To first order the Einstein tensor is
+\begin{equation}
+G_{00}=-2\nabla^2\sgP,
+\qquad
+G_{ij}=\big(\delta_{ij}\nabla^2-\partial_i\partial_j\big)(\thP+\sgP).
+\label{eq:linG}
+\end{equation}
+Both expressions were verified symbolically (script \texttt{check\_linearized\_static\_einstein.py}). The field equations $G_{\mu\nu}=(8\pi G/c^4)T_{\mu\nu}$ then give, with $S\equiv\thP+\sgP$,
+\begin{align}
+\nabla^2\sgP&=-\frac{4\pi G}{c^2}\rho, \label{eq:Ham}\\
+\big(\delta_{ij}\nabla^2-\partial_i\partial_j\big)S&=\frac{8\pi G}{c^4}T_{ij}. \label{eq:Sij}
+\end{align}
+Equation~\eqref{eq:Ham} is the Hamiltonian constraint (energy density fixes the ruler field). The trace of~\eqref{eq:Sij} gives $\nabla^2S=(4\pi G/c^4)\,T^k{}_k$, so
+\begin{equation}
+\nabla^2\thP=\frac{4\pi G}{c^2}\Big(\rho+\frac{T^k{}_k}{c^2}\Big),
+\label{eq:lapse}
+\end{equation}
+the lapse equation, sourced by $\rho+3p/c^2$ for a perfect fluid. \st{Standard; verified}
+
+\subsection{The exterior is unaffected by stresses}
+
+\begin{proposition}\label{prop:exterior}
+At linear order, for any static source of compact support, $S=0$ everywhere outside the source. Hence $\sgP=-\thP$ in the exterior, the exterior light deflection and Shapiro delay have $\gamma_{\rm PPN}=1$, and the exterior mass is $M=\int\rho\,\dd^3x$ whatever the internal stresses.
+\end{proposition}
+
+\begin{proof}
+The divergence of the left side of~\eqref{eq:Sij} vanishes identically, so a solution exists only if $\partial_jT_{ij}=0$: the source must be in mechanical equilibrium. Outside the source, $T_{ij}=0$, so $(\delta_{ij}\nabla^2-\partial_i\partial_j)S=0$. Its trace gives $2\nabla^2S=0$, and then $\partial_i\partial_jS=0$. So $S$ is affine on the exterior. Since $S\to0$ at infinity, $S=0$ on the unbounded exterior region. Integrating $\nabla^2S=(4\pi G/c^4)T^k{}_k$ over all space, the surface term at infinity vanishes, so
+\begin{equation}
+\int T^k{}_k\,\dd^3x=0 .
+\end{equation}
+This is von Laue's theorem for a static closed system, recovered here as a consistency condition. Then by~\eqref{eq:lapse} the exterior lapse is set by $\int(\rho+T^k{}_k/c^2)=\int\rho$, the same mass that sets $\sgP$ through~\eqref{eq:Ham}.
+\end{proof}
+\st{Derived}
+
+\begin{remark}
+Inside matter, $S\neq0$ where there are stresses; for a uniform-pressure body held by a boundary tension, $S$ is nonzero in the interior and vanishes outside. For a self-gravitating body, equilibrium holds only at order $G$ (pressure balances gravity), and the corresponding corrections to $S$ are second order. In the exterior they reproduce the nonlinear isotropic Schwarzschild metric, $S_2=-U^2/4$ (HDA paper), which gives $\beta_{\rm PPN}=1$. For spherical bodies, Birkhoff's theorem makes the exterior exactly Schwarzschild for any interior pressure, with $M$ the total mass-energy.
+\end{remark}
+
+\subsection{What this means for refraction}
+Light outside a body bends by the full $4GM/(bc^2)$ regardless of the body's internal pressure or stresses. Only light passing \emph{through} stressed matter sees $S\neq0$, a small interior correction. Step~3 is closed.
+
+%=====================================================================
+\section{Step 2: no extra scalar degree of freedom}
+\label{sec:scalar}
+%=====================================================================
+
+There are two distinct questions here.
+
+\subsection{The progression rate cannot be a scalar field}
+In a reparametrization-invariant system, $S=\int\dd\lambda\,[\,p\dot q-n(\lambda)\mathcal K\,]$, the multiplier $n$ has no conjugate momentum. Its equation of motion is the constraint $\mathcal K\approx0$, and it can be changed freely by relabelling $\lambda$. In the field-theory form (Section~\ref{sec:constraint}), the multiplier becomes the lapse $N(x)=\Pg(x)$. Giving $\Pg$ a kinetic term would make it a dynamical variable with its own momentum, which would break the reparametrization invariance that Postulate~P1 requires. The progression rate is therefore a multiplier, never a field. \st{Derived}
+
+\subsection{An additional scalar must be excluded by postulate}
+Scalar--tensor theories (Brans--Dicke and its generalizations) satisfy P1--P5: they are reparametrization invariant, matter couples to one metric, and there is one balance law. They also realize the HDA, but on an enlarged phase space $(h_{ij},\pi^{ij},\phi,\pi_\phi)$, and they give $\gamma_{\rm PPN}=(1+\omega)/(2+\omega)\neq1$. Nothing in P1--P5 excludes them. One more postulate is needed:
+
+\begin{postulate}[Operational completeness]\label{P:OC}
+Every gravitational degree of freedom is determined by comparisons of local clocks and radar distances. Equivalently, the gravitational configuration space is the space of spatial geometries $h_{ij}$.
+\end{postulate}
+
+In a scalar--tensor theory, matter couples only to the metric, so a local clock or ruler cannot register $\phi$ directly. $\phi$ is visible only through its effect on how the metric evolves. P7 says such a hidden gravitational variable does not exist. With P7, the gravitational phase space is $(h_{ij},\pi^{ij})$, and the Hojman--Kucha\v{r}--Teitelboim theorem~\cite{HKT1976} (with ultralocal quadratic momenta) fixes the Hamiltonian constraint to the Einstein form. The HDA paper's own calculation also excludes the $R^2$, $R_{ij}R^{ij}$ and $D^2R$ deformations within this class. Then $\gamma_{\rm PPN}=\beta_{\rm PPN}=1$ and the full bending follows. \st{Derived from P7; P7 Assumed}
+
+\paragraph{Empirical support for P7.} Cassini's $|\gamma-1|\lesssim2\times10^{-5}$ already requires $\omega_{\rm BD}\gtrsim4\times10^{4}$~\cite{Bertotti2003,Will2014}, so any extra scalar must be nearly decoupled. P7 is the statement that it is absent.
+
+%=====================================================================
+\section{Step 1: the upstream assumptions}
+\label{sec:upstream}
+%=====================================================================
+
+Each assumption of the HDA route (main draft, Section~6) is traced to an operational principle where possible.
+
+\begin{longtable}{@{}p{0.27\textwidth}p{0.47\textwidth}p{0.18\textwidth}@{}}
+\toprule
+Assumption & Justification & Status \\
+\midrule
+A1. Smooth three-dimensional relational state manifold & Continuum description and observed spatial dimension. & \st{Assumed (empirical)} \\
+A2. Many-fingered local progression; positive profiles; linear extension to arbitrary smearings & Positivity: clocks advance forward (P2). Many-fingered: each locality carries its own clocks (P1 with locality). Linear extension: the generators form a linear space, a mild mathematical completion. & \st{Mostly derived; extension Assumed} \\
+A3. Integrability modulo spatial relabelling & P1: there is no preferred time, so advancing local clocks in different orders must lead to the same relational state. This is the path-independence (embeddability) condition~\cite{Teitelboim1973,HKT1976}. Violating it means a preferred foliation, which is the excluded khronometric case. & \st{Derived from P1} \\
+A4. Spatial covariance; independent normal and tangential generators & Covariance: spatial labels are gauge (P1). Independence of the two kinds of generator is a structural input. & \st{Derived / Assumed} \\
+A5. Single-gradient bilinear closure; pointwise locality & Locality plus the leading order of a derivative expansion. Higher orders are suppressed by a microscopic length and are the natural place for new predictions. & \st{Assumed (EFT truncation)} \\
+A6. Directional calibration $\beta^{ij}=h^{ij}$; positivity & Distances are defined by radar: half the round-trip clock time of a signal (P1, P2). The structure function $\beta^{ij}$ governs how a deformation at one place propagates to neighbouring places, which is signal propagation. With radar calibration, the spatial metric \emph{is} the signal co-metric. Positivity follows from the existence of real signals; the Lorentzian signature is an empirical input. & \st{Derived from radar calibration; signature Assumed} \\
+A7. Minimal phase space $(h_{ij},\pi^{ij})$, ultralocal quadratic momenta & Phase space from P7 (Section~\ref{sec:scalar}). Ultralocal quadratic momenta are the leading order of the derivative expansion, as in A5. & \st{From P7 + EFT truncation} \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Net result.} The HDA route now rests on: relational time (P1); clocks as local quantum systems (P2); locality with the leading order of a derivative expansion; radar calibration of distance; operational completeness (P7); and continuum, three-dimensional, Lorentzian structure as empirical inputs. Assumption A3, which carries most of the weight, is now a consequence of P1 rather than a separate hypothesis. \st{Reduced; not all derived}
+
+%=====================================================================
+\section{Step 4: the Hamiltonian constraint from clocks plus environment}
+\label{sec:constraint}
+%=====================================================================
+
+\subsection{What is derived: the local constraint and the role of \texorpdfstring{$\Pg$}{Pi}}
+
+For a closed system of clocks and environment with no background time, the action is reparametrization invariant (main draft, Section~8):
+\begin{equation}
+S=\int\dd\lambda\,\Big[\textstyle\sum_ap_a\dot q^a-n(\lambda)\,\mathcal K\Big],\qquad \mathcal K\approx0 .
+\end{equation}
+If the system is local, with independent clocks at each place (A2) and spatial labels as gauge (A4), the single constraint becomes a family of local constraints, and the multipliers become fields:
+\begin{equation}
+S=\int\dd\lambda\,\Big[\int\dd^3x\;p\,\dot q-\int\dd^3x\,\big(N(x)\,\mathcal H(x)+N^i(x)\,\mathcal H_i(x)\big)\Big],
+\qquad \mathcal H\approx0,\ \mathcal H_i\approx0 .
+\end{equation}
+$N(x)$ is the local progression rate $\Pg(x)$, and $\mathcal H(x)\approx0$ states that the total energy density vanishes at each point. This is the precise sense in which ``modified conservation'' is the Hamiltonian constraint: in a theory without background time, local energy balance is a constraint, not a conservation law in time. \st{Derived (standard parametrized field theory)}
+
+\subsection{What is conditional: its form}
+Integrability (A3, from P1) requires the local constraints to close as the HDA. With A1, A5, A6 and P7, the HKT theorem then fixes
+\begin{equation}
+\mathcal H=\frac{16\pi G}{c^4}\,\frac{\pi_{ij}\pi^{ij}-\tfrac12\pi^2}{\sqrt h}-\frac{c^4}{16\pi G}\sqrt h\,\big({}^{(3)}\!R-2\Lambda\big)+\mathcal H_{\rm matter},
+\end{equation}
+with $G$ and $\Lambda$ free constants. Every step is now traced to stated postulates. \st{Conditional}
+
+\subsection{What is open: the gravitational energy and the value of \texorpdfstring{$G$}{G}}
+
+The gravitational part of $\mathcal H$, the ``energy of the ruler field'' $-c^4\sqrt h\,{}^{(3)}\!R/16\pi G$, has been obtained from closure, but its strength $G$ has not been obtained from any clock or environment property. A microscopic derivation would compute $G$ from the environment. \st{Open}
+
+\paragraph{Best partial result: the thermodynamic route.}
+Jacobson~\cite{Jacobson1995} showed that the Einstein equation follows from the Clausius relation $\delta Q=T\,\dd S$ applied to local Rindler horizons, with $T$ the Unruh temperature and entropy proportional to area, $\dd S=\eta\,\delta A$; then $G=1/(4\hbar\eta)$ (with $c=k_B=1$). The microscopic input is $\eta$. A natural candidate is the entanglement entropy of the environment's fields across the horizon, which obeys an area law~\cite{Bombelli1986,Srednicki1993}.
+
+We reproduced that area law numerically for a free massless scalar field on a radial lattice of spacing $a$ (script \texttt{entanglement\_area\_law.py}; 60 radial sites, angular momenta up to $l=1499$):
+
+\begin{center}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+$R/a$ & $S$ & $S/(R/a)^2$ \\
+\midrule
+6.5 & 12.42 & 0.294 \\
+14.5 & 62.00 & 0.295 \\
+22.5 & 149.28 & 0.295 \\
+30.5 & 274.10 & 0.295 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The fit is $S=0.295\,(R/a)^2+0.03$, in agreement with Srednicki's $0.30$. So $\eta=\kappa/(4\pi a^2)$ with $\kappa\simeq0.295$, and Jacobson's relation gives
+\begin{equation}
+G=\frac{\pi a^2}{\hbar\kappa}\quad\Longrightarrow\quad a\simeq\sqrt{\frac{\kappa}{\pi}}\;\ell_P\simeq0.31\,\ell_P
+\end{equation}
+for a single field, and $a\simeq0.31\sqrt{N}\,\ell_P$ for $N$ fields. In this picture, Newton's constant is not inserted: it measures how densely the environment's fields are entangled across a surface. This is the same quantity that sets the induced $1/G$ of Sakharov's route~\cite{Jacobson1994}. \st{Numerically verified area law; route Standard; its use here Open}
+
+\paragraph{What still blocks closure.}
+\begin{enumerate}[1.]
+\item \textbf{The Clausius step is assumed, not derived.} A clock-plus-environment model would have to show $\delta Q=T\,\dd S$ for energy crossing a surface, with $T$ read from the clocks (the Tolman/Unruh relation).
+\item \textbf{The identification of horizon entropy with entanglement entropy} is not settled. It is cutoff dependent, it raises the species problem (the coefficient grows with the number of fields), and nonminimally coupled fields contribute differently.
+\item \textbf{Local equilibrium.} Jacobson's derivation needs it; departures give non-equilibrium corrections, which are candidate predictions but have not been computed here.
+\end{enumerate}
+Step~4 cannot be closed within this note. The partial result reduces the open problem to one well-defined calculation: derive the Clausius relation for a lattice environment probed by two local clocks.
+
+%=====================================================================
+\section{Changes to make in the main draft}
+%=====================================================================
+
+\begin{enumerate}[1.]
+\item Add P7 (operational completeness) to the postulates, with the statement that it is what excludes scalar--tensor gravity and fixes $\gamma=1$.
+\item In Section~6, replace the bare list A1--A7 with the table of Section~\ref{sec:upstream}, so each assumption shows its source.
+\item In Section~7, add Proposition~\ref{prop:exterior}: the exterior result holds for any static source in equilibrium, with von Laue's theorem as the consistency condition.
+\item In Section~8, state the derived local constraint, the conditional HKT form, and the open Clausius step, with the area-law result as the current best partial result.
+\end{enumerate}
+
+\begin{thebibliography}{99}
+\bibitem{HKT1976}
+S.~A. Hojman, K.~Kucha\v{r}, and C.~Teitelboim, ``Geometrodynamics regained,'' \emph{Ann. Phys.} \textbf{96}, 88 (1976).
+\bibitem{Teitelboim1973}
+C.~Teitelboim, ``How commutators of constraints reflect the spacetime structure,'' \emph{Ann. Phys.} \textbf{79}, 542 (1973).
+\bibitem{Bertotti2003}
+B.~Bertotti, L.~Iess, and P.~Tortora, ``A test of general relativity using radio links with the Cassini spacecraft,'' \emph{Nature} \textbf{425}, 374 (2003).
+\bibitem{Will2014}
+C.~M. Will, ``The confrontation between general relativity and experiment,'' \emph{Living Rev. Relativ.} \textbf{17}, 4 (2014).
+\bibitem{Jacobson1995}
+T.~Jacobson, ``Thermodynamics of spacetime: the Einstein equation of state,'' \emph{Phys. Rev. Lett.} \textbf{75}, 1260 (1995).
+\bibitem{Jacobson1994}
+T.~Jacobson, ``Black hole entropy and induced gravity,'' arXiv:gr-qc/9404039 (1994).
+\bibitem{Bombelli1986}
+L.~Bombelli, R.~K. Koul, J.~Lee, and R.~D. Sorkin, ``Quantum source of entropy for black holes,'' \emph{Phys. Rev. D} \textbf{34}, 373 (1986).
+\bibitem{Srednicki1993}
+M.~Srednicki, ``Entropy and area,'' \emph{Phys. Rev. Lett.} \textbf{71}, 666 (1993).
+\end{thebibliography}
+
+\end{document}

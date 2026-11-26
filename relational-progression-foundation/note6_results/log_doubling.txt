@@ -1,0 +1,2 @@
+staggered covariant fermion: Lambda_D=1.560717e-05  Lambda_D/Lambda_S=-3.8775  (prediction -4)
+naive fermion: Lambda_N=3.280996e-05  Lambda_N/Lambda_S=-8.1515  (one doubler pair -> -8)

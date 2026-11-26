@@ -1,0 +1,1 @@
+110 eta full m=0.0 Nside=57 nth=24: eta=2.56379907e-01

@@ -1,0 +1,125 @@
+% Companion note 3 to "Relational Progression as an Operational Foundation for GR".
+% Prepared with Claude (Anthropic) at the author's request.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[shortlabels]{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\newcommand{\Pg}{\Pi}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+
+\title{A Lattice Toy Model of the Clausius Relation\\ for a Clock-plus-Field Environment\\[4pt]
+\large Companion note 3 to the consolidated draft}
+\author{Scott A. Jordan}
+\date{Draft, 23 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The step of the program that would fix Newton's constant requires the Clausius relation $\delta Q=T\,\dd S$ for energy crossing a local horizon, with $T$ read from local clocks and $S$ the entanglement entropy of the field environment. We build a lattice toy model: a discretised massless scalar field in its vacuum, a cut playing the role of a local Rindler horizon, and static clocks whose progression factor relative to boost time is $\Pg(x)\propto x$. Computing the entanglement (modular) Hamiltonian of the field at 200-digit precision, we find it equals the clock-weighted energy $\int\beta(x)\,T_{00}\,\dd x$ with $\beta(x)=2\pi x$ near the cut to within $0.2\%$. This is the Unruh/Tolman temperature $T(x)=1/(2\pi x)=T_{\rm ref}/\Pg(x)$. We then deposit heat in the environment, both statically and as a pulse that crosses the cut, and compare the change of entanglement entropy with $\int\delta Q/T$. They agree to within $1\%$ at every time, and the exact entropy converges to the first-law value as the deposit is made smaller. The Clausius relation therefore holds for the environment's entanglement entropy, with the temperature fixed by the clock-rate factor. This narrows but does not close the step that fixes $G$: what remains is the hypothesis that this entropy change is balanced by an area change of the geometry (entanglement equilibrium).
+\end{abstract}
+
+\section{Model}
+
+\begin{itemize}
+\item \textbf{Environment.} An infinite harmonic chain, $H=\tfrac12\sum_i\pi_i^2+\tfrac12\sum_i(\varphi_{i+1}-\varphi_i)^2+\tfrac12m^2\sum_i\varphi_i^2$, with lattice spacing $1$ and infrared mass $m=10^{-4}$, in its vacuum. This is a discretised massless scalar field in $1+1$ dimensions.
+\item \textbf{Cut.} Region $A$ is the $L=60$ sites to the right of a cut; site $i$ sits at distance $x_i=i+\tfrac12$. Near the cut, $A$ is the lattice version of a Rindler wedge, whose horizon is the cut.
+\item \textbf{Clocks.} A static clock at distance $x$ has proper-time rate $\Pg(x)=a\,x$ relative to the boost time of the wedge: the progression factor of the draft is the Rindler lapse. Tolman's law $T_{\rm loc}\,\Pg=$ const then gives local temperature $T(x)=1/(2\pi x)$ (Unruh), with $T_{\rm ref}=1/2\pi$ in boost units.
+\item \textbf{Heat.} A weak positive-energy perturbation: classical noise of variance $\epsilon$ in a localized mode $(u,v)$, i.e. a mixture of displaced vacua. Its energy density is $\epsilon\,e(x)$.
+\end{itemize}
+
+\paragraph{Quantities compared.}
+\begin{align}
+\delta S_A &= S(\rho_A^{\epsilon})-S(\rho_A^{0}) && \text{(exact entanglement entropy change)},\\
+\delta\langle K_A\rangle &= \tfrac{\epsilon}{2}\,(u,v)\,M\,(u,v)^{\!\top} && \text{(first law; $\rho_A^0\propto e^{-\frac12 r^\top Mr}$)},\\
+\textstyle\sum_x \delta Q(x)/T(x) &= \textstyle\epsilon\sum_x\beta(x)\,e(x) && \text{(Clausius with clock temperature)}.
+\end{align}
+For a finite interval of length $L$ the conformal modular weight is $\beta(x)=2\pi x(L-x)/L$~\cite{CasiniHuerta2011}. It reduces to the Unruh weight $2\pi x$ near the cut and as $L\to\infty$.
+
+\paragraph{Method.} Vacuum correlators $\langle\varphi_i\varphi_j\rangle$, $\langle\pi_i\pi_j\rangle$ are computed by quadrature. The modular Hamiltonian $M$ follows from symplectic diagonalization of the reduced covariance~\cite{Peschel2003}. Its eigenvalues reach $2\pi x\omega\sim10^2$, so the calculation is done at 200 significant digits (mpmath); double precision gives meaningless results. Scripts: \texttt{clausius\_modular\_hamiltonian.py}, \texttt{clausius\_heat\_pulse.py}.
+
+\section{Results}
+
+\subsection{The modular Hamiltonian is the clock-weighted energy}
+
+\begin{center}
+\begin{tabular}{@{}rccc@{}}
+\toprule
+$x$ & coefficient of $\pi_x^2/2$ & $2\pi x(L-x)/L$ & ratio \\
+\midrule
+0.5 & 3.120 & 3.115 & 1.002 \\
+2.5 & 15.09 & 15.05 & 1.003 \\
+8.5 & 46.29 & 45.84 & 1.010 \\
+16.5 & 77.16 & 75.16 & 1.027 \\
+32.5 & 98.21 & 93.59 & 1.049 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The gradient couplings follow the same profile (ratio $1.0005$ at the first bond). Near the cut the entanglement Hamiltonian of the vacuum is $2\pi\int x\,T_{00}$: the Bisognano--Wichmann theorem~\cite{BW1976} holds on the lattice to within $0.2\%$, with few-percent lattice and mass corrections deeper in the interval. The environment's reduced state is thermal with respect to boost energy, at the local temperature that the clock-rate factor assigns. \st{Derived numerically}
+
+\subsection{Static heat deposits}
+
+A noise bump of width 3 sites deposited at distance $x_0$; entries are per unit $\epsilon$.
+\begin{center}
+\small\setlength{\tabcolsep}{4pt}\begin{tabular}{@{}rccccc@{}}
+\toprule
+$x_0$ & $\delta S_A$ ($\epsilon=10^{-12}$) & $\delta S_A$ ($\epsilon=10^{-16}$) & first law $\delta\langle K_A\rangle$ & Clausius, $\beta=2\pi x\frac{L-x}{L}$ & Clausius, $\beta=2\pi x$ \\
+\midrule
+6 & 4.766 & 4.779 & 4.779 & 4.749 & 5.506 \\
+12 & 8.306 & 8.565 & 8.620 & 8.579 & 10.98 \\
+24 & 11.04 & 12.28 & 13.04 & 12.97 & 21.97 \\
+40 & 10.58 & 11.57 & 12.05 & 12.00 & 36.61 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The exact entropy change converges to the first-law value as $\epsilon\to0$ (fully at $x_0=6$, still converging deeper in, where modular energies are larger and the linear regime requires $\epsilon\ll e^{-2\pi x\omega}$). The first-law value equals the Clausius sum with the interval weight to within $0.6\%$. The half-line weight $2\pi x$ is accurate only near the cut, as expected for a finite region. \st{Derived numerically}
+
+\subsection{A heat pulse crossing the horizon}
+
+A right-moving wavepacket (wavenumber $0.25$, width 5) starts 25 sites outside $A$ and crosses the cut. Entries are per unit $\epsilon$.
+\begin{center}
+\begin{tabular}{@{}rcccc@{}}
+\toprule
+$t$ & energy in $A$ & $\delta\langle K_A\rangle$ (first law) & $\sum\delta Q/T$ (Clausius) & ratio \\
+\midrule
+5 & $1.9\times10^{-8}$ & $9.24\times10^{-8}$ & $9.22\times10^{-8}$ & 1.003 \\
+15 & $7.6\times10^{-4}$ & $4.41\times10^{-3}$ & $4.40\times10^{-3}$ & 1.002 \\
+20 & $4.4\times10^{-2}$ & $0.533$ & $0.530$ & 1.006 \\
+30 & $0.284$ & $7.72$ & $7.69$ & 1.004 \\
+45 & $0.296$ & $24.1$ & $24.0$ & 1.005 \\
+60 & $0.296$ & $27.1$ & $26.9$ & 1.007 \\
+\bottomrule
+\end{tabular}
+\end{center}
+As heat crosses the horizon, the entanglement entropy of the environment beyond it rises by $\int\delta Q/T$, with $T$ the local clock temperature, to within $1\%$ at every time. After the pulse has fully entered, the entropy keeps changing while the energy is constant, because the pulse moves to regions of lower temperature. That is the Clausius relation with a position-dependent temperature, not a defect. \st{Derived numerically}
+
+\section{What this establishes}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.42\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.33\textwidth}@{}}
+\toprule
+Statement & Status & Comment \\
+\midrule
+The environment's vacuum is locally thermal at $T(x)=T_{\rm ref}/\Pg(x)$ (Tolman/Unruh), with $\Pg$ the clock-rate factor & Derived (numerical, 0.2\%) & Bisognano--Wichmann on the lattice. It holds for half-spaces in any dimension~\cite{BW1976}. \\
+$\delta Q=T\,\dd S$ for entanglement entropy, for heat deposited or crossing the horizon & Derived (numerical, 1\%) & First law of entanglement plus the above. \\
+The Clausius relation needs no additional assumption about the environment & Derived & It follows from the vacuum and the clock temperature. In Jacobson's derivation it was an assumption. \\
+Area law $S=\eta A$, $\eta=\kappa/(4\pi a^2)$, $\kappa\simeq0.295$ & Standard (reproduced, note 2) & A 3D quantity; the Clausius check here is in 1+1, where the argument is dimension-independent. \\
+The entropy change is balanced by an area change of the geometry, $\delta S_{\rm matter}+\eta\,\delta A=0$ & \textbf{Assumed} & Entanglement equilibrium~\cite{Jacobson2016}. With it, the linearized Einstein equation follows with $G=1/(4\hbar\eta)$. \\
+$G$ from the environment & \textbf{Open (narrowed)} & Reduced to the single hypothesis above. \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Does this close the step that fixes $G$?} No. It removes one of the three blocks listed in the draft: the Clausius relation is no longer an assumption, because it holds for the environment's entanglement entropy with the temperature set by the clock-rate factor. What remains is the claim that the geometry carries entropy $\eta$ per unit area and adjusts to keep the total stationary. That is the precise statement of ``energy imbalance balanced by geometry'' in this program. The identification of $\eta$ with the matter area-law coefficient also still faces the cutoff and species issues.
+
+\paragraph{Next calculation.} Test entanglement equilibrium directly on a lattice. In a 3D lattice ball, let a small change of local lattice geometry (link lengths near the boundary, i.e. a change of area) respond to a heat deposit. Ask whether total entropy, matter plus area term, is stationary only when the response is the one given by the linearized Einstein equation.
+
+\begin{thebibliography}{9}
+\bibitem{BW1976} J.~J. Bisognano and E.~H. Wichmann, ``On the duality condition for quantum fields,'' \emph{J. Math. Phys.} \textbf{17}, 303 (1976).
+\bibitem{CasiniHuerta2011} H.~Casini, M.~Huerta, and R.~C. Myers, ``Towards a derivation of holographic entanglement entropy,'' \emph{JHEP} \textbf{05}, 036 (2011).
+\bibitem{Peschel2003} I.~Peschel, ``Calculation of reduced density matrices from correlation functions,'' \emph{J. Phys. A} \textbf{36}, L205 (2003).
+\bibitem{Jacobson2016} T.~Jacobson, ``Entanglement equilibrium and the Einstein equation,'' \emph{Phys. Rev. Lett.} \textbf{116}, 201101 (2016).
+\end{thebibliography}
+\end{document}

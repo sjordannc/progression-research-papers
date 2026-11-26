@@ -1,0 +1,5 @@
+Lam_perp=2.0000 L=300 w=6.0: Lambda_vac=-1.23164945  C(Lambda2=Lambda1)=35.137637  (deg4 fit: 16.412888)  9s
+Lam_perp=2.0000 L=300 w=8.0: Lambda_vac=-1.23168802  C(Lambda2=Lambda1)=46.842886  (deg4 fit: 21.878334)  19s
+Lam_perp=2.0000 L=300 w=12.0: Lambda_vac=-1.23172619  C(Lambda2=Lambda1)=70.254853  (deg4 fit: 32.809906)  32s
+Lam_perp=2.0000 L=300 w=16.0: Lambda_vac=-1.23174516  C(Lambda2=Lambda1)=93.667558  (deg4 fit: 43.741800)  48s
+Lam_perp=2.0000 L=300 w=24.0: Lambda_vac=-1.23176409  C(Lambda2=Lambda1)=140.493709  (deg4 fit: 65.605853)  67s

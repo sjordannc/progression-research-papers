@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}\usepackage{amsmath,booktabs}
+\title{Curvature at Different Angles to the Lattice Axes\\[4pt]\large Companion note 10}
+\author{}\date{24 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Note 9 argued that a fixed lattice induces frame-dependent terms that mix with the Einstein term. This note tests that on a full three-dimensional cubic Wilson-fermion lattice. Planar curvature profiles are placed along the lattice axis, the face diagonal and the body diagonal, and a pure coordinate change is added as a control. The pre-registered reading is \textbf{frame terms present}. The induced curvature coefficient, measured against the entanglement coefficient for the same orientation, is $-4\pi C/\eta=-2.47,\ -1.70,\ -1.39$ at $0^\circ$, $45^\circ$ and $54.7^\circ$. That spread is hundreds of times the numerical error. A pure coordinate change, which costs nothing for a covariant regulator, carries 10--25\% of the curvature response. The lattice's own entanglement coefficient is also anisotropic, by 26\%. The Pauli--Villars (covariant) part passes at every angle: $-4\pi C/\eta=1.07$--$1.10$ at all three angles, with a coordinate-change response of at most 3\%. Equilibrium for the cutoff-scale part fails at every angle, with the wrong sign throughout. So frame terms are present and large, as note 9 said. Whether removing them would leave the right sign cannot be asked of a cubic lattice, because there the Einstein term is itself expressible through frame terms.
+\end{abstract}
+
+\section{Set-up (pre-registered)}
+\textbf{Regulator.} One Wilson ($r=1$) Dirac fermion on a cubic lattice, continuous time. A regular 3D lattice cannot keep a fixed physical spacing in a curved space, so the lattice is a fixed graph and the metric enters through the links. The kinetic coefficient on link $j$ is $A_j=\sum_i\alpha^iM_{ij}$ at the link midpoint, where $M$ is the inverse triad. The Wilson weight is $(MM^T)_{jj}$, and the variables are $\chi=h^{1/4}\psi$. This is the standard way to put a lattice field in a curved background, and it differs from the note 7--8 regulators.
+
+\textbf{Geometry.} Planar profiles along a unit direction $d\in\{[100],[110],[111]\}$:
+(S) $d\ell^2=du^2+e^{2\sigma(u)}d\ell_\perp^2$, with $\int\!\sqrt hR=2\int\sigma'^2$;
+(G) $d\ell^2=e^{2\alpha(u)}du^2+d\ell_\perp^2$, a pure coordinate change with $R=0$.
+Translations perpendicular to $d$ are exact lattice symmetries, so Bloch momenta reduce the problem to block-tridiagonal chains in the layer index $n=d_{\rm int}\cdot x$.
+
+\textbf{Extraction.} $E(\epsilon)$ is computed for a Gaussian $\sigma=\epsilon g$ of width $w=6$--16 (cutoff runs) or 16--32 (Pauli--Villars). The second-order coefficient is fitted as $a_2(w)=A\!\int\!g^2+Q\!\int\!g'^2\,(+D\!\int\!g''^2)$, with the zero-derivative term $A$ left free, because a coordinate lattice does not give a $\sqrt h$ volume term. Then $C(d)=Q_S/2$ and $\rho(d)=-4\pi C/\eta(d)$, where $\eta(d)$ is the entanglement per area across the lattice plane normal to $d$.
+
+\textbf{Criteria} (fixed before any run). Frame terms are present if $\rho(d)$ varies by more than three times its error, or if $|Q_G|>5\%\,|Q_S|$. The run is void unless the flat vacuum energy agrees across orientations and Pauli--Villars passes at each angle (within 10\%, with $|Q_G|<10\%\,|Q_S|$).
+
+\section{Checks}
+\begin{itemize}
+\item \textbf{Flat space.} The bulk vacuum energy density is $-6.5569916$ for all three orientations, agreeing to $2\times10^{-8}$ relative (momentum grid $48^2$).
+\item \textbf{Pauli--Villars.} The plain Wilson mass does not cancel under Pauli--Villars on this lattice: the Wilson term breaks $M\to-M$, leaving cutoff-scale terms odd in $M$. The masses are therefore twisted, $M X$ with $X=\alpha_1\alpha_2\alpha_3\beta$. This is chirally equivalent to a Dirac mass in the continuum and gives $H^2=H_0^2+M^2$ exactly. The Pauli--Villars parts need a momentum grid refined near the Dirac point; a uniform $24^2$ grid was 3\% off for $C$ and 40\% off for $\eta$, so those runs were discarded. With $m=0.2$:
+\begin{center}\begin{tabular}{lccc}\toprule
+& [100] & [110] & [111]\\\midrule
+$C_{\rm PV}/C_{\rm pred}$ & 1.044 & 1.060 & 1.065\\
+$Q_{G}/Q_{S}$ (PV) & 0.022 & 0.017 & 0.033\\
+$\eta_{\rm PV}/\eta_{\rm pred}$ & 0.980 & 0.974 & 0.972\\
+$\rho_{\rm PV}$ & 1.065 & 1.088 & 1.095\\\bottomrule
+\end{tabular}\end{center}
+The covariant part is isotropic to 2\%, its coordinate-change response is at most 3\%, and it satisfies equilibrium at every angle. The first-order vacuum term agrees with the continuum Pauli--Villars value to 4\%.
+\item \textbf{Precision of the cutoff runs.} Going from a $24^2$ to a $32^2$ grid changes $Q_S$ by $2\times10^{-6}$ ($<0.01\%$). Three-parameter and two-parameter width fits differ by 0.5\%. Doubling the box changes $\eta$ by $10^{-6}$, and the refined and uniform grids give the same $\eta$ to $10^{-4}$.
+\end{itemize}
+
+\section{Results (lattice cutoff, no Pauli--Villars)}
+\begin{center}\begin{tabular}{lcccccc}\toprule
+$d$ & angle to axis & $C$ & $\eta$ & $\rho=-4\pi C/\eta$ & $Q_G/Q_S$\\\midrule
+[100] & $0^\circ$ & $+0.0434$ & 0.2207 & $-2.47$ & 0.10\\
+[110] & $45^\circ$ & $+0.0346$ & 0.2564 & $-1.70$ & 0.22\\
+[111] & $54.7^\circ$ & $+0.0308$ & 0.2786 & $-1.39$ & 0.26\\\bottomrule
+\end{tabular}\end{center}
+\begin{itemize}
+\item \textbf{Frame terms present} (pre-registered reading). $\rho$ changes by 78\% across orientations, against errors below 1\%. The pure coordinate change costs 10--26\% of the curvature response, where a covariant regulator gives zero. Both criteria are met by a wide margin.
+\item \textbf{Equilibrium fails at every angle}, with the wrong sign throughout ($C>0$, repulsive).
+\item \textbf{The entanglement itself depends on the frame.} $\eta$ is 26\% larger across a $[111]$ plane than across a $[100]$ plane. On a lattice, the area law already carries the frame.
+\item \textbf{The vacuum term is not a volume term.} Its first-order response is $+8.06\!\int\!g$ for (S), where a covariant $\Lambda\!\int\!\sqrt h$ would give $2\rho\!\int\!g=-13.1\!\int\!g$. A fixed graph's cutoff moves with the metric. The resulting zero-derivative term, of order the cutoff to the fourth power, is non-covariant: in gravitational language it would be a huge frame-dependent potential.
+\item \textbf{Angular average (estimate).} Fitting $Q_S$ and $\eta$ to cubic harmonics up to degree 6 (exact for three directions, so an assumption) gives sphere averages $C\approx+0.036$ and $\eta\approx0.252$, so $\rho_{\rm avg}\approx-1.8$. Averaging over orientations does not restore the sign.
+\end{itemize}
+
+\section{What it means}
+\begin{itemize}
+\item Note 9's mixing claim is confirmed. The planar curvature coefficient of a fixed lattice depends on how the curvature is oriented relative to the lattice, and part of it responds to a pure coordinate change. It is not a single number $1/(16\pi G)$.
+\item Note 9's further conjecture, that frame terms account for the whole sign mismatch, is \textbf{not testable} on a cubic lattice, and nothing here supports it. With a full triad, the Einstein term equals a combination of frame (torsion) terms up to a boundary term (the teleparallel identity), so there is no frame-free Einstein coefficient to extract. What can be said is that no orientation, and no angular average, gives the right sign.
+\item The covariant Pauli--Villars part behaves exactly as the model requires: it is isotropic, blind to coordinate changes, and satisfies $1/G=4\eta$ at every angle.
+\item For the model this sharpens the conclusion of note 9. A fixed lattice cannot be its microscopic realisation: it breaks P1/P2/P7 visibly, in both the induced action and the entanglement. The cutoff-scale part of $G$ needs discreteness without a frame (for example random sprinkling) or a species sum rule. Status of $G$: Open.
+\end{itemize}
+
+\section{Limitations}
+Only planar profiles along three high-symmetry directions are used, with one Wilson parameter ($r=1$), continuous time and one fermion species. The decomposition into the four isotropic quadratic invariants would need two more polarisations (traceless transverse and shear). Pauli--Villars uses $m=0.2$ only.
+
+\section*{Code}
+\texttt{lat3d\_common.py} (lattice, metric coupling, Bloch reduction, refined momentum grid, twisted masses), \texttt{lat3d\_G.py}, \texttt{lat3d\_eta.py}, \texttt{analyse\_angles.py}, \texttt{analyse\_angles\_pv.py}. Pre-registration: \texttt{PREREG\_note10.md}. Logs and JSON files: \texttt{note10\_results/} (the discarded uniform-grid and plain-mass Pauli--Villars runs are kept in \texttt{void/}).
+\end{document}

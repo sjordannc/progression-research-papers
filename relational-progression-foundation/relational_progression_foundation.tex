@@ -1,0 +1,674 @@
+% Draft consolidated manuscript.
+% Prepared with Claude (Anthropic) from the author's manuscripts in
+% github.com/sjordannc/progression-research-papers, at the author's request.
+% Status markers: [Standard] = textbook GR/SR result; [Prior] = obtained in one of
+% the author's earlier manuscripts; [Conditional] = holds under listed assumptions;
+% [Derived] = argued here from the stated postulates; [Open] = not yet derived.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[shortlabels]{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+% ---------- Canonical notation (one dictionary for every paper) ----------
+\newcommand{\Pg}{\Pi}                 % progression rate representative, d tau / dT
+\newcommand{\thP}{\theta}             % ln Pi (log temporal progression)
+\newcommand{\sgP}{\sigma}             % log isotropic spatial scale
+\newcommand{\cph}{\varphi}            % clock relative phase (observable)
+\newcommand{\Eloc}{E_{\rm loc}}       % locally measured energy
+\newcommand{\Eref}{\mathcal{E}}       % energy relative to reference time T
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Tref}{T}                 % stationary reference time (protocol-fixed)
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{postulate}{Postulate}
+\renewcommand{\thepostulate}{P\arabic{postulate}}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\title{Relational Progression as an Operational Foundation\\ for General Relativity\\[4pt]
+\large Consolidated draft}
+\author{Scott A. Jordan}
+\date{Draft, 23 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We formulate general relativity from the standpoint of relational clock progression. Time is not assumed as a background; the primitive observables are ratios of accumulated clock phase under a stated comparison protocol. The rate of local progression relative to a protocol-fixed reference, $\Pg=\dd\tau/\dd\Tref$, enters the action only as the temporal factor of the physical metric (the lapse), never as an independent scalar field. A clock's action is minus its local energy times its accumulated progression. We state seven postulates, fix a single dictionary that separates locally measured quantities from quantities referred to the comparison reference, and give an exponent rule that is the only permitted bridge between them. With this bookkeeping, ``weighted conservation'' is shown to be the covariant conservation law $\nabla_\mu J^\mu=0$ written in a progression-adapted frame, so there is exactly one balance law, $\nabla_\mu T^{\mu\nu}_{\rm total}=0$. Special-relativistic time dilation and gravitational redshift are expressed by one relational clock-ratio formula, and the classical tests of general relativity are recovered in progression variables. A conditional route from integrability of local relational evolution to Einstein dynamics, via the hypersurface-deformation algebra, is summarised with each of its assumptions traced to an operational principle. An operational-completeness postulate excludes scalar--tensor gravity and fixes $\gamma_{\rm PPN}=1$, and the full light deflection outside any static body in equilibrium is shown to be independent of its internal stresses. The central open problem is stated precisely: to derive the stationary weak-field clock ratio from a two-clock-plus-environment system without inserting the gravitational potential. In an induced-gravity lattice model this is achieved numerically, conditional on the regulator-independent part of $G$ and a tuned cosmological term. We do not modify the gravitational field equations, and galaxy-scale phenomenology is outside the scope of this paper.
+\end{abstract}
+
+\tableofcontents
+
+%=====================================================================
+\section{Introduction and claim level}
+%=====================================================================
+
+The progression program asks whether observable relations among physical clocks, together with conserved exchanges, can account for temporal structure without assuming an independently flowing time. Earlier manuscripts in the program explored several routes: a scalar progression field with collective matter loading and a constitutive optical sector~\cite{JordanLoading,JordanOptics}; a complete foliation-adapted geometry with a khronometric deformation~\cite{JordanGeometry}; a conditional reconstruction of Einstein geometrodynamics from local relational evolution~\cite{JordanHDA}; finite relational clock models~\cite{JordanClocks}; and an interaction-organization source sector~\cite{JordanComplexity}. Those studies showed that a single scalar cannot carry the full gravitational response, that a weighted current law cannot replace the single Noether identity of a closed system, and that apparent new effects often arose from moving between a local description and a reference description without a fixed conversion rule.
+
+This paper consolidates the program at a definite claim level. Following the classification in the research-direction note~\cite{JordanDirection}, a result can be:
+\begin{enumerate}[(i)]
+\item a \emph{reformulation}, reproducing known observations through a change of description;
+\item an \emph{emergent derivation}, recovering them from a physically specified model whose assumptions do not already contain the target relation; or
+\item a \emph{new prediction}, changing a dimensionless observable with a quantitative test.
+\end{enumerate}
+The present paper claims (i) in full and sets up (ii) as a precisely stated open problem. It keeps the Einstein field equations. New predictions are sought only where classical general relativity (GR) is silent: in the special-relativistic quantum mechanics of clocks, and in microscopic corrections that a successful derivation of type (ii) would carry. Every section is labelled with its status:
+\st{Standard} textbook GR or special relativity (SR);
+\st{Prior} obtained in one of the author's earlier manuscripts;
+\st{Derived} argued in this paper or its companion notes from the stated postulates;
+\st{Conditional} holds under listed assumptions;
+\st{Open} not yet derived.
+Appendix~\ref{app:ledger} collects these labels.
+
+%=====================================================================
+\section{Postulates}
+\label{sec:postulates}
+%=====================================================================
+
+\paragraph{Frame rule.} A quantity carrying the subscript ``loc'' is what a co-located clock or ruler measures. A quantity referred to the comparison reference $\Tref$ carries no subscript. The only permitted bridge between the two is the conversion rule of Postulate~\ref{P:conv}. No equation in this paper mixes the two kinds of quantity without it.
+
+\begin{postulate}[Relational time]\label{P:rel}
+There is no background time. The observables are ratios of accumulated clock phase between specified clock histories, under a stated comparison protocol $\mathcal C$ (preparation, calibration, and a pairing of events or an exchanged signal). History labels $\lambda$ and reference times $\Tref$ are gauge until a protocol fixes them.
+\end{postulate}
+
+\begin{postulate}[Clocks are special-relativistic quantum systems]\label{P:SR}
+A clock is a physical system with an internal Hamiltonian. Its reading is a relative phase,
+\begin{equation}
+\dd\cph = \frac{\Delta\Eloc}{\hbar}\,\dd\tau ,
+\label{eq:clockphase}
+\end{equation}
+where $\Delta\Eloc$ is the locally calibrated transition energy. Local physics is special-relativistic: $c$, $\hbar$, and every dimensionless constant take the same value in every local laboratory.
+\end{postulate}
+
+\begin{postulate}[Universality]\label{P:univ}
+All local systems---clocks, rest mass, binding and field energy, and light---share one rate structure. Equivalently, all non-gravitational matter couples to one physical metric (the Einstein equivalence principle).
+\end{postulate}
+
+\begin{postulate}[Conversion rule]\label{P:conv}
+Relative to the reference, a local quantity of definite dimension maps as
+\begin{equation}
+X = e^{k\thP + j\sgP}\,X_{\rm loc},
+\label{eq:conversion}
+\end{equation}
+with the exponents $(k,j)$ fixed by dimension (Table~\ref{tab:exponents}). Nothing else changes between descriptions.
+\end{postulate}
+
+\begin{postulate}[One balance law]\label{P:balance}
+All dynamics follow from one action. There is therefore one Noether identity for the closed system, $\nabla_\mu T^{\mu\nu}_{\rm total}=0$. Weighted current laws are either rewritings of $\nabla_\mu J^\mu=0$ or derived subsystem transport laws. They are never additional conservation laws for total energy.
+\end{postulate}
+
+\begin{postulate}[Microscopic origin --- research target]\label{P:micro}
+The progression variables $(\thP,\sgP,\beta^i,\gamma_{ij})$ are collective variables of interacting clocks and their environment. Their values, and the Einstein dynamics they obey, are to be derived rather than assumed. Success criterion: recover
+$\dd\tau_A/\dd\tau_B \simeq 1+(\Phi_A-\Phi_B)/c^2$ and $\sgP=-\thP$ at weak field without inserting $\Phi$.
+\end{postulate}
+
+\begin{postulate}[Operational completeness]\label{P:OC}
+Every gravitational degree of freedom is determined by comparisons of local clocks and radar distances. Equivalently, the gravitational configuration space is the space of spatial geometries $h_{ij}$.
+\end{postulate}
+
+Postulates~\ref{P:rel}--\ref{P:balance} and~\ref{P:OC} are assumptions. Postulate~\ref{P:micro} is a statement of what remains to be shown; it is listed so that the boundary between what is assumed and what is claimed stays visible.
+
+Postulate~\ref{P:OC} is needed because scalar--tensor theories satisfy P1--P5: they are reparametrization invariant, couple matter to one metric, and have one balance law, but carry an extra gravitational scalar that no local clock or ruler registers directly. Such theories give $\gamma_{\rm PPN}=(1+\omega)/(2+\omega)\neq1$. P7 states that this hidden variable is absent. It is supported empirically: Cassini requires $\omega_{\rm BD}\gtrsim4\times10^4$~\cite{Bertotti2003,Will2014}. Section~\ref{sec:HDA} shows that P7 is what selects the Einstein constraint, and with it the full light deflection~\cite{JordanNote2}.
+
+%=====================================================================
+\section{Clocks, protocols, and relational ratios}
+\label{sec:clocks}
+%=====================================================================
+
+\subsection{Progression rate and relational ratio}
+
+Along a clock history parametrised by an arbitrary monotonic $\lambda$, define the progression-rate representative
+\begin{equation}
+\Pg_{\mathcal C} = \frac{\dd\tau}{\dd\lambda} = \frac{\hbar}{\Delta\Eloc}\frac{\dd\cph}{\dd\lambda}.
+\label{eq:Pi}
+\end{equation}
+$\Pg_{\mathcal C}$ depends on the label and is not by itself observable. For two histories compared under one protocol, the relational ratio
+\begin{equation}
+\Pg_{\rm rel}[A,B;\mathcal C] = \frac{\dd\tau_A/\dd\lambda}{\dd\tau_B/\dd\lambda}
+= \frac{\Delta E_{{\rm loc},B}}{\Delta E_{{\rm loc},A}}\,\frac{\dd\cph_A}{\dd\cph_B}
+\label{eq:Pirel}
+\end{equation}
+is invariant under $\lambda\mapsto f(\lambda)$. For identical clocks the calibration factors cancel. \st{Prior: \cite{JordanHDA,JordanDirection}}
+
+\subsection{Local invisibility of a common response}
+
+In a connected reparametrization-invariant system of $N$ phase clocks, only $N-1$ transport factors are independent, and a common fractional response cancels from every local pairwise comparison~\cite{JordanClocks}. A uniform change of all clock rates is therefore unobservable locally. This is the finite-model form of the equivalence principle: a universal progression effect can be detected only through additional structure, such as signal exchange between separated clocks or the reunion of clocks after different histories. \st{Prior: \cite{JordanClocks}}
+
+\subsection{Special-relativistic time dilation as a relational ratio}
+\label{sec:SR}
+
+Let clocks $A$ and $B$ move inertially with four-velocities $u_A,u_B$ and relative Lorentz factor
+\begin{equation}
+\gamma_{AB} = -\,\frac{u_A\cdot u_B}{c^2},
+\end{equation}
+which is frame-independent. Under protocol $\mathcal C_B$---events paired by Einstein synchronisation in $B$'s rest frame---the ratio~\eqref{eq:Pirel} is
+\begin{equation}
+\Pg_{\rm rel}[A,B;\mathcal C_B] = \frac{1}{\gamma_{AB}}.
+\label{eq:SRratio}
+\end{equation}
+Under protocol $\mathcal C_A$, by symmetry, $\Pg_{\rm rel}[B,A;\mathcal C_A]=1/\gamma_{AB}$. The two statements do not contradict each other. They are ratios under different protocols, exactly as Postulate~\ref{P:rel} requires. A protocol-independent statement arises only when the histories share endpoints: for clocks that separate and reunite,
+\begin{equation}
+\frac{\Delta\tau_A}{\Delta\tau_B} = \frac{\int_A \dd\tau}{\int_B \dd\tau},
+\end{equation}
+a single number fixed by the two histories. Time dilation is thereby expressed as a relation between clock records, with the frame entering only as the definition of a comparison protocol. \st{Standard, restated relationally}
+
+\subsection{One clock-ratio formula for motion and gravity}
+
+For clocks at rest or slowly moving in a stationary weak field, with the reference $\Tref$ fixed by the stationary symmetry,
+\begin{equation}
+\frac{\dd\tau}{\dd\Tref} = \Pg\sqrt{1-\frac{v^2}{\Pg^2 e^{-2\sgP}c^2}}
+\;\simeq\; 1+\frac{\Phi}{c^2}-\frac{v^2}{2c^2},
+\label{eq:clockrate}
+\end{equation}
+so that for two clocks compared under the stationary protocol,
+\begin{equation}
+\frac{\dd\tau_A}{\dd\tau_B} \simeq 1+\frac{\Phi_A-\Phi_B}{c^2}-\frac{v_A^2-v_B^2}{2c^2}.
+\label{eq:GPS}
+\end{equation}
+For GPS satellites relative to ground clocks the two terms are $+45.7$ and $-7.2\ \mu$s/day, giving the net $+38.5\ \mu$s/day that is routinely verified. Equation~\eqref{eq:GPS} is the target of Postulate~\ref{P:micro}: its gravitational term is to be derived, not inserted. \st{Standard}
+
+%=====================================================================
+\section{Local and reference quantities}
+\label{sec:dictionary}
+%=====================================================================
+
+\subsection{Progression variables}
+
+The physical metric seen by all non-gravitational matter is written as
+\begin{equation}
+\dd s^2 = -\Pg^2c^2\,\dd\Tref^2 + e^{2\sgP}\gamma_{ij}\,(\dd x^i+\beta^i\dd\Tref)(\dd x^j+\beta^j\dd\Tref),
+\qquad \Pg=e^{\thP},\quad \det\gamma_{ij}=1,
+\label{eq:metric}
+\end{equation}
+with $\thP$ the temporal progression (lapse), $\sgP$ the isotropic spatial scale, $\beta^i$ the progression flow (shift), and $\gamma_{ij}$ the unimodular spatial strain~\cite{JordanGeometry}. For a static observer, $\dd\tau=\Pg\,\dd\Tref$. \st{Standard; variables from \cite{JordanGeometry}}
+
+\subsection{Conversion exponents}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lccl@{}}
+\toprule
+Quantity & $k$ & $j$ & Relation \\
+\midrule
+Frequency, energy & $1$ & $0$ & $\omega=e^{\thP}\omega_{\rm loc}$,\; $\Eref=e^{\thP}\Eloc$ \\
+Coordinate length & $0$ & $-1$ & $L=e^{-\sgP}L_{\rm loc}$ \\
+Coordinate light speed & $1$ & $-1$ & $c_{\Tref}=e^{\thP-\sgP}c$ \\
+Action, $\hbar$, dimensionless constants & $0$ & $0$ & invariant \\
+\bottomrule
+\end{tabular}
+\caption{Exponents in the conversion rule~\eqref{eq:conversion} for static observers ($\beta^i=0$).}
+\label{tab:exponents}
+\end{table}
+
+The rule has a direct consequence for the idea that local constants are ``covariant'' from the reference viewpoint. Dimensionful constants acquire reference values by Table~\ref{tab:exponents}; this is bookkeeping and carries no physics. Dimensionless constants, such as the fine-structure constant or $m_p/m_e$, cannot change. If they did, the theory would be a varying-constant theory, which comparisons of atomic clocks of different types bound far below the level of $\Phi/c^2$. The gravitational coupling $G$ appears once, in the gravitational action, and is not transformed.
+
+\subsection{Energy relative to the reference}
+
+When the spacetime is stationary, $\partial_\Tref$ is a Killing vector and a freely propagating particle or photon carries the conserved energy
+\begin{equation}
+\Eref = \Pg\,\Eloc .
+\label{eq:Killing}
+\end{equation}
+For a photon exchanged between static observers $A$ and $B$,
+\begin{equation}
+\frac{E_{{\rm loc},B}}{E_{{\rm loc},A}} = \frac{\Pg_A}{\Pg_B},
+\end{equation}
+which is the gravitational redshift. Two remarks fix the domain of the ``energy imbalance'' language. First, identical clocks at different $\Pg$ keep identical local transition energies; the imbalance exists only for a transported signal compared at the two locations. Second, $\Eref$ is defined only when a timelike Killing vector exists. In cosmology or during gravitational radiation there is no global reference energy; only quasi-local or asymptotic charges are available. \st{Standard}
+
+%=====================================================================
+\section{The action in progression variables}
+\label{sec:action}
+%=====================================================================
+
+\subsection{Clock and matter action}
+
+A clock or point particle with local rest energy $\Eloc$ has the action
+\begin{equation}
+S_{\rm clock} = -\Eloc\int \dd\tau = -\Eloc\int \Pg\,\dd\Tref\qquad(\text{static observer}),
+\label{eq:clockaction}
+\end{equation}
+that is, minus the local energy times the accumulated progression. For general motion, $\dd\tau$ is the proper time of the metric~\eqref{eq:metric}. Field matter enters through $S_m=\int \dd^4x\sqrt{-g}\,\mathcal L_{\rm loc}$ with $\sqrt{-g}=\Pg\,e^{3\sgP}$ in coordinates where $\det\gamma=1$. The single factor $\Pg$ in the measure is the temporal rate conversion of~\eqref{eq:Pi}. Writing an explicit additional $\Pg$ next to $\sqrt{-g}$ would count it twice~\cite{JordanHDA}. \st{Standard; interpretation from \cite{JordanHDA}}
+
+Because every matter sector couples through the same $\dd\tau$, rest energy, binding energy and internal kinetic energy all enter through one coupling. Universal free fall (Postulate~\ref{P:univ}) is then automatic at the level of the action, and composite bodies obey it through ordinary Laue stress balance~\cite{JordanGeometry}.
+
+\subsection{Gravitational action without a progression field}
+
+With $c=1$ in this subsection, the gravitational action selected by the closure argument of Section~\ref{sec:HDA} is
+\begin{equation}
+S_g = \frac{1}{16\pi G}\int \dd\Tref\,\dd^3x\;\Pg\sqrt{h}\,\Big(K_{ij}K^{ij}-K^2+{}^{(3)}\!R\Big),
+\qquad
+K_{ij}=\frac{1}{2\Pg}\big(\dot h_{ij}-\mathcal L_\beta h_{ij}\big),
+\label{eq:ADM}
+\end{equation}
+with $h_{ij}=e^{2\sgP}\gamma_{ij}$. $\Pg$ appears without time derivatives. It is not a propagating field but a Lagrange multiplier, and its variation gives the Hamiltonian constraint. This is the precise sense in which the progression variable enters the action without introducing a scalar field. No additional normalisation scale, kinetic function or fifth-force coupling is needed. \st{Standard}
+
+\subsection{Static weak-field reduction}
+
+For a static, weak, isotropic configuration, the constraint reduces to stationarity of
+\begin{equation}
+E[\thP] = \int \dd^3x\left[\frac{c^4}{8\pi G}\,|\nabla\thP|^2 + \rho c^2\,\thP\right],
+\qquad
+\nabla^2\thP = \frac{4\pi G}{c^2}\rho,
+\label{eq:Poisson}
+\end{equation}
+so $\thP\simeq\Phi/c^2$, with spatial response $\sgP=-\thP$ at leading order. The functional resembles a scalar-field energy, but it is the reduced Hamiltonian constraint, not an independent field action~\cite{JordanHDA}. The exact spherical vacuum solution is isotropic Schwarzschild. \st{Prior: \cite{JordanHDA}; Standard}
+
+%=====================================================================
+\section{One balance law}
+\label{sec:balance}
+%=====================================================================
+
+Let $j^\mu$ be a current measured in local units and $w>0$ a weight. The identity
+\begin{equation}
+\partial_\mu\big(w\,j^\mu\big)=0 \quad\Longleftrightarrow\quad \partial_\mu j^\mu = -\,j^\mu\partial_\mu\ln w
+\end{equation}
+shows how an apparent source in one description coexists with exact conservation in another~\cite{JordanDirection}. With the measure of Section~\ref{sec:action}, the progression-weighted law
+\begin{equation}
+\partial_\mu\big(\Pg\sqrt h\,J^\mu\big)=0
+\quad\Longleftrightarrow\quad
+\frac{1}{\sqrt{-g}}\partial_\mu\big(\sqrt{-g}\,J^\mu\big)=\nabla_\mu J^\mu=0
+\label{eq:weighted}
+\end{equation}
+is identical to covariant conservation~\cite{JordanHDA,JordanGeometry}. Weighted conservation is therefore not an alternative to curvature. It is the covariant conservation law written with the temporal progression factor displayed, and spacetime curvature enters through the same $\Pg$, $\sgP$, $\beta^i$ and $\gamma_{ij}$. The one weight fixed kinematically is the single temporal factor $q=1$ in $w=\Pg^q$; other powers require a derivation from the action.
+
+For stress-energy, invariance of the total action under diffeomorphisms gives
+\begin{equation}
+\nabla_\mu T^{\mu\nu}_{\rm total}=0
+\end{equation}
+on shell. This is the only conservation statement for the closed system (Postulate~\ref{P:balance}). Any proposed source of gravity must appear in $T^{\mu\nu}_{\rm total}$; a source outside it would conflict with the Einstein equations. \st{Standard; Prior: \cite{JordanHDA,JordanLoading}}
+
+%=====================================================================
+\section{From relational evolution to geometry}
+\label{sec:HDA}
+%=====================================================================
+
+The progression variables of~\eqref{eq:metric} could simply be posited. A stronger claim is that local relational evolution requires them. The HDA manuscript~\cite{JordanHDA} gives a conditional route, summarised here with its assumptions made explicit.
+
+\paragraph{Assumptions and their sources.}
+Each assumption is traced to an operational principle where possible~\cite{JordanNote2}.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.47\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}@{}}
+\toprule
+Assumption & Source & Status \\
+\midrule
+A1. Smooth three-dimensional relational state manifold & Continuum description and observed spatial dimension. & Assumed (empirical) \\
+A2. Many-fingered local progression: independent local generators $\delta_N$, positive profiles, linear extension to arbitrary smearings & Positivity: clocks advance forward (P2). Many-fingered: each locality has its own clocks (P1 with locality). The linear extension is a mild mathematical completion. & Mostly derived; extension assumed \\
+A3. Integrability modulo spatial relabelling & P1: with no preferred time, advancing local clocks in different orders must lead to the same relational state. This is the path-independence (embeddability) condition~\cite{Teitelboim1973,HKT1976}. Violating it means a preferred foliation. & Derived from P1 \\
+A4. Spatial covariance; independent normal and tangential generators & Covariance: spatial labels are gauge (P1). Independence of the two kinds of generator is a structural input. & Derived / assumed \\
+A5. Leading bilinear single-gradient closure; pointwise locality & Locality plus the leading order of a derivative expansion. Higher orders are suppressed by a microscopic length. & Assumed (effective-field-theory truncation) \\
+A6. Positive, nondegenerate directional calibration, $\beta^{ij}=h^{ij}$ & Distance is defined by radar, as half a signal's round-trip clock time (P1, P2). $\beta^{ij}$ governs how a local deformation propagates to its neighbours, so with radar calibration the spatial metric \emph{is} the signal co-metric. Positivity follows from the existence of real signals. The Lorentzian signature is empirical. & Derived from radar calibration; signature assumed \\
+A7. Minimal canonical phase space $(h_{ij},\pi^{ij})$ with ultralocal quadratic momenta & Phase space from P7. Ultralocal quadratic momenta are the leading derivative order, as in A5. & From P7 and truncation \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Results under A1--A7.}
+The normal--normal commutator is $[\delta_N,\delta_M]=\delta_{\beta^{ij}(N\partial_jM-M\partial_jN)}$. Jacobi identities make $\beta^{ij}$ symmetric, and A6 identifies it with $h^{ij}$, yielding the undeformed hypersurface-deformation algebra. Within A7 the closure fixes the ADM/Einstein constraint and excludes the tested $R^2$, $R_{ij}R^{ij}$ and $D^2R$ deformations. Scalar and Yang--Mills matter must share the same characteristic co-metric, and Dirac matter matches it at principal order. \st{Conditional: \cite{JordanHDA}}
+
+That the hypersurface-deformation algebra implies GR is a known result~\cite{HKT1976}. The contribution of this route is a progression-based physical origin for its premises. With the table above, the route rests on relational time (P1), clocks as local quantum systems (P2), locality at leading derivative order, radar calibration of distance, operational completeness (P7), and continuum, three-dimensional, Lorentzian structure as empirical inputs. Integrability (A3), which carries most of the weight, is now a consequence of P1. \st{Conditional on the inputs listed}
+
+\paragraph{The progression rate is a multiplier, not a field.}
+In a reparametrization-invariant system, the multiplier of the constraint has no conjugate momentum and can be changed freely by relabelling. In field form the multiplier is the lapse, $N(x)=\Pg(x)$ (Section~\ref{sec:micro}). Giving $\Pg$ a kinetic term would make it a dynamical variable and break the invariance that P1 requires. This is why the progression variable enters the action without becoming a scalar field. \st{Standard}
+
+\paragraph{Why the full deflection follows.}
+P7 restricts the gravitational phase space to $(h_{ij},\pi^{ij})$. On that phase space, the Hojman--Kucha\v{r}--Teitelboim theorem fixes the Einstein constraint, which gives $\gamma_{\rm PPN}=\beta_{\rm PPN}=1$. In the static weak field, the two halves of the light deflection then have separate origins. The clock half comes from the lapse equation~\eqref{eq:lapseeq}. The ruler half comes from the Hamiltonian constraint~\eqref{eq:hamconstraint}: matter energy at each point is balanced by curvature of the spatial scale. \st{Conditional}
+
+%=====================================================================
+\section{Recovery of the classical tests}
+\label{sec:tests}
+%=====================================================================
+
+Because the dynamics are Einstein's, every classical test is recovered. Expressing them in progression variables shows which variable each test probes. \st{Standard}
+
+\begin{itemize}
+\item \textbf{Clock comparisons and redshift} probe $\thP$ alone: Eq.~\eqref{eq:GPS}; Pound--Rebka; GPS; Gravity Probe~A.
+\item \textbf{Light propagation} probes $\thP$ and $\sgP$ together. For a null ray in~\eqref{eq:metric} with $\beta^i=0$, $\Pg c\,\dd\Tref=e^{\sgP}\dd l$, so
+\begin{equation}
+n_{\rm eff}=e^{\sgP-\thP}\simeq 1-\frac{2\Phi}{c^2}\qquad(\sgP=-\thP).
+\end{equation}
+This gives the deflection $4GM/(bc^2)$ and the Shapiro delay with $\gamma_{\rm PPN}=1$. Cassini bounds $|\gamma_{\rm PPN}-1|\lesssim 2\times10^{-5}$. A theory with $\thP$ alone ($\sgP=0$) gets exactly half of each, which is why the spatial variable is indispensable.
+\item \textbf{Perihelion advance} probes the nonlinear lapse and $\sgP$: $\beta_{\rm PPN}=\gamma_{\rm PPN}=1$.
+\item \textbf{Frame dragging} probes the flow $\beta^i$ (Gravity Probe~B, LAGEOS).
+\item \textbf{Gravitational waves} probe the strain $\gamma_{ij}^{\rm TT}$. They propagate at $c$, consistent with GW170817.
+\item \textbf{Universality of free fall} follows from the common coupling~\eqref{eq:clockaction}. MICROSCOPE tests it at about $10^{-15}$.
+\end{itemize}
+
+\subsection{Sources with pressure and stress}
+
+For a static source with energy density $\rho c^2$ and stresses $T_{ij}$, the linearized field equations with $\dd s^2=-(1+2\thP)c^2\dd t^2+(1+2\sgP)\dd\mathbf x^2$ and $S\equiv\thP+\sgP$ are
+\begin{align}
+\nabla^2\sgP&=-\frac{4\pi G}{c^2}\rho, \label{eq:hamconstraint}\\
+\big(\delta_{ij}\nabla^2-\partial_i\partial_j\big)S&=\frac{8\pi G}{c^4}T_{ij}, \label{eq:stresseq}\\
+\nabla^2\thP&=\frac{4\pi G}{c^2}\Big(\rho+\frac{T^k{}_k}{c^2}\Big). \label{eq:lapseeq}
+\end{align}
+The first is the Hamiltonian constraint; the third, the trace of the second combined with the first, is the lapse equation, sourced by $\rho+3p/c^2$ for a perfect fluid. The linearized Einstein tensor behind these equations was verified symbolically~\cite{JordanNote2}. \st{Standard}
+
+\begin{proposition}\label{prop:exterior}
+At linear order, for any static source of compact support, $S=0$ everywhere outside the source. The exterior therefore has $\sgP=-\thP$ and $\gamma_{\rm PPN}=1$, and its mass is $\int\rho\,\dd^3x$ whatever the internal stresses.
+\end{proposition}
+
+\begin{proof}
+The divergence of the left side of~\eqref{eq:stresseq} vanishes identically, so a solution exists only if $\partial_jT_{ij}=0$, that is, if the source is in mechanical equilibrium. Outside the source, $(\delta_{ij}\nabla^2-\partial_i\partial_j)S=0$. Its trace gives $\nabla^2S=0$, and then $\partial_i\partial_jS=0$, so $S$ is affine and, vanishing at infinity, zero. Integrating the trace of~\eqref{eq:stresseq} over all space then gives $\int T^k{}_k\,\dd^3x=0$, von Laue's theorem, so by~\eqref{eq:lapseeq} the exterior lapse is set by $\int\rho$, the same mass that sets $\sgP$.
+\end{proof}
+
+Light passing outside a body is therefore deflected by the full $4GM/(bc^2)$ whatever the body's internal pressure or stresses. Inside stressed matter $S\neq0$. For self-gravitating bodies the corresponding corrections are second order; in the exterior they reproduce $S_2=-U^2/4$ of the isotropic Schwarzschild metric~\cite{JordanHDA}, and for spherical bodies Birkhoff's theorem makes the exterior exactly Schwarzschild. \st{Standard result, proof given here}
+
+%=====================================================================
+\section{The microscopic problem}
+\label{sec:micro}
+%=====================================================================
+
+This section states the central open problem and how far it has been taken. The local form of the constraint is derived, its Einstein form is conditional, and the gravitational coupling $G$ has not been derived. \st{Partly derived; Open at the core}
+
+\subsection{What must be shown}
+
+Postulate~\ref{P:micro} asks for a physically specified closed system in which the gravitational term of~\eqref{eq:GPS} emerges from clock and environment dynamics. A minimal setting is a reparametrization-invariant constrained system,
+\begin{equation}
+S=\int\dd\lambda\Big[\textstyle\sum_a p_a\,\dot q^a - n(\lambda)\,\mathcal K(q,p)\Big],
+\qquad
+\mathcal K = H_A + H_B + H_{\rm env} + H_{\rm int} - Q_0 \approx 0,
+\label{eq:constraint}
+\end{equation}
+with two calibrated clocks $H_A,H_B$, an environment $H_{\rm env}$ with its own dynamics, and interactions $H_{\rm int}$. For an observable $O$ and a monotonic clock observable $C$ with $\{C,\mathcal K\}\neq0$,
+\begin{equation}
+\frac{\dd O}{\dd C}=\frac{\{O,\mathcal K\}}{\{C,\mathcal K\}},
+\end{equation}
+so the multiplier $n$ cancels and no background time is used~\cite{JordanDirection,PageWootters}. The task is to compute $\dd\cph_A/\dd\cph_B$ for clocks placed at different positions relative to the environment, and to show that
+\begin{equation}
+\frac{\dd\tau_A}{\dd\tau_B} = 1+\frac{\Phi_A-\Phi_B}{c^2}+\text{(corrections with a stated scale)},
+\end{equation}
+where $\Phi$ is a property of the environment computed within the model.
+
+\subsection{Requirements}
+
+\begin{enumerate}[R1.]
+\item \textbf{Non-circularity.} $H_{\rm int}$ may not contain a Newtonian coupling or a potential-dependent weight chosen to produce the result. Setting a weight equal to the known lapse reproduces the benchmark by construction and counts as reformulation, not derivation.
+\item \textbf{Reference independence.} Predictions must not change when a different clock is used as the reference.
+\item \textbf{Mechanism independence.} Clocks of different internal mechanism must show the same ratio after ordinary mechanism-specific shifts. Otherwise the result is altered clock physics, not universal progression.
+\item \textbf{Complete exchange.} Energy exchanged with the environment and the interaction sector must be accounted for in the single balance law.
+\item \textbf{Comparison protocol.} Because a common response is locally invisible (Section~\ref{sec:clocks}), the model must contain the signal or reunion structure by which the ratio is read out.
+\end{enumerate}
+
+\subsection{Closest precedent}
+
+Castro-Ruiz, Giacomini and Brukner studied quantum clocks interacting through gravity, with mass--energy coupling $-G H_A H_B/(c^4 r)$, and obtained time dilation and clock entanglement within a timeless framework~\cite{CastroRuiz2017}. Their coupling is Newtonian gravity inserted by hand, so by R1 it is the benchmark this program must improve on: the target is to obtain an effective coupling of that form from a model in which it was not assumed.
+
+\subsection{From clocks to the local constraint}
+
+If the clocks and environment are local, with independent clocks at each place (A2) and spatial labels as gauge (A4), the single constraint of~\eqref{eq:constraint} becomes a family of local constraints and the multiplier becomes a field:
+\begin{equation}
+S=\int\dd\lambda\Big[\int\dd^3x\;p\,\dot q-\int\dd^3x\,\big(N(x)\,\mathcal H(x)+N^i(x)\,\mathcal H_i(x)\big)\Big],
+\qquad \mathcal H\approx0,\quad \mathcal H_i\approx0 .
+\end{equation}
+Here $N(x)=\Pg(x)$ is the local progression rate, and $\mathcal H(x)\approx0$ says that the total energy density vanishes at each point. In a theory without background time, local energy balance is a constraint, not a conservation law in time. This is the precise form of the ``modified conservation'' that motivated the program. \st{Standard (parametrized field theory)}
+
+\subsection{The form of the constraint}
+
+Integrability (A3, from P1) requires the local constraints to close as the hypersurface-deformation algebra. With A1, A5, A6 and P7, the Hojman--Kucha\v{r}--Teitelboim theorem fixes
+\begin{equation}
+\mathcal H=\frac{16\pi G}{c^4}\,\frac{\pi_{ij}\pi^{ij}-\tfrac12\pi^2}{\sqrt h}-\frac{c^4}{16\pi G}\sqrt h\,\big({}^{(3)}\!R-2\Lambda\big)+\mathcal H_{\rm matter},
+\end{equation}
+with $G$ and $\Lambda$ free constants. The ruler half of the light deflection comes from its geometric term, through~\eqref{eq:hamconstraint}. \st{Conditional}
+
+\subsection{The gravitational coupling: open, with a partial result}
+
+The strength $G$ of the geometric term is not obtained from any clock or environment property. The most promising route is thermodynamic~\cite{Jacobson1995}. The Clausius relation $\delta Q=T\,\dd S$ on local Rindler horizons, with $T$ the Unruh temperature and entropy $\dd S=\eta\,\delta A$, yields the Einstein equation with $G=1/(4\hbar\eta)$ (with $c=k_B=1$). A natural source for $\eta$ is the entanglement entropy of the environment's fields across the horizon, which obeys an area law~\cite{Bombelli1986,Srednicki1993}. A numerical calculation for a free scalar field on a radial lattice of spacing $a$ reproduces this area law~\cite{JordanNote2}:
+\begin{equation}
+S=0.295\,(R/a)^2+0.03\qquad(6.5\le R/a\le30.5),
+\end{equation}
+in agreement with Srednicki's $0.30$. Then $\eta=\kappa/(4\pi a^2)$ with $\kappa\simeq0.295$, and
+\begin{equation}
+G=\frac{\pi a^2}{\hbar\kappa},\qquad a\simeq0.31\sqrt{N}\,\ell_P
+\end{equation}
+for $N$ fields. In this picture $G$ is not inserted; it measures how densely the environment's fields are entangled across a surface. This is the same quantity that sets the induced $1/G$ of Sakharov's route~\cite{Jacobson1994}. \st{Area law Standard and reproduced; its use here Open}
+
+\paragraph{The Clausius relation in a toy model.}
+In Jacobson's argument the Clausius relation is an assumption. A lattice toy model now derives it for the environment~\cite{JordanNote3}. The environment is a discretised scalar field in its vacuum, a cut plays the role of a local Rindler horizon, and static clocks beyond it have progression factor $\Pg(x)\propto x$ relative to boost time. Computed at 200-digit precision, the field's entanglement (modular) Hamiltonian beyond the cut equals $\int\beta(x)\,T_{00}\,\dd x$ with $\beta(x)=2\pi x$ near the cut to within $0.2\%$. The environment is therefore locally thermal at $T(x)=1/(2\pi x)=T_{\rm ref}/\Pg(x)$, the Tolman/Unruh temperature set by the clock-rate factor. When heat is deposited, or crosses the cut as a pulse, the change of entanglement entropy equals $\int\delta Q/T$ to within $1\%$ at every time. The exact entropy converges to this first-law value as the deposit is made smaller. \st{Derived (numerical toy model)}
+
+\paragraph{What still blocks closure.}
+First, the entropy change of the environment must be balanced by an area change of the geometry, $\delta S_{\rm matter}+\eta\,\delta A=0$ (entanglement equilibrium~\cite{Jacobson2016}). With this hypothesis the linearized Einstein equation follows with $G=1/(4\hbar\eta)$, but it is assumed, not derived. Second, identifying the geometric $\eta$ with the matter area-law coefficient is unsettled (cutoff dependence, number of species, nonminimal couplings). Third, the derivation assumes local equilibrium; departures from it are candidate new predictions but have not been computed. The open problem is therefore narrowed to one hypothesis, entanglement equilibrium, tested below. \st{Open (sharpened)}
+
+\paragraph{Lattice test of the inputs to entanglement equilibrium.}
+A fixed-background lattice cannot test the equilibrium principle itself, because the geometry does not respond to the state. It can test the two inputs the principle combines, and both were pre-registered so that they could fail~\cite{JordanNote4}. First, for a free scalar on a 3D radial lattice, deforming the metric near a sphere changes the entanglement entropy by $\kappa\,\delta A$ with the \emph{physical} area and the flat coefficient $\kappa=0.295$, to within $2\%$ for a smooth deformation and $5\%$ for a narrow one, independent of radius and box size; so $\eta$ is well defined. Second, the exact modular Hamiltonian of a ball, computed at 100-digit precision, equals $2\pi\int\frac{R^2-r^2}{2R}T_{00}$ only when $T_{00}$ includes the bulk part of the improved ($\xi=1/6$) stress tensor (its edge term is absent~\cite{JordanNote5}); the weight of the improvement term converges to $1.007$ of its predicted value as the box grows, and the minimal stress tensor is excluded. Both inputs are therefore derived numerically for this field. The improved-tensor result also identifies a point a microscopic derivation must settle: the source handed to the geometry is $T^{\rm imp}_{ab}$, which differs locally (though not in total mass) from the minimally coupled $T_{ab}$. \st{Derived (numerical), inputs only}
+
+\paragraph{Equilibrium with a responding geometry (induced gravity).}
+In the simplest model where the geometry responds to the state without a gravitational action put in by hand, the spatial metric and the lapse $\Pg$ are classical fields whose only dynamics is the environment field's vacuum Killing energy (Sakharov's induced gravity)~\cite{JordanNote5}. For the regulator-independent (mass-dependent) part, the induced action is Einstein-like at two-derivative order. The lapse enters linearly with no $(\nabla\Pg)^2$ term, and the clock--ruler cross term carries the same $G$. The induced $G$ equals $1/(4\eta)$ with $\eta$ the field's own entanglement area coefficient, to $1\%$ at minimal coupling, while conformal coupling removes it. So in this model entanglement equilibrium is derived for the part that fixes $G$. It fails, however, for the local source at minimal coupling: the ball entropy carries a term $\tfrac{4\pi^2R^2}{3}\delta\langle\phi^2\rangle$ that the geometry cannot cancel. It is consistent for all states only at $\xi=1/6$ with the Wald entropy, where this field induces no $G$. A field content that both induces $G$ and satisfies equilibrium for all states is the open problem. \st{Conditional}
+
+\paragraph{Fermion environment.}
+Repeating the test for a free Dirac fermion (staggered radial lattice with a covariant radial derivative; the naive lattice doubles and is excluded) closes the argument for that environment~\cite{JordanNote6}. The ball modular Hamiltonian is the CHM operator of the symmetric, gravitating stress tensor to about $1\%$. It has no edge term, and the $\phi^2$-type terms that blocked the scalar are forbidden exactly by chiral symmetry. The fermion's vacuum energy induces $G_{\rm ind}=1/(4\eta_D)$ with its own entanglement coefficient to within $3\%$, the lapse enters linearly, and the clock--ruler cross term carries the same $G$. For a fermion environment in induced gravity, entanglement equilibrium is therefore derived, and the regulator-independent part of $G$ is fixed by the environment. Equilibrium thus depends on field content: light minimally coupled scalars violate it. \st{Derived (numerical), fermion environment}
+
+\paragraph{The two-clock test.}
+The success criterion of P6 was tested in the induced-gravity sector~\cite{JordanNote12}. The geometry has no action of its own. Its energy is the Pauli--Villars vacuum energy of the lattice Dirac fermion plus a static dust shell coupled universally, and its field equations are stationarity of that total. Inserted into the lattice equations, the Newtonian lapse and the GR spatial metric, with $G=1/(4\eta)$ fixed by the fermion's own entanglement, are accepted with fitted amplitudes $1.014$ (clock half) and $1.005$ (ruler half) for the widest shell. The residual is $4\%$, and the deviation falls as $1/w^2$ with shell width toward $1.00\pm0.02$. Clocks inside the shell show no relative shift. A second clock mechanism agrees to $0.1\%$ of the shift, and the result does not depend on the reference clock. The pre-registered run failed narrowly (clock half $1.12$, residual $13\%$) because of an angular-truncation artifact; raising the truncation, a numerical convergence step not in the pre-registration, removes it. So the weak-field clock ratio $1+\Delta\Phi/c^2$ and $\sigma=-\theta$ are obtained from clocks plus an environment without inserting $\Phi$. This holds for the regulator-independent part of $G$, with $\Lambda$ tuned, in a static weak field and with one species. \st{Derived (numerical), conditional}
+
+\paragraph{Cutoff-scale part of $G$.}
+The remaining part of $1/G$ is set by the cutoff. A pre-registered test treated the lattice spacing as the physical cutoff, with the same regulator on both sides, for the fermion lattice in a planar geometry~\cite{JordanNote7}. The code reproduces the Pauli--Villars results to a few percent. With a sharp transverse cutoff the induced action is not of Einstein form: its coefficient grows with the width of the geometry profile. With a smooth cutoff the induced term is Einstein-like and stable, but has the wrong sign. The ratio $-4\pi C/\eta$ is $-7.4$ to $-7.7$ for a Gaussian-type cutoff and about $-9.5$ for a steeper one, against the required $+1$. So with a continuous-time lattice regulator the cutoff-scale induced gravity is repulsive, and equilibrium fails for that part. This agrees with the known requirement (Susskind--Uglum) that the regulator be boost-symmetric. If $G$ is instead traded for the lattice spacing through the entanglement coefficient alone, $1/(4G)=N\eta$ gives $a\approx(0.5\text{--}0.7)\sqrt{N}\,\ell_P$ for $N$ fermion species. This is a consistency statement, not a prediction. Putting Euclidean time on a lattice with the same spacing and dispersion as $x$, so that the boost plane is treated symmetrically, does not rescue it~\cite{JordanNote8}. The ratio improves to $-2.4$ to $-3.7$, and no time spacing gives the right sign. Making the transverse directions lattice-like too gives a non-Einstein action. Every fixed-spacing cutoff tried so far fails, while the covariant Pauli--Villars regulator passes. \st{Fails (fixed-spacing lattice regulators)}
+
+The postulates lead one to expect this~\cite{JordanNote9}. A fixed-spacing lattice carries a preferred slicing and preferred directions, which P1, P2 and P7 exclude. Its induced action can then contain frame terms such as $(\nabla_i n^i)^2$, which in the planar geometry respond to $\sigma'^2$ exactly as $R$ does. The planar coefficient is therefore a mixture, not $1/G$ alone. An admissible regulator makes the induced action a functional of the geometry only. HKT closure then fixes it to Einstein form, and the conical argument ties its coefficient to $\eta$. The model does not predict the sign or size of the failure, and covariance alone does not guarantee a pass for every field (nonminimal scalars and gauge fields have contact terms). \st{Derived (argument); frame-term account of the mismatch Conjectured}
+
+A full three-dimensional lattice test confirms the frame terms~\cite{JordanNote10}. For curvature along the lattice axis, the face diagonal and the body diagonal, $-4\pi C/\eta=-2.47$, $-1.70$ and $-1.39$. A pure coordinate change, which is free for a covariant regulator, carries 10--26\% of the curvature response, and the lattice's entanglement coefficient is itself 26\% anisotropic. The covariant (Pauli--Villars) part passes at every angle. The sign is wrong at every angle and in the angular average. Whether removing the frame terms would restore it cannot be asked of a cubic lattice, since there the Einstein term is itself a combination of frame (torsion) terms. \st{Derived (numerical): frame terms present; equilibrium fails at all orientations}
+
+%=====================================================================
+\section{Where new predictions can appear}
+\label{sec:predictions}
+%=====================================================================
+
+Since the field equations are Einstein's, new predictions can only come from places where classical GR is silent.
+
+\begin{itemize}
+\item \textbf{Quantum clocks in gravity.} Mass--energy equivalence with Postulates~\ref{P:SR}--\ref{P:univ} implies loss of interference visibility from proper-time differences between paths~\cite{Zych2011}, and decoherence of composite systems from time dilation~\cite{Pikovski2015}. In this framework they are consequences of the postulates. They become new predictions only if the model of Section~\ref{sec:micro} changes their coefficients. \st{Standard GR+QM; coefficients Open}
+\item \textbf{Microscopic corrections.} A successful derivation will carry corrections in environmental interaction density, relative velocity, or $\hbar$. Each must be quoted as a dimensionless observable with a size and checked against Section~\ref{sec:tests}. In the thermodynamic route of Section~\ref{sec:micro}, departures from local equilibrium and lattice-scale corrections are the natural candidates. \st{Open}
+\end{itemize}
+
+%=====================================================================
+\section{Scope and excluded material}
+\label{sec:scope}
+%=====================================================================
+
+The following elements of earlier manuscripts are not part of this framework. They remain available as separate studies.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.62\textwidth}@{}}
+\toprule
+Element & Reason for exclusion \\
+\midrule
+Scalar progression field with its own kinetic term~\cite{JordanLoading} & Adds a degree of freedom and a normalisation scale. A scalar alone cannot supply light bending, frame dragging or tensor waves. Replaced by $\Pg$ as the lapse. \\
+Constitutive optical sector $\varepsilon_r=\Pg^{-2}$, $\mu_r^{-1}=\Pg^{2}$~\cite{JordanOptics} & The optical exponent was fitted to deflection. Here $n_{\rm eff}=e^{\sgP-\thP}$ follows from the metric, with one causal cone for light and matter. \\
+Physical preferred foliation (khronometric deformation)~\cite{JordanGeometry} & Not GR. Lunar laser ranging bounds $|\alpha_1^{\rm PPN}|=4\eta\lesssim10^{-4}$. It is retained as a separate test case. \\
+Interaction-organization source $\mathcal I\propto q_Aq_B[\kappa_s+\kappa_r(\gamma_{AB}-1)]$~\cite{JordanComplexity} & A source outside ordinary $T^{\mu\nu}$ requires a new field. The relational invariant $\gamma_{AB}$ is retained as an observable (Section~\ref{sec:SR}), not as a source. \\
+Galaxy rotation curves & Within a foundation for GR, flat rotation curves require dark matter or a departure from GR. This belongs to a separate paper, tested first against the radial acceleration relation. \\
+\bottomrule
+\end{longtable}
+
+%=====================================================================
+\section{Next steps toward completing the model}
+\label{sec:next}
+%=====================================================================
+
+In priority order. The first two have been reduced to one well-defined calculation by Section~\ref{sec:micro}.
+
+\begin{enumerate}[1.]
+\item \textbf{Fix the absolute value of $G$.} In an induced-gravity lattice model a fermion environment satisfies entanglement equilibrium and induces $G=1/(4\eta)$ in its regulator-independent part~\cite{JordanNote6}, while a minimally coupled scalar does not~\cite{JordanNote5}. With fixed-spacing lattice cutoffs, including one that treats time and space alike, the cutoff-scale part of $1/G$ has the wrong sign or is not Einstein-like~\cite{JordanNote7,JordanNote8}. What remains needs a statistically covariant discreteness (for example a random, Poisson-sprinkled lattice) or a species sum rule that cancels the cutoff-scale part. The gravitational energy pseudotensor cannot close $G$: it is second order, normalised by $1/G$, and already contained in the induced vacuum energy. Its gauge-invariant form, the canonical energy, only requires $G>0$ through positivity of relative entropy~\cite{JordanNote11}. Mixed environments and gauge fields come next. Success would give the Einstein equation with $G$ set by the environment, satisfying R1.
+\item \textbf{Compute the clock ratio} in the same model, using relational observables or a Page--Wootters conditioning, and check R2--R5. A negative result is informative: it identifies what extra structure must carry the gravitational term.
+\item \textbf{Make the relational treatment of SR complete.} Extend Section~\ref{sec:SR} to accelerated clocks and to~\eqref{eq:GPS} under explicit protocols. This also supplies the Unruh/Tolman relation that step~1 needs.
+\item \textbf{Derive universality for composite clocks} within the progression action, recasting the composite matching argument of~\cite{JordanLoading} without a progression field.
+\item \textbf{Close the remaining inputs} of the HDA route: the linear extension in A2, generator independence in A4, and the derivative truncation in A5. A3 and A6 are now derived from P1 and radar calibration.
+\item \textbf{Quantify the predictions} of Section~\ref{sec:predictions}, including non-equilibrium corrections, against atom-interferometer and optical-clock sensitivity.
+\item \textbf{Consolidate notation and the repository.} Adopt this paper's macros across the manuscripts, and mark the excluded material of Section~\ref{sec:scope} as historical.
+\item \textbf{Separate galaxy study} (optional, later): any mechanism must reproduce the radial acceleration relation with one parameter set and generate $a_0\approx1.2\times10^{-10}$~m\,s$^{-2}$ without fitting it.
+\end{enumerate}
+
+\appendix
+
+%=====================================================================
+\section{Notation}
+\label{app:notation}
+%=====================================================================
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.64\textwidth}@{}}
+\toprule
+Symbol & Kind & Meaning \\
+\midrule
+$\lambda$ & gauge & arbitrary monotonic history label \\
+$\Tref$ & reference & protocol-fixed comparison time; stationary Killing time when one exists \\
+$\tau$ & local & proper time of an ideal clock \\
+$\cph$ & local & accumulated relative clock phase (the observable) \\
+$\Pg=e^{\thP}$ & bridge & progression rate $\dd\tau/\dd\Tref$; the lapse \\
+$\sgP$ & bridge & log isotropic spatial scale, $h_{ij}=e^{2\sgP}\gamma_{ij}$ \\
+$\beta^i$ & bridge & progression flow (shift) \\
+$\gamma_{ij}$ & bridge & unimodular spatial strain \\
+$\Eloc$ & local & locally measured energy \\
+$\Eref$ & reference & energy relative to $\Tref$; $\Eref=\Pg\Eloc$ \\
+$\gamma_{AB}$ & invariant & relative Lorentz factor $-u_A\cdot u_B/c^2$ \\
+$\mathcal C$ & protocol & comparison protocol label \\
+$\Phi$ & bridge & Newtonian potential, $\thP\simeq\Phi/c^2$ at weak field \\
+\bottomrule
+\end{longtable}
+
+Correspondence with earlier manuscripts: $A$ (HDA paper) $=\thP$; $B$ (HDA paper) $=\sgP$; the HDA paper's $\sigma$ (clock increment) $=\tau$ here; the clock phase written $\theta$ or $\Delta\theta$ elsewhere is $\cph$ here.
+
+%=====================================================================
+\section{Status ledger}
+\label{app:ledger}
+%=====================================================================
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.52\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}@{}}
+\toprule
+Statement & Status & Source \\
+\midrule
+Relational ratio $\Pg_{\rm rel}$ is reparametrization invariant & Prior & \cite{JordanHDA} \\
+Common fractional response is locally invisible & Prior & \cite{JordanClocks} \\
+SR time dilation as protocol-dependent relational ratio & Standard & Sec.~\ref{sec:SR} \\
+Conversion exponents; dimensionless constants invariant & Standard & Sec.~\ref{sec:dictionary} \\
+$\Eref=\Pg\Eloc$ conserved in stationary spacetimes only & Standard & Sec.~\ref{sec:dictionary} \\
+$\Pg$ enters the action only as the lapse; no scalar field & Standard & Sec.~\ref{sec:action} \\
+Weighted conservation $\equiv\nabla_\mu J^\mu=0$ & Prior/Standard & \cite{JordanHDA,JordanGeometry} \\
+Integrability (A3) follows from relational time (P1) & Derived & Sec.~\ref{sec:HDA} \\
+Directional calibration (A6) follows from radar distance & Derived & Sec.~\ref{sec:HDA} \\
+$\Pg$ is the constraint multiplier, so it cannot be a field & Standard & Sec.~\ref{sec:HDA} \\
+Operational completeness excludes scalar--tensor gravity & Assumed (P7) & Sec.~\ref{sec:postulates} \\
+Integrability $\Rightarrow$ HDA $\Rightarrow$ Einstein dynamics, $\gamma=\beta=1$ & Conditional (A1, A2, A4, A5, P7) & \cite{JordanHDA,HKT1976} \\
+Exterior $\sgP=-\thP$ for any static source in equilibrium; von Laue & Standard (proof here) & Prop.~\ref{prop:exterior} \\
+Local constraint $\mathcal H(x)\approx0$ with multiplier $\Pg(x)$ & Standard & Sec.~\ref{sec:micro} \\
+Entanglement area law $S=0.295(R/a)^2$ & Standard (reproduced) & Sec.~\ref{sec:micro} \\
+Environment locally thermal at $T=T_{\rm ref}/\Pg$ (Bisognano--Wichmann, Tolman) & Derived (numerical) & \cite{JordanNote3} \\
+Clausius relation $\delta Q=T\,\dd S$ for environment entanglement & Derived (numerical) & \cite{JordanNote3} \\
+Entanglement entropy responds to physical area with flat coefficient & Derived (numerical) & \cite{JordanNote4} \\
+Ball modular Hamiltonian: CHM form with improved bulk term, no edge term & Derived (numerical) & \cite{JordanNote4,JordanNote5} \\
+Induced $G=1/(4\eta)$, lapse linear (mass-dependent part, $\xi=0$) & Derived (numerical) & \cite{JordanNote5} \\
+Entropy balanced by area change (entanglement equilibrium) & Derived (numerical) for fermions, regulator-independent part; fails for $\phi^2$ states of a minimally coupled scalar, and for the cutoff-scale part with fixed-spacing lattice cutoffs & \cite{Jacobson2016,JordanNote5,JordanNote6,JordanNote7,JordanNote8} \\
+Cutoff-scale $1/G=4\eta$, continuous-time lattice cutoff & Fails as a regulator (planar coefficient wrong sign; sharp cutoff not Einstein) & \cite{JordanNote7} \\
+Cutoff-scale $1/G=4\eta$, space--time symmetric lattice cutoff & Fails as a regulator (planar ratio $-2.4$ to $-3.7$) & \cite{JordanNote8} \\
+Fixed-spacing cutoffs excluded by P1, P2, P7; covariant cutoff required for equilibrium; planar coefficient mixes $R$ with frame terms & Derived (argument); frame-term account Conjectured & \cite{JordanNote9} \\
+3D lattice: curvature response depends on orientation and on pure coordinate changes; covariant part passes at all angles & Derived (numerical); cutoff part fails at every angle; frame-free Einstein coefficient undefined on a cubic lattice & \cite{JordanNote10} \\
+Fermion: CHM with symmetric $T_{00}$, no extra or edge terms; $G_{\rm ind}=1/(4\eta_D)$ & Derived (numerical) & \cite{JordanNote6} \\
+$G$ from environment & \textbf{Open (regulator-independent part derived; cutoff part needs a statistically covariant cutoff)} & Sec.~\ref{sec:micro} \\
+Classical tests recovered & Standard & Sec.~\ref{sec:tests} \\
+Weak-field clock ratio from clocks plus environment & \textbf{Derived (numerical), conditional}: induced-gravity lattice, Pauli--Villars part of $G$, $\Lambda$ tuned, static weak field, one species & \cite{JordanNote12} \\
+Spatial response $\sgP=-\thP$ from microscopic model & Conditional via constraint; microscopic \textbf{Open} & Sec.~\ref{sec:micro} \\
+New quantum-clock or microscopic predictions & \textbf{Open} & Sec.~\ref{sec:predictions} \\
+\bottomrule
+\end{longtable}
+
+%=====================================================================
+\begin{thebibliography}{99}
+
+\bibitem{JordanDirection}
+S.~A. Jordan, ``Relational progression and weighted conservation,'' research-direction note (8 October 2026), \url{https://github.com/sjordannc/progression-research-papers}.
+
+\bibitem{JordanClocks}
+S.~A. Jordan, ``Relational clock transport in connected Jacobi systems: complete observables and clock-fiber geometry,'' manuscript (September 2026).
+
+\bibitem{JordanHDA}
+S.~A. Jordan, ``From relational progression to the hypersurface-deformation algebra,'' manuscript (August 2026).
+
+\bibitem{JordanGeometry}
+S.~A. Jordan, ``Progression geometry as a complete gravitational field,'' manuscript (July 2026).
+
+\bibitem{JordanLoading}
+S.~A. Jordan, ``Collective phase loading and progression exchange in progression-weighted matter dynamics,'' manuscript (July 2026).
+
+\bibitem{JordanOptics}
+S.~A. Jordan, ``Progression optics from a gauge-invariant constitutive completion,'' manuscript (July 2026).
+
+\bibitem{JordanComplexity}
+S.~A. Jordan, ``Interaction complexity as a covariant source for progression geometry,'' draft (July 2026).
+
+\bibitem{HKT1976}
+S.~A. Hojman, K.~Kucha\v{r}, and C.~Teitelboim, ``Geometrodynamics regained,'' \emph{Ann. Phys.} \textbf{96}, 88--135 (1976).
+
+\bibitem{PageWootters}
+D.~N. Page and W.~K. Wootters, ``Evolution without evolution: dynamics described by stationary observables,'' \emph{Phys. Rev. D} \textbf{27}, 2885 (1983).
+
+\bibitem{CastroRuiz2017}
+E.~Castro-Ruiz, F.~Giacomini, and \v{C}.~Brukner, ``Entanglement of quantum clocks through gravity,'' \emph{Proc. Natl. Acad. Sci. USA} \textbf{114}, E2303--E2309 (2017).
+
+\bibitem{Zych2011}
+M.~Zych, F.~Costa, I.~Pikovski, and \v{C}.~Brukner, ``Quantum interferometric visibility as a witness of general relativistic proper time,'' \emph{Nat. Commun.} \textbf{2}, 505 (2011).
+
+\bibitem{Pikovski2015}
+I.~Pikovski, M.~Zych, F.~Costa, and \v{C}.~Brukner, ``Universal decoherence due to gravitational time dilation,'' \emph{Nat. Phys.} \textbf{11}, 668--672 (2015).
+
+\bibitem{JordanNote2}
+Companion note 2, ``Making the hypersurface-deformation route rigorous'' (23 November 2026), with scripts \texttt{check\_linearized\_static\_einstein.py} and \texttt{entanglement\_area\_law.py}.
+
+\bibitem{Teitelboim1973}
+C.~Teitelboim, ``How commutators of constraints reflect the spacetime structure,'' \emph{Ann. Phys.} \textbf{79}, 542 (1973).
+
+\bibitem{Bertotti2003}
+B.~Bertotti, L.~Iess, and P.~Tortora, ``A test of general relativity using radio links with the Cassini spacecraft,'' \emph{Nature} \textbf{425}, 374 (2003).
+
+\bibitem{Will2014}
+C.~M. Will, ``The confrontation between general relativity and experiment,'' \emph{Living Rev. Relativ.} \textbf{17}, 4 (2014).
+
+\bibitem{Jacobson1995}
+T.~Jacobson, ``Thermodynamics of spacetime: the Einstein equation of state,'' \emph{Phys. Rev. Lett.} \textbf{75}, 1260 (1995).
+
+\bibitem{Jacobson1994}
+T.~Jacobson, ``Black hole entropy and induced gravity,'' arXiv:gr-qc/9404039 (1994).
+
+\bibitem{Bombelli1986}
+L.~Bombelli, R.~K. Koul, J.~Lee, and R.~D. Sorkin, ``Quantum source of entropy for black holes,'' \emph{Phys. Rev. D} \textbf{34}, 373 (1986).
+
+\bibitem{Srednicki1993}
+M.~Srednicki, ``Entropy and area,'' \emph{Phys. Rev. Lett.} \textbf{71}, 666 (1993).
+
+\bibitem{JordanNote3}
+Companion note 3, ``A lattice toy model of the Clausius relation for a clock-plus-field environment'' (23 November 2026), with scripts \texttt{clausius\_modular\_hamiltonian.py} and \texttt{clausius\_heat\_pulse.py}.
+
+\bibitem{JordanNote6}
+Companion note 6, ``Entanglement equilibrium for a fermion environment'' (24 November 2026), with scripts \texttt{fermion\_common.py}, \texttt{fermion\_modular.py}, \texttt{fermion\_eta.py}, \texttt{fermion\_G.py}, \texttt{fermion\_doubling.py}.
+
+\bibitem{JordanNote7}
+Companion note 7, ``The cutoff-scale part of the induced gravitational strength: a lattice test with a physical cutoff'' (24 November 2026), with scripts \texttt{smooth\_common.py}, \texttt{smooth\_G.py}, \texttt{smooth\_eta.py}, \texttt{smooth\_PV.py}, \texttt{cutoff\_common.py}, \texttt{cutoff\_G.py}, \texttt{cutoff\_eta.py}.
+
+\bibitem{JordanNote8}
+Companion note 8, ``The cutoff-scale gravitational strength with a cutoff that treats space and time alike'' (24 November 2026), with scripts \texttt{euclid\_common.py}, \texttt{euclid\_G.py}, \texttt{euclid\_PV.py}.
+
+\bibitem{JordanNote9}
+Companion note 9, ``Why the model expects fixed-spacing cutoffs to fail and covariant ones to pass'' (24 November 2026), analysis note.
+
+\bibitem{JordanNote10}
+Companion note 10, ``Curvature at different angles to the lattice axes'' (24 November 2026), with scripts \texttt{lat3d\_common.py}, \texttt{lat3d\_G.py}, \texttt{lat3d\_eta.py}.
+
+\bibitem{JordanNote11}
+Companion note 11, ``Can the gravitational pseudotensor close the determination of $G$?'' (25 November 2026), analysis note.
+
+\bibitem{JordanNote12}
+Companion note 12, ``The two-clock test: the weak-field clock ratio from clocks plus an environment'' (25 November 2026), with scripts \texttt{clock\_common.py}, \texttt{clock\_test.py}, \texttt{clock\_mechanism.py}.
+
+\bibitem{JordanNote5}
+Companion note 5, ``Entanglement equilibrium with a responding geometry: an induced-gravity lattice test'' (24 November 2026), with scripts \texttt{induced\_common.py}, \texttt{induced\_G.py}, \texttt{induced\_eta.py}, \texttt{eq\_testB\_edge.py}.
+
+\bibitem{JordanNote4}
+Companion note 4, ``Testing the inputs of entanglement equilibrium on a 3D lattice'' (23 November 2026), with scripts \texttt{eq\_testA.py}, \texttt{eq\_testA\_fs.py} and \texttt{eq\_testB.py}.
+
+\bibitem{Jacobson2016}
+T.~Jacobson, ``Entanglement equilibrium and the Einstein equation,'' \emph{Phys. Rev. Lett.} \textbf{116}, 201101 (2016).
+
+\end{thebibliography}
+
+\end{document}

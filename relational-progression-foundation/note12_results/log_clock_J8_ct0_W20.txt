@@ -1,0 +1,8 @@
+nu response done 36s
+s response done 74s
+lam_nu = 1.0437  lam_s = 1.0176
+residual of exact-G solution (lam=1): |R|/|J| = 0.0594  (constraint rows 0.0436, lapse rows 0.0404)
+residual after fit: |R|/|J| = 0.0532;  inside-shell rows: 0.0109
+clock ratio B1/B2: GR 1-1.4878e-04  lattice 1-1.5528e-04
+clock ratio A2/B2: GR 1-5.6363e-04  lattice 1-5.8824e-04
+clock ratio A1/A2: GR 1-6.1939e-06  lattice 1-6.4643e-06

@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}\usepackage{amsmath,booktabs}
+\title{The Cutoff-Scale Gravitational Strength with a Cutoff that Treats Space and Time Alike\\[4pt]\large Companion note 8}
+\author{}\date{24 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Note 7 found that, with the lattice spacing as a physical cutoff and continuous time, the cutoff-scale part of the induced gravitational strength of a Dirac fermion has the wrong sign. The natural explanation was that the cutoff does not treat time and space alike, as the Susskind--Uglum argument requires. Here Euclidean time is put on a lattice with the same spacing and the same dispersion as the spatial direction across the horizon. The pre-registered test \textbf{fails}. The induced Einstein term is clean and stable but still repulsive: $-4\pi C/\eta=-2.4$ to $-2.8$ (Gaussian-type transverse cutoff) and $-3.7$ (steeper one), against the required $+1$. The symmetric time lattice reduces the mismatch by a factor of about three relative to continuous time, but it does not change the sign for any time spacing. A transverse cutoff made lattice-like as well, so that all four directions are alike, gives an action that is not of Einstein form at all. Pauli--Villars still reproduces the covariant values, so the code is not the cause. What remains is that any cutoff with a fixed physical spacing in the curved transverse directions breaks the symmetry between those directions and the direction across the horizon.
+\end{abstract}
+
+\section{Set-up and pre-registration}
+Geometry, fermion reduction, extraction and entropy are those of note 7: $d\ell^2=dx^2+e^{2\sigma(x)}(dy^2+dz^2)$, one Dirac fermion reduced to staggered chains in $x$ (cell $a=1$, dispersion $\hat p=2\sin(p/2)$) with transverse physical momentum $q=ke^{-\sigma}$ and smooth transverse cutoff $\mu(q)=q\,e^{(q/\Lambda)^p}$. The induced action is $E_0=\Lambda_{\rm vac}\!\int\!e^{2\sigma}+C\!\int\!\sqrt h\,R+\dots$, with $C=-1/(16\pi G_{\rm ind})$, and equilibrium requires $\rho\equiv-4\pi C/\eta=1$.
+
+\textbf{New: Euclidean time lattice.} The horizon argument concerns the boost plane $(t,x)$, which in Euclidean signature is the rotation plane $(\tau,x)$. Time is now a lattice with spacing $a_t=a=1$ and an $r=1$ Wilson time derivative. Then $D^\dagger D=\hat\omega^2+\hat p^2+\mu^2$ with $\hat\omega=2\sin(\omega/2)$, so the $(\tau,x)$ plane is a symmetric square lattice with no time doublers. For a static background,
+\[
+E_0=-\tfrac12\sum_n\varepsilon(E_n),\qquad \varepsilon(E)=\frac{2}{a_t}\,\mathrm{arcsinh}\frac{a_t|E|}{2},
+\]
+since $\int_{-\pi}^{\pi}\frac{d\omega}{2\pi}\ln(\hat\omega^2+E^2)=2\,\mathrm{arcsinh}(|E|/2)$; this is the transfer-matrix energy, $\cosh\varepsilon=1+E^2/2$.
+
+\textbf{Entropy with the same regulator.} The propagator $D^{-1}=D^\dagger/(\hat\omega^2+K^2)$ depends on the spatial Dirac operator $K$ only through functions of $K$, so the transfer-matrix vacuum is the same Dirac sea as the continuous-time one. The entanglement coefficient $\eta$ is therefore unchanged from note 7.
+
+\textbf{Pre-registered criterion} (written before any run): at $a_t=1$, PASS if $\rho$ is within 10\% of 1 for all of $\Lambda\in\{1,1.5,2\}$; PARTIAL for some; FAIL for none.
+
+\section{Results}
+\textbf{Code checks.} With $a_t\to0$ the code reproduces note 7 to all printed digits ($C=0.034629$ at $\Lambda=1$, $w=8$). Pauli--Villars at $a_t=1$ gives $C/C_{\rm pred}=0.999,\ 0.987$ ($m=0.2$; $w=16,24$) and $0.94,\ 0.93$ ($m=0.3$). These are the same as with continuous time, as expected, because the PV parts come from energies of order $m\ll 1/a_t$.
+
+\begin{table}[h]\centering
+\begin{tabular}{lcccc}\toprule
+$\Lambda$ & $C$ ($a_t=1$) & $\eta$ & $\rho=-4\pi C/\eta$ & note 7 ($a_t=0$)\\\midrule
+1 & $+0.01314$ & 0.05886 & $-2.80$ & $-7.40$\\
+1.5 & $+0.01935$ & 0.09599 & $-2.53$ & $-7.52$\\
+2 & $+0.02493$ & 0.13295 & $-2.36$ & $-7.67$\\
+1.5, $p=4$ & $+0.02961$ & 0.10105 & $-3.68$ & $-9.5$\\\bottomrule
+\end{tabular}
+\caption{Pre-registered test at $a_t=a$. $C$ is from $w=16$ ($w=12$ for $p=4$). Across $w=6$--16 it varies by $<0.2\%$, between $L=300$ and $600$ by $<0.01\%$, and between $q_{\rm cut}=3.0\Lambda$ and $3.7\Lambda$ by $<0.01\%$. Degree-4 and degree-6 fits agree to $0.2\%$.}
+\end{table}
+
+\textbf{Verdict: FAIL.} The induced term is Einstein-like and stable, but $C>0$ (repulsive) for every cutoff tested.
+
+\textbf{Time-spacing scan} ($\Lambda=1.5$, $w=12$): $C=0.0574,\ 0.0383,\ 0.0294,\ 0.0194,\ 0.0107$ for $a_t=0,\ 0.25,\ 0.5,\ 1,\ 2$. $C$ falls monotonically toward zero as the time cutoff is lowered, but it stays positive. No choice of time spacing gives the right sign, let alone $\rho=1$.
+
+\textbf{All four directions alike.} Making the transverse dispersion lattice-like too, $\mu=2\sin(q/2)$ cut at the zone edge $q=\pi$ (disk approximation to the square zone), gives $C=54,\ 108,\ 216$ for $w=6,\ 12,\ 24$. That is $C\propto w$: the second-order energy contains a $\int|\nabla\sigma|$ term and is not Einstein-like. This is the sharp-cutoff pathology of note 7. A regular lattice with fixed physical spacing cannot follow a varying transverse scale factor without adding and removing modes at the zone edge.
+
+\section{What it means}
+\begin{itemize}
+\item Treating time and the cross-horizon direction alike is not enough. It shrinks the mismatch from about $-7.5$ to about $-2.5$, but the cutoff-scale part of gravity remains repulsive.
+\item The remaining asymmetry lies between the curved transverse directions and $x$. The geometry is probed through $\sigma(x)$, which couples the two, while the transverse cutoff is defined only in the transverse plane. A covariant regulator, such as Pauli--Villars, treats them together and passes (note 7, $\rho\approx1.04$). Every regulator with a fixed physical spacing tried so far either fails the sign or is not Einstein-like.
+\item This is consistent with the view that, beyond Pauli--Villars-type covariant regulators, a fixed regular lattice cannot reproduce $1/(4G)=\eta$ for the cutoff part. The candidates left are a statistically covariant discreteness (for example a random, Poisson-sprinkled lattice), where the number of modes per physical four-volume is fixed without any preferred directions, or a species sum rule that cancels the cutoff part so that only the derived, regulator-independent part remains.
+\item Lattice spacing in Planck units is unchanged from note 7: through the entanglement coefficient alone, $1/(4G)=N\eta$ gives $a\approx(0.5\text{--}0.7)\sqrt N\,\ell_P$. That is a consistency statement, not a prediction. The induced route gives no real $a$, since $C$ has the wrong sign.
+\end{itemize}
+
+\section{Limitations}
+Transverse momenta are integrated over a disk, not a square zone. The time lattice uses one $r=1$ Wilson discretisation, while $x$ is staggered. The two dispersions agree, $\hat\omega=2\sin(\omega/2)$ and $\hat p=2\sin(p/2)$, but the lattices are not identical beyond the Gaussian level. That is irrelevant for a free field. Only one fermion species is treated, with no gauge fields.
+
+\section*{Code}
+\texttt{euclid\_common.py} (note-7 planar code with $E\to\varepsilon(E)$; \texttt{A\_T} sets the time spacing, \texttt{A\_T=0} is continuous time; \texttt{REG\_POW=0} is the lattice-like transverse dispersion), \texttt{euclid\_G.py}, \texttt{euclid\_PV.py}. $\eta$ is from note 7 (\texttt{smooth\_eta.py}). Pre-registration: \texttt{PREREG\_note8.md}. Logs and JSON files: \texttt{note8\_results/}.
+\end{document}

@@ -1,0 +1,395 @@
+% Companion note to "Relational Progression as an Operational Foundation for GR".
+% Prepared with Claude (Anthropic) at the author's request.
+% Status markers as in the main draft: [Derived] = derived in this note from the
+% stated inputs; [Standard] = textbook result; [Assumed] = input; [Open].
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[shortlabels]{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+\newcommand{\Pg}{\Pi}
+\newcommand{\thP}{\theta}
+\newcommand{\sgP}{\sigma}
+\newcommand{\Eloc}{E_{\rm loc}}
+\newcommand{\Eref}{\mathcal{E}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\title{Energy Imbalance as the Microscopic Mechanism of Free Fall and Refraction\\[4pt]
+\large Companion note to the consolidated draft}
+\author{Scott A. Jordan}
+\date{Draft, 23 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We evaluate the intuition that microscopic gravitational effects arise from an energy imbalance across the extent of a wavefunction or wavefront, or from the field environment, acting on matter as an effective charge and on light as refraction. Within the framework of the consolidated draft (progression variable $\Pg=e^{\thP}$ as the clock-rate factor, spatial scale $e^{\sgP}$, no scalar field), we derive both halves of the response side exactly at first order. A matter wavepacket whose phase advances at different rates across its extent acquires the gradient force $-(E/c^2)(1+v^2/c^2)\nabla\Phi$. For slow matter this is Newtonian free fall, with effective charge equal to the total local energy, and its size dependence cancels except for tidal terms. For light the same imbalance across a wavefront gives refraction with index $n=e^{\sgP-\thP}$, and the deflection $4GM/bc^2$ is split equally between the clock-rate imbalance and the ruler imbalance. A single scalar charge reproduces only half of the deflection, so the effective charge must couple to energy and momentum flux, that is, to the stress tensor. Both halves are phase-speed (``pinch'') effects. A skew of the wave amplitude does not steer a ray, as a direct beam simulation confirms, and no conservation argument can fix the spatial half, because it differs between metric theories that share the same conservation laws. We show that ``energy imbalance'' and ``clock-rate difference'' are equivalent under energy conservation, and that the conserved-energy balance $\Pg\,E_{\rm loc}=\text{const}$ is the Tolman--Ehrenfest law of thermal equilibrium. What the imbalance picture does not supply is the source law that fixes $\Pg(x)$ and $\sgP(x)$ from the environment. We assess two microscopic routes, induced gravity and the thermodynamic derivation of the Einstein equation from energy flux across local horizon area, and recommend the latter as the closest realisation of the intuition. Its required inputs are listed.
+\end{abstract}
+
+\tableofcontents
+
+\section{Verdict in brief}
+
+\begin{longtable}{@{}p{0.37\textwidth}p{0.17\textwidth}p{0.38\textwidth}@{}}
+\toprule
+Idea & Status & Comment \\
+\midrule
+Energy (phase-rate) imbalance across a matter wavefunction produces free fall & \st{Derived} & Exact consequence of a clock-rate gradient. Measured directly in neutron and atom interferometry~\cite{COW1975}. \\
+The effective charge is the total local energy & \st{Derived} & Universality is automatic when the charge is the energy. Any other charge violates the equivalence principle. \\
+Propagation imbalance across a wavefront refracts light & \st{Derived} & Index $n=e^{\sgP-\thP}$. The clock-rate imbalance alone gives half the observed deflection. \\
+Pinch (phase speed) and skew (amplitude) as the two halves of bending & \st{Derived: no} & Both halves are phase-speed effects (clock and ruler). An amplitude skew does not steer a ray (Sec.~\ref{sec:twopictures}). \\
+Best existing treatment of the full bending & HDA paper & Clock half from the lapse equation, ruler half from the Hamiltonian (energy) constraint (Sec.~\ref{sec:survey}). \\
+Energy imbalance $\Leftrightarrow$ clock-rate difference & \st{Derived} & Equivalent under energy conservation (Einstein--Bondi photon argument). \\
+$\Pg E_{\rm loc}=\text{const}$ as a balance law & \st{Standard} & Correct as thermal equilibrium (Tolman--Ehrenfest). Not a law for individual clocks. \\
+The field environment sets $\Pg(x)$ and $\sgP(x)$ & \st{Open} & Requires a source law. Thermodynamic route recommended (Sec.~\ref{sec:source}). \\
+\bottomrule
+\end{longtable}
+
+The response of matter and light to a given progression profile follows from the imbalance mechanism without further assumption. The profile itself does not: an imbalance argument is kinematic and cannot say how strongly the environment loads the progression variables. That is where the microscopic research lies.
+
+\section{Setting}
+
+Inputs, all from the consolidated draft: \st{Assumed}
+\begin{enumerate}[I1.]
+\item Local physics is special-relativistic quantum mechanics; a system of local energy $\Eloc$ advances its phase at $\dd\varphi/\dd\tau=\Eloc/\hbar$.
+\item Universality: every local system shares one rate structure.
+\item For a static environment, the physical metric is
+\begin{equation}
+\dd s^2=-\Pg(\mathbf x)^2c^2\dd T^2+e^{2\sgP(\mathbf x)}\dd\mathbf x^2,
+\qquad \Pg=e^{\thP},
+\label{eq:metric}
+\end{equation}
+with weak-field values $\thP\simeq\Phi/c^2$ and $\sgP\simeq-\Phi/c^2$.
+\end{enumerate}
+Relative to the reference time $T$, a mode with local frequency $\omega_{\rm loc}$ and local wavevector $\mathbf k_{\rm loc}$ has reference frequency $\omega=\Pg\,\omega_{\rm loc}$ and coordinate wavevector $\mathbf k=e^{\sgP}\mathbf k_{\rm loc}$ (conversion rule of the draft). The local dispersion relation $\hbar^2\omega_{\rm loc}^2=m^2c^4+\hbar^2c^2k_{\rm loc}^2$ then gives the reference-frame Hamiltonian
+\begin{equation}
+H(\mathbf x,\mathbf p)=\hbar\omega=\Pg(\mathbf x)\sqrt{m^2c^4+c^2e^{-2\sgP(\mathbf x)}\,p^2},
+\qquad \mathbf p=\hbar\mathbf k .
+\label{eq:H}
+\end{equation}
+$H$ is the conserved reference energy $\Eref=\Pg\Eloc$ of the mode. All results below follow from~\eqref{eq:H}.
+
+\section{Matter: phase-rate imbalance across a wavepacket}
+\label{sec:matter}
+
+\subsection{The imbalance}
+
+Consider a wavepacket at rest in local units, of width $a$, centred at $\mathbf X$. Each part of the packet advances its phase relative to $T$ at the rate
+\begin{equation}
+\omega(\mathbf x)=\frac{\Pg(\mathbf x)\,\Eloc}{\hbar}.
+\end{equation}
+The two sides of the packet therefore accumulate phase at different rates. The difference across the packet is
+\begin{equation}
+\Delta\omega\simeq\frac{\Eloc}{\hbar}\,a\,\hat{\mathbf n}\cdot\nabla\Pg ,
+\end{equation}
+which is the ``energy imbalance across the wavefunction'' in precise form: $\hbar\,\Delta\omega$ is the difference of conserved energy $\Eref$ between the two sides. \st{Derived}
+
+\subsection{From imbalance to motion}
+
+A phase that advances faster on one side tilts the wavefronts, which is a change of wavevector. From the eikonal (WKB) equations for~\eqref{eq:H},
+\begin{equation}
+\frac{\dd\mathbf x}{\dd T}=\frac{\partial H}{\partial\mathbf p},\qquad
+\frac{\dd\mathbf p}{\dd T}=-\nabla H .
+\label{eq:Hamilton}
+\end{equation}
+Expanding $-\nabla H$ to first order in $\Phi/c^2$ with $E\equiv\sqrt{m^2c^4+c^2p^2}$ and $v=c^2p/E$,
+\begin{equation}
+\boxed{\;\frac{\dd\mathbf p}{\dd T}=-\frac{E}{c^2}\Big(1+\frac{v^2}{c^2}\Big)\nabla\Phi\;}
+\label{eq:force}
+\end{equation}
+The first term comes from the clock-rate gradient $\nabla\thP$, and the second from the ruler gradient $\nabla\sgP$. (Checked symbolically.) For slow matter, $E\simeq mc^2$ and $v\ll c$,
+\begin{equation}
+m\,\ddot{\mathbf X}=-m\nabla\Phi .
+\end{equation}
+Newtonian free fall is the phase-rate imbalance across the packet. Only the temporal part contributes at this order, which is why Newtonian gravity is described entirely by clock rates. \st{Derived}
+
+\subsection{Why the size of the packet drops out}
+
+The imbalance $\Delta\omega$ grows in proportion to the packet width $a$, but so does the distance over which it tilts the wavefront. The force is their ratio, so $a$ cancels at leading order. The remainder, from the Ehrenfest theorem, is tidal:
+\begin{equation}
+\langle\mathbf F\rangle=-m\nabla\Phi(\mathbf X)-\frac{m}{2}\langle\delta x_i\delta x_j\rangle\,\partial_i\partial_j\nabla\Phi+\dots,
+\end{equation}
+suppressed by $(a/L)^2$, where $L$ is the scale over which the field varies. A wavefunction-size dependence beyond this would be a new effect. It would have to be large enough to see yet small enough to pass free-fall tests, and no such window is indicated. \st{Derived}
+
+\subsection{Experimental status}
+
+The gravitational phase shift between the arms of a neutron interferometer was measured by Colella, Overhauser and Werner~\cite{COW1975}, and atom interferometers now use the same phase imbalance to measure local $g$ at the part-per-billion level. The ``energy imbalance across the wavefunction'' is therefore not speculative: it is what these instruments read out. \st{Standard}
+
+\section{The effective charge and the equivalence principle}
+\label{sec:charge}
+
+Equation~\eqref{eq:force} shows that the effective gravitational charge of a slow body is its total local energy divided by $c^2$:
+\begin{equation}
+Q=\frac{\Eloc}{c^2}=m_{\rm in}.
+\end{equation}
+Every contribution to $\Eloc$ (rest mass, binding, internal kinetic and field energy) advances phase at the same rate (I2), so it contributes to $Q$ and to inertia in the same proportion. The charge-to-mass ratio is then exactly one for every body. \st{Derived}
+
+The ``effective charge'' language therefore helps if, and only if, the charge is identified with energy. If any part of a body's energy were excluded from $Q$, or weighted differently (for example by interaction density or by wavefunction area), bodies of different composition would fall differently. The E\"otv\"os parameter $\eta=2|(Q/m)_A-(Q/m)_B|/|(Q/m)_A+(Q/m)_B|$ is bounded at about $10^{-15}$ by MICROSCOPE~\cite{Touboul2022}. Since nuclear binding is about 1\% of rest energy and varies between elements by about $10^{-3}$, a non-universal weighting of binding energy is excluded at roughly the $10^{-12}$ level relative to its own size.
+
+\begin{remark}
+A single scalar charge, even when it equals the energy, cannot be the whole story. Section~\ref{sec:light} shows that light needs an effective transverse charge of $2E/c^2$. The coupling is to energy and momentum flux together, that is, to the stress tensor. This is the microscopic reason why the spatial progression variable $\sgP$ is required.
+\end{remark}
+
+\section{Light: propagation imbalance across a wavefront}
+\label{sec:light}
+
+\subsection{Refraction}
+
+For $m=0$, Eq.~\eqref{eq:H} gives $\omega=c\,\Pg e^{-\sgP}|\mathbf k|$. The coordinate phase speed is
+\begin{equation}
+c_T(\mathbf x)=c\,e^{\thP-\sgP},\qquad n(\mathbf x)=\frac{c}{c_T}=e^{\sgP-\thP}\simeq1-\frac{2\Phi}{c^2}.
+\label{eq:index}
+\end{equation}
+Across a wavefront of width $w$, the side deeper in the potential advances more slowly by $\Delta c_T\simeq w\,\hat{\mathbf n}\cdot\nabla c_T$. The wavefront therefore turns toward the slower side, at the rate
+\begin{equation}
+\frac{\dd\hat{\mathbf k}}{\dd l}=\nabla_\perp\ln n ,
+\end{equation}
+independent of $w$, for the same reason as in Section~\ref{sec:matter}. This is the propagation-imbalance picture, and it is exact at the eikonal level. \st{Derived}
+
+\subsection{The factor of two}
+
+Integrating along a straight path with impact parameter $b$ past a mass $M$,
+\begin{equation}
+\alpha=\int\nabla_\perp\ln n\;\dd l
+=\underbrace{\frac{2GM}{bc^2}}_{\text{from }\nabla\thP}
++\underbrace{\frac{2GM}{bc^2}}_{\text{from }\nabla\sgP}
+=\frac{4GM}{bc^2}.
+\end{equation}
+For a particle of speed $v$, Eq.~\eqref{eq:force} gives $\alpha=(2GM/bv^2)(1+v^2/c^2)$, which interpolates between the Newtonian value and the light value. With a clock-rate imbalance alone ($\sgP=0$), light bends by $2GM/bc^2$, which is Einstein's 1911 value. The 1919 eclipse measurements, and today Cassini ($|\gamma_{\rm PPN}-1|\lesssim2\times10^{-5}$)~\cite{Bertotti2003}, show the full value. The microscopic theory must therefore produce a spatial imbalance of equal size, $\sgP=-\thP$, as well as the temporal one. \st{Derived; Standard}
+
+\subsection{Why one picture covers both}
+
+Matter and light obey the same Hamiltonian~\eqref{eq:H}. ``Effective charge'' for matter and ``refraction'' for light are one mechanism: a mode's conserved energy varies across its extent, and the mode turns toward lower conserved frequency. The distinction between them is only the size of $v/c$.
+
+\section{Two pictures of wavefront bending: are they the two halves?}
+\label{sec:twopictures}
+
+Two mechanisms have been proposed for the directional refraction of a photon:
+\begin{enumerate}[(a)]
+\item \textbf{Pinch.} The directional wave amplitudes stay fixed, and propagation slows on the side toward slower time, like pinching a spring on one side.
+\item \textbf{Skew.} The direction of travel is an average over directional amplitudes, and modified conservation requires relatively higher amplitude toward slower time, like a spring skewed toward that side.
+\end{enumerate}
+The question is whether (a) and (b) are the two halves of the observed deflection.
+
+\subsection{Answer: no. Both halves are of type (a)}
+
+\begin{enumerate}[1.]
+\item \textbf{Mechanism (a) is the whole of the bending.} In the eikonal limit the ray direction is the normal to the phase fronts, and it turns at the rate $\nabla_\perp\ln n$ (Section~\ref{sec:light}). With $n=e^{\sgP-\thP}$, both halves are phase-speed effects. The temporal half comes from the clock-rate gradient ($\thP$), the spatial half from the ruler gradient ($\sgP$). Both ``pinch'' the wavefront; neither involves amplitude.
+\item \textbf{Mechanism (b) does not steer the ray.} In geometric optics the amplitude $A$ obeys the transport law $\nabla\cdot(A^2\nabla S)=0$ along rays already fixed by the phase $S$~\cite{Ehlers1967,MTW}. Amplitude follows the rays; it does not set them. Its effects on direction enter only at the next order in $\lambda/L$, as polarisation-dependent corrections (the gravitational spin Hall effect~\cite{Oancea2020}). For optical light grazing the Sun, $\lambda/b\sim10^{-15}$. Such corrections are far too small to supply half of $1.75''$.
+\item \textbf{Numerical check.} Integrating the paraxial wave equation for a Gaussian beam (code: \texttt{beam\_amplitude\_vs\_gradient.py}), over a fixed propagation length:
+\begin{center}
+\begin{tabular}{@{}lc@{}}
+\toprule
+Case & Centroid shift \\
+\midrule
+Symmetric beam, uniform medium & $0.000$ \\
+Amplitude skewed 80\% to one side, uniform medium & $0.000$ \\
+Symmetric beam, transverse index gradient & $-2.000$ \\
+Skewed beam, same gradient & $-2.000$ \\
+Ray-optics prediction for the gradient & $-2.000$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+A skewed amplitude does not move the beam centroid at all. The index gradient moves it by exactly the ray-optics amount, whatever the amplitude profile. This is the optical counterpart of the size cancellation in Section~\ref{sec:matter}. \st{Derived}
+\item \textbf{Where (b) is right.} The amplitude does redistribute: conservation of wave action (photon number), $\nabla_\mu(A^2k^\mu)=0$, is a weighted conservation law for light. It sets brightness and lensing magnification, as a consequence of the bending rather than a cause. In an \emph{anisotropic} medium, the energy flux can also point away from the phase normal (walk-off), which is the closest physical realisation of ``direction as an average of amplitudes''. The equivalent medium of a static gravitational field, however, is isotropic and impedance-matched, $\varepsilon=\mu=n$~\cite{Plebanski1960,deFelice1971}, so gravity produces no walk-off.
+\end{enumerate}
+
+\subsection{Why no conservation argument can give the second half}
+
+The temporal half follows from the equivalence principle plus energy conservation (Einstein 1911~\cite{Einstein1911}; Section~\ref{sec:equivalence}). Schiff argued that the spatial half also followed from the equivalence principle and special relativity~\cite{Schiff1960}. Rindler gave a counterexample~\cite{Rindler1968}: metric theories that obey the equivalence principle and energy conservation can have any spatial response. In the PPN framework the deflection is $\frac{1+\gamma}{2}\cdot\frac{4GM}{bc^2}$, and $\gamma$ is a free parameter that differs between metric theories (Brans--Dicke gives $\gamma=(1+\omega)/(2+\omega)$)~\cite{Will2014}. Every one of those theories satisfies the same conservation laws. An argument from conservation, whether about amplitudes or energies, therefore cannot fix $\gamma$. The second half has to come from the field equations, which is why the source law of Section~\ref{sec:source} must be tensorial. \st{Standard}
+
+\subsection{How to search the literature}
+
+\begin{longtable}{@{}p{0.40\textwidth}p{0.52\textwidth}@{}}
+\toprule
+Source & Bearing on the two-halves question \\
+\midrule
+Einstein 1911 vs 1915~\cite{Einstein1911,Einstein1915} & The half value from time alone, then the full value from the field equations. \\
+Eddington 1920~\cite{Eddington1920}; Evans, Nandi and Islam~\cite{Evans1996} & Gravity as a refractive medium with $n\simeq1+2GM/rc^2$, and the ray equation in ``$F=ma$'' form. Supports (a). \\
+Gordon~\cite{Gordon1923}, Plebanski~\cite{Plebanski1960}, de Felice~\cite{deFelice1971} & Exact equivalence between a static metric and an isotropic medium with $\varepsilon=\mu$. No walk-off, so no room for (b). \\
+Schiff~\cite{Schiff1960} vs Rindler~\cite{Rindler1968} & Whether the spatial half follows from the equivalence principle. It does not. \\
+Will, Living Reviews~\cite{Will2014} & The $(1+\gamma)/2$ split, measured values of $\gamma$, and the theory dependence of $\gamma$. \\
+Ehlers~\cite{Ehlers1967}; MTW \S22.5~\cite{MTW} & Amplitude transport in geometric optics. Amplitude follows rays. \\
+Oancea \emph{et al.}~\cite{Oancea2020} & The only amplitude- and polarisation-dependent deflection, suppressed by $\lambda/L$. \\
+Dicke 1957~\cite{Dicke1957}; Puthoff 2002~\cite{Puthoff2002} & Variable-$\varepsilon,\mu$ (polarisable vacuum) models. The closest to the earlier optics paper, and they need $\varepsilon$ and $\mu$ to vary equally. \\
+\bottomrule
+\end{longtable}
+
+Useful search terms on arXiv, INSPIRE or ADS: ``optical metric'', ``gravitational refractive index'', ``Huygens principle'' with ``gravitational lensing'', ``Lenz--Schiff argument'', ``PPN gamma'' with ``light deflection'', and ``gravitational spin Hall effect''. A paper that claimed half of the deflection from an amplitude effect would be new, and it would conflict with the transport results above. I am not aware of one.
+
+\section{Refraction in the existing manuscripts}
+\label{sec:survey}
+
+Both repositories were searched, including their full commit history, for every treatment of refraction, refractive index, deflection, delay, wavefronts and propagation speed. Each manuscript exists in one published version; the only deleted file is an earlier filename of the geometry paper, with identical content. The weighted-conservation repository, the spectral-inertia draft and the clock-transport paper contain no optical treatment.
+
+\begin{longtable}{@{}p{0.25\textwidth}p{0.38\textwidth}p{0.29\textwidth}@{}}
+\toprule
+Where & What it does & Assessment \\
+\midrule
+Optics paper~\S2 (local weak-field target) & Fixes $\kappa=1$ from redshift and $p\kappa=2$ from deflection, giving $n=\Pg^{-2}$. & Correct arithmetic, but the second half is \emph{fitted}. The paper says so in its own remark. \\
+Optics paper~\S\S3--5 (constitutive action, principal symbol) & Gauge-invariant medium with $\varepsilon_r=\Pg^{-2}$, $\mu_r^{-1}=\Pg^{2}$, so $n=\Pg^{-2}$, impedance 1, no birefringence. Fermat ray law, Shapiro delay, deflection. & \textbf{Correct for light.} This is exactly the Plebanski/de Felice equivalent medium of the isotropic Schwarzschild field at weak order~\cite{Plebanski1960,deFelice1971}. The second half still enters through the target, and the ``reciprocal weights'' assumption is tuned to it. Salvageable as an appendix. \\
+Optics paper, scalar-proxy appendix & Temporal weight $A(\Pg)=\Pg^{-2}$, spatial stiffness $B(\Pg)=\Pg^{2}$. & Same content; the split into ``temporal'' and ``spatial'' weights is not the clock/ruler split of GR. \\
+Collective-loading paper~\S``Optical interface'' & Takes $n=\Pg^{-2}$ from the optics paper. & Interface only. Combined with a matter sector that sees only $\Pg$, it gives light and matter different causal cones (review item F2). Flawed as a gravity theory. \\
+Geometry paper~\S``Optical meaning of the reciprocal branch'' & $n=e^{\sgP-\thP}$; with $\sgP=-\gamma_{\rm PPN}\thP$, $n=e^{-(1+\gamma)\thP}$. Shows the optics paper's $\varepsilon,\mu$ are just Maxwell on the metric. & \textbf{Correct.} Identifies ``$p=2$'' with $\gamma_{\rm PPN}=1$ and makes the constitutive closure geometric. But $\sgP=-\thP$ is a solution branch of the Einstein equations, assumed rather than derived. \\
+Geometry paper~\S``Complete progression geometry'' & Notes the earlier scalar truncation imposed $\sgP=-\thP$ kinematically. & Correctly flags the earlier move as an assumption. \\
+HDA paper~\S``Maxwell and Yang--Mills closure'' & Hypersurface-algebra closure forces the gauge field to use the same co-metric $h^{ij}$ as gravity. & \textbf{Correct and conditional.} This is what rules out a separate optical medium. \\
+HDA paper~\S``Static two-function reduction'' and ``Maxwell propagation and the former $p=2$ closure'' & From the canonically selected constraint: $S=A+B$ obeys $\nabla^2S_1=0$, so $B_1=-A_1$, and $\nabla^2A_1=4\pi G\rho/c^2$. Then $n=e^{B-A}\simeq\Pg^{-2}$, exactly $(1+U/2)^3/(1-U/2)$. & \textbf{Correct, conditional, and the most promising.} Both halves are \emph{derived}: one from the lapse, one from the spatial response fixed by the dynamics. \\
+\bottomrule
+\end{longtable}
+
+\subsection{The most promising treatment}
+
+The HDA paper's static reduction is the only treatment in the collection that obtains the full bending without fitting it. Read in progression terms, its two halves have distinct physical origins:
+\begin{itemize}
+\item \textbf{Clock half.} The lapse equation, $\nabla^2\thP\simeq4\pi G(\rho+3p/c^2)/c^2$, which expresses that the static configuration stays static. It is the condition for the energy balance to be preserved under progression.
+\item \textbf{Ruler half.} The Hamiltonian constraint. For a static slice with $h_{ij}=e^{2\sgP}\delta_{ij}$, it reads ${}^{(3)}\!R=16\pi G\rho/c^2$, and at linear order ${}^{(3)}\!R\simeq-4\nabla^2\sgP$, so $\nabla^2\sgP=-4\pi G\rho/c^2$ and $\sgP=-\thP$ for dust.
+\end{itemize}
+This gives the precise version of the intuition that ``modified conservation'' supplies part of the bending. In a theory with no background time, the Hamiltonian constraint \emph{is} the energy law: total energy, matter plus geometry, vanishes at every point. It is the field-theory form of the research-direction constraint $\mathcal K=\sum_iw_iH_i+H_{\rm int}-Q_0\approx0$. Matter energy at a point must be balanced by curvature of the ruler field, and that balance produces the spatial half. The amplitude picture of Section~\ref{sec:twopictures} was looking for this effect in the wrong place: it lives in the energy constraint on the geometry, not in the photon's amplitude. \st{Standard GR content; the progression reading is interpretive}
+
+A second structural point follows. Scalar--tensor theories, which add a scalar field, have $\gamma_{\rm PPN}=(1+\omega)/(2+\omega)<1$ and bend light by less. The HDA closure works on the minimal phase space $(h_{ij},\pi^{ij})$ with no additional field. The decision to have no scalar progression field is therefore exactly what selects $\gamma=1$ and the full bending.
+
+\subsection{What it needs to be made rigorous}
+
+\begin{enumerate}[1.]
+\item \textbf{The upstream assumptions} A1--A7 of the main draft (Section~6), especially integrability and directional calibration. They select the Einstein constraint, and with it both halves.
+\item \textbf{The minimal phase space.} An explicit argument, from the relational premises, that no extra scalar degree of freedom enters. This is what fixes $\gamma=1$ rather than leaving it free.
+\item \textbf{Matter with pressure.} The first-order result $\nabla^2S_1=0$ holds for dust. Sources with pressure or radiation give $S_1\neq0$ inside matter. This should be stated, and checked to leave the exterior result unchanged.
+\item \textbf{A relational derivation of the constraint.} The central open problem of the main draft, in sharper form: obtain the Hamiltonian constraint, with its geometric (ruler) energy, as the energy law of a clock-plus-environment system. The thermodynamic route of Section~\ref{sec:source} is the candidate.
+\end{enumerate}
+
+The optics paper's constitutive medium should be kept as an appendix showing that, with $\varepsilon=\mu=e^{\sgP-\thP}$, Maxwell theory in a medium and Maxwell theory on the metric are the same at weak isotropic order. Its own derivation of the second half should be retired.
+
+\section{Energy imbalance and clock-rate difference are equivalent}
+\label{sec:equivalence}
+
+\begin{proposition}
+Assume local energy conservation and that energy falls universally (Section~\ref{sec:charge}). Then static clocks at heights differing by $h$ in a uniform field $g$ run at rates differing by $gh/c^2$. Conversely, a clock-rate gradient implies universal free fall of energy.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Forward (Einstein 1911; see~\cite{Okun2000}): lower a body of local energy $E$ by $h$, extracting work $Egh/c^2$. Convert its energy into a photon and send it back up, then reconvert it. If the photon arrived with energy $E$, the cycle would produce net work. Energy conservation therefore requires the photon to arrive with $E(1-gh/c^2)$. Since local transition energies are the same at both heights (I1), the upper clock receives the lower clock's signal redshifted by $gh/c^2$; this is the rate difference. The converse is Section~\ref{sec:matter}.
+\end{proof}
+
+``Energy imbalance'' and ``time-rate difference'' are thus two descriptions of one fact, related by energy conservation. Neither is more fundamental, and neither determines $g$. \st{Derived (standard argument)}
+
+\section{The balance law \texorpdfstring{$\Pg E_{\rm loc}=$}{Pi E = } const as thermal equilibrium}
+
+The earlier intuition that $\Pg\,\Eloc$ should equalise across an environment has an exact counterpart. For a system in thermal equilibrium in a static field, the local temperature satisfies
+\begin{equation}
+\Pg(\mathbf x)\,T_{\rm loc}(\mathbf x)=\text{const}
+\end{equation}
+(Tolman--Ehrenfest~\cite{Tolman1930}). It follows from maximising entropy at fixed conserved energy $\Eref=\Pg\Eloc$: heat flows until the conserved energy per unit entropy is uniform. The balance is therefore a statement about equilibrium of exchanged energy, not about the energy of an individual clock. Identical clocks at different $\Pg$ keep identical local transition energies. This is the correct home for the ``energy-balancing'' intuition, and it links directly to the thermodynamic route of Section~\ref{sec:source}. \st{Standard}
+
+\section{What sets the progression profile}
+\label{sec:source}
+
+Sections~\ref{sec:matter}--\ref{sec:equivalence} take $\Pg(\mathbf x)$ and $\sgP(\mathbf x)$ as given. A microscopic theory must also explain the source law, which at weak field is
+\begin{equation}
+\nabla^2\thP=\frac{4\pi G}{c^2}\rho,\qquad \sgP=-\thP,
+\label{eq:source}
+\end{equation}
+together with its tensor completion. An imbalance argument cannot supply it: it contains no stiffness, and therefore no $G$. Three routes are possible.
+
+\subsection{Route A: the gravitational constraint (current draft)}
+The Hamiltonian constraint of the Einstein action gives~\eqref{eq:source}, with $G$ an input. It is consistent but not microscopic. \st{Assumed}
+
+\subsection{Route B: induced gravity from the field environment}
+Sakharov observed that integrating out quantum matter fields on a background metric generates the Einstein--Hilbert term, with $1/G$ of order $N\Lambda^2/\hbar c$ for $N$ fields and cutoff $\Lambda$, and an order-one coefficient that depends on the field content~\cite{Sakharov1967,Visser2002}. In progression language, the stiffness that resists gradients of $\thP$ and $\sgP$ is the vacuum response of the field environment. This matches the ``field environment'' half of the intuition. Known difficulties: dependence on the cutoff, the sign of the coefficient for some field content, and the cosmological-constant problem. \st{Standard; application Open}
+
+\subsection{Route C: energy flux across area (recommended)}
+Jacobson derived the Einstein equation as an equation of state~\cite{Jacobson1995}. At each spacetime point, consider a small local Rindler horizon of area $A$. Assume (i) the Clausius relation $\delta Q=T\,\dd S$ for the energy flux $\delta Q$ crossing the horizon, with $T$ the Unruh temperature seen by the accelerated observers just inside; and (ii) entropy proportional to area, $\dd S=\eta\,\delta A$. Requiring this for all local horizons gives
+\begin{equation}
+R_{\mu\nu}-\tfrac12Rg_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{2\pi}{\hbar\eta}\,T_{\mu\nu},
+\qquad G=\frac{1}{4\hbar\eta}\quad(c=k_B=1).
+\end{equation}
+This is the closest existing realisation of ``energy imbalance across an area produces gravity''. Energy flux across an area is balanced against the change of area-entropy, and the result is the full tensor equation, so $\sgP=-\thP$ and the factor of two come out automatically.
+
+What it requires:
+\begin{enumerate}[R1.]
+\item \textbf{Area entropy.} The entropy density $\eta$ must come from somewhere. Entanglement entropy of the environment fields across the surface obeys an area law with a cutoff-dependent coefficient, and that coefficient is the same one that sets the induced $1/G$ of Route~B~\cite{Jacobson1994}. Routes B and C therefore point to the same microscopic quantity.
+\item \textbf{Local equilibrium.} The derivation assumes local thermodynamic equilibrium of the horizon degrees of freedom. Departures give non-equilibrium corrections, a possible source of new predictions.
+\item \textbf{Unruh temperature.} It relies on the Unruh effect, which links acceleration, temperature and local clock rate. That is the Tolman relation of the previous section in local form.
+\end{enumerate}
+\st{Standard result; its use as the microscopic basis for progression is Open}
+
+\subsection{How this fits the program}
+
+Route~C supplies what the imbalance mechanism lacks, and it fits the operational foundation for GR. It produces Einstein's equation, introduces no scalar field, keeps one balance law, and uses $\Pg$ only as the local clock rate entering the Unruh temperature. Its microscopic content is the area-law entropy of the field environment. Deriving that from a finite clock-plus-environment model is a sharper version of the open problem in the main draft, Section~8.
+
+\section{A feasible derivation program}
+
+\begin{enumerate}[1.]
+\item \textbf{Response side (done here).} From I1--I3, derive free fall, the effective charge, and refraction with the factor of two. Add Sections~\ref{sec:matter}--\ref{sec:light} to the main draft, after its Section~7.
+\item \textbf{Toy area law.} Take a lattice of coupled oscillators (a discretised free field) as the environment. Compute the entanglement entropy across a planar surface and confirm the area scaling $S=\eta A$ with $\eta$ set by the lattice spacing. This is standard and can be done numerically.
+\item \textbf{Clocks in the toy environment.} Couple two two-level clocks to the lattice and impose a uniform acceleration (Rindler) or a static mass distribution. Compute the clock ratio relationally and check whether it reproduces the Tolman/Unruh relation with $\eta$ from step~2.
+\item \textbf{Clausius step.} Verify $\delta Q=T\,\dd S$ for energy crossing the surface in the toy model. This is where the Einstein equation, and hence $G=1/(4\hbar\eta)$, would emerge from the environment rather than being inserted.
+\item \textbf{Predictions.} Non-equilibrium and lattice corrections to these relations are the candidates for new, dimensionless predictions with a stated scale.
+\end{enumerate}
+
+Steps~2--4 meet requirement R1 of the main draft (no inserted Newtonian coupling), because $G$ enters only through the entanglement density of the environment.
+
+\section{Summary}
+
+The intuition is sound on the response side and can be made exact. An energy imbalance across a matter wavepacket is the clock-rate gradient, and it produces free fall with charge equal to total energy; this is measured in interferometers. A propagation imbalance across a wavefront produces refraction, but a temporal imbalance alone gives half the observed bending, so a spatial imbalance of equal size is required. ``Effective charge'' is safe only as a name for energy and momentum flux; any other charge conflicts with the equivalence principle. The source side, how the environment sets the imbalance, is not supplied by the imbalance picture. The thermodynamic derivation of the Einstein equation from energy flux across area is the most direct way to complete it, with the area-law entropy of the field environment as its microscopic input.
+
+\begin{thebibliography}{99}
+\bibitem{COW1975}
+R.~Colella, A.~W. Overhauser, and S.~A. Werner, ``Observation of gravitationally induced quantum interference,'' \emph{Phys. Rev. Lett.} \textbf{34}, 1472 (1975).
+\bibitem{Touboul2022}
+P.~Touboul \emph{et al.} (MICROSCOPE Collaboration), ``MICROSCOPE mission: final results of the test of the equivalence principle,'' \emph{Phys. Rev. Lett.} \textbf{129}, 121102 (2022).
+\bibitem{Bertotti2003}
+B.~Bertotti, L.~Iess, and P.~Tortora, ``A test of general relativity using radio links with the Cassini spacecraft,'' \emph{Nature} \textbf{425}, 374 (2003).
+\bibitem{Okun2000}
+L.~B. Okun, K.~G. Selivanov, and V.~L. Telegdi, ``On the interpretation of the redshift in a static gravitational field,'' \emph{Am. J. Phys.} \textbf{68}, 115 (2000).
+\bibitem{Tolman1930}
+R.~C. Tolman and P.~Ehrenfest, ``Temperature equilibrium in a static gravitational field,'' \emph{Phys. Rev.} \textbf{36}, 1791 (1930).
+\bibitem{Sakharov1967}
+A.~D. Sakharov, ``Vacuum quantum fluctuations in curved space and the theory of gravitation,'' \emph{Sov. Phys. Dokl.} \textbf{12}, 1040 (1968).
+\bibitem{Visser2002}
+M.~Visser, ``Sakharov's induced gravity: a modern perspective,'' \emph{Mod. Phys. Lett. A} \textbf{17}, 977 (2002).
+\bibitem{Jacobson1995}
+T.~Jacobson, ``Thermodynamics of spacetime: the Einstein equation of state,'' \emph{Phys. Rev. Lett.} \textbf{75}, 1260 (1995).
+\bibitem{Jacobson1994}
+T.~Jacobson, ``Black hole entropy and induced gravity,'' arXiv:gr-qc/9404039 (1994).
+\bibitem{Ehlers1967}
+J.~Ehlers, ``Zum \"Ubergang von der Wellenoptik zur geometrischen Optik in der allgemeinen Relativit\"atstheorie,'' \emph{Z. Naturforsch.} \textbf{22a}, 1328 (1967).
+\bibitem{MTW}
+C.~W. Misner, K.~S. Thorne, and J.~A. Wheeler, \emph{Gravitation} (Freeman, 1973), \S22.5.
+\bibitem{Oancea2020}
+M.~A. Oancea \emph{et al.}, ``Gravitational spin Hall effect of light,'' \emph{Phys. Rev. D} \textbf{102}, 024075 (2020).
+\bibitem{Plebanski1960}
+J.~Plebanski, ``Electromagnetic waves in gravitational fields,'' \emph{Phys. Rev.} \textbf{118}, 1396 (1960).
+\bibitem{deFelice1971}
+F.~de Felice, ``On the gravitational field acting as an optical medium,'' \emph{Gen. Rel. Grav.} \textbf{2}, 347 (1971).
+\bibitem{Gordon1923}
+W.~Gordon, ``Zur Lichtfortpflanzung nach der Relativit\"atstheorie,'' \emph{Ann. Phys.} \textbf{72}, 421 (1923).
+\bibitem{Einstein1911}
+A.~Einstein, ``\"Uber den Einflu{\ss} der Schwerkraft auf die Ausbreitung des Lichtes,'' \emph{Ann. Phys.} \textbf{35}, 898 (1911).
+\bibitem{Einstein1915}
+A.~Einstein, ``Erkl\"arung der Perihelbewegung des Merkur aus der allgemeinen Relativit\"atstheorie,'' \emph{Sitzungsber. Preuss. Akad. Wiss.} 831 (1915).
+\bibitem{Eddington1920}
+A.~S. Eddington, \emph{Space, Time and Gravitation} (Cambridge University Press, 1920).
+\bibitem{Evans1996}
+J.~Evans, K.~K. Nandi, and A.~Islam, ``The optical-mechanical analogy in general relativity: new methods for the paths of light and of the planets,'' \emph{Am. J. Phys.} \textbf{64}, 1404 (1996).
+\bibitem{Schiff1960}
+L.~I. Schiff, ``On experimental tests of the general theory of relativity,'' \emph{Am. J. Phys.} \textbf{28}, 340 (1960).
+\bibitem{Rindler1968}
+W.~Rindler, ``Counterexample to the Lenz--Schiff argument,'' \emph{Am. J. Phys.} \textbf{36}, 540 (1968).
+\bibitem{Will2014}
+C.~M. Will, ``The confrontation between general relativity and experiment,'' \emph{Living Rev. Relativ.} \textbf{17}, 4 (2014).
+\bibitem{Dicke1957}
+R.~H. Dicke, ``Gravitation without a principle of equivalence,'' \emph{Rev. Mod. Phys.} \textbf{29}, 363 (1957).
+\bibitem{Puthoff2002}
+H.~E. Puthoff, ``Polarizable-vacuum (PV) approach to general relativity,'' \emph{Found. Phys.} \textbf{32}, 927 (2002).
+\end{thebibliography}
+
+\end{document}

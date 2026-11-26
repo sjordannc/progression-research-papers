@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}\usepackage{amsmath,booktabs}
+\title{The Two-Clock Test: the Weak-Field Clock Ratio from Clocks plus an Environment\\[4pt]\large Companion note 12}
+\author{}\date{25 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The draft's success criterion (P6) is to obtain $d\tau_A/d\tau_B=1+(\Phi_A-\Phi_B)/c^2$, and the ruler half of the metric, from clocks plus an environment without inserting $\Phi$. This note tests it in the draft's induced-gravity sector. The geometry has no action of its own; its only energy is the Pauli--Villars vacuum energy of a lattice Dirac fermion, plus a static dust shell coupled universally. The \textbf{pre-registered run fails narrowly}: the clock half comes out $12\%$ above Newton, against a $10\%$ tolerance, and the residual is $13\%$, against $10\%$. The cause is a lattice artifact of the angular-momentum truncation, which the pre-registered counterterm removed only in part. Raising the truncation removes it without any counterterm, and then \textbf{all criteria pass}. The clock half is $1.014$ and the ruler half $1.005$ times Newton/GR for the widest shell, with $G=1/(4\eta)$ fixed by the fermion's own entanglement. The deviation falls as $1/w^2$ with shell width, and extrapolates to $1.00\pm0.02$. Clocks inside the shell show no relative shift. Two clocks of different mechanism agree to $0.1\%$ of the shift, and the result does not depend on the reference clock. This is the first derivation of the gravitational clock ratio within the programme. It is conditional: it uses the regulator-independent part of $G$ (the cutoff part failed on fixed lattices), a tuned cosmological term, a static weak field and one species. The convergence fix was not in the pre-registration.
+\end{abstract}
+
+\section{Model and pre-registration}
+\textbf{Model.} The static geometry is a lapse $N(r)=e^{\nu}$ and a spatial metric $d\ell^2=dr^2+f^2d\Omega^2$, with $f=r(1+s)$ and $r$ the proper radial distance. Its energy is
+\[
+E_{\rm tot}[N,f]=E_0^{\rm PV}[N,f]-\Lambda_1\!\int\!N\sqrt h+\int\!N\mu\,dr .
+\]
+$E_0^{\rm PV}$ is the vacuum (Killing) energy of the note-6 radial Dirac lattice, Pauli--Villars combined ($m=0.2$). $\mu$ is a Gaussian dust shell of radius 100, coupled as all matter is (P3). There is no gravitational action and no Newtonian coupling (R1). The field equations are stationarity of $E_{\rm tot}$. Varying $N$ gives the local energy constraint; varying $f$ gives the static lapse equation.
+
+\textbf{Test} (pre-registration amended twice before any lattice field-equation run; see \texttt{PREREG\_note12.md}). A finite-box solve is ill-posed for an isolated mass, because the spatial metric outside cannot vanish at a finite boundary. The test therefore inserts $\nu=\lambda_\nu\nu_{\rm GR}$, $s=\lambda_s s_{\rm GR}$ into the \emph{lattice} equations, tested against splines supported in $r\le220$. Here $\nu_{\rm GR}'=Gm(r)/r^2$ and $s_{\rm GR}=-(G/r)\int_0^r m/r'$, with $G=1/(4\eta_D)$ and $\eta_D=4.6404\times10^{-4}$ (note 6). $\lambda_\nu$ and $\lambda_s$ are fitted. Pass requires: (Q1) $\lambda_\nu$ within 10\% of 1; (Q2) $\lambda_s$ within 15\%; (Q3) residual after the fit below 10\% of the source, overall and inside the shell. The pre-registered lattice used the note-6 angular truncation (keep $|\kappa|\le5r$, ``JCUT $=5$''), with counterterms for $\Lambda_1$ and for the zero-derivative artifact measured in note 6.
+
+\textbf{Code checks.} Lattice gradients are computed by Hellmann--Feynman and agree with finite differences to $10^{-5}$. Clock points: A1 $=30$ and A2 $=60$ (inside), B1 $=160$ and B2 $=210$ (outside).
+
+\section{Results}
+\begin{center}\footnotesize\setlength{\tabcolsep}{4pt}\begin{tabular}{lcccccc}\toprule
+Truncation, counterterm & width $w$ & $\lambda_\nu$ (clock) & $\lambda_s$ (ruler) & residual & inside rows & verdict\\\midrule
+JCUT 5, with (pre-registered) & 12 & 1.120 & 1.040 & 13.0\% & 1.5\% & \textbf{fail} (Q1, Q3)\\
+JCUT 5, with & 20 & 1.074 & 1.010 & 13.6\% & 1.7\% & fail (Q3)\\
+JCUT 5, with & 28 & 1.059 & 0.996 & 15.8\% & 1.6\% & fail (Q3)\\
+JCUT 5, none & 12 & 1.069 & 0.908 & 37.7\% & 1.3\% & fail\\\midrule
+JCUT 8, none & 12 & 1.100 & 1.045 & 8.9\% & 1.1\% & pass (Q1 at the edge)\\
+JCUT 8, none & 20 & 1.044 & 1.018 & 5.3\% & 1.1\% & pass\\
+JCUT 8, none & 28 & 1.014 & 1.005 & 4.3\% & 0.4\% & pass\\
+JCUT 12, none & 20 & 1.037 & 1.016 & 8.7\% & 1.1\% & pass\\\bottomrule
+\end{tabular}\end{center}
+
+\textbf{Diagnosis of the pre-registered failure.} With JCUT $=5$, the residual sits in the lapse equation outside the shell and grows with $r$. That is the signature of a zero-derivative (mass-like) term, whose weight relative to the curvature term grows as $r^2$. Note 6 found such a term, $(\Lambda_2-\Lambda_1)/\Lambda_1=-2.5\times10^{-4}$, and attributed it to truncation. The counterterm calibrated at $r\approx150$ removes it only in part. Raising the truncation to JCUT $=8$ removes the residual growth without any counterterm, and the JCUT-5 counterterm then over-corrects ($\lambda_\nu=0.74$). JCUT 8 and 12 agree on $\lambda_\nu$ to 0.7\%. The truncation is a numerical parameter, so this is a convergence fix, but it was \emph{not} pre-registered.
+
+\textbf{Shell-width dependence.} At JCUT 8, $\lambda_\nu-1=0.100,\ 0.044,\ 0.014$ for $w=12,\ 20,\ 28$. This falls roughly as $1/w^2$, the expected higher-derivative correction of relative size $(1/mw)^2$ with Compton length $1/m=5$. Extrapolating, $\lambda_\nu(w\to\infty)=0.98$--$1.01$ and $\lambda_s\to1.00$.
+
+\textbf{Clock ratios} (JCUT 8, $w=28$; relative shift of $d\tau_A/d\tau_B$):
+\begin{center}\footnotesize\setlength{\tabcolsep}{4pt}\begin{tabular}{lccc}\toprule
+Pair & GR/Newton with $G=1/(4\eta_D)$ & lattice & ratio\\\midrule
+B1/B2 (outside) & $-1.482\times10^{-4}$ & $-1.503\times10^{-4}$ & 1.014\\
+A2/B2 (inside vs outside) & $-5.859\times10^{-4}$ & $-5.943\times10^{-4}$ & 1.014\\
+A1/A2 (both inside) & $-3.8\times10^{-5}$ & $-3.9\times10^{-5}$ & (the $w=28$ shell reaches $r=60$)\\\bottomrule
+\end{tabular}\end{center}
+At $w=12$, where both points are well inside the shell, the A1/A2 shift is $4\times10^{-8}$, against $5\times10^{-4}$ across the shell: no potential difference inside a shell.
+
+\textbf{Mechanism (R3) and reference (R2).} The second clock is the bound level of a Dirac mass well on the same radial lattice, placed at each clock point in the solved background. It reproduces the two-level clock's shift to 0.01--0.1\% of the shift, and still does with the field amplified 30-fold. Ratios computed through a third reference clock at $r=280$ are identical. This is expected, because all matter couples through $\sqrt N H\sqrt N$ (P3).
+
+\textbf{Ruler half.} $\lambda_s=1.005$ means the spatial metric is the GR one with the same $G$ as the clock half. In isotropic coordinates that is $\sigma=-\theta$, the second part of P6.
+
+\section{Status and conditions}
+P6 is \textbf{derived (numerical), conditionally}, in the induced-gravity sector:
+\begin{itemize}
+\item only the regulator-independent (Pauli--Villars) part of $G$ is used; the cutoff part failed on every fixed lattice (notes 7, 8, 10) and is assumed cancelled;
+\item the cosmological term is tuned to zero (counterterm $\Lambda_1$);
+\item static, spherical, weak field ($|\nu|\sim10^{-3}$), one Dirac species, Pauli--Villars mass $m=0.2$;
+\item the geometry is classical and set by stationarity of the total energy;
+\item the readout protocol (R5) uses stationary signals, whose local frequency is $\omega/N$; it was not simulated separately;
+\item the angular truncation was raised from 5 to 8 after the pre-registered run failed.
+\end{itemize}
+R1 is respected: $\Phi$ is computed within the model, from the source's energy and the environment's induced response, and $G$ is fixed by the environment's entanglement. Nothing gravitational was inserted.
+
+\section*{Code}
+\texttt{clock\_common.py} (Hellmann--Feynman gradients of the lattice vacuum energy; uses \texttt{fermion\_common.py}, now with \texttt{JCUT} set from the environment), \texttt{clock\_test.py} (lattice equations on the GR solution, fit of $\lambda_\nu,\lambda_s$), \texttt{clock\_mechanism.py} (second clock and reference check), \texttt{gr\_model.py} and \texttt{clock\_solve.py} (the finite-box solve that was abandoned), \texttt{t\_fd.py} (gradient check). Pre-registration: \texttt{PREREG\_note12.md}. Logs and JSON files: \texttt{note12\_results/}.
+\end{document}

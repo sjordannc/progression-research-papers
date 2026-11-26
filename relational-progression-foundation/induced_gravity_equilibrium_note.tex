@@ -1,0 +1,99 @@
+% Companion note 5 to "Relational Progression as an Operational Foundation for GR".
+% Prepared with Claude (Anthropic) at the author's request.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+\title{Entanglement Equilibrium with a Responding Geometry:\\ an Induced-Gravity Lattice Test\\[4pt]
+\large Companion note 5 to the consolidated draft}
+\author{Scott A. Jordan}
+\date{Draft, 24 November 2026}
+\begin{document}
+\sloppy
+\maketitle
+\begin{abstract}
+Companion note~4 computed the two inputs of Jacobson's entanglement-equilibrium argument on a fixed lattice. Here the geometry responds. We use the simplest model in which it does without a gravitational action being put in by hand: \emph{induced (Sakharov) gravity}~\cite{Sakharov}. The spatial metric and the lapse (the progression factor) are classical fields whose only dynamics is the vacuum Killing energy of the lattice scalar field living on them, so $G$ is set entirely by the environment. We isolate the regulator-independent part with a Pauli--Villars combination of masses and compare it with the same combination of the field's entanglement entropy. Pass and fail conditions were written down before the runs. The results are as follows.
+(1) The induced Newton constant equals $1/(4\eta)$, with $\eta$ the field's own entanglement area coefficient, to within $1\%$ for minimal coupling. The direct curvature fit at $\xi=0$ had not converged at the widths used ($4$--$30\%$ high); the $1\%$ figure uses the exact $\xi$-linearity of the induced action together with the measured conformal-coupling result.
+(2) Conformal coupling $\xi=1/6$ removes the induced $G$ to within $1\%$, while $\eta$ is unchanged.
+(3) The lapse enters the induced action linearly at two-derivative order, as in GR, and the lapse--ruler cross term carries the same $G$.
+(4) The ball's modular Hamiltonian has the improved stress tensor's bulk term but \emph{not} its edge term.
+Together these mean that entanglement equilibrium is derived in this model for the part that fixes $G$, but fails at minimal coupling for states that change $\langle\phi^2\rangle$, because of an $R^2$ term that nothing in the geometry cancels. It holds for all states only at $\xi=1/6$ with the Wald entropy, and there this field induces no $G$. So no single coupling lets a free scalar both supply $G$ and satisfy equilibrium. $G$ is fixed only in its calculable (mass-dependent) part.
+\end{abstract}
+
+\section{Choice of model, and what it leaves out}
+Entanglement equilibrium~\cite{J2016} says that, at fixed volume, $\delta S_{\rm tot}=\eta\,\delta A+\delta S_{\rm IR}=0$ for the actual geometry. On a fixed background $\delta A$ is put in by hand (note~4). To test the principle, $\delta A$ must come from dynamics, and to say anything about $R1$ (``$G$ from the environment'') that dynamics must itself come from the environment. The minimal model with both properties is induced gravity: no bare Einstein--Hilbert term, and the classical geometry minimises the field's vacuum Killing energy
+\begin{equation}
+E_0[N,h]=\Lambda\!\int\! N\sqrt h\;+\;C\!\int\! N\sqrt h\,{}^{3}\!R\;+\;O(\partial^4),\qquad C=-\frac{1}{16\pi G_{\rm ind}} .
+\label{eq:Eind}
+\end{equation}
+For static metrics $-N^2\dd t^2+h_{ij}\dd x^i\dd x^j$ this is the GR energy functional (whose $N$-variation is the Hamiltonian constraint), so the geometry's equation of motion is the linearized Einstein equation with $G_{\rm ind}$. Entanglement equilibrium is then \emph{derived} in the model iff $G_{\rm ind}=1/(4\eta)$ with the same regulator, and the local source matches.
+
+\textbf{Left out:} quantum fluctuations of the geometry (it is a classical mean field); gravitons and other species; interactions; time-dependent geometries (static $N$ and $h$ only); and the cutoff-scale ($\propto a^{-2}$) part of $1/G$. The last cannot be computed on the radial lattice because its angular directions are a continuum, so the vacuum energy is regulated only by the Pauli--Villars (PV) masses. The PV combination is a third finite difference in $M^2$ of physical quantities, so it measures how $1/G$ and $\eta$ depend on the field's mass. That dependence is regulator-independent; the constant cutoff-scale part is not.
+
+\section{Lattice and pre-registered predictions}
+Field: massless scalar in 3D on Srednicki's radial lattice (spacing $1$, physical), angular sectors $l$, on $\dd\ell^2=\dd r^2+f(r)^2\dd\Omega^2$ with lapse $N(r)$, optional coupling $\tfrac12\xi R_4\phi^2$ with $R_4={}^3\!R-2\Delta_hN/N$. PV masses $M^2=(0,1,2,3)\,m^2$ with weights $(1,-3,3,-1)$, for $m=0.14,\,0.20,\,0.28$. Deformations: $f=r(1+\epsilon g)$ and $N=1+\epsilon g$ with Gaussian $g$ of width $w=12$--$40$ at $r_0=150$, wall at $r=360$. With $\mathcal A\equiv6\ln2-3\ln3=0.8630$, the covariant (heat-kernel) predictions, written down before running, were:
+\begin{equation}
+\eta_{\rm PV}=\frac{\mathcal A m^2}{48\pi},\qquad C_{\rm PV}(\xi)=-\Big(\tfrac16-\xi\Big)\frac{\mathcal A m^2}{32\pi^2},\qquad \langle\phi^2\rangle_{\rm PV}=\frac{\mathcal A m^2}{16\pi^2},
+\end{equation}
+so that $-4\pi C_{\rm PV}(0)=\eta_{\rm PV}=\pi\langle\phi^2\rangle_{\rm PV}/3$ and $C_{\rm PV}(1/6)=0$. The criteria were: \textbf{P1}, the induced action has the form~\eqref{eq:Eind} and the lapse has no $(\nabla N)^2$ term; \textbf{P2}, $-4\pi C(0)/\eta=1$ within $10\%$, failing otherwise; \textbf{P3}, $C(1/6)\approx0$; \textbf{B$'$}, the ball modular Hamiltonian includes the improved tensor's edge term $-(\pi/3)\oint\phi^2$, failing if it is absent.
+
+\section{Results}
+\paragraph{Entanglement side} (flat lattice, $R=20.5$--$50.5$, fit $S=\eta\,4\pi R^2+b\ln R+c$):
+\begin{center}\small\begin{tabular}{lccc}\toprule
+& $m=0.14$ & $m=0.20$ & spread over fit forms\\\midrule
+$\eta_{\rm PV}/{\rm prediction}$ & 0.989 & 0.989 & 0.984--0.993\\
+$\langle\phi^2\rangle_{\rm PV}/{\rm prediction}$ & 0.992 & 0.998 & ($r=20$--$50$: $\pm0.003$)\\
+$\eta_{\rm PV}\big/(\pi\langle\phi^2\rangle_{\rm PV}/3)$ & 0.997 & 0.991 & \\\bottomrule\end{tabular}\end{center}
+
+\paragraph{Geometry side.} The first-order response gives $\Lambda$ at $1.007,\,1.012,\,1.020$ times the continuum value ($m=0.14,0.20,0.28$, the expected $(Ma)^2$ lattice artifact). The second-order response has a $k^0$ coefficient that differs from the first-order $\Lambda$ by $0.06$--$0.2\%$, also scaling as $(Ma)^2$. Unless it is fitted as a free constant, it masquerades as a drift of $C$ with width that grows like $w^2$. With it fitted (three fit forms, widths $12$--$40$):
+\begin{center}\small\begin{tabular}{lccc}\toprule
+& $m=0.14$ & $m=0.20$ & $m=0.28$\\\midrule
+$C(\xi{=}0)/C_{\rm pred}$, direct & 1.20--1.31 & 1.10--1.20 & 1.04--1.12\\
+$C(\xi{=}1/6)/|C(0)|$ & $-0.011$ to $+0.000$ & $-0.004$ to $+0.001$ & --\\
+$[C(0)-C(\tfrac16)]\big/(-\langle\phi^2\rangle/12)$, per width $w=12\to40$ & 1.43$\to$1.14 & 1.32$\to$1.09 & --\\\bottomrule\end{tabular}\end{center}
+The direct $\xi=0$ coefficient has not converged: it approaches the prediction as $m w$ grows. The contamination is the four-derivative term $\propto(\tfrac16-\xi)^2R^2$, which vanishes at $\xi=1/6$; this is why the conformal-coupling numbers are clean. Because $E_0$ is exactly linear in $\xi$ at two-derivative order, $C(0)=C(\tfrac16)-\tfrac1{12}\langle\phi^2\rangle$. With the measured $C(\tfrac16)$ and $\langle\phi^2\rangle$, this gives $C(0)=C_{\rm pred}\times(0.99$--$1.00)$; the per-width ratio in the last row tends to $1$ as $w$ grows, as it should. Checks: results are unchanged for $\epsilon=0.005$--$0.02$, for angular cutoff $3600$ versus $7200$, and when the bump is moved to $r_0=260$ in a larger box ($2\%$ at $w=40$). An earlier run had rounding noise from the highest angular modes; it was found and removed by dropping sites with angular gap $l/r>10$, where the PV combination is negligible.
+
+\paragraph{Lapse (progression variable), $m=0.2$.} The lapse--lapse Hessian relative to the Einstein--Hilbert scale $|C|\int(\nabla n)^2$ is $-0.157,-0.094,-0.065,-0.045$ for $w=16,24,32,40$ at $\xi=0$, and $-0.039,-0.023,-0.014,-0.012$ at $\xi=1/6$. It falls toward zero: there is no $(\nabla N)^2$ term, and the lapse enters linearly as in GR. The lapse--ruler cross term gives $[C_\times(0)-C_\times(\tfrac16)]/(-\langle\phi^2\rangle/12)=1.12,1.08,1.06,1.04$: the clock and ruler halves carry one and the same $G$.
+
+\paragraph{Edge term (B$'$), $l=0$, $N=144$, $R=24.5$.} For bumps that are large at the entangling sphere, the exact $Q=\tfrac12v^\top M_xv$ is
+\begin{center}\small\begin{tabular}{lcccccc}\toprule
+bump $(r_0,\sigma)$ & (0,12) & (0,24) & (12,8) & (18,6) & (24,4) & (24,8)\\\midrule
+$Q_{\rm ex}/[Q_{\min}+\frac{\pi}{R}\sum v^2]$ & 1.022 & 1.022 & 1.020 & 1.017 & 1.009 & 1.013\\
+$Q_{\rm ex}/[\ldots-\frac{\pi}{3}u(R)^2]$ (with edge) & 1.067 & 2.43 & 1.13 & 1.35 & 4.40 & 21.6\\
+edge share of prediction & 4\% & 58\% & 10\% & 25\% & 77\% & 95\%\\\bottomrule\end{tabular}\end{center}
+The residual $1$--$2\%$ equals the finite-box factor of the momentum control. So the edge term is absent:
+\begin{equation}
+\delta S_{\rm ball}=2\pi\!\int_B\!\frac{R^2-r^2}{2R}\,\delta\langle T^{\min}_{00}\rangle+\frac{\pi}{R}\int_B\delta\langle\phi^2\rangle
+=2\pi\!\int_B\! w\,\delta\langle T^{\rm imp}_{00}\rangle+\frac{\pi}{3}\oint_{\partial B}\delta\langle\phi^2\rangle .
+\label{eq:Kball}
+\end{equation}
+This corrects a statement in note~4, which tested only bumps that vanish at the sphere and so could not tell these forms apart.
+
+\section{What follows}
+\paragraph{P1, P3 pass; P2 passes via the $\xi$ route.} The geometry's induced dynamics is Einstein-like at two-derivative order, with the lapse entering linearly. The induced $G$ equals $1/(4\eta)$ at $\xi=0$, i.e.\ $-4\pi C(0)/\eta=1.00$--$1.01$, and conformal coupling removes it. This is the lattice counterpart of the analytic matching of entanglement entropy and induced $1/G$ for minimal coupling~\cite{SU1994}, and of the contact-term mismatch at $\xi\neq0$~\cite{Kabat}. The direct $\xi=0$ extraction alone gives $1.12$--$1.33$ at the widths used and did not meet the pre-set $10\%$; we report both. \st{Derived (numerical), PV part}
+
+\paragraph{The local source: an obstruction at minimal coupling.} For a smooth state in a small ball, \eqref{eq:Kball} gives $\delta S_{\rm IR}=\tfrac{4\pi^2R^2}{3}\delta\langle\phi^2\rangle+O(R^4)$. In the $\xi=0$ model the geometry responds only to $T^{\min}$, so $\eta\,\delta A=O(R^4)$ and cannot cancel the $R^2$ term. \emph{Entanglement equilibrium therefore fails at $\xi=0$ for any state with $\delta\langle\phi^2\rangle\neq0$}, for example any mixed or thermal excitation. This is a concrete instance of the low-dimension-operator problem raised by Casini, Galante and Myers~\cite{CGM2016}: $\phi^2$ has dimension $1$, and its term scales as $R^{2\Delta}=R^2$. It is not a lattice artifact: the coefficient $\pi/R$ is measured to $1$--$2\%$.
+
+\paragraph{Conformal coupling repairs the source but removes $G$.} At general $\xi$ the gravitational (Wald) entropy carries $-2\pi\xi\oint\phi^2$. For state changes, its $R^2$ part cancels that of~\eqref{eq:Kball} only for $\xi=1/6$. At order $R^4$ the remainder is then exactly $2\pi\int w\,\delta T^{\rm imp}_{00}$, the stress tensor that gravitates at $\xi=1/6$: we checked that the $R^4$ coefficients agree, $\tfrac{2\pi^2}{15}-\tfrac{2\pi^2}{9}=-\tfrac{4\pi^2}{45}$. In vacuum the Wald term gives $-\tfrac{\pi}{3}\langle\phi^2\rangle A=-\eta A$, using the measured $\eta=\pi\langle\phi^2\rangle/3$, so the total area coefficient is $0$. This matches the measured $C(1/6)=0$: the bookkeeping is consistent, but this field then supplies no $G$.
+
+\paragraph{Answer to the improved-versus-ordinary question.} The ordinary tensor alone is excluded (note~4). The improved tensor with its edge term is excluded (B$'$). The entanglement entropy behaves as $2\pi\int w\,T^{\rm imp}_{00}$ plus an edge term equal and opposite to the $\xi=1/6$ Wald entropy. So equilibrium can hold for all states only if the gravitating tensor is $T^{\rm imp}$ and the gravitational entropy is the Wald entropy at $\xi=1/6$. For a free scalar that is exactly the coupling at which it contributes nothing to $1/G$.
+
+\paragraph{Status.} Entanglement equilibrium is \emph{derived} in this model for the part that fixes $G$ (minimal coupling, regulator-independent part), but \emph{fails} for the local source at minimal coupling. It is \emph{consistent} for all states only at $\xi=1/6$, where this field gives no $G$. Overall: \st{Conditional}. $G$ is not fixed: its mass-dependent part is $1/(4\eta)$, but the cutoff-scale part is regulator-dependent and uncomputed. A field content that satisfies equilibrium for all states and also induces $G$ remains to be found. \st{Open (sharpened)}
+
+\paragraph{Next.} (i) A covariant UV regulator that also defines a statistical entropy, so that the cutoff-scale part of $1/G$ can be compared with $\eta$; a random (Poisson) spatial lattice is the natural candidate. (ii) Fermions and gauge fields: fermions have no $\phi^2$-type operator of dimension below $2$, so the obstruction may be absent, which makes them the obvious next species to test. (iii) Quantum geometry fluctuations.
+
+\section*{Code}
+\texttt{induced\_common.py} (lattice, PV energies), \texttt{induced\_G.py} (geometry side; args $m$, $\xi$, mode \texttt{f}/\texttt{n}, widths), \texttt{induced\_eta.py} (entropy and $\langle\phi^2\rangle$; arg $m$), \texttt{eq\_testB\_edge.py} (B$'$), \texttt{epscheck.py} ($\epsilon$, angular-cutoff and box checks), \texttt{analyse\_G2.py}, \texttt{analyse\_eta.py}, and \texttt{PREREG\_note5.md} (pre-registration). Total runtime about 1.5 CPU-hours.
+
+\begin{thebibliography}{9}
+\bibitem{CGM2016} H.~Casini, D.~A.~Galante, R.~C.~Myers, ``Comments on Jacobson's `Entanglement equilibrium and the Einstein equation','' \emph{JHEP} \textbf{03}, 194 (2016), arXiv:1601.00528.
+\bibitem{J2016} T.~Jacobson, ``Entanglement equilibrium and the Einstein equation,'' \emph{Phys.\ Rev.\ Lett.} \textbf{116}, 201101 (2016).
+\bibitem{Sakharov} A.~D.~Sakharov, ``Vacuum quantum fluctuations in curved space and the theory of gravitation,'' \emph{Sov.\ Phys.\ Dokl.} \textbf{12}, 1040 (1968).
+\bibitem{SU1994} L.~Susskind and J.~Uglum, ``Black hole entropy in canonical quantum gravity and superstring theory,'' \emph{Phys.\ Rev.\ D} \textbf{50}, 2700 (1994).
+\bibitem{Kabat} D.~Kabat, ``Black hole entropy and entropy of entanglement,'' \emph{Nucl.\ Phys.\ B} \textbf{453}, 281 (1995).
+\end{thebibliography}
+\end{document}

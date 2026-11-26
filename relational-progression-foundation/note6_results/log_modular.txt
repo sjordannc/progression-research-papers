@@ -1,0 +1,170 @@
+
+=== kappa=-1 Nr=96 n=24 R=24.75  S=0.82388154  min c=3.97e-75 (20s)
+   (0, 8, 'u-only'): Q_exact=-5.173e-29  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (0, 8, 'v-only'): Q_exact=-1.609e-28  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'u-only'): Q_exact=-5.088e-30  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'v-only'): Q_exact=-2.943e-29  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'u-only'): Q_exact=-8.531e-31  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'v-only'): Q_exact=-5.288e-30  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'u-only'): Q_exact=-1.274e-34  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'v-only'): Q_exact=-2.359e-33  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'u-only'): Q_exact=-6.654e-46  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'v-only'): Q_exact=-2.235e-43  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'u-only'): Q_exact=-5.205e-46  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'v-only'): Q_exact=-1.800e-43  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'u-only'): Q_exact=-5.719e-33  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'v-only'): Q_exact=-3.450e-32  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+  fit [CHM only]: coeffs=[1.03808]  median rel resid=2.51e-02 max=1.00e+00
+  fit [CHM + psi^dag psi + psibar psi]: coeffs=[ 1.03803 -0.31193 -0.09313]  median rel resid=2.50e-02 max=4.10e+44
+  Q_exact/Q_CHM over 30 probes with non-negligible CHM: min 1.0045 median 1.0287 max 1.0582
+  EDGE probes (bump at R): Q_exact/Q_CHM min 1.0049 median 1.0075 max 1.0174
+  scalar comparison: the scalar's (pi/R)phi^2 term was 4-77% of Q for comparable bumps
+
+=== kappa=1 Nr=96 n=24 R=24.75  S=0.91210941  min c=1.03e-80 (40s)
+   (0, 8, 'u-only'): Q_exact=-1.726e-22  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (0, 8, 'v-only'): Q_exact=-9.948e-23  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'u-only'): Q_exact=-2.939e-23  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'v-only'): Q_exact=-1.010e-23  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'u-only'): Q_exact=-5.276e-24  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'v-only'): Q_exact=-1.718e-24  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'u-only'): Q_exact=-2.297e-27  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'v-only'): Q_exact=-3.292e-28  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'u-only'): Q_exact=-2.348e-37  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'v-only'): Q_exact=-4.426e-40  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'u-only'): Q_exact=-1.813e-37  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'v-only'): Q_exact=-5.377e-39  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'u-only'): Q_exact=-3.459e-26  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'v-only'): Q_exact=-1.154e-26  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+  fit [CHM only]: coeffs=[1.04026]  median rel resid=2.71e-02 max=1.00e+00
+  fit [CHM + psi^dag psi + psibar psi]: coeffs=[ 1.04014  0.45931 -0.11442]  median rel resid=2.45e-02 max=8.75e+38
+  Q_exact/Q_CHM over 30 probes with non-negligible CHM: min 1.0043 median 1.0291 max 1.0612
+  EDGE probes (bump at R): Q_exact/Q_CHM min 1.0049 median 1.0076 max 1.0176
+  scalar comparison: the scalar's (pi/R)phi^2 term was 4-77% of Q for comparable bumps
+
+=== kappa=-2 Nr=96 n=24 R=24.75  S=0.68977293  min c=4.76e-82 (61s)
+   (0, 8, 'u-only'): Q_exact=-2.465e-20  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (0, 8, 'v-only'): Q_exact=-3.574e-20  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'u-only'): Q_exact=-3.888e-21  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'v-only'): Q_exact=-8.715e-21  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'u-only'): Q_exact=-6.873e-22  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'v-only'): Q_exact=-1.642e-21  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'u-only'): Q_exact=-2.473e-25  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'v-only'): Q_exact=-1.171e-24  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'u-only'): Q_exact=-6.801e-36  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'v-only'): Q_exact=-3.644e-34  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'u-only'): Q_exact=-1.160e-35  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'v-only'): Q_exact=-1.772e-34  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'u-only'): Q_exact=-4.502e-24  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'v-only'): Q_exact=-1.072e-23  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+  fit [CHM only]: coeffs=[1.02428]  median rel resid=2.05e-02 max=1.00e+00
+  fit [CHM + psi^dag psi + psibar psi]: coeffs=[ 1.02422 -0.23805 -0.07822]  median rel resid=1.89e-02 max=3.14e+34
+  Q_exact/Q_CHM over 30 probes with non-negligible CHM: min 0.9992 median 1.0143 max 1.0708
+  EDGE probes (bump at R): Q_exact/Q_CHM min 1.0008 median 1.0030 max 1.0091
+  scalar comparison: the scalar's (pi/R)phi^2 term was 4-77% of Q for comparable bumps
+
+=== kappa=2 Nr=96 n=24 R=24.75  S=0.83589235  min c=7.14e-101 (80s)
+   (0, 8, 'u-only'): Q_exact=-3.019e-01  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.36098  (scalar analog: 1)
+   (0, 8, 'v-only'): Q_exact=-2.584e-01  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.28710  (scalar analog: 1)
+   (6, 4, 'u-only'): Q_exact=-6.171e-02  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.07036  (scalar analog: 1)
+   (6, 4, 'v-only'): Q_exact=-3.524e-02  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.03982  (scalar analog: 1)
+   (10, 5, 'u-only'): Q_exact=-1.143e-02  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.01020  (scalar analog: 1)
+   (10, 5, 'v-only'): Q_exact=-6.207e-03  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00553  (scalar analog: 1)
+   (14, 4, 'u-only'): Q_exact=-6.915e-06  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00001  (scalar analog: 1)
+   (14, 4, 'v-only'): Q_exact=-2.074e-06  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'u-only'): Q_exact=-2.017e-15  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'v-only'): Q_exact=-9.049e-17  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'u-only'): Q_exact=-9.610e-16  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'v-only'): Q_exact=-1.108e-16  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'u-only'): Q_exact=-7.494e-05  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00008  (scalar analog: 1)
+   (24, 8, 'v-only'): Q_exact=-4.109e-05  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00004  (scalar analog: 1)
+  fit [CHM only]: coeffs=[0.97996]  median rel resid=3.25e-02 max=1.00e+00
+  fit [CHM + psi^dag psi + psibar psi]: coeffs=[ 0.98269 -5.73736  0.35069]  median rel resid=6.44e-02 max=4.54e+16
+  Q_exact/Q_CHM over 30 probes with non-negligible CHM: min 0.8655 median 1.0073 max 1.2963
+  EDGE probes (bump at R): Q_exact/Q_CHM min 1.0009 median 1.0034 max 1.0093
+  scalar comparison: the scalar's (pi/R)phi^2 term was 4-77% of Q for comparable bumps
+total 81s
+
+=== kappa=-1 Nr=144 n=24 R=24.75  S=0.82428139  min c=2.18e-73 (63s)
+   (0, 8, 'u-only'): Q_exact=+8.709e-31  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (0, 8, 'v-only'): Q_exact=+2.708e-30  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (6, 4, 'u-only'): Q_exact=+8.566e-32  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (6, 4, 'v-only'): Q_exact=+4.954e-31  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (10, 5, 'u-only'): Q_exact=+1.436e-32  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (10, 5, 'v-only'): Q_exact=+8.903e-32  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (14, 4, 'u-only'): Q_exact=+2.146e-36  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (14, 4, 'v-only'): Q_exact=+3.972e-35  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (18, 3, 'u-only'): Q_exact=+1.122e-47  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (18, 3, 'v-only'): Q_exact=+3.763e-45  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (24, 4, 'u-only'): Q_exact=+8.777e-48  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (24, 4, 'v-only'): Q_exact=+3.031e-45  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (24, 8, 'u-only'): Q_exact=+9.629e-35  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+   (24, 8, 'v-only'): Q_exact=+5.808e-34  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=+0.00000  (scalar analog: 1)
+  fit [CHM only]: coeffs=[1.01845]  median rel resid=1.43e-02 max=1.00e+00
+  fit [CHM + psi^dag psi + psibar psi]: coeffs=[ 1.01842 -0.21768 -0.0702 ]  median rel resid=1.30e-02 max=1.73e+46
+  Q_exact/Q_CHM over 30 probes with non-negligible CHM: min 1.0002 median 1.0105 max 1.0334
+  EDGE probes (bump at R): Q_exact/Q_CHM min 1.0017 median 1.0033 max 1.0079
+  scalar comparison: the scalar's (pi/R)phi^2 term was 4-77% of Q for comparable bumps
+
+=== kappa=1 Nr=144 n=24 R=24.75  S=0.91247677  min c=6.65e-79 (130s)
+   (0, 8, 'u-only'): Q_exact=-9.072e-24  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (0, 8, 'v-only'): Q_exact=-5.228e-24  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'u-only'): Q_exact=-1.544e-24  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'v-only'): Q_exact=-5.306e-25  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'u-only'): Q_exact=-2.773e-25  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'v-only'): Q_exact=-9.030e-26  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'u-only'): Q_exact=-1.207e-28  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'v-only'): Q_exact=-1.730e-29  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'u-only'): Q_exact=-1.234e-38  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'v-only'): Q_exact=-2.326e-41  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'u-only'): Q_exact=-9.531e-39  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'v-only'): Q_exact=-2.826e-40  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'u-only'): Q_exact=-1.818e-27  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'v-only'): Q_exact=-6.063e-28  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+  fit [CHM only]: coeffs=[1.01996]  median rel resid=1.56e-02 max=1.00e+00
+  fit [CHM + psi^dag psi + psibar psi]: coeffs=[ 1.01987  0.34167 -0.0766 ]  median rel resid=1.29e-02 max=1.21e+40
+  Q_exact/Q_CHM over 30 probes with non-negligible CHM: min 1.0002 median 1.0108 max 1.0360
+  EDGE probes (bump at R): Q_exact/Q_CHM min 1.0018 median 1.0033 max 1.0079
+  scalar comparison: the scalar's (pi/R)phi^2 term was 4-77% of Q for comparable bumps
+
+=== kappa=-2 Nr=144 n=24 R=24.75  S=0.68978994  min c=1.73e-80 (199s)
+   (0, 8, 'u-only'): Q_exact=-4.925e-22  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (0, 8, 'v-only'): Q_exact=-7.142e-22  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'u-only'): Q_exact=-7.768e-23  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (6, 4, 'v-only'): Q_exact=-1.741e-22  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'u-only'): Q_exact=-1.373e-23  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (10, 5, 'v-only'): Q_exact=-3.281e-23  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'u-only'): Q_exact=-4.941e-27  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'v-only'): Q_exact=-2.340e-26  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'u-only'): Q_exact=-1.359e-37  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'v-only'): Q_exact=-7.281e-36  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'u-only'): Q_exact=-2.318e-37  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'v-only'): Q_exact=-3.539e-36  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'u-only'): Q_exact=-8.994e-26  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'v-only'): Q_exact=-2.142e-25  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+  fit [CHM only]: coeffs=[1.00991]  median rel resid=9.02e-03 max=1.00e+00
+  fit [CHM + psi^dag psi + psibar psi]: coeffs=[ 1.0099  -0.07399 -0.04735]  median rel resid=8.70e-03 max=6.02e+35
+  Q_exact/Q_CHM over 30 probes with non-negligible CHM: min 0.9975 median 1.0043 max 1.0284
+  EDGE probes (bump at R): Q_exact/Q_CHM min 0.9998 median 1.0011 max 1.0039
+  scalar comparison: the scalar's (pi/R)phi^2 term was 4-77% of Q for comparable bumps
+
+=== kappa=2 Nr=144 n=24 R=24.75  S=0.8359075  min c=2.01e-99 (263s)
+   (0, 8, 'u-only'): Q_exact=-5.450e-03  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00652  (scalar analog: 1)
+   (0, 8, 'v-only'): Q_exact=-4.664e-03  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00518  (scalar analog: 1)
+   (6, 4, 'u-only'): Q_exact=-1.114e-03  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00127  (scalar analog: 1)
+   (6, 4, 'v-only'): Q_exact=-6.361e-04  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00072  (scalar analog: 1)
+   (10, 5, 'u-only'): Q_exact=-2.063e-04  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00018  (scalar analog: 1)
+   (10, 5, 'v-only'): Q_exact=-1.120e-04  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00010  (scalar analog: 1)
+   (14, 4, 'u-only'): Q_exact=-1.248e-07  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (14, 4, 'v-only'): Q_exact=-3.743e-08  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'u-only'): Q_exact=-3.641e-17  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (18, 3, 'v-only'): Q_exact=-1.633e-18  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'u-only'): Q_exact=-1.735e-17  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 4, 'v-only'): Q_exact=-2.000e-18  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'u-only'): Q_exact=-1.353e-06  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+   (24, 8, 'v-only'): Q_exact=-7.417e-07  Q_CHM=+0.00000  Q_exact/[(pi/R)sum psi^2]=-0.00000  (scalar analog: 1)
+  fit [CHM only]: coeffs=[0.96587]  median rel resid=3.86e-02 max=1.00e+00
+  fit [CHM + psi^dag psi + psibar psi]: coeffs=[ 0.9686  -5.75528  0.38654]  median rel resid=6.63e-02 max=2.54e+18
+  Q_exact/Q_CHM over 30 probes with non-negligible CHM: min 0.8408 median 1.0017 max 1.2808
+  EDGE probes (bump at R): Q_exact/Q_CHM min 0.9998 median 1.0013 max 1.0040
+  scalar comparison: the scalar's (pi/R)phi^2 term was 4-77% of Q for comparable bumps
+total 263s

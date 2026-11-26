@@ -1,0 +1,9 @@
+radius  two-level rate/flat   bound-level rate/flat   difference
+A1 r=   30  -3.292495e-02   -3.292359e-02   +1.37e-06
+A2 r=   60  -3.179870e-02   -3.179626e-02   +2.44e-06
+B1 r=  160  -1.881820e-02   -1.881976e-02   -1.55e-06
+B2 r=  210  -1.438328e-02   -1.438327e-02   +1.03e-08
+REF r=  280  -1.080732e-02   -1.080692e-02   +3.97e-07
+B1/B2: two-level -4.499647e-03  bound-level -4.501233e-03  (mechanism difference 0.04% of the shift)  via reference clock: -4.499647e-03
+A2/B2: two-level -1.766957e-02  bound-level -1.766710e-02  (mechanism difference 0.01% of the shift)  via reference clock: -1.766957e-02
+A1/A2: two-level -1.163246e-03  bound-level -1.164347e-03  (mechanism difference 0.09% of the shift)  via reference clock: -1.163246e-03

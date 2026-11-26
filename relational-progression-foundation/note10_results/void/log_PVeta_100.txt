@@ -1,0 +1,1 @@
+100 eta PV m=0.2 Nside=80 nth=24: eta=2.68403516e-04 pred 4.578602e-04 ratio 0.5862

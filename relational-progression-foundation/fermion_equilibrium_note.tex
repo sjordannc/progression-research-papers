@@ -1,0 +1,96 @@
+% Companion note 6 to "Relational Progression as an Operational Foundation for GR".
+% Prepared with Claude (Anthropic) at the author's request.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+\title{Entanglement Equilibrium for a Fermion Environment:\\ the Induced-Gravity Lattice Test Repeated for Dirac Fields\\[4pt]
+\large Companion note 6 to the consolidated draft}
+\author{Scott A. Jordan}
+\date{Draft, 24 November 2026}
+\begin{document}
+\sloppy
+\maketitle
+\begin{abstract}
+Companion note~5 found that a free scalar cannot both induce $G$ and satisfy entanglement equilibrium. At minimal coupling it gives $G=1/(4\eta)$, but its ball entropy carries a term $\propto R^2\delta\langle\phi^2\rangle$ that the geometry cannot cancel. At conformal coupling equilibrium is restored, but the induced $G$ vanishes. Here we repeat the test for a free massless Dirac fermion in the same induced-gravity setup: the ruler $f(r)$ and the lapse (progression factor) are classical fields whose only dynamics is the fermion's own vacuum Killing energy, with the regulator-independent part isolated by the same Pauli--Villars combination. Lattice fermion doubling is handled with a staggered radial lattice and a covariant radial derivative; a naive lattice is run alongside and doubles, as it should. With the conditions written down before running, all pre-registered tests pass.
+(i) The fermion's ball modular Hamiltonian is the CHM operator $2\pi\int w\,T_{00}$ built from the symmetric (gravitating) stress tensor, to about $1\%$. It has no extra bulk term (excluded exactly by chiral symmetry) and no edge term.
+(ii) The fermion induces a nonzero $G$, and $G_{\rm ind}=1/(4\eta_D)$ with the fermion's own entanglement coefficient to within $3\%$ at two mass scales.
+(iii) The induced action has the Einstein form, with the lapse entering linearly.
+So, for the fermion in this model, entanglement equilibrium holds for all states and is derived. $G$ is fixed by the environment in its regulator-independent part, but not in its cutoff-scale part.
+\end{abstract}
+
+\section{Why fermions, and what changes}
+In note~5 the scalar's obstruction came from $\phi^2$, a scalar operator of dimension $\Delta=1<d/2$, whose ball term scales as $R^{2\Delta}=R^2$ and dominates the $R^4$ energy term. A Dirac fermion has no gauge-invariant scalar of dimension below $3$ ($\bar\psi\psi$ has $\Delta=3$, giving $R^6$), it admits no nonminimal curvature coupling of dimension $\le4$, and it has no contact term in its entanglement entropy~\cite{Kabat}. The covariant (heat-kernel) expectations for one Dirac field, relative to one minimally coupled real scalar, are $\Lambda_D=-4\Lambda_S$, $C_D=2C_S$, $\eta_D=2\eta_S$. In the Pauli--Villars scheme of note~5, with $\mathcal A=6\ln2-3\ln3$, this means
+\begin{equation}
+\eta_D=\frac{\mathcal A m^2}{24\pi},\qquad C_D=-\frac{1}{16\pi G_{\rm ind}}=-\frac{\mathcal A m^2}{96\pi^2},\qquad\text{so}\quad -4\pi C_D=\eta_D .
+\end{equation}
+
+\section{The lattice Dirac field, and doubling}
+Separating the angular dependence (quantum number $\kappa=\pm1,\pm2,\dots$, degeneracy $2|\kappa|$) leaves a two-component radial problem $H_\kappa=\begin{pmatrix}m&B^\dagger\\B&-m\end{pmatrix}$ with $B=\partial_r+\kappa/f(r)$ on $\dd\ell^2=\dd r^2+f^2\dd\Omega^2$ (the spin connection is absorbed by $\psi=\chi/f$). The lapse enters as $H_N=\sqrt N\,H\sqrt N$, which reproduces the $\tfrac12\alpha\cdot\nabla N$ spin-connection term.
+
+\textbf{Doubling.} A naive discretisation (both components on the same sites, central differences) has a second massless branch at lattice momentum $\pi$. We instead (a) stagger: the upper component lives on sites $r=j$ and the lower on $r=j+\tfrac12$, so the derivative is a nearest-neighbour difference with a single zero at $k=0$; and (b) discretise $B=e^{-\Phi}\partial_re^{\Phi}$ with $\Phi'=\kappa/f$ exactly, $(Bu)_{j+\frac12}=e^{-\Phi_{j+\frac12}}(e^{\Phi_{j+1}}u_{j+1}-e^{\Phi_j}u_j)$. Averaging $\kappa/f$ instead would leave a low-energy mode at $k=\pi$ for large $\kappa/r$; with (b) the gap is $\ge2\sinh(\kappa/2f)$ at every lattice momentum. (c) The chain is terminated so that the regular solution is kept. A first version with the same termination for both signs of $\kappa$ had a spurious near-zero mode $u\propto r^{-\kappa}$ localized at the origin, which made the entropy erratic; it was found and removed. Checks:
+\begin{center}\small\begin{tabular}{lccc}\toprule
+& staggered, covariant & naive & continuum\\\midrule
+positive levels below $E=0.5$ ($\kappa=-1$, $L=60$) & 9 & 19 & 9.6\\
+vacuum energy density $\Lambda_D/\Lambda_S$ (PV, $m=0.2$) & $-3.88$ & $-8.15$ & $-4$ (doubler: $-8$)\\\bottomrule\end{tabular}\end{center}
+The staggered field is a single Dirac fermion. Its $3\%$ deficit in $\Lambda$ is the $O((Ma)^2)$ lattice artifact; the scalar's was $+1.2\%$.
+
+\section{Pre-registered tests}
+Written before any fermion run (file \texttt{PREREG\_note6.md}):
+\textbf{P0} no doubling ($\Lambda_D/\Lambda_S\approx-4$, not $-8$).
+\textbf{P1F} induced action of the Einstein form; lapse--lapse term at $O(k^2)$ below $10\%$ of the Einstein--Hilbert scale and falling with width.
+\textbf{P2F} $-4\pi C_D/\eta_D=1$ within $10\%$, failing otherwise.
+\textbf{P4F} ball modular Hamiltonian $=2\pi\cdot\tfrac12\{W,H\}$ (symmetric $T_{00}$), with any extra $\psi^\dagger\psi$ or $\bar\psi\psi$ bulk term below $0.1$ of the scalar's $\tfrac{\pi}{R}\phi^2$ term, failing otherwise.
+
+\section{Results}
+\paragraph{P4F: the ball modular Hamiltonian} (massless, 100-digit precision, $n=24$, $R=24.75$; 30 smooth probes inside the ball plus 6 reaching the sphere). Median $Q_{\rm exact}/Q_{\rm CHM}$:
+\begin{center}\small\begin{tabular}{lcccc}\toprule
+sector $\kappa$ & $-1$ & $+1$ & $-2$ & $+2$\\\midrule
+$N=96$: interior / edge probes & 1.029 / 1.008 & 1.029 / 1.008 & 1.014 / 1.003 & 1.007 / 1.003\\
+$N=144$: interior / edge probes & 1.011 / 1.003 & 1.011 / 1.003 & 1.004 / 1.001 & 1.002 / 1.001\\\bottomrule\end{tabular}\end{center}
+The residual falls as the box grows, as the scalar's finite-box factor did. Probes that are large at the entangling sphere agree to within $0.1$--$0.8\%$, so there is \emph{no edge term} (contrast note~5, where the scalar's edge term was decisively absent from a form that would have required it). Probes living on one component only ($\psi^\dagger\psi$- or $\bar\psi\psi$-type) give $Q_{\rm exact}\approx10^{-28}$ against an expected scale of order $1$. The massless lattice fermion has a sublattice (chiral) symmetry that makes the reduced correlation matrix $\tfrac12$ on the diagonal blocks, so these terms are forbidden \emph{exactly}, not merely small. In the scalar the corresponding term was $4$--$77\%$ of the total. \textbf{Pass.} (In $\kappa=+2$ a few probes whose CHM value nearly cancels scatter by up to $\pm28\%$; the median and the edge probes are unaffected.)
+
+\paragraph{Entanglement coefficient} (flat lattice, $R=20.75$--$50.75$, fit $S=\eta\,4\pi R^2+b\ln R+c$):
+$\eta_D/{\rm prediction}=1.006$ ($m=0.14$), $1.014$ ($m=0.20$), $1.027$ ($m=0.28$); $\eta_D/\eta_S=2.04$ (prediction $2$). The drift with $m$ is the $(Ma)^2$ artifact.
+
+\paragraph{P2F, P1F: induced $G$.} Geometry runs: bump at $r_0=150$, wall at $360$, widths $w=12$--$40$, $\epsilon=0.02$. The second-order $k^0$ coefficient is fitted as a free constant, as in note~5. Its offset from the first-order $\Lambda$ ($2$--$5\times10^{-4}$) changes when the angular truncation is changed, so it is a truncation artifact rather than physics.
+\begin{center}\small\begin{tabular}{lccc}\toprule
+& $m=0.20$ & $m=0.28$ & $m=0.20$, truncation $l/r>10$\\\midrule
+$C_D/C_{\rm pred}$ (four fit forms) & 1.007--1.029 & 0.994--1.011 & 0.967--1.031\\
+$-4\pi C_D/\eta_D$ (P2F) & 0.994--1.015 & 0.968--0.984 & 0.954--1.017\\\bottomrule\end{tabular}\end{center}
+Unlike the minimally coupled scalar, whose direct curvature coefficient had not converged ($10$--$30\%$ high), the fermion converges at the widths used. A massless Dirac field is conformal, so its four-derivative action contains no $R^2$ term (only Weyl$^2$ and the Euler density), which is why the contamination is small. \textbf{P2F passes}: $G_{\rm ind}=1/(4\eta_D)$ to within $3\%$.
+
+Lapse (progression factor), $m=0.2$:
+\begin{center}\small\begin{tabular}{lcccc}\toprule
+$w$ & 16 & 24 & 32 & 40\\\midrule
+lapse--lapse / EH scale & $-0.055$ & $-0.013$ & $+0.006$ & $+0.016$\\
+lapse--ruler cross term, $C_\times/C_{\rm pred}$ & 0.934 & 0.966 & 0.981 & 0.993\\\bottomrule\end{tabular}\end{center}
+There is no $(\nabla N)^2$ term at the few-percent level, and the clock--ruler cross term converges to the same $G$. \textbf{P1F passes.}
+
+\emph{Precision.} With $\epsilon=0.02$, the lapse--lapse term first showed a spurious growth at high angular momentum. This was rounding noise from the large staggered couplings ($\le e^{5}$), amplified by $1/\epsilon^2$. It disappears for $\epsilon=0.05$ or a tighter truncation ($l/r>5$); with that truncation the partial sums converge by $l\approx400$--$1000$ to within $4\times10^{-4}$. All final geometry runs use the $l/r>5$ truncation (the entropy and $\Lambda$ runs, which involve no $1/\epsilon^2$ amplification, used $l/r>10$). Results are unchanged in $\epsilon$ and in angular cutoff. Finite box: the modular-Hamiltonian residual falls from $3\%$ to $1\%$ between $N/R=4$ and $6$.
+
+\section{Status}
+For a free Dirac fermion in the induced-gravity model:
+\begin{itemize}
+\item the geometry's dynamics, generated by the fermion's vacuum energy, is Einstein-like, with $G_{\rm ind}=1/(4\eta_D)$ (mass-dependent part);
+\item the fermion's ball entropy responds to its gravitating (symmetric) stress tensor with the CHM weight, with no $R^2$ obstruction and no edge term.
+\end{itemize}
+Jacobson's argument therefore closes for this environment: for every first-order state change, the entropy change is balanced by the area change that the induced dynamics produces. \textbf{Entanglement equilibrium: derived (numerical) for a fermion environment in induced gravity, regulator-independent part.} The scalar result of note~5 stands: a scalar environment violates it at minimal coupling. Equilibrium is therefore a property of the field content, not a universal principle. \textbf{$G$:} fixed by the environment in its regulator-independent (mass-dependent) part, $1/(4G)=\eta$. The cutoff-scale part ($\propto a^{-2}$) is still not computed, so the absolute value of $G$ is not predicted. Status: Conditional.
+
+\paragraph{Limits.} Static geometries; classical (mean-field) geometry; free fields; regulator-independent part only; radial lattice with continuum angular directions; Pauli--Villars masses up to $Ma\approx0.5$ (artifacts $1$--$3\%$); box of radius $360$ with bumps at $r_0=150$, widths up to $40$.
+
+\paragraph{Next.} (i) Mixed environments: a scalar plus fermions, to see whether the scalar's $R^2$ obstruction can be cancelled (it cannot by fermions, which have no $\Delta=1$ operator, so a realistic environment must avoid light minimally coupled scalars or supply a compensating mechanism). (ii) Gauge fields, which have a known contact-term subtlety. (iii) A covariant regulator with a statistical entropy (for example a random lattice), so that the cutoff-scale part of $1/G$ can be compared with $\eta$.
+
+\section*{Code}
+\texttt{fermion\_common.py} (staggered covariant lattice Dirac field), \texttt{fermion\_doubling.py} (P0, naive comparison), \texttt{fermion\_modular.py} (P4F, \texttt{mpmath}), \texttt{fermion\_eta.py}, \texttt{fermion\_G.py} (geometry side; args $m$, $0$, mode, widths), \texttt{fnncheck2.py} (precision check), \texttt{analyse\_FG.py}, \texttt{analyse\_feta.py}, \texttt{PREREG\_note6.md}; raw results in \texttt{note6\_results/}.
+
+\begin{thebibliography}{9}
+\bibitem{Kabat} D.~Kabat, ``Black hole entropy and entropy of entanglement,'' \emph{Nucl.\ Phys.\ B} \textbf{453}, 281 (1995).
+\bibitem{J2016} T.~Jacobson, ``Entanglement equilibrium and the Einstein equation,'' \emph{Phys.\ Rev.\ Lett.} \textbf{116}, 201101 (2016).
+\bibitem{CGM2016} H.~Casini, D.~A.~Galante, R.~C.~Myers, \emph{JHEP} \textbf{03}, 194 (2016), arXiv:1601.00528.
+\end{thebibliography}
+\end{document}
